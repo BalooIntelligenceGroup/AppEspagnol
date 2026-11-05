@@ -1,0 +1,1202 @@
+[
+ {
+  "h": "75530153",
+  "t": "ahla",
+  "k": "أهلا|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d2d0f017",
+  "t": "3aslema",
+  "k": "عسلامة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7815b2bb",
+  "t": "sbe7 el khir",
+  "k": "صباح الخير|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d3085e9f",
+  "t": "mse el khir",
+  "k": "مسا الخير|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "5588ebbb",
+  "t": "3aychek",
+  "k": "عيشك|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "36fd5683",
+  "t": "bslema",
+  "k": "بالسلامة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "8aa2807a",
+  "t": "3aslema! Labes?",
+  "k": "عسلامة! لاباس؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "5dee36da",
+  "t": "Labes, el 7amdoulillah. W enti?",
+  "k": "لاباس، الحمد لله. و إنتي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "875df28e",
+  "t": "Sbe7 el khir!",
+  "k": "صباح الخير!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7f351f72",
+  "t": "Sbe7 ennour!",
+  "k": "صباح النور!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "e47945e1",
+  "t": "Tfaddel, el 9ahwa mte3ek.",
+  "k": "تفضّل، القهوة متاعك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "408ae36e",
+  "t": "3aychek!",
+  "k": "عيشك!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "f808b369",
+  "t": "Bslema, nchoufek ghodwa!",
+  "k": "بالسلامة، نشوفك غدوة!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ce6d029e",
+  "t": "Bslema, inchallah!",
+  "k": "بالسلامة، إن شاء الله!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "afbd27f6",
+  "t": "Labes, el 7amdoulillah.",
+  "k": "لاباس، الحمد لله.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a3d2613f",
+  "t": "esmi",
+  "k": "اسمي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "2b9e46b9",
+  "t": "chnoua esmek?",
+  "k": "شنوّة اسمك؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "e743276a",
+  "t": "ana mel França",
+  "k": "أنا من فرانسا|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "cb5948e3",
+  "t": "nskon fi Tounes",
+  "k": "نسكن في تونس|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "62fd7eae",
+  "t": "metcharfin",
+  "k": "متشرّفين|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "faa28647",
+  "t": "w enti?",
+  "k": "و إنتي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "0000a6d8",
+  "t": "Ahla! Ana Yasmine. Chnoua esmek?",
+  "k": "أهلا! أنا ياسمين. شنوّة اسمك؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4f2d7086",
+  "t": "Metcharfin! Enti mnin?",
+  "k": "متشرّفين! إنتي منين؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "444d3cc4",
+  "t": "Ana mel França. W enti?",
+  "k": "أنا من فرانسا. و إنتي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "644ae46c",
+  "t": "Ana mel Tounes. W win tskon?",
+  "k": "أنا من تونس. و وين تسكن؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4f57aa17",
+  "t": "Nskon fi Tounes.",
+  "k": "نسكن في تونس.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "760e0af3",
+  "t": "Esmi Yasmine.",
+  "k": "اسمي ياسمين.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "0e90abec",
+  "t": "Ana mel França.",
+  "k": "أنا من فرانسا.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "126fc7e7",
+  "t": "wa7ed",
+  "k": "واحد|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "eaaaf869",
+  "t": "zouz",
+  "k": "زوز|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d6c2ce6f",
+  "t": "tleta",
+  "k": "ثلاثة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3c52d240",
+  "t": "arb3a",
+  "k": "أربعة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "054c9810",
+  "t": "khamsa",
+  "k": "خمسة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "777e91dc",
+  "t": "setta",
+  "k": "ستّة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "16d9ead5",
+  "t": "sab3a",
+  "k": "سبعة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b714de8d",
+  "t": "thmanya",
+  "k": "ثمنية|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "41b0c0d3",
+  "t": "tes3a",
+  "k": "تسعة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "f37d54d3",
+  "t": "3achra",
+  "k": "عشرة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "76f78590",
+  "t": "9addech men 9ahwa?",
+  "k": "قدّاش من قهوة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "33047ef7",
+  "t": "Zouz, 3aychek.",
+  "k": "زوز، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ee916c71",
+  "t": "Wa7ed, zouz, tleta...",
+  "k": "واحد، زوز، ثلاثة...|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9c9e6427",
+  "t": "Arb3a, khamsa, setta!",
+  "k": "أربعة، خمسة، ستّة!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ea71e5fa",
+  "t": "9addech men 3abd?",
+  "k": "قدّاش من عبد؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d6b3ce4a",
+  "t": "Arb3a.",
+  "k": "أربعة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "fb68a1e9",
+  "t": "Wa7ed, zouz, tleta.",
+  "k": "واحد، زوز، ثلاثة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "813b1c5a",
+  "t": "Khamsa w khamsa 3achra.",
+  "k": "خمسة و خمسة عشرة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4fdb7795",
+  "t": "9ahwa",
+  "k": "قهوة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ac01d991",
+  "t": "tey",
+  "k": "تاي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "dc2ee143",
+  "t": "mé",
+  "k": "ماء|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "357621f5",
+  "t": "n7eb",
+  "k": "نحب|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "e85c5c86",
+  "t": "b9addech?",
+  "k": "بقدّاش؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "717c752d",
+  "t": "brik",
+  "k": "بريك|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "f495e477",
+  "t": "Ahla! Chnoua t7eb?",
+  "k": "أهلا! شنوّة تحب؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ff96dac5",
+  "t": "N7eb 9ahwa, 3aychek.",
+  "k": "نحب قهوة، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "cf082433",
+  "t": "9ahwa direct walla capucin?",
+  "k": "قهوة ديراكت ولّا كابوسان؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "0caf0652",
+  "t": "Capucin, 3aychek.",
+  "k": "كابوسان، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ba70192c",
+  "t": "Tfaddel. 7aja okhra?",
+  "k": "تفضّل. حاجة أخرى؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4cd98515",
+  "t": "La, 3aychek. B9addech?",
+  "k": "لا، عيشك. بقدّاش؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "dde67fac",
+  "t": "Dinar w nos.",
+  "k": "دينار و نصّ.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "640a52a6",
+  "t": "Tfaddel. Bslema!",
+  "k": "تفضّل. بالسلامة!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "af16796c",
+  "t": "N7eb kés tey.",
+  "k": "نحب كاس تاي.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3d153192",
+  "t": "win?",
+  "k": "وين؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "1f5e2d94",
+  "t": "9addech fel wa9t?",
+  "k": "قدّاش في الوقت؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3229671d",
+  "t": "ma fhemtech",
+  "k": "ما فهمتش|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "f94ddaa7",
+  "t": "3awed 3aychek",
+  "k": "عاود عيشك|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b9479697",
+  "t": "tetkallem bel fransawi?",
+  "k": "تتكلّم بالفرنساوي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "111351fc",
+  "t": "chwaya",
+  "k": "شويّة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "55bf8482",
+  "t": "Ahla! N3awnek?",
+  "k": "أهلا! نعاونك؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9baa0e92",
+  "t": "Ey, 3aychek. Win el ma7atta?",
+  "k": "إيه، عيشك. وين المحطّة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4180d63c",
+  "t": "Odkhel ymin, ba3d doura chmel, w 9bal el jem3...",
+  "k": "أدخل يمين، بعد دورة شمال، و قبال الجامع...|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7c6fab7a",
+  "t": "Sem7ni, ma fhemtech. 3awed 3aychek.",
+  "k": "سامحني، ما فهمتش. عاود عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "1be635d1",
+  "t": "Ymin, ba3d chmel.",
+  "k": "يمين، بعد شمال.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7e67d0bf",
+  "t": "3aychek barcha!",
+  "k": "عيشك برشا!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "35da4b37",
+  "t": "Tetkallem bel fransawi?",
+  "k": "تتكلّم بالفرنساوي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "79a3032d",
+  "t": "Ey, w chwaya bel tounsi zeda!",
+  "k": "إيه، و شويّة بالتونسي زادة!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9e6f8910",
+  "t": "Win el ma7atta?",
+  "k": "وين المحطّة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "43640313",
+  "t": "Ma fhemtech, 3awed.",
+  "k": "ما فهمتش، عاود.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d565b75f",
+  "t": "ommi",
+  "k": "أمّي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "884ae49b",
+  "t": "bouya",
+  "k": "بويا|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "1f877fc8",
+  "t": "khouya",
+  "k": "خويا|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "f1e5297e",
+  "t": "okhti",
+  "k": "أختي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b33f20b9",
+  "t": "rajli",
+  "k": "راجلي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "59e2b156",
+  "t": "mrati",
+  "k": "مرتي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "82b520bb",
+  "t": "3andek sghar?",
+  "k": "عندك صغار؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "2b78f13e",
+  "t": "Ey, 3andi zouz.",
+  "k": "إيه، عندي زوز.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "25cec210",
+  "t": "W ommek w bouk, win?",
+  "k": "و أمّك و بوك، وين؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "892c0564",
+  "t": "Ommi w bouya fi França.",
+  "k": "أمّي و بويا في فرانسا.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "76190b8b",
+  "t": "3andek khout?",
+  "k": "عندك خوت؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "2d98fd0d",
+  "t": "Ey, 3andi khouya w okhti.",
+  "k": "إيه، عندي خويا و أختي.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "cc6e8564",
+  "t": "Ommi esmha Leila.",
+  "k": "أمّي اسمها ليلى.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7fa22f2f",
+  "t": "3andi khouya w okhti.",
+  "k": "عندي خويا و أختي.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "53bc4c00",
+  "t": "Rajli esmou Karim.",
+  "k": "راجلي اسمو كريم.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b3659dd9",
+  "t": "tmatem",
+  "k": "طماطم|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "59a7a183",
+  "t": "khobz",
+  "k": "خبز|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "c20f40e0",
+  "t": "kilo",
+  "k": "كيلو|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "06f438ea",
+  "t": "ghali",
+  "k": "غالي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "90892942",
+  "t": "n9as chwaya?",
+  "k": "نقّص شويّة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "eb1e9cce",
+  "t": "yezzi",
+  "k": "يزّي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3c7b4554",
+  "t": "N7eb kilo tmatem, 3aychek.",
+  "k": "نحب كيلو طماطم، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b2fe71f0",
+  "t": "Ey, zouz khobzat.",
+  "k": "إيه، زوز خبزات.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "bb0e3e74",
+  "t": "El kol b thmanya dinar.",
+  "k": "الكلّ بثمنية دينار.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7f5cb0f4",
+  "t": "Ghali! N9as chwaya?",
+  "k": "غالي! نقّص شويّة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "f3d2cf7b",
+  "t": "Behi, sab3a dinar. Yezzi?",
+  "k": "باهي، سبعة دينار. يزّي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "83c140be",
+  "t": "Yezzi, 3aychek. Tfaddel.",
+  "k": "يزّي، عيشك. تفضّل.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9ff19434",
+  "t": "N7eb kilo tmatem.",
+  "k": "نحب كيلو طماطم.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7b944b01",
+  "t": "Ghali barcha! N9as chwaya?",
+  "k": "غالي برشا! نقّص شويّة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d6a68958",
+  "t": "Yezzi, 3aychek.",
+  "k": "يزّي، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "0e5e77a9",
+  "t": "taxi",
+  "k": "تاكسي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "40c7b6aa",
+  "t": "louage",
+  "k": "لواج|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4019cfa5",
+  "t": "n7eb nemchi l...",
+  "k": "نحب نمشي لـ...|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "e9b58899",
+  "t": "9rib",
+  "k": "قريب|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "300a49ef",
+  "t": "b3id",
+  "k": "بعيد|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "87eefaa7",
+  "t": "o9ef hna",
+  "k": "أوقف هنا|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a24a845e",
+  "t": "Ahla, win temchi?",
+  "k": "أهلا، وين تمشي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "85e9fea2",
+  "t": "N7eb nemchi lel Marsa, 3aychek.",
+  "k": "نحب نمشي للمرسى، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d1c758b4",
+  "t": "Hiya b3ida chwaya. Mchina.",
+  "k": "هي بعيدة شويّة. مشينا.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ae2c6762",
+  "t": "Mrigel. B9addech?",
+  "k": "مريقل. بقدّاش؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "01fda474",
+  "t": "Bel compteur, ma tkhafch.",
+  "k": "بالكونتور، ما تخافش.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "5f5e5c09",
+  "t": "Behi, 3aychek.",
+  "k": "باهي، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3f87ed6b",
+  "t": "Weselna! Hna behi?",
+  "k": "وصلنا! هنا باهي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "44d810e8",
+  "t": "Ey, o9ef hna. 3aychek!",
+  "k": "إيه، أوقف هنا. عيشك!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "de2193f2",
+  "t": "N7eb nemchi lel Marsa.",
+  "k": "نحب نمشي للمرسى.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "dc37bcc5",
+  "t": "O9ef hna, 3aychek.",
+  "k": "أوقف هنا، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9778d948",
+  "t": "El Marsa b3ida chwaya.",
+  "k": "المرسى بعيدة شويّة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "afef2359",
+  "t": "kosksi",
+  "k": "كسكسي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "5cbb171f",
+  "t": "lham",
+  "k": "لحم|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "8f1decba",
+  "t": "7out",
+  "k": "حوت|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a143bff0",
+  "t": "harissa",
+  "k": "هريسة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "310dc3b2",
+  "t": "bnin",
+  "k": "بنين|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "134d0a31",
+  "t": "el 7seb",
+  "k": "الحساب|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "0660a5e0",
+  "t": "Ahla! Chnoua t7eb tekel?",
+  "k": "أهلا! شنوّة تحب تاكل؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "dac856af",
+  "t": "N7eb kosksi bel 7out.",
+  "k": "نحب كسكسي بالحوت.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "04ffc9a6",
+  "t": "Bel harissa walla bla?",
+  "k": "بالهريسة ولّا بلا؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "e4c106fc",
+  "t": "Bel harissa, ama chwaya!",
+  "k": "بالهريسة، أما شويّة!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a05a270c",
+  "t": "Chnoua rayek? Bnin?",
+  "k": "شنوّة رايك؟ بنين؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "1507f52a",
+  "t": "Bnin barcha, ya3tik essa77a!",
+  "k": "بنين برشا، يعطيك الصحّة!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d26e272c",
+  "t": "7aja okhra?",
+  "k": "حاجة أخرى؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4b9aefa8",
+  "t": "La, 3aychek. El 7seb, 3aychek.",
+  "k": "لا، عيشك. الحساب، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "788a59ba",
+  "t": "Bnin barcha!",
+  "k": "بنين برشا!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "52d976ef",
+  "t": "El 7seb, 3aychek.",
+  "k": "الحساب، عيشك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d94f10ac",
+  "t": "dar",
+  "k": "دار|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "60cae230",
+  "t": "bit",
+  "k": "بيت|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4bc7be66",
+  "t": "kouzina",
+  "k": "كوزينة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "44a2ba20",
+  "t": "bit el ban",
+  "k": "بيت البان|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "282a7521",
+  "t": "jari",
+  "k": "جاري|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3a1c4dfc",
+  "t": "el kra",
+  "k": "الكرا|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "6dd88e8c",
+  "t": "Ahla! Jit tchouf ed-dar?",
+  "k": "أهلا! جيت تشوف الدار؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "2d54691d",
+  "t": "Ey. 9addech men bit fiha?",
+  "k": "إيه. قدّاش من بيت فيها؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "c6b9ae5f",
+  "t": "Fiha zouz byout, kouzina w bit el ban.",
+  "k": "فيها زوز بيوت، كوزينة و بيت البان.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "524f57ea",
+  "t": "Behi. Wel kra 9addech?",
+  "k": "باهي. والكرا قدّاش؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "69f146d1",
+  "t": "Sab3a mya dinar fel chhar.",
+  "k": "سبعة مية دينار في الشهر.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "75b384f4",
+  "t": "Chwaya ghali. N9as chwaya?",
+  "k": "شويّة غالي. نقّص شويّة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a298ffc4",
+  "t": "Behi, setta mya. Mrigel?",
+  "k": "باهي، ستّة مية. مريقل؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7d3cd290",
+  "t": "Mrigel, 3aychek!",
+  "k": "مريقل، عيشك!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "aace8323",
+  "t": "Ed-dar fiha zouz byout.",
+  "k": "الدار فيها زوز بيوت.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "44af25d0",
+  "t": "El kra 9addech fel chhar?",
+  "k": "الكرا قدّاش في الشهر؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9c234056",
+  "t": "Nteyeb fel kouzina.",
+  "k": "نطيّب في الكوزينة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "8517f049",
+  "t": "rassi youja3ni",
+  "k": "راسي يوجعني|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7c1c828a",
+  "t": "3andi skhana",
+  "k": "عندي سخانة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ab994ed4",
+  "t": "el pharmacie",
+  "k": "الفارماسي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d82c7cd7",
+  "t": "dwa",
+  "k": "دوا|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "73cadf6e",
+  "t": "ordonnance",
+  "k": "أوردونونس|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ca06ab2c",
+  "t": "wallit khir",
+  "k": "وليت خير|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4d65b9f8",
+  "t": "Ahla, odkhel. Chbik?",
+  "k": "أهلا، أدخل. شبيك؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4101260b",
+  "t": "Rassi youja3ni w 3andi skhana.",
+  "k": "راسي يوجعني و عندي سخانة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "8323a272",
+  "t": "Men 9addech?",
+  "k": "من قدّاش؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9ca57d96",
+  "t": "Men youmin.",
+  "k": "من يومين.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "dca0b4fc",
+  "t": "Hedhi el ordonnance. Echri ed-dwa mel pharmacie.",
+  "k": "هاذي الأوردونونس. اشري الدوا من الفارماسي.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "bad49238",
+  "t": "3aychek ya doktor.",
+  "k": "عيشك يا دكتور.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ae8b17fa",
+  "t": "Chnoua a7walek lyoum?",
+  "k": "شنوّة أحوالك اليوم؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a955c592",
+  "t": "Wallit khir, el 7amdoulillah.",
+  "k": "وليت خير، الحمد لله.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3790afc5",
+  "t": "Rassi youja3ni.",
+  "k": "راسي يوجعني.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "04e1a82c",
+  "t": "3andi skhana.",
+  "k": "عندي سخانة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "14e84b92",
+  "t": "Echri ed-dwa mel pharmacie.",
+  "k": "اشري الدوا من الفارماسي.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "73274ca0",
+  "t": "el khedma",
+  "k": "الخدمة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "8697ef24",
+  "t": "zmili",
+  "k": "زميلي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "70d8eee3",
+  "t": "réunion",
+  "k": "ريونيون|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "80722165",
+  "t": "m3attal",
+  "k": "معطّل|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d53a1994",
+  "t": "el patron",
+  "k": "الباترون|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "5c3d367d",
+  "t": "nkhdem fi...",
+  "k": "نخدم في...|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "18e0de9e",
+  "t": "Ahla! Awel nhar lik hna?",
+  "k": "أهلا! أوّل نهار ليك هنا؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "16aac647",
+  "t": "El réunion m3a el patron fel 3achra.",
+  "k": "الريونيون مع الباترون في العشرة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3b034b39",
+  "t": "Behi. Lazem n7adher 7aja?",
+  "k": "باهي. لازم نحضّر حاجة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "90d3d841",
+  "t": "El 3achra w khamsa... winek?",
+  "k": "العشرة و خمسة... وينك؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d0bcf81c",
+  "t": "Sem7ni, ana m3attal! Jey tawa.",
+  "k": "سامحني، أنا معطّل! جاي توّا.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "0fbc0c8c",
+  "t": "Nochorbou 9ahwa ba3d el réunion?",
+  "k": "نشربو قهوة بعد الريونيون؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "2106c0a4",
+  "t": "Ey, 3la rassi!",
+  "k": "إيه، على راسي!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "79d34f11",
+  "t": "Ana m3attal, sem7ni!",
+  "k": "أنا معطّل، سامحني!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "58c1054e",
+  "t": "El réunion m3a el patron.",
+  "k": "الريونيون مع الباترون.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "1473251a",
+  "t": "Nkhdem fi banka.",
+  "k": "نخدم في بنكة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "bc81bae5",
+  "t": "alou?",
+  "k": "آلو؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b868ab67",
+  "t": "chkoun m3aya?",
+  "k": "شكون معايا؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "0d9a67a1",
+  "t": "stanna chwaya",
+  "k": "استنّى شويّة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "c452215e",
+  "t": "nkallmek ba3d",
+  "k": "نكلّمك بعد|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "739cc971",
+  "t": "n7eb nreservi",
+  "k": "نحب نريزرفي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "611be2c4",
+  "t": "nchoufek",
+  "k": "نشوفك|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "e10670d9",
+  "t": "Alou, restaurant Dar Yasmine, ahla!",
+  "k": "آلو، ريستوران دار ياسمين، أهلا!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b971359e",
+  "t": "Ahla, n7eb nreservi tawla nhar es-sebt.",
+  "k": "أهلا، نحب نريزرفي طاولة نهار السبت.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4eba6a9e",
+  "t": "L 9addech men 3abd?",
+  "k": "لقدّاش من عبد؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b0ffe72e",
+  "t": "L arb3a, 3la thmanya.",
+  "k": "لأربعة، على ثمنية.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "4a7b9fae",
+  "t": "Stanna chwaya... behi. Bisem chkoun?",
+  "k": "استنّى شويّة... باهي. باسم شكون؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "478c6015",
+  "t": "Mrigel, nchoufek nhar es-sebt!",
+  "k": "مريقل، نشوفك نهار السبت!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9b8458dc",
+  "t": "3aychek, bslema!",
+  "k": "عيشك، بالسلامة!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "2c6ab37c",
+  "t": "Alou, chkoun m3aya?",
+  "k": "آلو، شكون معايا؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "8dc9cfbd",
+  "t": "Stanna chwaya.",
+  "k": "استنّى شويّة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "87e46974",
+  "t": "N7eb nreservi tawla.",
+  "k": "نحب نريزرفي طاولة.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7a3fc508",
+  "t": "t7eb...?",
+  "k": "تحب...؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "994ab4ef",
+  "t": "nemchiw lel b7ar",
+  "k": "نمشيو للبحر|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "97c11510",
+  "t": "nochorbou 9ahwa",
+  "k": "نشربو قهوة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "42c19fb9",
+  "t": "ghodwa",
+  "k": "غدوة|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "e1768007",
+  "t": "3la rassi",
+  "k": "على راسي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "bddf8d13",
+  "t": "ntla9aw",
+  "k": "نتلاقاو|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a6d0333c",
+  "t": "Ahla! T7eb nokhorjou ghodwa?",
+  "k": "أهلا! تحب نخرجو غدوة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "de830604",
+  "t": "3la rassi! Chnoua na3mlou?",
+  "k": "على راسي! شنوّة نعملو؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "bc928e83",
+  "t": "Nemchiw lel b7ar fi Sidi Bou Said?",
+  "k": "نمشيو للبحر في سيدي بوسعيد؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "ac93e8ea",
+  "t": "Mrigel! Fi 9addech?",
+  "k": "مريقل! في قدّاش؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "15067ae4",
+  "t": "3la el wa7da. Ba3d nochorbou 9ahwa?",
+  "k": "على الوحدة. بعد نشربو قهوة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "09f7ae5f",
+  "t": "Ey, behi! Win ntla9aw?",
+  "k": "إيه، باهي! وين نتلاقاو؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "da84e93b",
+  "t": "9oddem el ma7atta mta3 el TGM.",
+  "k": "قدّام المحطّة متاع التي جي إم.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "66742c69",
+  "t": "Behi, nchoufek ghodwa!",
+  "k": "باهي، نشوفك غدوة!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "9bf26cb3",
+  "t": "T7eb nokhorjou ghodwa?",
+  "k": "تحب نخرجو غدوة؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3bc25673",
+  "t": "Nemchiw lel b7ar.",
+  "k": "نمشيو للبحر.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "3b25845e",
+  "t": "Win ntla9aw?",
+  "k": "وين نتلاقاو؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "d45eab76",
+  "t": "mchit",
+  "k": "مشيت|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "0ea75e2f",
+  "t": "klit",
+  "k": "كليت|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "e2b71505",
+  "t": "chrebt",
+  "k": "شربت|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "8043a2b2",
+  "t": "ri9adt",
+  "k": "رقدت|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a03aad64",
+  "t": "chft",
+  "k": "شفت|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "28057f14",
+  "t": "t3adda behi",
+  "k": "تعدّى باهي|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "7bd92a72",
+  "t": "Ahla! Chnoua 3malt fel weekend?",
+  "k": "أهلا! شنوّة عملت في الويكاند؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "72d26dff",
+  "t": "Mchit lel b7ar m3a 3ayelti.",
+  "k": "مشيت للبحر مع عايلتي.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "a90a8278",
+  "t": "Mrigel! W chnoua klitou?",
+  "k": "مريقل! و شنوّة كليتو؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "71ef7108",
+  "t": "Klina 7out w brik.",
+  "k": "كلينا حوت و بريك.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "62c4cf4e",
+  "t": "W nhar el a7ad?",
+  "k": "و نهار الأحد؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "977a6c93",
+  "t": "Ri9adt barcha w chft film.",
+  "k": "رقدت برشا و شفت فيلم.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "54165a81",
+  "t": "Ya3ni t3adda behi!",
+  "k": "يعني تعدّى باهي!|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "66aa35e3",
+  "t": "Ey, t3adda behi barcha. W enti?",
+  "k": "إيه، تعدّى باهي برشا. و إنتي؟|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "2b4b958b",
+  "t": "El bera7 mchit lel b7ar.",
+  "k": "البارح مشيت للبحر.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "b47c7286",
+  "t": "Klit kosksi bnin.",
+  "k": "كليت كسكسي بنين.|ar-TN-ReemNeural|-10%"
+ },
+ {
+  "h": "62713b3c",
+  "t": "El weekend t3adda behi.",
+  "k": "الويكاند تعدّى باهي.|ar-TN-ReemNeural|-10%"
+ }
+]

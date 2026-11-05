@@ -8,7 +8,12 @@ Adresse : https://tounsi--cozy-ganache-5c4ae8.netlify.app — chaque push sur `t
 
 ## Particularités
 - Tunisien en lettres latines : 3 = ع, 7 = ح, 9 = ق, kh = خ, gh = غ, ch = ش (écran « Les sons », tableau `SOUNDS`).
-- Pas de synthèse vocale : les voix sont des ENREGISTREMENTS d'une personne tunisienne.
+- Voix, par ordre de priorité : 1) enregistrements du Studio sur l'appareil, 2) vraie voix en ligne (`audio/<hash>.webm`, liste `audio/index.json`),
+  3) voix de synthèse Microsoft « arabe de Tunisie » (`audio/tts/<hash>.mp3`, liste `audio/tts/index.json`).
+- Voix de synthèse : `tts/phrases.json` associe chaque phrase latine (`t`) à son écriture arabe (`ar`, c'est ce que la voix lit).
+  Le workflow `.github/workflows/voix.yml` (GitHub Actions, edge-tts, voix ar-TN-ReemNeural) régénère les fichiers à chaque push
+  qui touche `tts/`, puis les commit sur `tounsi`. Toute nouvelle phrase de l'appli doit être ajoutée à `tts/phrases.json` avec son arabe.
+- Vraies voix : ENREGISTREMENTS d'une personne tunisienne.
   - Studio (Réglages → Studio d'enregistrement) : enregistre chaque phrase, stockage IndexedDB `ahla-studio`.
   - Export : un .zip contenant `<hash>.webm` + `index.json` ([{h, t}]).
   - Mise en ligne : copier les `.webm` dans `audio/` et fusionner la liste dans `audio/index.json` (garder les entrées existantes, dédoublonner par `h`).

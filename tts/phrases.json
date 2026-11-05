@@ -1,0 +1,962 @@
+[
+ {
+  "t": "ahla",
+  "ar": "أهلا"
+ },
+ {
+  "t": "3aslema",
+  "ar": "عسلامة"
+ },
+ {
+  "t": "sbe7 el khir",
+  "ar": "صباح الخير"
+ },
+ {
+  "t": "mse el khir",
+  "ar": "مسا الخير"
+ },
+ {
+  "t": "3aychek",
+  "ar": "عيشك"
+ },
+ {
+  "t": "bslema",
+  "ar": "بالسلامة"
+ },
+ {
+  "t": "3aslema! Labes?",
+  "ar": "عسلامة! لاباس؟"
+ },
+ {
+  "t": "Labes, el 7amdoulillah. W enti?",
+  "ar": "لاباس، الحمد لله. و إنتي؟"
+ },
+ {
+  "t": "Sbe7 el khir!",
+  "ar": "صباح الخير!"
+ },
+ {
+  "t": "Sbe7 ennour!",
+  "ar": "صباح النور!"
+ },
+ {
+  "t": "Tfaddel, el 9ahwa mte3ek.",
+  "ar": "تفضّل، القهوة متاعك."
+ },
+ {
+  "t": "3aychek!",
+  "ar": "عيشك!"
+ },
+ {
+  "t": "Bslema, nchoufek ghodwa!",
+  "ar": "بالسلامة، نشوفك غدوة!"
+ },
+ {
+  "t": "Bslema, inchallah!",
+  "ar": "بالسلامة، إن شاء الله!"
+ },
+ {
+  "t": "Labes, el 7amdoulillah.",
+  "ar": "لاباس، الحمد لله."
+ },
+ {
+  "t": "esmi",
+  "ar": "اسمي"
+ },
+ {
+  "t": "chnoua esmek?",
+  "ar": "شنوّة اسمك؟"
+ },
+ {
+  "t": "ana mel França",
+  "ar": "أنا من فرانسا"
+ },
+ {
+  "t": "nskon fi Tounes",
+  "ar": "نسكن في تونس"
+ },
+ {
+  "t": "metcharfin",
+  "ar": "متشرّفين"
+ },
+ {
+  "t": "w enti?",
+  "ar": "و إنتي؟"
+ },
+ {
+  "t": "Ahla! Ana Yasmine. Chnoua esmek?",
+  "ar": "أهلا! أنا ياسمين. شنوّة اسمك؟"
+ },
+ {
+  "t": "Metcharfin! Enti mnin?",
+  "ar": "متشرّفين! إنتي منين؟"
+ },
+ {
+  "t": "Ana mel França. W enti?",
+  "ar": "أنا من فرانسا. و إنتي؟"
+ },
+ {
+  "t": "Ana mel Tounes. W win tskon?",
+  "ar": "أنا من تونس. و وين تسكن؟"
+ },
+ {
+  "t": "Nskon fi Tounes.",
+  "ar": "نسكن في تونس."
+ },
+ {
+  "t": "Esmi Yasmine.",
+  "ar": "اسمي ياسمين."
+ },
+ {
+  "t": "Ana mel França.",
+  "ar": "أنا من فرانسا."
+ },
+ {
+  "t": "wa7ed",
+  "ar": "واحد"
+ },
+ {
+  "t": "zouz",
+  "ar": "زوز"
+ },
+ {
+  "t": "tleta",
+  "ar": "ثلاثة"
+ },
+ {
+  "t": "arb3a",
+  "ar": "أربعة"
+ },
+ {
+  "t": "khamsa",
+  "ar": "خمسة"
+ },
+ {
+  "t": "setta",
+  "ar": "ستّة"
+ },
+ {
+  "t": "sab3a",
+  "ar": "سبعة"
+ },
+ {
+  "t": "thmanya",
+  "ar": "ثمنية"
+ },
+ {
+  "t": "tes3a",
+  "ar": "تسعة"
+ },
+ {
+  "t": "3achra",
+  "ar": "عشرة"
+ },
+ {
+  "t": "9addech men 9ahwa?",
+  "ar": "قدّاش من قهوة؟"
+ },
+ {
+  "t": "Zouz, 3aychek.",
+  "ar": "زوز، عيشك."
+ },
+ {
+  "t": "Wa7ed, zouz, tleta...",
+  "ar": "واحد، زوز، ثلاثة..."
+ },
+ {
+  "t": "Arb3a, khamsa, setta!",
+  "ar": "أربعة، خمسة، ستّة!"
+ },
+ {
+  "t": "9addech men 3abd?",
+  "ar": "قدّاش من عبد؟"
+ },
+ {
+  "t": "Arb3a.",
+  "ar": "أربعة."
+ },
+ {
+  "t": "Wa7ed, zouz, tleta.",
+  "ar": "واحد، زوز، ثلاثة."
+ },
+ {
+  "t": "Khamsa w khamsa 3achra.",
+  "ar": "خمسة و خمسة عشرة."
+ },
+ {
+  "t": "9ahwa",
+  "ar": "قهوة"
+ },
+ {
+  "t": "tey",
+  "ar": "تاي"
+ },
+ {
+  "t": "mé",
+  "ar": "ماء"
+ },
+ {
+  "t": "n7eb",
+  "ar": "نحب"
+ },
+ {
+  "t": "b9addech?",
+  "ar": "بقدّاش؟"
+ },
+ {
+  "t": "brik",
+  "ar": "بريك"
+ },
+ {
+  "t": "Ahla! Chnoua t7eb?",
+  "ar": "أهلا! شنوّة تحب؟"
+ },
+ {
+  "t": "N7eb 9ahwa, 3aychek.",
+  "ar": "نحب قهوة، عيشك."
+ },
+ {
+  "t": "9ahwa direct walla capucin?",
+  "ar": "قهوة ديراكت ولّا كابوسان؟"
+ },
+ {
+  "t": "Capucin, 3aychek.",
+  "ar": "كابوسان، عيشك."
+ },
+ {
+  "t": "Tfaddel. 7aja okhra?",
+  "ar": "تفضّل. حاجة أخرى؟"
+ },
+ {
+  "t": "La, 3aychek. B9addech?",
+  "ar": "لا، عيشك. بقدّاش؟"
+ },
+ {
+  "t": "Dinar w nos.",
+  "ar": "دينار و نصّ."
+ },
+ {
+  "t": "Tfaddel. Bslema!",
+  "ar": "تفضّل. بالسلامة!"
+ },
+ {
+  "t": "N7eb kés tey.",
+  "ar": "نحب كاس تاي."
+ },
+ {
+  "t": "win?",
+  "ar": "وين؟"
+ },
+ {
+  "t": "9addech fel wa9t?",
+  "ar": "قدّاش في الوقت؟"
+ },
+ {
+  "t": "ma fhemtech",
+  "ar": "ما فهمتش"
+ },
+ {
+  "t": "3awed 3aychek",
+  "ar": "عاود عيشك"
+ },
+ {
+  "t": "tetkallem bel fransawi?",
+  "ar": "تتكلّم بالفرنساوي؟"
+ },
+ {
+  "t": "chwaya",
+  "ar": "شويّة"
+ },
+ {
+  "t": "Ahla! N3awnek?",
+  "ar": "أهلا! نعاونك؟"
+ },
+ {
+  "t": "Ey, 3aychek. Win el ma7atta?",
+  "ar": "إيه، عيشك. وين المحطّة؟"
+ },
+ {
+  "t": "Odkhel ymin, ba3d doura chmel, w 9bal el jem3...",
+  "ar": "أدخل يمين، بعد دورة شمال، و قبال الجامع..."
+ },
+ {
+  "t": "Sem7ni, ma fhemtech. 3awed 3aychek.",
+  "ar": "سامحني، ما فهمتش. عاود عيشك."
+ },
+ {
+  "t": "Ymin, ba3d chmel.",
+  "ar": "يمين، بعد شمال."
+ },
+ {
+  "t": "3aychek barcha!",
+  "ar": "عيشك برشا!"
+ },
+ {
+  "t": "Tetkallem bel fransawi?",
+  "ar": "تتكلّم بالفرنساوي؟"
+ },
+ {
+  "t": "Ey, w chwaya bel tounsi zeda!",
+  "ar": "إيه، و شويّة بالتونسي زادة!"
+ },
+ {
+  "t": "Win el ma7atta?",
+  "ar": "وين المحطّة؟"
+ },
+ {
+  "t": "Ma fhemtech, 3awed.",
+  "ar": "ما فهمتش، عاود."
+ },
+ {
+  "t": "ommi",
+  "ar": "أمّي"
+ },
+ {
+  "t": "bouya",
+  "ar": "بويا"
+ },
+ {
+  "t": "khouya",
+  "ar": "خويا"
+ },
+ {
+  "t": "okhti",
+  "ar": "أختي"
+ },
+ {
+  "t": "rajli",
+  "ar": "راجلي"
+ },
+ {
+  "t": "mrati",
+  "ar": "مرتي"
+ },
+ {
+  "t": "3andek sghar?",
+  "ar": "عندك صغار؟"
+ },
+ {
+  "t": "Ey, 3andi zouz.",
+  "ar": "إيه، عندي زوز."
+ },
+ {
+  "t": "W ommek w bouk, win?",
+  "ar": "و أمّك و بوك، وين؟"
+ },
+ {
+  "t": "Ommi w bouya fi França.",
+  "ar": "أمّي و بويا في فرانسا."
+ },
+ {
+  "t": "3andek khout?",
+  "ar": "عندك خوت؟"
+ },
+ {
+  "t": "Ey, 3andi khouya w okhti.",
+  "ar": "إيه، عندي خويا و أختي."
+ },
+ {
+  "t": "Ommi esmha Leila.",
+  "ar": "أمّي اسمها ليلى."
+ },
+ {
+  "t": "3andi khouya w okhti.",
+  "ar": "عندي خويا و أختي."
+ },
+ {
+  "t": "Rajli esmou Karim.",
+  "ar": "راجلي اسمو كريم."
+ },
+ {
+  "t": "tmatem",
+  "ar": "طماطم"
+ },
+ {
+  "t": "khobz",
+  "ar": "خبز"
+ },
+ {
+  "t": "kilo",
+  "ar": "كيلو"
+ },
+ {
+  "t": "ghali",
+  "ar": "غالي"
+ },
+ {
+  "t": "n9as chwaya?",
+  "ar": "نقّص شويّة؟"
+ },
+ {
+  "t": "yezzi",
+  "ar": "يزّي"
+ },
+ {
+  "t": "N7eb kilo tmatem, 3aychek.",
+  "ar": "نحب كيلو طماطم، عيشك."
+ },
+ {
+  "t": "Ey, zouz khobzat.",
+  "ar": "إيه، زوز خبزات."
+ },
+ {
+  "t": "El kol b thmanya dinar.",
+  "ar": "الكلّ بثمنية دينار."
+ },
+ {
+  "t": "Ghali! N9as chwaya?",
+  "ar": "غالي! نقّص شويّة؟"
+ },
+ {
+  "t": "Behi, sab3a dinar. Yezzi?",
+  "ar": "باهي، سبعة دينار. يزّي؟"
+ },
+ {
+  "t": "Yezzi, 3aychek. Tfaddel.",
+  "ar": "يزّي، عيشك. تفضّل."
+ },
+ {
+  "t": "N7eb kilo tmatem.",
+  "ar": "نحب كيلو طماطم."
+ },
+ {
+  "t": "Ghali barcha! N9as chwaya?",
+  "ar": "غالي برشا! نقّص شويّة؟"
+ },
+ {
+  "t": "Yezzi, 3aychek.",
+  "ar": "يزّي، عيشك."
+ },
+ {
+  "t": "taxi",
+  "ar": "تاكسي"
+ },
+ {
+  "t": "louage",
+  "ar": "لواج"
+ },
+ {
+  "t": "n7eb nemchi l...",
+  "ar": "نحب نمشي لـ..."
+ },
+ {
+  "t": "9rib",
+  "ar": "قريب"
+ },
+ {
+  "t": "b3id",
+  "ar": "بعيد"
+ },
+ {
+  "t": "o9ef hna",
+  "ar": "أوقف هنا"
+ },
+ {
+  "t": "Ahla, win temchi?",
+  "ar": "أهلا، وين تمشي؟"
+ },
+ {
+  "t": "N7eb nemchi lel Marsa, 3aychek.",
+  "ar": "نحب نمشي للمرسى، عيشك."
+ },
+ {
+  "t": "Hiya b3ida chwaya. Mchina.",
+  "ar": "هي بعيدة شويّة. مشينا."
+ },
+ {
+  "t": "Mrigel. B9addech?",
+  "ar": "مريقل. بقدّاش؟"
+ },
+ {
+  "t": "Bel compteur, ma tkhafch.",
+  "ar": "بالكونتور، ما تخافش."
+ },
+ {
+  "t": "Behi, 3aychek.",
+  "ar": "باهي، عيشك."
+ },
+ {
+  "t": "Weselna! Hna behi?",
+  "ar": "وصلنا! هنا باهي؟"
+ },
+ {
+  "t": "Ey, o9ef hna. 3aychek!",
+  "ar": "إيه، أوقف هنا. عيشك!"
+ },
+ {
+  "t": "N7eb nemchi lel Marsa.",
+  "ar": "نحب نمشي للمرسى."
+ },
+ {
+  "t": "O9ef hna, 3aychek.",
+  "ar": "أوقف هنا، عيشك."
+ },
+ {
+  "t": "El Marsa b3ida chwaya.",
+  "ar": "المرسى بعيدة شويّة."
+ },
+ {
+  "t": "kosksi",
+  "ar": "كسكسي"
+ },
+ {
+  "t": "lham",
+  "ar": "لحم"
+ },
+ {
+  "t": "7out",
+  "ar": "حوت"
+ },
+ {
+  "t": "harissa",
+  "ar": "هريسة"
+ },
+ {
+  "t": "bnin",
+  "ar": "بنين"
+ },
+ {
+  "t": "el 7seb",
+  "ar": "الحساب"
+ },
+ {
+  "t": "Ahla! Chnoua t7eb tekel?",
+  "ar": "أهلا! شنوّة تحب تاكل؟"
+ },
+ {
+  "t": "N7eb kosksi bel 7out.",
+  "ar": "نحب كسكسي بالحوت."
+ },
+ {
+  "t": "Bel harissa walla bla?",
+  "ar": "بالهريسة ولّا بلا؟"
+ },
+ {
+  "t": "Bel harissa, ama chwaya!",
+  "ar": "بالهريسة، أما شويّة!"
+ },
+ {
+  "t": "Chnoua rayek? Bnin?",
+  "ar": "شنوّة رايك؟ بنين؟"
+ },
+ {
+  "t": "Bnin barcha, ya3tik essa77a!",
+  "ar": "بنين برشا، يعطيك الصحّة!"
+ },
+ {
+  "t": "7aja okhra?",
+  "ar": "حاجة أخرى؟"
+ },
+ {
+  "t": "La, 3aychek. El 7seb, 3aychek.",
+  "ar": "لا، عيشك. الحساب، عيشك."
+ },
+ {
+  "t": "Bnin barcha!",
+  "ar": "بنين برشا!"
+ },
+ {
+  "t": "El 7seb, 3aychek.",
+  "ar": "الحساب، عيشك."
+ },
+ {
+  "t": "dar",
+  "ar": "دار"
+ },
+ {
+  "t": "bit",
+  "ar": "بيت"
+ },
+ {
+  "t": "kouzina",
+  "ar": "كوزينة"
+ },
+ {
+  "t": "bit el ban",
+  "ar": "بيت البان"
+ },
+ {
+  "t": "jari",
+  "ar": "جاري"
+ },
+ {
+  "t": "el kra",
+  "ar": "الكرا"
+ },
+ {
+  "t": "Ahla! Jit tchouf ed-dar?",
+  "ar": "أهلا! جيت تشوف الدار؟"
+ },
+ {
+  "t": "Ey. 9addech men bit fiha?",
+  "ar": "إيه. قدّاش من بيت فيها؟"
+ },
+ {
+  "t": "Fiha zouz byout, kouzina w bit el ban.",
+  "ar": "فيها زوز بيوت، كوزينة و بيت البان."
+ },
+ {
+  "t": "Behi. Wel kra 9addech?",
+  "ar": "باهي. والكرا قدّاش؟"
+ },
+ {
+  "t": "Sab3a mya dinar fel chhar.",
+  "ar": "سبعة مية دينار في الشهر."
+ },
+ {
+  "t": "Chwaya ghali. N9as chwaya?",
+  "ar": "شويّة غالي. نقّص شويّة؟"
+ },
+ {
+  "t": "Behi, setta mya. Mrigel?",
+  "ar": "باهي، ستّة مية. مريقل؟"
+ },
+ {
+  "t": "Mrigel, 3aychek!",
+  "ar": "مريقل، عيشك!"
+ },
+ {
+  "t": "Ed-dar fiha zouz byout.",
+  "ar": "الدار فيها زوز بيوت."
+ },
+ {
+  "t": "El kra 9addech fel chhar?",
+  "ar": "الكرا قدّاش في الشهر؟"
+ },
+ {
+  "t": "Nteyeb fel kouzina.",
+  "ar": "نطيّب في الكوزينة."
+ },
+ {
+  "t": "rassi youja3ni",
+  "ar": "راسي يوجعني"
+ },
+ {
+  "t": "3andi skhana",
+  "ar": "عندي سخانة"
+ },
+ {
+  "t": "el pharmacie",
+  "ar": "الفارماسي"
+ },
+ {
+  "t": "dwa",
+  "ar": "دوا"
+ },
+ {
+  "t": "ordonnance",
+  "ar": "أوردونونس"
+ },
+ {
+  "t": "wallit khir",
+  "ar": "وليت خير"
+ },
+ {
+  "t": "Ahla, odkhel. Chbik?",
+  "ar": "أهلا، أدخل. شبيك؟"
+ },
+ {
+  "t": "Rassi youja3ni w 3andi skhana.",
+  "ar": "راسي يوجعني و عندي سخانة."
+ },
+ {
+  "t": "Men 9addech?",
+  "ar": "من قدّاش؟"
+ },
+ {
+  "t": "Men youmin.",
+  "ar": "من يومين."
+ },
+ {
+  "t": "Hedhi el ordonnance. Echri ed-dwa mel pharmacie.",
+  "ar": "هاذي الأوردونونس. اشري الدوا من الفارماسي."
+ },
+ {
+  "t": "3aychek ya doktor.",
+  "ar": "عيشك يا دكتور."
+ },
+ {
+  "t": "Chnoua a7walek lyoum?",
+  "ar": "شنوّة أحوالك اليوم؟"
+ },
+ {
+  "t": "Wallit khir, el 7amdoulillah.",
+  "ar": "وليت خير، الحمد لله."
+ },
+ {
+  "t": "Rassi youja3ni.",
+  "ar": "راسي يوجعني."
+ },
+ {
+  "t": "3andi skhana.",
+  "ar": "عندي سخانة."
+ },
+ {
+  "t": "Echri ed-dwa mel pharmacie.",
+  "ar": "اشري الدوا من الفارماسي."
+ },
+ {
+  "t": "el khedma",
+  "ar": "الخدمة"
+ },
+ {
+  "t": "zmili",
+  "ar": "زميلي"
+ },
+ {
+  "t": "réunion",
+  "ar": "ريونيون"
+ },
+ {
+  "t": "m3attal",
+  "ar": "معطّل"
+ },
+ {
+  "t": "el patron",
+  "ar": "الباترون"
+ },
+ {
+  "t": "nkhdem fi...",
+  "ar": "نخدم في..."
+ },
+ {
+  "t": "Ahla! Awel nhar lik hna?",
+  "ar": "أهلا! أوّل نهار ليك هنا؟"
+ },
+ {
+  "t": "El réunion m3a el patron fel 3achra.",
+  "ar": "الريونيون مع الباترون في العشرة."
+ },
+ {
+  "t": "Behi. Lazem n7adher 7aja?",
+  "ar": "باهي. لازم نحضّر حاجة؟"
+ },
+ {
+  "t": "El 3achra w khamsa... winek?",
+  "ar": "العشرة و خمسة... وينك؟"
+ },
+ {
+  "t": "Sem7ni, ana m3attal! Jey tawa.",
+  "ar": "سامحني، أنا معطّل! جاي توّا."
+ },
+ {
+  "t": "Nochorbou 9ahwa ba3d el réunion?",
+  "ar": "نشربو قهوة بعد الريونيون؟"
+ },
+ {
+  "t": "Ey, 3la rassi!",
+  "ar": "إيه، على راسي!"
+ },
+ {
+  "t": "Ana m3attal, sem7ni!",
+  "ar": "أنا معطّل، سامحني!"
+ },
+ {
+  "t": "El réunion m3a el patron.",
+  "ar": "الريونيون مع الباترون."
+ },
+ {
+  "t": "Nkhdem fi banka.",
+  "ar": "نخدم في بنكة."
+ },
+ {
+  "t": "alou?",
+  "ar": "آلو؟"
+ },
+ {
+  "t": "chkoun m3aya?",
+  "ar": "شكون معايا؟"
+ },
+ {
+  "t": "stanna chwaya",
+  "ar": "استنّى شويّة"
+ },
+ {
+  "t": "nkallmek ba3d",
+  "ar": "نكلّمك بعد"
+ },
+ {
+  "t": "n7eb nreservi",
+  "ar": "نحب نريزرفي"
+ },
+ {
+  "t": "nchoufek",
+  "ar": "نشوفك"
+ },
+ {
+  "t": "Alou, restaurant Dar Yasmine, ahla!",
+  "ar": "آلو، ريستوران دار ياسمين، أهلا!"
+ },
+ {
+  "t": "Ahla, n7eb nreservi tawla nhar es-sebt.",
+  "ar": "أهلا، نحب نريزرفي طاولة نهار السبت."
+ },
+ {
+  "t": "L 9addech men 3abd?",
+  "ar": "لقدّاش من عبد؟"
+ },
+ {
+  "t": "L arb3a, 3la thmanya.",
+  "ar": "لأربعة، على ثمنية."
+ },
+ {
+  "t": "Stanna chwaya... behi. Bisem chkoun?",
+  "ar": "استنّى شويّة... باهي. باسم شكون؟"
+ },
+ {
+  "t": "Mrigel, nchoufek nhar es-sebt!",
+  "ar": "مريقل، نشوفك نهار السبت!"
+ },
+ {
+  "t": "3aychek, bslema!",
+  "ar": "عيشك، بالسلامة!"
+ },
+ {
+  "t": "Alou, chkoun m3aya?",
+  "ar": "آلو، شكون معايا؟"
+ },
+ {
+  "t": "Stanna chwaya.",
+  "ar": "استنّى شويّة."
+ },
+ {
+  "t": "N7eb nreservi tawla.",
+  "ar": "نحب نريزرفي طاولة."
+ },
+ {
+  "t": "t7eb...?",
+  "ar": "تحب...؟"
+ },
+ {
+  "t": "nemchiw lel b7ar",
+  "ar": "نمشيو للبحر"
+ },
+ {
+  "t": "nochorbou 9ahwa",
+  "ar": "نشربو قهوة"
+ },
+ {
+  "t": "ghodwa",
+  "ar": "غدوة"
+ },
+ {
+  "t": "3la rassi",
+  "ar": "على راسي"
+ },
+ {
+  "t": "ntla9aw",
+  "ar": "نتلاقاو"
+ },
+ {
+  "t": "Ahla! T7eb nokhorjou ghodwa?",
+  "ar": "أهلا! تحب نخرجو غدوة؟"
+ },
+ {
+  "t": "3la rassi! Chnoua na3mlou?",
+  "ar": "على راسي! شنوّة نعملو؟"
+ },
+ {
+  "t": "Nemchiw lel b7ar fi Sidi Bou Said?",
+  "ar": "نمشيو للبحر في سيدي بوسعيد؟"
+ },
+ {
+  "t": "Mrigel! Fi 9addech?",
+  "ar": "مريقل! في قدّاش؟"
+ },
+ {
+  "t": "3la el wa7da. Ba3d nochorbou 9ahwa?",
+  "ar": "على الوحدة. بعد نشربو قهوة؟"
+ },
+ {
+  "t": "Ey, behi! Win ntla9aw?",
+  "ar": "إيه، باهي! وين نتلاقاو؟"
+ },
+ {
+  "t": "9oddem el ma7atta mta3 el TGM.",
+  "ar": "قدّام المحطّة متاع التي جي إم."
+ },
+ {
+  "t": "Behi, nchoufek ghodwa!",
+  "ar": "باهي، نشوفك غدوة!"
+ },
+ {
+  "t": "T7eb nokhorjou ghodwa?",
+  "ar": "تحب نخرجو غدوة؟"
+ },
+ {
+  "t": "Nemchiw lel b7ar.",
+  "ar": "نمشيو للبحر."
+ },
+ {
+  "t": "Win ntla9aw?",
+  "ar": "وين نتلاقاو؟"
+ },
+ {
+  "t": "mchit",
+  "ar": "مشيت"
+ },
+ {
+  "t": "klit",
+  "ar": "كليت"
+ },
+ {
+  "t": "chrebt",
+  "ar": "شربت"
+ },
+ {
+  "t": "ri9adt",
+  "ar": "رقدت"
+ },
+ {
+  "t": "chft",
+  "ar": "شفت"
+ },
+ {
+  "t": "t3adda behi",
+  "ar": "تعدّى باهي"
+ },
+ {
+  "t": "Ahla! Chnoua 3malt fel weekend?",
+  "ar": "أهلا! شنوّة عملت في الويكاند؟"
+ },
+ {
+  "t": "Mchit lel b7ar m3a 3ayelti.",
+  "ar": "مشيت للبحر مع عايلتي."
+ },
+ {
+  "t": "Mrigel! W chnoua klitou?",
+  "ar": "مريقل! و شنوّة كليتو؟"
+ },
+ {
+  "t": "Klina 7out w brik.",
+  "ar": "كلينا حوت و بريك."
+ },
+ {
+  "t": "W nhar el a7ad?",
+  "ar": "و نهار الأحد؟"
+ },
+ {
+  "t": "Ri9adt barcha w chft film.",
+  "ar": "رقدت برشا و شفت فيلم."
+ },
+ {
+  "t": "Ya3ni t3adda behi!",
+  "ar": "يعني تعدّى باهي!"
+ },
+ {
+  "t": "Ey, t3adda behi barcha. W enti?",
+  "ar": "إيه، تعدّى باهي برشا. و إنتي؟"
+ },
+ {
+  "t": "El bera7 mchit lel b7ar.",
+  "ar": "البارح مشيت للبحر."
+ },
+ {
+  "t": "Klit kosksi bnin.",
+  "ar": "كليت كسكسي بنين."
+ },
+ {
+  "t": "El weekend t3adda behi.",
+  "ar": "الويكاند تعدّى باهي."
+ }
+]

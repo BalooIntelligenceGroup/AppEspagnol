@@ -20,3 +20,7 @@
   for = "/audio/index.json"
   [headers.values]
     Cache-Control = "no-cache"
+[[headers]]
+  for = "/audio/tts/index.json"
+  [headers.values]
+    Cache-Control = "no-cache"

@@ -309,14 +309,14 @@ const UNITS = [
    {l:'Weselna! Hna behi?', p:'📍', o:[['Ey, o9ef hna. 3aychek!','Oui, arrête-toi ici. Merci !',1],['La, n7eb kilo tmatem.','Non, je veux un kilo de tomates.',0]]}],
   gaps:[['N7eb _ lel Marsa.','nemchi',['nskon','n9as'],'🧭','Je veux aller à La Marsa.'],['O9ef _, 3aychek.','hna',['b3id','win'],'🛑','Arrête-toi ici, merci.'],['El Marsa _ chwaya.','b3ida',['9ahwa','yezzi'],'🛣️',"La Marsa, c'est un peu loin."]]},
  {id:'makla', tier:2, es:'El makla', fr:'Au restaurant', e:'🍲', words:[
-   ['couscous','couscous','🍲'],['lham','de la viande','🥩'],['7out','du poisson','🐟'],
+   ['kosksi','couscous','🍲'],['lham','de la viande','🥩'],['7out','du poisson','🐟'],
    ['harissa','harissa','🌶️'],['bnin','bon, délicieux','😋'],['el 7seb',"l'addition",'🧾']],
   talk:[
-   {l:'Ahla! Chnoua t7eb tekel?', p:'🍽️', o:[['N7eb couscous bel 7out.','Je voudrais un couscous au poisson.',1],['N7eb el ma7atta.','Je veux la gare.',0]]},
+   {l:'Ahla! Chnoua t7eb tekel?', p:'🍽️', o:[['N7eb kosksi bel 7out.','Je voudrais un couscous au poisson.',1],['N7eb el ma7atta.','Je veux la gare.',0]]},
    {l:'Bel harissa walla bla?', p:'🌶️', o:[['Bel harissa, ama chwaya!',"Avec de la harissa, mais un peu !",1],['Bel taxi, 3aychek.','Avec le taxi, merci.',0]]},
    {l:'Chnoua rayek? Bnin?', p:'😋', o:[['Bnin barcha, ya3tik essa77a!','Très bon, merci (bravo) !',1],['Ghali, o9ef hna.','Cher, arrête-toi ici.',0]]},
    {l:'7aja okhra?', p:'🍰', o:[['La, 3aychek. El 7seb, 3aychek.',"Non merci. L'addition, s'il te plaît.",1],['Ey, kilo khouya.','Oui, un kilo de mon frère.',0]]}],
-  gaps:[['N7eb couscous bel _.','7out',['bnin','7seb'],'🐟','Je voudrais un couscous au poisson.'],['Bnin _!','barcha',['yezzi','hna'],'😋','Très bon !'],['El _, 3aychek.','7seb',['bnin','barcha'],'🧾',"L'addition, s'il te plaît."]]},
+  gaps:[['N7eb kosksi bel _.','7out',['bnin','7seb'],'🐟','Je voudrais un couscous au poisson.'],['Bnin _!','barcha',['yezzi','hna'],'😋','Très bon !'],['El _, 3aychek.','7seb',['bnin','barcha'],'🧾',"L'addition, s'il te plaît."]]},
  {id:'dar', tier:2, es:'Fi dar', fr:'Le logement', e:'🏠', words:[
    ['dar','une maison','🏠'],['bit','une chambre, une pièce','🛏️'],['kouzina','la cuisine','🍳'],
    ['bit el ban','la salle de bain','🛁'],['jari','mon voisin','👋'],['el kra','le loyer','💶']],
@@ -372,14 +372,15 @@ const UNITS = [
    {l:'Mrigel! W chnoua klitou?', p:'🍽️', o:[['Klina 7out w brik.','On a mangé du poisson et des briks.',1],['Klina el taxi.','On a mangé le taxi.',0]]},
    {l:'W nhar el a7ad?', p:'😴', o:[['Ri9adt barcha w chft film.',"J'ai beaucoup dormi et j'ai vu un film.",1],['Ri9adt el souk.',"J'ai dormi le marché.",0]]},
    {l:"Ya3ni t3adda behi!", p:'✨', o:[['Ey, t3adda behi barcha. W enti?',"Oui, ça s'est très bien passé. Et toi ?",1],['Ey, ana m3attal.','Oui, je suis en retard.',0]]}],
-  gaps:[['El bera7 _ lel b7ar.','mchit',['nemchi','temchi'],'🏖️','Hier, je suis allé(e) à la mer.'],['_ couscous bnin.','Klit',['Chrebt','Ri9adt'],'🍲',"J'ai mangé un bon couscous."],['El weekend t3adda _.','behi',['ghodwa','kilo'],'✨',"Le week-end s'est bien passé."]]},
+  gaps:[['El bera7 _ lel b7ar.','mchit',['nemchi','temchi'],'🏖️','Hier, je suis allé(e) à la mer.'],['_ kosksi bnin.','Klit',['Chrebt','Ri9adt'],'🍲',"J'ai mangé un bon couscous."],['El weekend t3adda _.','behi',['ghodwa','kilo'],'✨',"Le week-end s'est bien passé."]]},
 ];
 UNITS.forEach(u=>{u.tier=u.tier||1;u.gaps=u.gaps||[]});
 const LEGACY=[];
 const TIERS={1:['Étape 1','Les bases'],2:['Étape 2','Se débrouiller'],3:['Étape 3','Converser']};
 const isOk=o=>o[o.length-1]===1;
 const insAfter=(id,arr)=>{const i=UNITS.findIndex(u=>u.id===id);UNITS.splice(i+1,0,...arr)};
-const APP_VERSION=2,NEW_IN={2:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.'};
+const APP_VERSION=3,NEW_IN={2:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.',
+  3:"Yasmine parle ! Une voix de synthèse tunisienne lit maintenant les mots et les phrases. Les enregistrements d'une vraie voix la remplaceront au fur et à mesure."};
 /* Les sons propres au tunisien, écrits avec des chiffres ou des lettres doubles */
 const SOUNDS=[
  ['3','ع','Un « a » serré au fond de la gorge, comme un petit étranglement.','3aychek (merci)'],
@@ -432,7 +433,7 @@ const nw=w=>w.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').repl
 function hashOf(t){let h=0x811c9dc5;const s=t.trim();for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h.toString(16).padStart(8,'0')}
 const inFrame=(()=>{try{return window.self!==window.top}catch(e){return true}})();
 let micOK=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder)&&!inFrame,micDenied=false;
-let REMOTE=new Set(),LOCAL=new Set(),heardOnce=false;
+let REMOTE=new Set(),LOCAL=new Set(),TTS=new Set(),heardOnce=false;
 const idb=(()=>{let p;
   const open=()=>p||(p=new Promise((res,rej)=>{try{const r=indexedDB.open('ahla-studio',1);r.onupgradeneeded=()=>r.result.createObjectStore('rec');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}catch(e){rej(e)}}));
   const tx=(mode,fn)=>open().then(db=>new Promise((res,rej)=>{const t=db.transaction('rec',mode);const q=fn(t.objectStore('rec'));t.oncomplete=()=>res(q&&q.result);t.onerror=()=>rej(t.error)}));
@@ -440,12 +441,15 @@ const idb=(()=>{let p;
 })();
 idb.keys().then(k=>{LOCAL=new Set(k||[]);if(view!=='home')render()}).catch(()=>{});
 fetch('audio/index.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).then(a=>{REMOTE=new Set((a||[]).map(x=>x.h||x));render()}).catch(()=>{});
-const hasAudio=t=>{const h=hashOf(t);return LOCAL.has(h)||REMOTE.has(h)};
+/* Voix de synthèse « arabe de Tunisie » (générée automatiquement sur GitHub) : utilisée tant qu'une vraie voix n'est pas enregistrée */
+fetch('audio/tts/index.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).then(a=>{TTS=new Set((a||[]).map(x=>x.h||x));render()}).catch(()=>{});
+const hasAudio=t=>{const h=hashOf(t);return LOCAL.has(h)||REMOTE.has(h)||TTS.has(h)};
 let player=null;
 async function say(t,slow){
   if(!t)return;const h=hashOf(t);let src=null,local=false;
   try{if(LOCAL.has(h)){const b=await idb.get(h);if(b){src=URL.createObjectURL(b);local=true}}}catch(e){}
   if(!src&&REMOTE.has(h))src='audio/'+h+'.webm';
+  if(!src&&TTS.has(h))src='audio/tts/'+h+'.mp3';
   if(!src)return;
   try{if(player){player.pause()}}catch(e){}
   return new Promise(res=>{
@@ -545,7 +549,7 @@ function home(){
     <button class="btn ghost" data-act="dico">📖 Lexique</button>
     <button class="btn sun" data-act="chat" ${learnedUnits().length?'':'disabled'}>💬 Discuter</button>
     <button class="btn ghost" data-act="sons">🔤 Les sons</button></div>
-  ${REMOTE.size?'':`<div class="notice"><span>🎙️</span><span>Les voix tunisiennes sont en cours d'enregistrement. En attendant, les phrases s'affichent écrites : aide-toi du guide « Les sons ».</span></div>`}
+  ${REMOTE.size||TTS.size?'':`<div class="notice"><span>🎙️</span><span>Les voix tunisiennes sont en cours d'enregistrement. En attendant, les phrases s'affichent écrites : aide-toi du guide « Les sons ».</span></div>`}
   <div class="map">${nodes}<div class="node"><span class="disc goal-disc">🏆</span><b>Mabrouk!</b><em>Termine les ${UNITS.length} niveaux</em></div></div>`;
 }
 
@@ -803,7 +807,7 @@ function settings(){
     <button class="toggle" data-act="slowtog"><span>🐢 Voix plus lente</span><span class="sw ${S.slow?'on':''}"></span></button>
     <div class="toggle"><span>🎯 Leçons par jour</span><span class="row" style="flex:none;gap:8px">${[1,2,3].map(n=>`<button class="tool ${S.goal===n?'goal-on':''}" style="min-width:48px;justify-content:center;" data-act="goal" data-n="${n}">${n}</button>`).join('')}</span></div>
     <button class="tool" data-act="studio" style="justify-content:center">🎙️ Studio d'enregistrement</button>
-    <p class="note">Voix : ${REMOTE.size} phrases en ligne, ${LOCAL.size} enregistrées sur ce téléphone. Les phrases sans voix s'affichent écrites.</p>
+    <p class="note">Voix : ${TTS.size} phrases avec la voix de synthèse, ${REMOTE.size} avec une vraie voix en ligne, ${LOCAL.size} enregistrées sur ce téléphone. Une vraie voix remplace toujours la voix de synthèse.</p>
     <p class="note">Micro : ${micOK?'actif. Tu t\'enregistres et tu te compares au modèle.':micDenied?'refusé. Autorise-le dans Chrome : icône 🔒 → Autorisations → Micro.':inFrame?'bloqué dans cette page. Utilise l\'appli installée.':'non disponible sur ce navigateur. Utilise Chrome.'}</p></div>
   <div class="set"><b>💾 Code de sauvegarde</b>
     <p class="note">La progression est gardée sur cet appareil. Pour en garder une copie ailleurs (changement de téléphone, réinstallation), copie ce code dans tes notes ou envoie-le-toi par e-mail.</p>

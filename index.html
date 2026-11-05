@@ -356,7 +356,7 @@ const LEGACY=[];
 const TIERS={1:['Étape 1','Les bases'],2:['Étape 2','Se débrouiller'],3:['Étape 3','Converser']};
 const isOk=o=>o[o.length-1]===1;
 const insAfter=(id,arr)=>{const i=UNITS.findIndex(u=>u.id===id);UNITS.splice(i+1,0,...arr)};
-const APP_VERSION=1,NEW_IN={};
+const APP_VERSION=2,NEW_IN={2:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.'};
 
 
 
@@ -666,8 +666,8 @@ function lesson(){
     <div class="opts">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}"><span>💬</span><span>${esc(fill(o[0]))}</span></button>`).join('')}</div>`;
   }
   let foot='';
-  if(s.t==='learn')foot=(micOK&&!L.learnDone)?`<button class="btn" disabled>Répète d'abord avec 🎤</button>`:`<button class="btn" data-act="next">Suivant</button>`;
-  else if(s.t==='speak'&&!micOK&&!L.answered)foot=`<button class="btn" data-act="next">Continuer</button>`;
+  if(s.t==='learn')foot=(micOK&&!L.learnDone)?`<button class="btn ghost" data-act="next">Passer la répétition →</button>`:`<button class="btn" data-act="next">Suivant</button>`;
+  else if(s.t==='speak'&&!L.answered)foot=micOK?`<button class="btn ghost" data-act="next">Passer cet exercice →</button>`:`<button class="btn" data-act="next">Continuer</button>`;
   else if(L.answered){
     const g=L.answered.ok;
     foot=`<div class="fb ${g?'good':'bad'}" role="status"><h3>${g?pick(['Bravo!','Ottimo!','Perfetto!','Esatto!']):'Quasi… presque !'}</h3>
@@ -741,15 +741,15 @@ async function doMic(){
   const s=L.steps[L.i],btn=$('[data-act=mic]'),heard=$('#heard');if(!btn||btn.classList.contains('on'))return;
   try{window.speechSynthesis&&speechSynthesis.cancel()}catch(e){}
   btn.classList.add('on');heard.innerHTML='<b>Je t\'écoute…</b> parle fort et bien clairement.';
-  let alts;
+  const LL=L,at=L.i;let alts;
   try{alts=await listen()}
   catch(err){
-    btn.classList.remove('on');
+    btn.classList.remove('on');if(L!==LL||L.i!==at||view!=='lesson')return;
     if(/not-allowed|service-not-allowed|audio-capture/.test(err)){micOK=false;micDenied=true;L.res=null;L.micMsg='';render();return}
     L.micMsg=err==='no-speech'?"Je n'ai rien entendu. Appuie sur 🎤 et parle plus fort !":err==='network'?"Il faut Internet pour que Giulia puisse t'écouter.":"Oups ! Appuie encore sur 🎤.";
     L.res=null;render();return;
   }
-  btn.classList.remove('on');
+  btn.classList.remove('on');if(L!==LL||L.i!==at||view!=='lesson')return;
   if(!alts.length){L.micMsg="Je n'ai rien entendu. Appuie sur 🎤 et parle plus fort !";L.res=null;render();return}
   const r=analyze(alts,s.w.es);L.res=r;L.micMsg='';L.tries++;tone(r.pass);
   if(s.t==='learn'){

@@ -565,7 +565,44 @@ const V7_3=[
   gaps:[['_, ¿dónde está el colegio?','Perdone',['Gracias','Adiós'],'🏫'],['Gira a la _.','derecha',['recto','cerca'],'➡️'],['Sigue todo _.','recto',['derecha','lejos'],'⬆️']]},
 ];
 insAfter('playa',V7_1);insAfter('amiga',V7_2);UNITS.push(...V7_3);
-const APP_VERSION=7,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.'};
+
+/* ---------- Version 8 : 3 niveaux de plus ---------- */
+const V8_1=[
+ {id:'insectos', tier:1, es:'Bichitos', fr:'Les petites bêtes', e:'🐞', words:[
+   ['la mariquita','la coccinelle','🐞'],['la abeja',"l'abeille",'🐝'],['la mariposa','le papillon','🦋'],
+   ['la hormiga','la fourmi','🐜'],['la araña',"l'araignée",'🕷️'],['el gusano','le ver de terre','🪱']],
+  talk:[
+   {l:'¡Mira la flor! ¿Qué hay?', p:'🌼🐝', o:[['Hay una abeja.',1],['Hay un tren.',0]]},
+   {l:'¿De qué color es la mariquita?', p:'🐞', o:[['Es roja y negra.',1],['Es azul y verde.',0]]},
+   {l:'¿Te gustan las arañas?', p:'🕷️', o:[['No, no me gustan.',1],['Sí, son mis zapatos.',0]]}],
+  gaps:[['La _ hace miel.','abeja',['hormiga','araña'],'🍯'],['La _ tiene alas de colores.','mariposa',['gusano','hormiga'],'🦋'],['La _ es roja con puntos negros.','mariquita',['abeja','araña'],'🐞']]},
+];
+const V8_2=[
+ {id:'emociones', tier:2, es:'¿Cómo te sientes?', fr:'Les émotions', e:'😄', words:[
+   ['estoy contenta','je suis contente','😄'],['estoy enfadada','je suis fâchée','😠'],['tengo miedo',"j'ai peur",'😨'],
+   ['estoy nerviosa','je suis stressée','😬'],['estoy aburrida',"je m'ennuie",'😑'],['¡qué sorpresa!','quelle surprise !','😮']],
+  talk:[
+   {l:'¡Hola, {name}! Hoy es tu cumpleaños. ¿Cómo estás?', p:'🎂', o:[['¡Estoy muy contenta!',1],['Estoy enfadada con la tarta.',0]]},
+   {l:'Hay una tormenta. ¡Bum! ¿Qué te pasa?', p:'⛈️', o:[['Tengo miedo.',1],['Tengo una pera.',0]]},
+   {l:'Tu hermano rompe tu juguete. ¿Cómo estás?', p:'🧸💥', o:[['Estoy enfadada.',1],['¡Qué rico!',0]]},
+   {l:'Mañana tienes un examen. ¿Cómo estás?', p:'📝', o:[['Estoy un poco nerviosa.',1],['Estoy en la piscina.',0]]}],
+  gaps:[['Estoy _ porque es mi cumpleaños.','contenta',['enfadada','aburrida'],'🎂'],['Tengo _ de la araña.','miedo',['contenta','sorpresa'],'🕷️'],['No hay nada que hacer. Estoy _.','aburrida',['sorpresa','miedo'],'😑']]},
+];
+const V8_3=[
+ {id:'cine', tier:3, es:'En el cine', fr:'Au cinéma', e:'🍿', words:[
+   ['dos entradas','deux billets','🎟️'],['las palomitas','le pop-corn','🍿'],['la película','le film','🎞️'],
+   ['empieza a las seis','ça commence à six heures','🕕'],['en silencio','en silence','🤫'],['me ha gustado mucho',"ça m'a beaucoup plu",'👏']],
+  talk:[
+   {l:'¡Buenas tardes! ¿Qué película quieres ver?', p:'🎞️', o:[['La película de dibujos, por favor.',1],['Quiero ver la cuenta.',0]]},
+   {l:'Muy bien. ¿Cuántas entradas?', p:'🎟️', o:[['Dos entradas, por favor. ¿A qué hora empieza?',1],['Dos zapatos, por favor.',0]]},
+   {l:'Empieza a las seis. ¿Quieres palomitas?', p:'🍿', o:[['Sí, unas palomitas pequeñas, por favor.',1],['Sí, unas palomitas en la piscina.',0]]},
+   {l:'¡Shh! La película empieza. ¡En silencio!', p:'🤫', o:[['¡Vale! ¡Qué emoción!',1],['¡Buenos días, doctora!',0]]},
+   {l:'¿Te ha gustado la película, {name}?', p:'👏', o:[['¡Sí, me ha gustado mucho!',1],['Sí, tengo miedo del helado.',0]]}],
+  gaps:[['Quiero dos _, por favor.','entradas',['entrada','silencio'],'🎟️'],['La película _ a las seis.','empieza',['empiezo','gusta'],'🕕'],['¡Me ha _ mucho!','gustado',['gusta','gustar'],'👏']]},
+];
+insAfter('bosque',V8_1);insAfter('estaciones',V8_2);UNITS.push(...V8_3);
+const APP_VERSION=8,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
+  8:'3 nouveaux niveaux : les petites bêtes, les émotions et au cinéma.'};
 
 /* ---------- Phrases à trous des premiers niveaux : [phrase avec _, bon mot, [pièges], image] ---------- */
 const GAPS = {

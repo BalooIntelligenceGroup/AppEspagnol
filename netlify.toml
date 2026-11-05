@@ -1,0 +1,22 @@
+# Site statique : pas de build, on publie la racine du dépôt.
+[build]
+  publish = "."
+  command = ""
+
+# L'appli et le service worker ne doivent jamais rester en cache : les mises à jour arrivent tout de suite.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/audio/index.json"
+  [headers.values]
+    Cache-Control = "no-cache"

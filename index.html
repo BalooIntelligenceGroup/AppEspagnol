@@ -1,0 +1,936 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1F5C99" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1419" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<style>*{box-sizing:border-box}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head><body>
+<title>Ahla bik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;600;700&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one calm centered column (max 560px). Sidi Bou Saïd blue carries actions, ochre marks achievement, harissa red marks conversation levels and errors. */
+:root{
+  --bg:#F3F5F7; --surface:#FFFFFF; --surface-2:#E5EAF0; --ink:#17212B; --muted:#596776; --line:#D2DAE3;
+  --accent:#1F5C99; --accent-ink:#174777; --on-accent:#FFFFFF; --accent-soft:#DCE8F4;
+  --gold:#C38B14; --on-gold:#1C1606; --gold-soft:#F5EACB;
+  --rose:#B23A2E; --rose-soft:#F7E0DC;
+  --good:#2C8655; --good-bg:#DFF1E6; --bad:#BC3A2C; --bad-bg:#FAE2DE; --lock:#B5BEC8;
+  --shadow:0 1px 2px rgba(18,28,24,.07),0 4px 14px rgba(18,28,24,.05);
+  --f-display:"Reem Kufi","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1419; --surface:#18202A; --surface-2:#212B36; --ink:#E6ECF2; --muted:#99A6B4; --line:#2C3846;
+  --accent:#6FA8E0; --accent-ink:#9CC6EF; --on-accent:#0A1522; --accent-soft:#1A2C40;
+  --gold:#E2B13E; --on-gold:#1C1606; --gold-soft:#3A3018;
+  --rose:#EC7B6C; --rose-soft:#3D231F;
+  --good:#55C68B; --good-bg:#16301F; --bad:#F27A6B; --bad-bg:#3A1F1B; --lock:#46525F;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1419; --surface:#18202A; --surface-2:#212B36; --ink:#E6ECF2; --muted:#99A6B4; --line:#2C3846;
+  --accent:#6FA8E0; --accent-ink:#9CC6EF; --on-accent:#0A1522; --accent-soft:#1A2C40;
+  --gold:#E2B13E; --on-gold:#1C1606; --gold-soft:#3A3018;
+  --rose:#EC7B6C; --rose-soft:#3D231F;
+  --good:#55C68B; --good-bg:#16301F; --bad:#F27A6B; --bad-bg:#3A1F1B; --lock:#46525F;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.25); color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.45;-webkit-tap-highlight-color:transparent;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+#app{max-width:560px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding-block:14px 24px}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1;text-wrap:balance;font-weight:700;letter-spacing:-.01em}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 20px;border-radius:14px;font-family:var(--f-display);font-weight:700;font-size:19px;
+  background:var(--accent);color:var(--on-accent);width:100%;transition:transform .08s,filter .15s}
+.btn:active{transform:scale(.98)}
+.btn.sun{background:var(--gold);color:var(--on-gold)}
+.btn.coral{background:var(--rose);color:var(--on-accent)}
+.btn.ghost{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+.btn[disabled]{background:var(--surface-2);color:var(--muted);border:0;cursor:default}
+.row{display:flex;gap:12px}
+.row>*{flex:1;min-width:0}
+
+/* Accueil */
+.top{display:flex;align-items:center;gap:12px}
+.lola{width:54px;height:54px;flex:none;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:26px}
+.lola.big{width:92px;height:92px;font-size:46px}
+.hello{flex:1;min-width:0}
+.hello small{color:var(--muted);font-weight:600;font-size:14px;display:block}
+.hello h1{font-size:28px}
+.icon-btn{width:46px;height:46px;border-radius:12px;background:var(--surface);border:1.5px solid var(--line);font-size:20px;display:grid;place-items:center;flex:none}
+.chips{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.goal{margin-top:14px;background:var(--surface);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
+.goal-h{display:flex;justify-content:space-between;font-weight:700;font-size:15px}
+.goal-h span:last-child{color:var(--muted)}
+.bar{height:10px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;background:var(--gold);border-radius:999px;transition:width .4s}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.quick .btn{font-size:17px;min-height:56px;padding:0 10px}
+.quick .wide{grid-column:1/-1}
+.map{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:24px;padding-bottom:20px}
+.node{display:flex;flex-direction:column;align-items:center;gap:3px;width:170px}
+.node .disc{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:30px;background:var(--accent-soft);border:3px solid var(--accent);transition:transform .08s}
+.node:active .disc{transform:scale(.96)}
+.node .disc.conv{border-color:var(--rose);background:var(--rose-soft)}
+.node.done .disc{background:var(--gold-soft);border-color:var(--gold)}
+.node.locked .disc{background:var(--surface-2);border-color:var(--lock);filter:grayscale(1);opacity:.75;font-size:22px}
+.node.current .disc{box-shadow:0 0 0 5px var(--bg),0 0 0 8px var(--accent)}
+.node b{font-family:var(--f-display);font-size:17px;line-height:1.15;text-align:center}
+.node em{font-style:normal;font-size:13px;color:var(--muted);font-weight:600;text-align:center}
+.node .disc.goal-disc{background:var(--gold-soft);border-color:var(--gold)}
+.stars{font-size:13px;letter-spacing:2px;min-height:18px}
+.start-tag{background:var(--accent);color:var(--on-accent);font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.08em}
+.ctag{font-size:12px;font-weight:700;color:var(--rose);background:var(--rose-soft);border-radius:999px;padding:2px 10px}
+.tier{align-self:stretch;display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--ink);color:var(--bg);border-radius:14px;padding:10px 14px;margin:6px 0;text-align:center}
+.tier b{font-family:var(--f-display);font-size:16px;letter-spacing:.12em;text-transform:uppercase}
+.tier span{font-weight:600;font-size:14px;opacity:.85}
+.newver{margin-top:14px;background:var(--gold-soft);color:var(--ink);border:1.5px solid var(--gold);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.newver>div{flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:2px}
+.newver b{font-family:var(--f-display);font-size:19px}
+.newver span{font-weight:600;font-size:15px}
+
+/* Leçon */
+.lbar{display:flex;align-items:center;gap:12px}
+.lbar .bar{flex:1;margin:0;height:12px}
+.lbar .bar>i{background:var(--accent)}
+.stage{flex:1;display:flex;flex-direction:column;gap:18px;padding-top:18px}
+.ask{font-family:var(--f-display);font-weight:700;font-size:23px;line-height:1.15}
+.ask small{display:block;font-family:var(--f-body);font-size:15px;color:var(--muted);font-weight:600;margin-top:4px}
+.card{background:var(--surface);border-radius:20px;padding:22px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.pic{font-size:84px;line-height:1.1}
+.swatch{width:100px;height:100px;border-radius:24px;border:3px solid var(--line)}
+.es{font-family:var(--f-display);font-weight:700;font-size:34px;color:var(--accent-ink);line-height:1.15}
+.fr{color:var(--muted);font-weight:600}
+.tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.tool{min-height:48px;padding:0 16px;border-radius:12px;background:var(--surface);border:1.5px solid var(--line);font-weight:700;font-size:15px;display:flex;align-items:center;gap:6px;color:var(--ink)}
+.tool.mic{background:var(--rose);border-color:var(--rose);color:var(--on-accent)}
+.tool.mic.on{animation:pulse 1s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--rose) 55%,transparent)}100%{box-shadow:0 0 0 16px color-mix(in srgb,var(--rose) 0%,transparent)}}
+.heard{min-height:22px;font-weight:600;color:var(--muted);text-align:center;font-size:15px}
+.heard.nomic{background:var(--surface-2);border-radius:14px;padding:10px 14px;color:var(--ink)}
+.speaker{width:108px;height:108px;border-radius:28px;background:var(--accent);color:var(--on-accent);font-size:48px;display:grid;place-items:center;margin:0 auto}
+.speaker:active{transform:scale(.97)}
+.speaker.sm{width:80px;height:80px;font-size:36px;margin:0;border-radius:22px}
+.opts{display:grid;gap:10px}
+.opts.pics{grid-template-columns:repeat(3,1fr)}
+.opt{background:var(--surface);border-radius:16px;border:2px solid var(--line);padding:14px 12px;font-weight:700;font-size:19px;text-align:left;display:flex;align-items:center;gap:10px;min-height:60px;color:var(--ink)}
+.opts.pics .opt{justify-content:center;font-size:52px;aspect-ratio:1;padding:6px;max-width:100%}
+.opts.pics .opt .swatch{width:70%;height:70%;border-radius:16px}
+.opts.words3{grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}
+.opts.words3 .opt{justify-content:center;text-align:center;font-size:20px}
+.opts.tf{grid-template-columns:1fr 1fr}
+.opts.tf .opt{justify-content:center;font-size:22px;min-height:68px}
+.opt.sel-good{border-color:var(--good);background:var(--good-bg)}
+.opt.sel-bad{border-color:var(--bad);background:var(--bad-bg);animation:shake .3s}
+.opt.picked{border-color:var(--gold);background:var(--gold-soft)}
+.opt[disabled]{cursor:default}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.chat{display:flex;gap:10px;align-items:flex-end}
+.bubble{background:var(--surface);border-radius:18px 18px 18px 6px;padding:14px 16px;box-shadow:var(--shadow);flex:1;min-width:0}
+.bubble .es{font-size:23px}
+.bubble .prop{font-size:36px;line-height:1.2}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mcol{display:grid;gap:10px;min-width:0}
+.opt.mword{justify-content:center;text-align:center;font-size:17px;min-height:70px;padding:8px;overflow-wrap:anywhere}
+.opt.mpic{justify-content:center;font-size:38px;min-height:70px;padding:6px}
+.opt.mpic .swatch{width:46px;height:46px;border-radius:12px}
+.gapline{font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1.4;text-wrap:balance}
+.hole{display:inline-block;min-width:70px;margin:0 6px;padding:0 8px;border-bottom:3px dashed var(--accent);color:var(--accent-ink)}
+.hole.full{border-bottom-style:solid;border-color:var(--good);background:var(--good-bg);border-radius:8px;color:var(--good)}
+.buildtop{display:flex;align-items:center;justify-content:center;gap:16px}
+.buildtop .prop{font-size:52px;line-height:1}
+.buildline{min-height:70px;border-bottom:2px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 2px}
+.buildline.ok{border-color:var(--good)} .buildline.ko{border-color:var(--bad)}
+.buildline .ph{color:var(--muted);font-weight:600;font-size:15px}
+.bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.tile{background:var(--surface);border-radius:12px;border:1.5px solid var(--line);padding:10px 14px;font-weight:700;font-size:19px;color:var(--ink)}
+.tile.gone{visibility:hidden}
+.score{background:var(--surface);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);text-align:left;display:flex;flex-direction:column;gap:8px;color:var(--ink)}
+.score-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.score-h b{font-family:var(--f-display);font-size:19px}
+.score.ok .score-h b{color:var(--good)} .score.ko .score-h b{color:var(--bad)}
+.score-h span{font-family:var(--f-display);font-weight:800;font-size:22px;font-variant-numeric:tabular-nums}
+.meter{position:relative;height:12px;border-radius:999px;background:var(--surface-2)}
+.meter i{display:block;height:100%;border-radius:999px;background:var(--bad);transition:width .5s}
+.score.ok .meter i{background:var(--good)}
+.meter em{position:absolute;top:-4px;bottom:-4px;width:3px;background:var(--ink);border-radius:2px}
+.words{font-family:var(--f-display);font-weight:700;font-size:21px;display:flex;flex-wrap:wrap;gap:4px 8px}
+.wok{color:var(--good)} .wko{color:var(--bad);text-decoration:underline wavy;text-underline-offset:5px}
+.heardtxt{font-size:14px;color:var(--muted)}
+.tip{background:var(--surface-2);border-radius:10px;padding:8px 12px;font-size:15px}
+.foot{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));margin-top:auto}
+.fb{border-radius:18px;padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px;animation:up .2s ease-out}
+.fb.good{background:var(--good-bg)} .fb.bad{background:var(--bad-bg)}
+.fb h3{font-size:24px} .fb.good h3{color:var(--good)} .fb.bad h3{color:var(--bad)}
+.fb p{margin:0;font-weight:600}
+.fb .btn{background:var(--good);color:var(--on-accent)}
+.fb.bad .btn{background:var(--bad)}
+@keyframes up{from{transform:translateY(16px);opacity:.3}}
+
+/* Résultat, lexique, réglages */
+.center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.bigstars{font-size:48px;letter-spacing:6px}
+.bigstars .off{filter:grayscale(1);opacity:.3}
+.xp{font-family:var(--f-display);font-weight:800;font-size:26px;color:var(--accent-ink)}
+.say{font-weight:600;color:var(--muted);max-width:34ch}
+.head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.head h2{font-size:26px;flex:1}
+.dico{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.dw{background:var(--surface);border-radius:14px;border:1px solid var(--line);padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;color:var(--ink)}
+.dw span{font-size:34px;line-height:1.1}
+.dw .swatch{width:40px;height:40px;border-radius:10px}
+.dw b{font-size:15px;color:var(--accent-ink)}
+.dw small{font-size:12px;color:var(--muted);font-weight:600}
+.dunit{font-family:var(--f-display);font-size:18px;margin:18px 0 8px}
+.empty{background:var(--surface);border-radius:16px;padding:20px;text-align:center;font-weight:600;color:var(--muted)}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:700}
+.field input{font:inherit;font-size:20px;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink);width:100%;box-sizing:border-box}
+.set{background:var(--surface);border-radius:16px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;margin-bottom:14px}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700;color:var(--ink)}
+.sw{width:54px;height:32px;border-radius:999px;background:var(--lock);position:relative;flex:none;transition:background .2s}
+.sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:var(--surface);transition:left .2s}
+.sw.on{background:var(--good)} .sw.on::after{left:26px}
+.tool.goal-on{background:var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14px;color:var(--muted);font-weight:600;margin:0}
+textarea.code{font:600 13px/1.4 ui-monospace,Menlo,monospace;width:100%;box-sizing:border-box;min-height:84px;padding:10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink);overflow-wrap:anywhere;resize:vertical}
+#warn{position:fixed;left:0;right:0;top:0;z-index:20;background:var(--ink);color:var(--bg);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:15px;
+  padding-top:calc(12px + env(safe-area-inset-top,0px));padding-bottom:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+#warn span{flex:1 1 240px;min-width:0}
+#warn b:first-child{flex-basis:100%}
+#warn .tool{min-height:44px}
+.tool[disabled]{opacity:.45;cursor:default}
+.tool.muted{color:var(--muted);background:var(--surface-2);border-color:transparent}
+.selfbox{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.opts.rate{grid-template-columns:repeat(3,1fr)}
+.opts.rate .opt{flex-direction:column;justify-content:center;text-align:center;font-size:15px;gap:4px;padding:10px 6px}
+.notice{margin-top:14px;background:var(--accent-soft);border-radius:14px;padding:12px 14px;font-weight:600;font-size:15px;display:flex;gap:10px;align-items:flex-start}
+.chipsel{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:10px}
+.chipsel .chip{flex:none;color:var(--ink)}
+.chip.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.slist{display:flex;flex-direction:column;gap:8px}
+.srow{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:12px;padding:10px 10px 10px 12px}
+.srow.done{border-left-color:var(--good)}
+.stxt{flex:1;min-width:0;display:flex;flex-direction:column}
+.stxt b{font-size:17px;overflow-wrap:anywhere}
+.stxt small{color:var(--muted);font-weight:600;font-size:13px}
+.srow .tool{min-width:48px;justify-content:center;padding:0 10px}
+.sons{display:flex;flex-direction:column;gap:10px}
+.son{display:flex;gap:14px;align-items:center;background:var(--surface);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow)}
+.sk{flex:none;width:64px;height:64px;border-radius:14px;background:var(--accent-soft);color:var(--accent-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1}
+.sk small{font-size:16px;font-weight:600;margin-top:4px;color:var(--muted)}
+.sd{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.sd p{margin:0;font-weight:600}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:380px){.es{font-size:30px}.pic{font-size:72px}.hello h1{font-size:24px}}
+</style>
+
+<div id="app"></div>
+
+<script>
+/* ---------- Contenu : tunisien (derja) pour adultes débutants, en lettres latines ----------
+   Conventions : 3 = ع, 7 = ح, 9 = ق, kh = خ, gh = غ, ch = ch français (voir l'écran « Les sons »).
+   words [tunisien, français, image] ; talk : Yasmine parle, réponses [tunisien, français, 1 bonne / 0 mauvaise] ;
+   gaps [phrase avec _, bon mot, [pièges], image, traduction française]. tier = étape. conv:1 = niveau de phrases. */
+const UNITS = [
+ /* ---- Étape 1 : les bases ---- */
+ {id:'salam', tier:1, conv:1, es:'Ahla!', fr:'Saluer', e:'👋', words:[
+   ['ahla','salut, bienvenue','👋'],['3aslema','bonjour (salut)','🙂'],['sbe7 el khir','bonjour (le matin)','🌅'],
+   ['mse el khir','bonsoir','🌆'],['3aychek','merci','🙏'],['bslema','au revoir','🚪']],
+  talk:[
+   {l:'3aslema! Labes?', p:'🙂', o:[['Labes, el 7amdoulillah. W enti?','Ça va, Dieu merci. Et toi ?',1],['Bslema.','Au revoir.',0]]},
+   {l:'Sbe7 el khir!', p:'🌅', o:[['Sbe7 ennour!','Bonjour ! (réponse)',1],['Mse el khir!','Bonsoir !',0]]},
+   {l:'Tfaddel, el 9ahwa mte3ek.', p:'☕', o:[['3aychek!','Merci !',1],['Bslema!','Au revoir !',0]]},
+   {l:'Bslema, nchoufek ghodwa!', p:'🚪', o:[['Bslema, inchallah!','Au revoir, si Dieu le veut !',1],['Sbe7 el khir!','Bonjour !',0]]}],
+  gaps:[['Labes, el _.','7amdoulillah',['3aychek','bslema'],'🙂','Ça va, Dieu merci.'],['Sbe7 _!','ennour',['bslema','labes'],'🌅','Bonjour ! (réponse)'],['_, nchoufek ghodwa!','Bslema',['Ahla','Labes'],'🚪','Au revoir, à demain !']]},
+ {id:'ta3rif', tier:1, conv:1, es:'Esmi...', fr:'Se présenter', e:'🤝', words:[
+   ['esmi',"je m'appelle",'🙋'],['chnoua esmek?',"comment tu t'appelles ?",'❓'],['ana mel França','je viens de France','🇫🇷'],
+   ['nskon fi Tounes',"j'habite en Tunisie",'🏠'],['metcharfin','enchanté(e)','🤝'],['w enti?','et toi ?','👉']],
+  talk:[
+   {l:'Ahla! Ana Yasmine. Chnoua esmek?', p:'🤝', o:[['Esmi {name}. Metcharfin!',"Je m'appelle {name}. Enchanté(e) !",1],['Nskon fi esmi.',"J'habite dans mon nom.",0]]},
+   {l:'Metcharfin! Enti mnin?', p:'🌍', o:[['Ana mel França. W enti?','Je viens de France. Et toi ?',1],['Ana 9ahwa.','Je suis un café.',0]]},
+   {l:'Ana mel Tounes. W win tskon?', p:'🏠', o:[['Nskon fi Tounes.',"J'habite en Tunisie.",1],['Esmi Tounes.',"Je m'appelle Tunisie.",0]]}],
+  gaps:[['_ Yasmine.','Esmi',['Nskon','Mnin'],'🙋',"Je m'appelle Yasmine."],['Ana _ França.','mel',['fi','w'],'🇫🇷','Je viens de France.'],['Nskon _ Tounes.','fi',['mel','w'],'🏠',"J'habite en Tunisie."]]},
+ {id:'a3dad', tier:1, es:'Wa7ed, zouz...', fr:'Compter de 1 à 10', e:'🔢', words:[
+   ['wa7ed','un','1️⃣'],['zouz','deux','2️⃣'],['tleta','trois','3️⃣'],['arb3a','quatre','4️⃣'],['khamsa','cinq','5️⃣'],
+   ['setta','six','6️⃣'],['sab3a','sept','7️⃣'],['thmanya','huit','8️⃣'],['tes3a','neuf','9️⃣'],['3achra','dix','🔟']],
+  talk:[
+   {l:'9addech men 9ahwa?', p:'☕☕', o:[['Zouz, 3aychek.','Deux, merci.',1],['3achra, bslema.','Dix, au revoir.',0]]},
+   {l:'Wa7ed, zouz, tleta...', o:[['Arb3a, khamsa, setta!','Quatre, cinq, six !',1],['Tes3a, thmanya, sab3a!','Neuf, huit, sept !',0]]},
+   {l:'9addech men 3abd?', p:'👥👥', o:[['Arb3a.','Quatre.',1],['Thmanya 9ahwa.','Huit cafés.',0]]}],
+  gaps:[['Wa7ed, zouz, _.','tleta',['setta','tes3a'],'🔢','Un, deux, trois.'],['Khamsa w khamsa _.','3achra',['thmanya','sab3a'],'🖐️','Cinq et cinq, dix.']]},
+ {id:'9ahwa', tier:1, es:'Fil 9ahwa', fr:'Au café', e:'☕', words:[
+   ['9ahwa','un café','☕'],['tey','un thé','🍵'],['mé',"de l'eau",'💧'],
+   ['n7eb','je veux, je voudrais','🙋'],['b9addech?',"c'est combien ?",'💶'],['brik','un brik','🥟']],
+  talk:[
+   {l:'Ahla! Chnoua t7eb?', p:'☕🍵', o:[['N7eb 9ahwa, 3aychek.','Je voudrais un café, merci.',1],['N7eb bslema.',"Je veux au revoir.",0]]},
+   {l:'9ahwa direct walla capucin?', p:'☕', o:[['Capucin, 3aychek.','Un capucin, merci.',1],['Tleta, bslema.','Trois, au revoir.',0]]},
+   {l:'Tfaddel. 7aja okhra?', p:'☕', o:[['La, 3aychek. B9addech?',"Non merci. C'est combien ?",1],['Ey, ana mel França.','Oui, je viens de France.',0]]},
+   {l:'Dinar w nos.', p:'💶', o:[['Tfaddel. Bslema!','Voilà. Au revoir !',1],['Metcharfin, esmi dinar.',"Enchanté, je m'appelle dinar.",0]]}],
+  gaps:[['_ 9ahwa, 3aychek.','N7eb',['Esmi','Nskon'],'☕','Je voudrais un café, merci.'],['La, 3aychek. _?','B9addech',['Mnin','Labes'],'💶',"Non merci. C'est combien ?"],['N7eb kés _.','tey',['brik','dinar'],'🍵','Je voudrais un verre de thé.']]},
+ {id:'as2ila', tier:1, conv:1, es:'Win? B9addech?', fr:'Questions utiles', e:'❓', words:[
+   ['win?','où ?','📍'],['9addech fel wa9t?','quelle heure est-il ?','🕒'],['ma fhemtech',"je n'ai pas compris",'🤔'],
+   ['3awed 3aychek',"répète, s'il te plaît",'🔁'],['tetkallem bel fransawi?','tu parles français ?','💬'],['chwaya','un peu','🤏']],
+  talk:[
+   {l:'Ahla! N3awnek?', p:'🙂', o:[['Ey, 3aychek. Win el ma7atta?','Oui, merci. Où est la gare ?',1],['Ey, 9addech fel wa9t.',"Oui, quelle heure est-il.",0]]},
+   {l:'Odkhel ymin, ba3d doura chmel, w 9bal el jem3...', p:'🗺️', o:[['Sem7ni, ma fhemtech. 3awed 3aychek.',"Pardon, je n'ai pas compris. Répète, s'il te plaît.",1],['Sbe7 el khir!','Bonjour !',0]]},
+   {l:'Ymin, ba3d chmel.', p:'➡️⬅️', o:[['3aychek barcha!','Merci beaucoup !',1],['B9addech el ymin?','Combien coûte la droite ?',0]]},
+   {l:'Tetkallem bel fransawi?', p:'💬', o:[['Ey, w chwaya bel tounsi zeda!','Oui, et un peu en tunisien aussi !',1],['La, ana 9ahwa.','Non, je suis un café.',0]]}],
+  gaps:[['_ el ma7atta?','Win',['B9addech','Labes'],'🚉','Où est la gare ?'],['Ma _, 3awed.','fhemtech',['n7eb','nskon'],'🤔',"Je n'ai pas compris, répète."],['3aychek _!','barcha',['chwaya','win'],'🙏','Merci beaucoup !']]},
+ {id:'3ayla', tier:1, es:'El 3ayla', fr:'La famille', e:'👪', words:[
+   ['ommi','ma mère','👩'],['bouya','mon père','👨'],['khouya','mon frère','👦'],
+   ['okhti','ma sœur','👧'],['rajli','mon mari','🤵'],['mrati','ma femme','👰']],
+  talk:[
+   {l:'3andek sghar?', p:'👧👦', o:[['Ey, 3andi zouz.',"Oui, j'en ai deux.",1],['Ey, 3andi zouz 9ahwa.',"Oui, j'ai deux cafés.",0]]},
+   {l:'W ommek w bouk, win?', p:'👩👨', o:[['Ommi w bouya fi França.','Ma mère et mon père sont en France.',1],['Ommi esmha 9ahwa.',"Ma mère s'appelle Café.",0]]},
+   {l:'3andek khout?', p:'👦👧', o:[['Ey, 3andi khouya w okhti.',"Oui, j'ai un frère et une sœur.",1],['La, 3andi brik.',"Non, j'ai un brik.",0]]}],
+  gaps:[['_ esmha Leila.','Ommi',['Bouya','Khouya'],'👩',"Ma mère s'appelle Leila."],['3andi _ w okhti.','khouya',['brik','9ahwa'],'👦',"J'ai un frère et une sœur."],['_ esmou Karim.','Rajli',['Mrati','Okhti'],'🤵',"Mon mari s'appelle Karim."]]},
+
+ /* ---- Étape 2 : se débrouiller ---- */
+ {id:'souk', tier:2, es:'Fil souk', fr:'Au marché', e:'🧺', words:[
+   ['tmatem','des tomates','🍅'],['khobz','du pain','🍞'],['kilo','un kilo','⚖️'],
+   ['ghali','cher','💸'],['n9as chwaya?','tu baisses un peu ?','🤏'],['yezzi',"ça suffit, c'est bon",'✋']],
+  talk:[
+   {l:'Ahla! Chnoua t7eb?', p:'🧺', o:[['N7eb kilo tmatem, 3aychek.','Je voudrais un kilo de tomates, merci.',1],['N7eb kilo khouya.','Je voudrais un kilo de mon frère.',0]]},
+   {l:'Tfaddel. 7aja okhra?', p:'🍅', o:[['Ey, zouz khobzat.','Oui, deux pains.',1],['Ey, ana mel França.','Oui, je viens de France.',0]]},
+   {l:'El kol b thmanya dinar.', p:'💶', o:[['Ghali! N9as chwaya?','Cher ! Tu baisses un peu ?',1],['Labes, el 7amdoulillah.','Ça va, Dieu merci.',0]]},
+   {l:'Behi, sab3a dinar. Yezzi?', p:'🤝', o:[['Yezzi, 3aychek. Tfaddel.',"C'est bon, merci. Voilà.",1],['Win el ma7atta?','Où est la gare ?',0]]}],
+  gaps:[['N7eb _ tmatem.','kilo',['khobz','ghali'],'⚖️','Je voudrais un kilo de tomates.'],['Ghali barcha! N9as _?','chwaya',['kilo','yezzi'],'🤏','Très cher ! Tu baisses un peu ?'],['_, 3aychek.','Yezzi',['Ghali','Kilo'],'✋',"C'est bon, merci."]]},
+ {id:'taxi', tier:2, es:'Fil taxi', fr:'Se déplacer', e:'🚕', words:[
+   ['taxi','taxi','🚕'],['louage','taxi collectif (louage)','🚐'],['n7eb nemchi l...','je veux aller à…','🧭'],
+   ['9rib','près','📍'],['b3id','loin','🛣️'],['o9ef hna','arrête-toi ici','🛑']],
+  talk:[
+   {l:'Ahla, win temchi?', p:'🚕', o:[['N7eb nemchi lel Marsa, 3aychek.','Je veux aller à La Marsa, merci.',1],['Nskon fi taxi.',"J'habite dans un taxi.",0]]},
+   {l:'Hiya b3ida chwaya. Mchina.', p:'🛣️', o:[['Mrigel. B9addech?',"Super. C'est combien ?",1],['Esmi b3id.',"Je m'appelle Loin.",0]]},
+   {l:'Bel compteur, ma tkhafch.', p:'🔢', o:[["Behi, 3aychek.","D'accord, merci.",1],['La, ana okhti.','Non, je suis ma sœur.',0]]},
+   {l:'Weselna! Hna behi?', p:'📍', o:[['Ey, o9ef hna. 3aychek!','Oui, arrête-toi ici. Merci !',1],['La, n7eb kilo tmatem.','Non, je veux un kilo de tomates.',0]]}],
+  gaps:[['N7eb _ lel Marsa.','nemchi',['nskon','n9as'],'🧭','Je veux aller à La Marsa.'],['O9ef _, 3aychek.','hna',['b3id','win'],'🛑','Arrête-toi ici, merci.'],['El Marsa _ chwaya.','b3ida',['9ahwa','yezzi'],'🛣️',"La Marsa, c'est un peu loin."]]},
+ {id:'makla', tier:2, es:'El makla', fr:'Au restaurant', e:'🍲', words:[
+   ['couscous','couscous','🍲'],['lham','de la viande','🥩'],['7out','du poisson','🐟'],
+   ['harissa','harissa','🌶️'],['bnin','bon, délicieux','😋'],['el 7seb',"l'addition",'🧾']],
+  talk:[
+   {l:'Ahla! Chnoua t7eb tekel?', p:'🍽️', o:[['N7eb couscous bel 7out.','Je voudrais un couscous au poisson.',1],['N7eb el ma7atta.','Je veux la gare.',0]]},
+   {l:'Bel harissa walla bla?', p:'🌶️', o:[['Bel harissa, ama chwaya!',"Avec de la harissa, mais un peu !",1],['Bel taxi, 3aychek.','Avec le taxi, merci.',0]]},
+   {l:'Chnoua rayek? Bnin?', p:'😋', o:[['Bnin barcha, ya3tik essa77a!','Très bon, merci (bravo) !',1],['Ghali, o9ef hna.','Cher, arrête-toi ici.',0]]},
+   {l:'7aja okhra?', p:'🍰', o:[['La, 3aychek. El 7seb, 3aychek.',"Non merci. L'addition, s'il te plaît.",1],['Ey, kilo khouya.','Oui, un kilo de mon frère.',0]]}],
+  gaps:[['N7eb couscous bel _.','7out',['bnin','7seb'],'🐟','Je voudrais un couscous au poisson.'],['Bnin _!','barcha',['yezzi','hna'],'😋','Très bon !'],['El _, 3aychek.','7seb',['bnin','barcha'],'🧾',"L'addition, s'il te plaît."]]},
+ {id:'dar', tier:2, es:'Fi dar', fr:'Le logement', e:'🏠', words:[
+   ['dar','une maison','🏠'],['bit','une chambre, une pièce','🛏️'],['kouzina','la cuisine','🍳'],
+   ['bit el ban','la salle de bain','🛁'],['jari','mon voisin','👋'],['el kra','le loyer','💶']],
+  talk:[
+   {l:'Ahla! Jit tchouf ed-dar?', p:'🏠', o:[['Ey. 9addech men bit fiha?','Oui. Elle a combien de chambres ?',1],['Ey, n7eb harissa.','Oui, je veux de la harissa.',0]]},
+   {l:'Fiha zouz byout, kouzina w bit el ban.', p:'🛏️🍳🛁', o:[['Behi. Wel kra 9addech?',"D'accord. Et le loyer, c'est combien ?",1],['Behi, esmi kouzina.',"D'accord, je m'appelle Cuisine.",0]]},
+   {l:'Sab3a mya dinar fel chhar.', p:'💶', o:[['Chwaya ghali. N9as chwaya?','Un peu cher. Tu baisses un peu ?',1],['Bnin barcha!','Très bon !',0]]},
+   {l:'Behi, setta mya. Mrigel?', p:'🤝', o:[['Mrigel, 3aychek!','Super, merci !',1],['La, okhti.','Non, ma sœur.',0]]}],
+  gaps:[['Ed-dar fiha zouz _.','byout',['kouzina','kra'],'🛏️','La maison a deux chambres.'],['El _ 9addech fel chhar?','kra',['jari','bit el ban'],'💶',"Le loyer, c'est combien par mois ?"],['Nteyeb fel _.','kouzina',['bit el ban','kra'],'🍳','Je cuisine dans la cuisine.']]},
+ {id:'tbib', tier:2, es:'Fi tbib', fr:'Chez le médecin', e:'🩺', words:[
+   ['rassi youja3ni',"j'ai mal à la tête",'🤕'],['3andi skhana',"j'ai de la fièvre",'🤒'],['el pharmacie','la pharmacie','🏥'],
+   ['dwa','un médicament','💊'],['ordonnance','une ordonnance','📝'],['wallit khir','je vais mieux','🙂']],
+  talk:[
+   {l:'Ahla, odkhel. Chbik?', p:'🩺', o:[['Rassi youja3ni w 3andi skhana.',"J'ai mal à la tête et de la fièvre.",1],['Rassi 9ahwa.','Ma tête est un café.',0]]},
+   {l:'Men 9addech?', p:'📅', o:[['Men youmin.','Depuis deux jours.',1],['Men França.','De France.',0]]},
+   {l:'Hedhi el ordonnance. Echri ed-dwa mel pharmacie.', p:'📝💊', o:[['3aychek ya doktor.','Merci docteur.',1],['El 7seb, 3aychek.',"L'addition, s'il te plaît.",0]]},
+   {l:'Chnoua a7walek lyoum?', p:'🙂', o:[['Wallit khir, el 7amdoulillah.','Je vais mieux, Dieu merci.',1],['Wallit fel taxi.',"Je suis devenu taxi.",0]]}],
+  gaps:[['Rassi _.','youja3ni',['bnin','ghali'],'🤕',"J'ai mal à la tête."],['3andi _.','skhana',['rassi','ghali'],'🤒',"J'ai de la fièvre."],['Echri ed-dwa mel _.','pharmacie',['skhana','ordonnance'],'🏥','Achète le médicament à la pharmacie.']]},
+
+ /* ---- Étape 3 : converser ---- */
+ {id:'khedma', tier:3, es:'Fil khedma', fr:'Au travail', e:'💼', words:[
+   ['el khedma','le travail','💼'],['zmili','mon collègue','🧑‍💼'],['réunion','une réunion','📊'],
+   ['m3attal','en retard','⏰'],['el patron','le patron','👔'],['nkhdem fi...','je travaille à…','🏢']],
+  talk:[
+   {l:'Ahla! Awel nhar lik hna?', p:'🧑‍💼', o:[['Ey! Ahla, esmi {name}.',"Oui ! Salut, je m'appelle {name}.",1],['Ey, rassi youja3ni.',"Oui, j'ai mal à la tête.",0]]},
+   {l:'El réunion m3a el patron fel 3achra.', p:'📊', o:[['Behi. Lazem n7adher 7aja?',"D'accord. Je dois préparer quelque chose ?",1],['Behi, kilo tmatem.',"D'accord, un kilo de tomates.",0]]},
+   {l:'El 3achra w khamsa... winek?', p:'⏰', o:[['Sem7ni, ana m3attal! Jey tawa.',"Pardon, je suis en retard ! J'arrive.",1],['Ana fel souk m3a ommi.','Je suis au marché avec ma mère.',0]]},
+   {l:'Nochorbou 9ahwa ba3d el réunion?', p:'☕', o:[['Ey, 3la rassi!','Oui, avec plaisir !',1],['Ey, el 7seb.',"Oui, l'addition.",0]]}],
+  gaps:[['Ana _, sem7ni!','m3attal',['zmili','khedma'],'⏰','Je suis en retard, excuse-moi !'],['El réunion m3a el _.','patron',['skhana','souk'],'👔','La réunion avec le patron.'],['_ fi banka.','Nkhdem',['N9as','Nteyeb'],'🏢','Je travaille dans une banque.']]},
+ {id:'telifoun', tier:3, es:'Fil telifoun', fr:'Téléphoner, réserver', e:'📞', words:[
+   ['alou?','allô ?','📞'],['chkoun m3aya?',"qui est à l'appareil ?",'❓'],['stanna chwaya','attends un peu','⏳'],
+   ['nkallmek ba3d','je te rappelle plus tard','🔁'],['n7eb nreservi','je voudrais réserver','📅'],['nchoufek','à plus tard','👋']],
+  talk:[
+   {l:'Alou, restaurant Dar Yasmine, ahla!', p:'📞', o:[['Ahla, n7eb nreservi tawla nhar es-sebt.','Bonjour, je voudrais réserver une table pour samedi.',1],['Ahla, rassi youja3ni.',"Bonjour, j'ai mal à la tête.",0]]},
+   {l:'L 9addech men 3abd?', p:'👥', o:[['L arb3a, 3la thmanya.','Pour quatre, à huit heures.',1],['L thmanya 9ahwa.','Pour huit cafés.',0]]},
+   {l:'Stanna chwaya... behi. Bisem chkoun?', p:'⏳', o:[['Bisem {name}.','Au nom de {name}.',1],['Bisem el taxi.','Au nom du taxi.',0]]},
+   {l:'Mrigel, nchoufek nhar es-sebt!', p:'👋', o:[['3aychek, bslema!','Merci, au revoir !',1],['Nkallmek ba3d el harissa.','Je te rappelle après la harissa.',0]]}],
+  gaps:[['_, chkoun m3aya?','Alou',['Yezzi','Ghali'],'📞',"Allô, qui est à l'appareil ?"],['Stanna _.','chwaya',['barcha','kilo'],'⏳','Attends un peu.'],['N7eb _ tawla.','nreservi',['nemchi','n9as'],'📅','Je voudrais réserver une table.']]},
+ {id:'kharja', tier:3, es:'Nokhorjou?', fr:'Proposer une sortie', e:'🏖️', words:[
+   ['t7eb...?','tu veux… ?','🤔'],['nemchiw lel b7ar','allons à la mer','🏖️'],['nochorbou 9ahwa','on boit un café','☕'],
+   ['ghodwa','demain','📆'],['3la rassi','avec plaisir','😊'],['ntla9aw','on se retrouve','🤝']],
+  talk:[
+   {l:'Ahla! T7eb nokhorjou ghodwa?', p:'📆', o:[['3la rassi! Chnoua na3mlou?','Avec plaisir ! Qu\'est-ce qu\'on fait ?',1],['La, ana m3attal.','Non, je suis en retard.',0]]},
+   {l:'Nemchiw lel b7ar fi Sidi Bou Said?', p:'🏖️', o:[['Mrigel! Fi 9addech?','Super ! À quelle heure ?',1],['Mrigel, kilo tmatem.','Super, un kilo de tomates.',0]]},
+   {l:'3la el wa7da. Ba3d nochorbou 9ahwa?', p:'☕', o:[['Ey, behi! Win ntla9aw?',"Oui, d'accord ! On se retrouve où ?",1],['La, rassi 9ahwa.','Non, ma tête est un café.',0]]},
+   {l:'9oddem el ma7atta mta3 el TGM.', p:'🚉', o:[['Behi, nchoufek ghodwa!',"D'accord, à demain !",1],['Ommi esmha TGM.',"Ma mère s'appelle TGM.",0]]}],
+  gaps:[['T7eb _ ghodwa?','nokhorjou',['nskon','n9as'],'🤔',"Tu veux qu'on sorte demain ?"],['Nemchiw lel _.','b7ar',['khobz','kra'],'🏖️','Allons à la mer.'],['Win _?','ntla9aw',['n7eb','ghali'],'🤝',"Où est-ce qu'on se retrouve ?"]]},
+ {id:'weekend', tier:3, es:'El weekend', fr:'Raconter son week-end', e:'✨', words:[
+   ['mchit','je suis allé(e)','🚶'],['klit',"j'ai mangé",'🍽️'],['chrebt',"j'ai bu",'🥤'],
+   ['ri9adt',"j'ai dormi",'😴'],['chft',"j'ai vu",'👀'],['t3adda behi',"ça s'est bien passé",'✨']],
+  talk:[
+   {l:'Ahla! Chnoua 3malt fel weekend?', p:'📆', o:[['Mchit lel b7ar m3a 3ayelti.',"Je suis allé(e) à la mer avec ma famille.",1],['Ghodwa mchit lel b7ar.','Demain je suis allé(e) à la mer.',0]]},
+   {l:'Mrigel! W chnoua klitou?', p:'🍽️', o:[['Klina 7out w brik.','On a mangé du poisson et des briks.',1],['Klina el taxi.','On a mangé le taxi.',0]]},
+   {l:'W nhar el a7ad?', p:'😴', o:[['Ri9adt barcha w chft film.',"J'ai beaucoup dormi et j'ai vu un film.",1],['Ri9adt el souk.',"J'ai dormi le marché.",0]]},
+   {l:"Ya3ni t3adda behi!", p:'✨', o:[['Ey, t3adda behi barcha. W enti?',"Oui, ça s'est très bien passé. Et toi ?",1],['Ey, ana m3attal.','Oui, je suis en retard.',0]]}],
+  gaps:[['El bera7 _ lel b7ar.','mchit',['nemchi','temchi'],'🏖️','Hier, je suis allé(e) à la mer.'],['_ couscous bnin.','Klit',['Chrebt','Ri9adt'],'🍲',"J'ai mangé un bon couscous."],['El weekend t3adda _.','behi',['ghodwa','kilo'],'✨',"Le week-end s'est bien passé."]]},
+];
+UNITS.forEach(u=>{u.tier=u.tier||1;u.gaps=u.gaps||[]});
+const LEGACY=[];
+const TIERS={1:['Étape 1','Les bases'],2:['Étape 2','Se débrouiller'],3:['Étape 3','Converser']};
+const isOk=o=>o[o.length-1]===1;
+const insAfter=(id,arr)=>{const i=UNITS.findIndex(u=>u.id===id);UNITS.splice(i+1,0,...arr)};
+const APP_VERSION=1,NEW_IN={};
+/* Les sons propres au tunisien, écrits avec des chiffres ou des lettres doubles */
+const SOUNDS=[
+ ['3','ع','Un « a » serré au fond de la gorge, comme un petit étranglement.','3aychek (merci)'],
+ ['7','ح','Un « h » soufflé fort, comme pour embuer une vitre.','7out (poisson)'],
+ ['9','ق','Un « k » prononcé tout au fond de la gorge.','9ahwa (café)'],
+ ['kh','خ','Comme la jota espagnole ou le « ch » allemand de « Bach ».','khobz (pain)'],
+ ['gh','غ','Comme le « r » français de « Paris », bien grasseyé.','ghali (cher)'],
+ ['ch','ش','Comme le « ch » français de « chat ».','chwaya (un peu)'],
+ ['r','ر','Roulé avec le bout de la langue.','rassi (ma tête)'],
+ ['ou','و','Comme en français : « ou ».','zouz (deux)'],
+ ['e','—','Souvent un « e » très bref, presque avalé.','mse el khir (bonsoir)']];
+
+
+
+/* ---------- Sauvegarde ---------- */
+const KEY='ahla-v1';
+const def=()=>({name:'',xp:0,stars:{},streak:0,lastDay:'',todayDate:'',todayCount:0,slow:false,goal:1});
+let S=def();
+/* Lecture de la sauvegarde : si la copie principale est illisible, on reprend la copie de secours */
+const BAK=KEY+'-secours';
+function readSave(k){try{const s=JSON.parse(localStorage.getItem(k)||'null');return s&&typeof s==='object'&&s.stars?s:null}catch(e){return null}}
+{const s=readSave(KEY)||readSave(BAK);if(s)S=Object.assign(def(),s)}
+function save(){try{const j=JSON.stringify(S);localStorage.setItem(KEY,j);localStorage.setItem(BAK,j)}catch(e){}}
+/* Demande au navigateur de ne jamais effacer les données de l'appli (appli installée) */
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch(()=>{})}catch(e){}
+/* Code de sauvegarde : à copier pour garder une trace hors de l'appareil */
+const toCode=()=>'AHLA-'+btoa(unescape(encodeURIComponent(JSON.stringify(S))));
+function fromCode(c){const x=JSON.parse(decodeURIComponent(escape(atob(c.trim().replace(/^AHLA-/,'').replace(/\s+/g,'')))));if(!x||typeof x!=='object'||!x.stars)throw 0;return x}
+/* Fusion : on garde toujours le meilleur des deux, rien n'est perdu */
+function mergeSave(x){
+  const st=Object.assign({},S.stars);for(const k in x.stars)st[k]=Math.max(st[k]||0,+x.stars[k]||0);
+  S.stars=st;S.xp=Math.max(S.xp,+x.xp||0);if(!S.name&&x.name)S.name=x.name;
+  S.opened=[...new Set([...(S.opened||[]),...(x.opened||[])])];
+  if((x.lastDay||'')&&(+x.streak||0)>S.streak){S.streak=+x.streak;S.lastDay=x.lastDay}
+  save();
+}
+const dstr=d=>d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+const today=()=>dstr(new Date());
+const yesterday=()=>{const d=new Date();d.setDate(d.getDate()-1);return dstr(d)};
+const streakNow=()=>(S.lastDay===today()||S.lastDay===yesterday())?S.streak:0;
+const todayCount=()=>S.todayDate===today()?S.todayCount:0;
+const level=()=>1+Math.floor(S.xp/60);
+
+/* ---------- Voix : enregistrements d'une vraie voix tunisienne ----------
+   Aucun téléphone n'a de voix tunisienne. Chaque phrase est enregistrée dans le Studio par une personne tunisienne :
+   - ses enregistrements restent dans son téléphone (IndexedDB) et servent tout de suite ;
+   - exportés en .zip, ils sont mis en ligne dans le dossier audio/ (liste dans audio/index.json) pour tout le monde. */
+const fill=t=>t.replace(/\{name\}/g,S.name||'');
+const nw=w=>w.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
+function hashOf(t){let h=0x811c9dc5;const s=t.trim();for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0}return h.toString(16).padStart(8,'0')}
+const inFrame=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+let micOK=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder)&&!inFrame,micDenied=false;
+let REMOTE=new Set(),LOCAL=new Set(),heardOnce=false;
+const idb=(()=>{let p;
+  const open=()=>p||(p=new Promise((res,rej)=>{try{const r=indexedDB.open('ahla-studio',1);r.onupgradeneeded=()=>r.result.createObjectStore('rec');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}catch(e){rej(e)}}));
+  const tx=(mode,fn)=>open().then(db=>new Promise((res,rej)=>{const t=db.transaction('rec',mode);const q=fn(t.objectStore('rec'));t.oncomplete=()=>res(q&&q.result);t.onerror=()=>rej(t.error)}));
+  return {get:k=>tx('readonly',s=>s.get(k)),set:(k,v)=>tx('readwrite',s=>s.put(v,k)),del:k=>tx('readwrite',s=>s.delete(k)),keys:()=>tx('readonly',s=>s.getAllKeys())};
+})();
+idb.keys().then(k=>{LOCAL=new Set(k||[]);if(view!=='home')render()}).catch(()=>{});
+fetch('audio/index.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).then(a=>{REMOTE=new Set((a||[]).map(x=>x.h||x));render()}).catch(()=>{});
+const hasAudio=t=>{const h=hashOf(t);return LOCAL.has(h)||REMOTE.has(h)};
+let player=null;
+async function say(t,slow){
+  if(!t)return;const h=hashOf(t);let src=null,local=false;
+  try{if(LOCAL.has(h)){const b=await idb.get(h);if(b){src=URL.createObjectURL(b);local=true}}}catch(e){}
+  if(!src&&REMOTE.has(h))src='audio/'+h+'.webm';
+  if(!src)return;
+  try{if(player){player.pause()}}catch(e){}
+  return new Promise(res=>{
+    const a=new Audio(src);player=a;a.preservesPitch=true;a.playbackRate=slow?0.7:(S.slow?0.85:1);
+    a.onended=a.onerror=()=>{if(local)URL.revokeObjectURL(src);res()};
+    a.play().then(()=>{heardOnce=true}).catch(()=>res());
+  });
+}
+/* Enregistrement au micro (studio et auto-évaluation) */
+let rec=null;
+async function recStart(){
+  const stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});
+  const type=['audio/webm;codecs=opus','audio/webm','audio/mp4'].find(t=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(t))||'';
+  const mr=new MediaRecorder(stream,type?{mimeType:type}:undefined);const chunks=[];
+  mr.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+  const done=new Promise(res=>{mr.onstop=()=>{stream.getTracks().forEach(t=>t.stop());res(new Blob(chunks,{type:mr.mimeType||'audio/webm'}))}});
+  mr.start();rec={mr,done,timer:setTimeout(()=>recStop(),10000)};return {done};
+}
+function recStop(){if(rec){clearTimeout(rec.timer);try{rec.mr.state!=='inactive'&&rec.mr.stop()}catch(e){}const d=rec.done;rec=null;return d}}
+function playBlob(b){return new Promise(res=>{const u=URL.createObjectURL(b);const a=new Audio(u);a.onended=a.onerror=()=>{URL.revokeObjectURL(u);res()};a.play().catch(()=>res())})}
+/* Liste des phrases à enregistrer (les phrases qui contiennent le prénom de l'élève restent écrites) */
+function studioList(){
+  const seen=new Set(),out=[];
+  const add=(t,u,fr)=>{t=t.trim();if(!t||t.includes('{name}'))return;const h=hashOf(t);if(seen.has(h))return;seen.add(h);out.push({t,h,u,fr:fr||''})};
+  UNITS.forEach(u=>{u.words.forEach(w=>add(w[0],u,w[1]));u.talk.forEach(d=>{add(d.l,u,'');const r=d.o.find(isOk);add(r[0],u,r[1])});u.gaps.forEach(g=>add(g[0].replace('_',g[1]),u,g[4]))});
+  return out;
+}
+/* Petit fichier .zip (sans compression) pour envoyer les enregistrements */
+function crc32(b){let c=0xFFFFFFFF;for(let i=0;i<b.length;i++){c^=b[i];for(let k=0;k<8;k++)c=c&1?(c>>>1)^0xEDB88320:c>>>1}return (c^0xFFFFFFFF)>>>0}
+function makeZip(files){
+  const enc=new TextEncoder(),parts=[],central=[];let off=0;
+  for(const f of files){
+    const nm=enc.encode(f.name),d=f.data,crc=crc32(d);
+    const h=new DataView(new ArrayBuffer(30));[[0,0x04034b50,4],[4,20,2],[6,0,2],[8,0,2],[10,0,2],[12,0x21,2],[14,crc,4],[18,d.length,4],[22,d.length,4],[26,nm.length,2],[28,0,2]].forEach(([o,v,n])=>n===4?h.setUint32(o,v,true):h.setUint16(o,v,true));
+    const c=new DataView(new ArrayBuffer(46));[[0,0x02014b50,4],[4,20,2],[6,20,2],[8,0,2],[10,0,2],[12,0,2],[14,0x21,2],[16,crc,4],[20,d.length,4],[24,d.length,4],[28,nm.length,2],[30,0,2],[32,0,2],[34,0,2],[36,0,2],[38,0,4],[42,off,4]].forEach(([o,v,n])=>n===4?c.setUint32(o,v,true):c.setUint16(o,v,true));
+    parts.push(h.buffer,nm,d);central.push(c.buffer,nm);off+=30+nm.length+d.length;
+  }
+  const csz=central.reduce((s,x)=>s+(x.byteLength),0);
+  const e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,csz,true);e.setUint32(16,off,true);
+  return new Blob([...parts,...central,e.buffer],{type:'application/zip'});
+}
+async function exportZip(){
+  const list=studioList(),byH=new Map(list.map(x=>[x.h,x])),keys=(await idb.keys())||[],files=[],index=[];
+  for(const h of keys){const b=await idb.get(h);if(!b)continue;files.push({name:h+'.webm',data:new Uint8Array(await b.arrayBuffer())});index.push({h,t:(byH.get(h)||{}).t||''})}
+  files.push({name:'index.json',data:new TextEncoder().encode(JSON.stringify(index,null,1))});
+  return {blob:makeZip(files),count:index.length};
+}
+/* ---------- Petits sons ---------- */
+let ac=null;
+function tone(ok){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const t=ac.currentTime;
+  (ok?[660,880]:[300,220]).forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.type='triangle';o.frequency.value=f;
+  g.gain.setValueAtTime(.0001,t+i*.12);g.gain.exponentialRampToValueAtTime(.25,t+i*.12+.02);g.gain.exponentialRampToValueAtTime(.0001,t+i*.12+.2);
+  o.connect(g).connect(ac.destination);o.start(t+i*.12);o.stop(t+i*.12+.22)})}catch(e){}}
+
+/* ---------- Utilitaires ---------- */
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const W=w=>({es:w[0],fr:w[1],e:w[2]});
+const pic=(e,cls='')=>e[0]==='#'?`<div class="swatch ${cls}" style="background:${e}"></div>`:esc(e);
+/* Un niveau ouvert une fois reste ouvert pour toujours, même si une mise à jour ajoute des niveaux avant lui */
+const unlocked=i=>{
+  if(i===0||S.stars[UNITS[i-1].id]||S.stars[UNITS[i].id])return true;
+  if((S.opened||[]).includes(UNITS[i].id))return true;
+  const j=LEGACY.indexOf(UNITS[i].id);return j>0&&!!S.stars[LEGACY[j-1]];
+};
+const learnedUnits=()=>UNITS.filter(u=>S.stars[u.id]);
+
+let view='home',L=null,R=null,confirmReset=false,showBk=false,bkMsg='';
+
+/* ---------- Accueil ---------- */
+function home(){
+  {const op=new Set(S.opened||[]),n=op.size;UNITS.forEach((u,i)=>{if(unlocked(i))op.add(u.id)});if(op.size!==n){S.opened=[...op];save()}}
+  const fresh=S.name&&(S.ver||0)<APP_VERSION;
+  const cur=UNITS.findIndex((u,i)=>unlocked(i)&&!S.stars[u.id]);
+  const tc=todayCount();
+  const nodes=UNITS.map((u,i)=>{
+    const lk=!unlocked(i),dn=!!S.stars[u.id],st=S.stars[u.id]||0;
+    const x=Math.round(Math.sin(i*1.1)*70);
+    const tierHead=(i===0||u.tier!==UNITS[i-1].tier)?`<div class="tier"><b>${TIERS[u.tier][0]}</b><span>${TIERS[u.tier][1]}</span></div>`:'';
+    return `${tierHead}<button class="node ${lk?'locked':dn?'done':''} ${i===cur?'current':''}" style="transform:translateX(${x}px)" data-act="unit" data-i="${i}" ${lk?'aria-disabled="true"':''} aria-label="Niveau ${i+1} : ${esc(u.fr)}">
+      ${i===cur?'<span class="start-tag">À toi !</span>':''}
+      <span class="disc ${u.conv&&!lk&&!dn?'conv':''}">${lk?'🔒':u.e}</span>
+      <span class="stars">${dn?'⭐'.repeat(st)+'<span style="opacity:.25">'+'⭐'.repeat(3-st)+'</span>':''}</span>
+      <b>${esc(u.es)}</b><em>${i+1}. ${esc(u.fr)}</em>${u.conv?'<span class="ctag">💬 Conversation</span>':''}</button>`}).join('');
+  app.innerHTML=`
+  <div class="top"><div class="lola" aria-hidden="true">Y</div>
+    <div class="hello"><small>Yasmine, ta guide</small><h1>Ahla, ${esc(S.name)}!</h1></div>
+    <button class="icon-btn" data-act="settings" aria-label="Réglages">⚙️</button></div>
+  <div class="chips"><span class="chip">🔥 ${streakNow()} jour${streakNow()>1?'s':''}</span><span class="chip">⭐ ${S.xp} points</span><span class="chip">🏅 Niveau ${level()}</span></div>
+  ${fresh?`<div class="newver" role="status"><div><b>🎉 Nouvelle version ${APP_VERSION} !</b><span>${esc(NEW_IN[APP_VERSION]||'')} Ta progression est gardée.</span></div><button class="tool" data-act="newok">Super !</button></div>`:''}
+  <div class="goal"><div class="goal-h"><span>Objectif du jour</span><span>${Math.min(tc,S.goal)} / ${S.goal} leçon${S.goal>1?'s':''}</span></div>
+    <div class="bar"><i style="width:${Math.min(100,tc/S.goal*100)}%"></i></div></div>
+  <div class="quick">
+    <button class="btn coral" data-act="review" ${learnedUnits().length?'':'disabled'}>🎯 Défi du jour</button>
+    <button class="btn ghost" data-act="dico">📖 Lexique</button>
+    <button class="btn sun" data-act="chat" ${learnedUnits().length?'':'disabled'}>💬 Discuter</button>
+    <button class="btn ghost" data-act="sons">🔤 Les sons</button></div>
+  ${REMOTE.size?'':`<div class="notice"><span>🎙️</span><span>Les voix tunisiennes sont en cours d'enregistrement. En attendant, les phrases s'affichent écrites : aide-toi du guide « Les sons ».</span></div>`}
+  <div class="map">${nodes}<div class="node"><span class="disc goal-disc">🏆</span><b>Mabrouk!</b><em>Termine les ${UNITS.length} niveaux</em></div></div>`;
+}
+
+/* ---------- Construction d'une leçon ---------- */
+const uniqPic=arr=>{const seen=new Set();return arr.filter(w=>!seen.has(w.e)&&seen.add(w.e))};
+function optsFor(w,pool){return shuffle([w,...uniqPic(shuffle(pool.filter(x=>x.es!==w.es&&x.e!==w.e))).slice(0,2)])}
+const gapStep=g=>({t:'gap',g:{s:g[0],a:g[1],e:g[3],fr:g[4]||''},opts:shuffle([g[1],...g[2]])});
+/* Associer les paires : 4 mots ↔ 4 images */
+function matchStep(pool){const ws=uniqPic(shuffle(pool.slice())).slice(0,4);return {t:'match',ws,left:shuffle(ws.slice()),right:shuffle(ws.slice()),done:[],sel:null,err:0,bad:null}}
+/* Vrai ou faux : la phrase entendue correspond-elle à l'image ? */
+function tfSteps(pool,n){return shuffle(pool.slice()).slice(0,n).map(w=>{
+  const others=pool.filter(x=>x.e!==w.e);const truth=!others.length||Math.random()<.5;
+  return {t:'tf',w,shown:truth?w:others[Math.random()*others.length|0],truth}})}
+/* Construire la phrase : remettre les mots dans l'ordre */
+const tilesOf=t=>fill(t).replace(/[¿?¡!.,«»:—]/g,' ').split(/\s+/).filter(Boolean);
+function buildSteps(u,n){
+  const c=[...u.talk.map(d=>{const r=d.o.find(isOk);return {s:r[0],fr:r.length>2?r[1]:'',p:d.p||''}}),...u.gaps.map(g=>({s:g[0].replace('_',g[1]),fr:g[4]||'',p:g[3]}))]
+    .filter(x=>{const k=tilesOf(x.s).length;return k>=3&&k<=7});
+  return shuffle(c).slice(0,n).map(x=>{
+    const ws=tilesOf(x.s),wn=ws.map(nw);
+    const extra=u.tier>1?shuffle(u.words.flatMap(w=>tilesOf(w[0])).filter(y=>!wn.includes(nw(y)))).slice(0,1):[];
+    return {t:'build',sent:x.s,fr:x.fr,p:x.p,target:ws,tiles:shuffle([...ws,...extra]),used:[]}});
+}
+function startUnit(i){
+  const u=UNITS[i],words=u.words.map(W),steps=[],phr=u.conv||u.tier>1;
+  if(!S.stars[u.id])words.forEach(w=>steps.push({t:'learn',w,conv:phr}));
+  steps.push(matchStep(words));
+  shuffle(words.slice()).slice(0,4).forEach((w,k)=>steps.push({t:k%2?'pick':(phr?'mean':'listen'),w,opts:optsFor(w,words)}));
+  if(!u.conv)tfSteps(words,2).forEach(s=>steps.push(s));
+  shuffle(u.gaps.slice()).forEach(g=>steps.push(gapStep(g)));
+  buildSteps(u,2).forEach(s=>steps.push(s));
+  shuffle(words.slice()).slice(0,u.tier>1?3:2).forEach(w=>steps.push({t:'speak',w}));
+  u.talk.forEach(d=>steps.push({t:'talk',d,opts:shuffle(d.o.slice())}));
+  L={unit:i,kind:'unit',steps,i:0,mistakes:0,ok:0,answered:null,tries:0};view='lesson';render();
+}
+function startChat(){
+  const steps=shuffle(learnedUnits().flatMap(u=>u.talk)).slice(0,6).map(d=>({t:'talk',d,opts:shuffle(d.o.slice())}));
+  L={unit:-1,kind:'chat',steps,i:0,mistakes:0,ok:0,answered:null,tries:0};view='lesson';render();
+}
+function startReview(){
+  const us=learnedUnits();
+  const pool=uniqPic(shuffle(us.flatMap(u=>u.words.map(w=>Object.assign(W(w),{conv:u.conv||u.tier>1,c1:!!u.conv})))));
+  const pk=shuffle(pool.slice()).slice(0,6),steps=[];
+  if(pool.length>=4)steps.push(matchStep(pool));
+  pk.slice(0,4).forEach((w,k)=>steps.push({t:k%2?'pick':(w.conv?'mean':'listen'),w,opts:optsFor(w,pool)}));
+  tfSteps(pool.filter(w=>!w.c1),2).forEach(s=>steps.push(s));
+  shuffle(us.flatMap(u=>u.gaps)).slice(0,2).forEach(g=>steps.push(gapStep(g)));
+  shuffle(us.slice()).slice(0,2).forEach(u=>buildSteps(u,1).forEach(s=>steps.push(s)));
+  pk.slice(4,6).forEach(w=>steps.push({t:'speak',w}));
+  L={unit:-1,steps,i:0,mistakes:0,ok:0,answered:null,tries:0};view='lesson';render();
+}
+
+/* ---------- Écran de leçon ---------- */
+function lesson(){
+  const s=L.steps[L.i],pct=L.i/L.steps.length*100;let body='';
+  if(s.t==='learn'){
+    body=`<div class="ask">${s.conv?'Nouvelle phrase !':'Nouveau mot !'}<small>${micOK?'Écoute ou lis, répète, puis enregistre-toi avec 🎤 pour te comparer.':'Écoute ou lis, puis répète à voix haute.'}</small></div>
+    <div class="card"><div class="pic">${pic(s.w.e)}</div><div class="es">${esc(s.w.es)}</div><div class="fr">${esc(s.w.fr)}</div></div>
+    <div class="tools">${audioTools(s.w.es)}
+    ${micBtn()}</div>${micBox()}`;
+  }
+  if(s.t==='match'){
+    body=`<div class="ask">Associe les paires<small>Touche un mot, puis la bonne image.</small></div>
+    <div class="match"><div class="mcol">${s.left.map((w,k)=>{const d=s.done.includes(w.es);
+      return `<button class="opt mword ${d?'sel-good':''} ${s.sel===w.es?'picked':''}" data-act="ml" data-k="${k}" ${d?'disabled':''}>${esc(w.es)}</button>`}).join('')}</div>
+    <div class="mcol">${s.right.map((w,k)=>{const d=s.done.includes(w.es);
+      return `<button class="opt mpic ${d?'sel-good':''} ${s.bad===k?'sel-bad':''}" data-act="mr" data-k="${k}" ${d?'disabled':''} aria-label="${esc(w.fr)}">${pic(w.e)}</button>`}).join('')}</div></div>`;
+    s.bad=null;
+  }
+  if(s.t==='tf'){
+    const a=L.answered,cls=v=>a?((v===1)===s.truth?'sel-good':(a.k===v?'sel-bad':'')):'';
+    body=`<div class="ask">Vrai ou faux ?<small>Lis ou écoute : la phrase va-t-elle avec l'image ?</small></div>
+    <div class="card"><div class="pic">${pic(s.shown.e)}</div><div class="es">${esc(s.w.es)}</div></div>
+    <div class="tools">${hasAudio(s.w.es)?'<button class="tool" data-act="hear">🔊 Écouter</button>':''}</div>
+    <div class="opts tf"><button class="opt ${cls(1)}" data-act="tf" data-v="1" ${a?'disabled':''}>✅ Sí</button><button class="opt ${cls(0)}" data-act="tf" data-v="0" ${a?'disabled':''}>❌ No</button></div>`;
+  }
+  if(s.t==='build'){
+    const a=L.answered;
+    body=`<div class="ask">Construis la phrase<small>Pour dire : « ${esc(fill(s.fr||''))} »</small></div>
+    <div class="buildtop">${s.p?`<div class="prop">${esc(s.p)}</div>`:''}${hasAudio(s.sent)?'<button class="speaker sm" data-act="hear" aria-label="Écouter la phrase">🔊</button>':''}</div>
+    <div class="buildline ${a?(a.ok?'ok':'ko'):''}">${s.used.length?s.used.map((k,j)=>`<button class="tile" data-act="bu" data-j="${j}" ${a?'disabled':''}>${esc(s.tiles[k])}</button>`).join(''):'<span class="ph">Touche les mots ci-dessous</span>'}</div>
+    <div class="bank">${s.tiles.map((t,k)=>`<button class="tile ${s.used.includes(k)?'gone':''}" data-act="bt" data-k="${k}" ${s.used.includes(k)||a?'disabled':''}>${esc(t)}</button>`).join('')}</div>`;
+  }
+  if(s.t==='gap'){
+    const parts=s.g.s.split('_'),hole=L.answered?`<span class="hole full">${esc(s.g.a)}</span>`:'<span class="hole" aria-label="mot manquant">?</span>';
+    body=`<div class="ask">Complète la phrase<small>Choisis le mot qui manque.</small></div>
+    <div class="card"><div class="pic">${pic(s.g.e)}</div><div class="gapline">${esc(fill(parts[0]))}${hole}${esc(fill(parts[1]||''))}</div>${s.g.fr?`<div class="fr">${esc(s.g.fr)}</div>`:''}</div>
+    <div class="opts words3">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}">${esc(o)}</button>`).join('')}</div>`;
+  }
+  if(s.t==='listen'){
+    body=`<div class="ask">Touche la bonne image<small>Écoute ou lis le mot.</small></div>
+    ${hasAudio(s.w.es)?'<button class="speaker" data-act="hear" aria-label="Écouter le mot">🔊</button>':''}
+    ${!hasAudio(s.w.es)?`<div class="card"><div class="es">${esc(s.w.es)}</div><div class="fr">Voix pas encore enregistrée : lis le mot.</div></div>`:'<button class="tool" style="margin:0 auto" data-act="slow">🐢 Lentement</button>'}
+    <div class="opts pics">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}" aria-label="${esc(o.fr)}">${pic(o.e)}</button>`).join('')}</div>`;
+  }
+  if(s.t==='pick'){
+    body=`<div class="ask">Comment dit-on en tunisien ?<small>${esc(s.w.fr)}</small></div>
+    <div class="card"><div class="pic">${pic(s.w.e)}</div></div>
+    <div class="opts">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}">${esc(o.es)}</button>`).join('')}</div>`;
+  }
+  if(s.t==='mean'){
+    body=`<div class="ask">Que veut dire cette phrase ?<small>Choisis le sens en français.</small></div>
+    ${hasAudio(s.w.es)?'<button class="speaker" data-act="hear" aria-label="Écouter la phrase">🔊</button>':''}
+    ${!hasAudio(s.w.es)?`<div class="card"><div class="es">${esc(s.w.es)}</div><div class="fr">Voix pas encore enregistrée : lis la phrase.</div></div>`:'<button class="tool" style="margin:0 auto" data-act="slow">🐢 Lentement</button>'}
+    <div class="opts">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}"><span>${pic(o.e)}</span><span>${esc(o.fr)}</span></button>`).join('')}</div>`;
+  }
+  if(s.t==='speak'){
+    body=`<div class="ask">À toi de parler !<small>${micOK?'Dis-le à voix haute en t\'enregistrant, puis compare-toi au modèle.':'Répète à voix haute.'}</small></div>
+    <div class="card"><div class="pic">${pic(s.w.e)}</div><div class="es">${esc(s.w.es)}</div><div class="fr">${esc(s.w.fr)}</div></div>
+    <div class="tools">${audioTools(s.w.es)}
+    ${L.answered?'':micBtn()}</div>${micBox()}`;
+  }
+  if(s.t==='talk'){
+    const d=s.d;
+    body=`<div class="ask">Discute avec Yasmine<small>Choisis la bonne réponse.</small></div>
+    <div class="chat"><div class="lola" aria-hidden="true">Y</div><div class="bubble">
+      ${d.p?`<div class="prop">${esc(d.p)}</div>`:''}<div class="es">${esc(fill(d.l))}</div></div></div>
+    ${hasAudio(s.d.l)?'<div class="tools"><button class="tool" data-act="hear">🔊 Réécouter</button></div>':''}
+    <div class="opts">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}"><span>💬</span><span>${esc(fill(o[0]))}</span></button>`).join('')}</div>`;
+  }
+  let foot='';
+  if(s.t==='learn')foot=`<button class="btn" data-act="next">Suivant</button>`;
+  else if(s.t==='speak'&&!micOK&&!L.answered)foot=`<button class="btn" data-act="next">Continuer</button>`;
+  else if(L.answered){
+    const g=L.answered.ok;
+    foot=`<div class="fb ${g?'good':'bad'}" role="status"><h3>${g?pick(['Mrigel!','Behi!','Bravo!','Ya3tik essa77a!']):'Presque !'}</h3>
+      ${L.answered.msg?`<p>${L.answered.msg}</p>`:''}<button class="btn" data-act="next">Continuer</button></div>`;
+  }
+  app.innerHTML=`<div class="lbar"><button class="icon-btn" data-act="quit" aria-label="Quitter la leçon">✕</button><div class="bar"><i style="width:${pct}%"></i></div></div>
+  <div class="stage">${body}</div><div class="foot">${foot}</div>`;
+  if(L.answered&&s.opts)markOpts();
+}
+const pick=a=>a[Math.random()*a.length|0];
+function markOpts(){
+  const s=L.steps[L.i];document.querySelectorAll('[data-act=ans]').forEach(b=>{
+    const k=+b.dataset.k,o=s.opts[k],good=s.t==='talk'?isOk(o):s.t==='gap'?o===s.g.a:o.es===s.w.es;
+    b.disabled=true;if(good)b.classList.add('sel-good');if(k===L.answered.k&&!good)b.classList.add('sel-bad');});
+}
+function speakStep(){
+  const s=L.steps[L.i];
+  if(s.t==='talk')return say(s.d.l);
+  if(s.t==='build')return say(s.sent);
+  if(s.t==='gap'||s.t==='pick'||s.t==='match')return;
+  return say(s.w.es);
+}
+/* Fin d'un exercice : points, erreur, et exercice raté reproposé à la fin de la leçon */
+function settle(s,ok,msg,again){
+  tone(ok);
+  if(ok)L.ok++;else{L.mistakes++;if(!s.retry&&again)L.steps.push(Object.assign(again(),{retry:1}))}
+  L.answered=Object.assign({ok,msg},L.answered||{});L.answered.ok=ok;L.answered.msg=msg;render();
+}
+function matchLeft(k){const s=L.steps[L.i];const w=s.left[k];s.sel=w.es;say(w.es);render()}
+function matchRight(k){
+  const s=L.steps[L.i];if(L.answered)return;const w=s.right[k];
+  if(!s.sel){s.bad=k;render();return}
+  if(w.es===s.sel){s.done.push(w.es);s.sel=null;tone(true);
+    if(s.done.length===s.ws.length){settle(s,s.err===0,s.err?'Tu as trouvé toutes les paires, avec un peu d\'aide.':'',()=>matchStep(s.ws));return}
+    render();
+  }else{s.err++;s.sel=null;s.bad=k;tone(false);render()}
+}
+function tfAnswer(v){
+  const s=L.steps[L.i];if(L.answered)return;L.answered={k:v};say(s.w.es);
+  const ok=(v===1)===s.truth;
+  settle(s,ok,ok?'':(s.truth?`Oui, « ${esc(s.w.es)} » va bien avec l'image.`:`Non : l'image ne montre pas « ${esc(s.w.es)} ».`),
+    ()=>({t:'tf',w:s.w,shown:s.shown,truth:s.truth}));
+}
+function buildTap(k){
+  const s=L.steps[L.i];if(L.answered||s.used.includes(k))return;s.used.push(k);
+  if(s.used.length<s.target.length){render();return}
+  const ok=s.used.map(i=>nw(s.tiles[i])).join(' ')===s.target.map(nw).join(' ');
+  say(s.sent);
+  settle(s,ok,`« ${esc(fill(s.sent))} »`,()=>({t:'build',sent:s.sent,fr:s.fr,p:s.p,target:s.target,tiles:shuffle(s.tiles.slice()),used:[]}));
+}
+/* Boutons de son : seulement si la phrase a été enregistrée */
+function audioTools(t){return hasAudio(t)?'<button class="tool" data-act="hear">🔊 Écouter</button><button class="tool" data-act="slow">🐢 Lentement</button>':'<span class="tool muted">🔇 Voix à venir</span>'}
+function micBtn(){return micOK?`<button class="tool mic ${L.recOn?'on':''}" data-act="mic">${L.recOn?'■ Stop':(L.mine?'🎤 Refaire':'🎤 M\'enregistrer')}</button>`:''}
+/* Zone sous les boutons : auto-évaluation (s'enregistrer, se réécouter, se noter) */
+function micBox(){
+  const s=L.steps[L.i],t=s.w.es,model=hasAudio(t);
+  if(!micOK)return `<div class="heard nomic" id="heard">🎤 ${micDenied?'Le micro est refusé. Autorise-le dans Chrome : icône 🔒 à gauche de l\'adresse → Autorisations → Micro.':'Ici, le micro n\'est pas disponible : répète à voix haute. Dans l\'appli installée, tu peux t\'enregistrer et te comparer.'}</div>`;
+  if(L.recOn)return `<div class="heard" id="heard"><b>J'enregistre…</b> parle, puis touche « Stop ».</div>`;
+  if(!L.mine)return `<div class="heard" id="heard">Touche 🎤, dis la phrase, puis compare-toi ${model?'à Yasmine':'à la transcription et au guide des sons'}.</div>`;
+  const rate=s.t==='speak'&&!L.answered;
+  return `<div class="selfbox" id="heard"><div class="tools">${model?'<button class="tool" data-act="cmpmodel">▶ Yasmine</button>':''}<button class="tool" data-act="cmpme">▶ Moi</button></div>
+    ${rate?`<p class="note" style="text-align:center">${model?'Réécoute les deux. Ta prononciation est-elle pareille ?':'Relis la transcription et le guide des sons. Ta prononciation est-elle juste ?'}</p>
+    <div class="opts rate"><button class="opt" data-act="rate" data-v="0"><span>😕</span>À retravailler</button><button class="opt" data-act="rate" data-v="1"><span>🙂</span>Presque</button><button class="opt" data-act="rate" data-v="2"><span>😃</span>Pareil !</button></div>`:''}</div>`;
+}
+function answer(k){
+  const s=L.steps[L.i];if(L.answered)return;
+  let ok,msg='';
+  if(s.t==='talk'){const o=s.opts[k];ok=isOk(o);const right=s.opts.find(isOk);say(right[0]);
+    msg=ok?'':`La bonne réponse : « ${esc(fill(right[0]))} »`;}
+  else if(s.t==='gap'){ok=s.opts[k]===s.g.a;const full=fill(s.g.s.replace('_',s.g.a));say(full);
+    msg=`« ${esc(full)} »`;}
+  else{const o=s.opts[k];ok=o.es===s.w.es;say(s.w.es);msg=`${esc(s.w.es)} = ${esc(s.w.fr)}`;}
+  tone(ok);
+  if(ok)L.ok++;else{L.mistakes++;if(!s.retry)L.steps.push(Object.assign({},s,{retry:1,opts:shuffle(s.opts.slice())}));}
+  L.answered={ok,k,msg};render();
+}
+async function doMic(){
+  if(L.recOn){L.recOn=false;const b=await recStop();if(b&&b.size>800){L.mine=b}render();return}
+  try{try{player&&player.pause()}catch(e){}
+    const {done}=await recStart();L.recOn=true;L.mine=null;render();
+    const b=await done;if(L.recOn){L.recOn=false;if(b&&b.size>800)L.mine=b;render()}
+  }catch(e){L.recOn=false;micOK=false;micDenied=true;render()}
+}
+function rate(v){
+  const s=L.steps[L.i];if(L.answered)return;const ok=v>0;
+  settle(s,ok,ok?(v===2?'Même musique que le modèle, bravo !':'Presque : réécoute encore une fois le modèle.'):'On la reprend à la fin de la leçon.',()=>({t:'speak',w:s.w}));
+}
+/* ---------- Fin de leçon ---------- */
+function finish(){
+  const stars=L.mistakes===0?3:L.mistakes<=2?2:1;const gain=10+L.ok;
+  const t=today();
+  if(S.lastDay!==t){S.streak=S.lastDay===yesterday()?S.streak+1:1;S.lastDay=t}
+  if(S.todayDate!==t){S.todayDate=t;S.todayCount=0}
+  S.todayCount++;S.xp+=gain;
+  let newUnit=false;
+  if(L.unit>=0){const id=UNITS[L.unit].id;newUnit=!S.stars[id];S.stars[id]=Math.max(S.stars[id]||0,stars)}
+  save();R={stars,gain,newUnit,unit:L.unit,goalHit:S.todayCount===S.goal};view='result';render();confetti();
+  
+}
+function result(){
+  const u=R.unit>=0?UNITS[R.unit]:null,next=R.unit>=0&&UNITS[R.unit+1];
+  app.innerHTML=`<div class="center">
+    <div class="lola big" aria-hidden="true">Y</div>
+    <h2 style="font-size:38px">${R.stars===3?'Mrigel!':'Behi barcha!'}</h2>
+    <div class="bigstars" aria-label="${R.stars} étoiles sur 3">${[1,2,3].map(n=>`<span class="${n>R.stars?'off':''}">⭐</span>`).join('')}</div>
+    <div class="xp">+${R.gain} points</div>
+    <p class="say">${R.goalHit?'Objectif du jour atteint ! 🔥 Ta série continue. ':''}${R.newUnit&&next?`Nouveau niveau débloqué : ${esc(next.es)} ${next.e}`:u?'Tu as encore mieux retenu tes mots.':L&&L.kind==='chat'?'Belle conversation. Continue comme ça !':'Révision terminée, ton vocabulaire est bien ancré.'}</p>
+    <div style="width:100%;display:grid;gap:14px;margin-top:8px">
+      ${R.newUnit&&next?`<button class="btn sun" data-act="unit" data-i="${R.unit+1}">Niveau suivant →</button>`:''}
+      <button class="btn" data-act="home">Retour à la carte</button></div></div>`;
+}
+function confetti(){return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const c=document.createElement('div');c.className='confetti';
+  const cols=['#FFC93C','#FF6F5E','#169C98','#23A55A','#F48FB1'];
+  for(let i=0;i<40;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'%';p.style.background=cols[i%5];p.style.animationDelay=Math.random()*.6+'s';c.appendChild(p)}
+  document.body.appendChild(c);setTimeout(()=>c.remove(),3200);
+}
+
+/* ---------- Dico, réglages, accueil ---------- */
+function dico(){
+  const us=learnedUnits();
+  app.innerHTML=`<div class="head"><button class="icon-btn" data-act="home" aria-label="Retour">←</button><h2>Mon lexique</h2></div>
+  <p class="note">Touche un mot pour l'entendre. ${us.reduce((n,u)=>n+u.words.length,0)} mots appris !</p>
+  ${us.length?us.map(u=>`<div class="dunit">${u.e} ${esc(u.es)}</div><div class="dico">${u.words.map(w=>`<button class="dw" data-act="sayw" data-w="${esc(w[0])}">${w[2][0]==='#'?pic(w[2]):`<span>${esc(w[2])}</span>`}<b>${esc(w[0])}</b><small>${esc(w[1])}</small></button>`).join('')}</div>`).join('')
+  :'<div class="empty" style="margin-top:14px">Termine le premier niveau pour remplir ton lexique.</div>'}`;
+}
+function settings(){
+  app.innerHTML=`<div class="head"><button class="icon-btn" data-act="home" aria-label="Retour">←</button><h2>Réglages</h2></div>
+  <div class="set"><label class="field" for="nm">Prénom<input id="nm" value="${esc(S.name)}" maxlength="20" autocomplete="off"></label></div>
+  <div class="set">
+    <button class="toggle" data-act="slowtog"><span>🐢 Voix plus lente</span><span class="sw ${S.slow?'on':''}"></span></button>
+    <div class="toggle"><span>🎯 Leçons par jour</span><span class="row" style="flex:none;gap:8px">${[1,2,3].map(n=>`<button class="tool ${S.goal===n?'goal-on':''}" style="min-width:48px;justify-content:center;" data-act="goal" data-n="${n}">${n}</button>`).join('')}</span></div>
+    <button class="tool" data-act="studio" style="justify-content:center">🎙️ Studio d'enregistrement</button>
+    <p class="note">Voix : ${REMOTE.size} phrases en ligne, ${LOCAL.size} enregistrées sur ce téléphone. Les phrases sans voix s'affichent écrites.</p>
+    <p class="note">Micro : ${micOK?'actif. Tu t\'enregistres et tu te compares au modèle.':micDenied?'refusé. Autorise-le dans Chrome : icône 🔒 → Autorisations → Micro.':inFrame?'bloqué dans cette page. Utilise l\'appli installée.':'non disponible sur ce navigateur. Utilise Chrome.'}</p></div>
+  <div class="set"><b>💾 Code de sauvegarde</b>
+    <p class="note">La progression est gardée sur cet appareil. Pour en garder une copie ailleurs (changement de téléphone, réinstallation), copie ce code dans tes notes ou envoie-le-toi par e-mail.</p>
+    <button class="tool" data-act="bkshow" style="justify-content:center">${showBk?'Masquer le code':'Afficher mon code'}</button>
+    ${showBk?`<textarea id="bkout" class="code" readonly>${esc(toCode())}</textarea><button class="tool" data-act="bkcopy" style="justify-content:center">📋 Copier le code</button>`:''}
+    <label class="field" for="bkin">Restaurer avec un code<textarea id="bkin" class="code" placeholder="Colle ton code ici"></textarea></label>
+    <button class="tool" data-act="bkrestore" style="justify-content:center">Restaurer</button>
+    ${bkMsg?`<p class="note" role="status" style="color:var(--ink)">${esc(bkMsg)}</p>`:''}</div>
+  <div class="set"><p class="note">Version ${APP_VERSION} · ${UNITS.length} niveaux</p>
+    ${confirmReset?`<p style="margin:0;font-weight:800">Tout effacer, vraiment ?</p><div class="row"><button class="btn coral" data-act="resetyes">Oui, effacer</button><button class="btn ghost" data-act="resetno">Non</button></div>`
+    :`<button class="btn ghost" data-act="reset">Recommencer à zéro</button>`}</div>
+  <button class="btn" data-act="home">Enregistrer</button>`;
+}
+/* Studio d'enregistrement : pour la personne tunisienne qui prête sa voix */
+let studioU='all',studioBusy=null,studioMsg='';
+function studio(){
+  const list=studioList(),done=list.filter(x=>LOCAL.has(x.h)).length,online=list.filter(x=>REMOTE.has(x.h)).length;
+  const shown=list.filter(x=>studioU==='all'||x.u.id===studioU);
+  app.innerHTML=`<div class="head"><button class="icon-btn" data-act="settings" aria-label="Retour">←</button><h2>Studio</h2></div>
+  <div class="set"><p class="note" style="color:var(--ink)">Pour une personne qui parle tunisien : touche ● pour enregistrer chaque phrase avec ta voix naturelle, puis ■ pour arrêter. Réécoute avec ▶ et recommence si besoin. Si une transcription te paraît fausse, note-la pour la signaler.</p>
+    <div class="bar" style="margin:0"><i style="width:${list.length?done/list.length*100:0}%"></i></div>
+    <p class="note">${done} / ${list.length} phrases enregistrées sur ce téléphone · ${online} déjà en ligne</p>
+    ${micOK?'':'<p class="note" style="color:var(--bad)">Le micro n\'est pas disponible ici. Ouvre l\'appli installée dans Chrome.</p>'}
+    <div class="row"><button class="btn" data-act="szip" ${done?'':'disabled'}>📦 Télécharger</button>${navigator.canShare?`<button class="btn ghost" data-act="sshare" ${done?'':'disabled'}>📤 Partager</button>`:''}</div>
+    ${studioMsg?`<p class="note" role="status" style="color:var(--ink)">${esc(studioMsg)}</p>`:''}</div>
+  <div class="chipsel">${['all',...UNITS.map(u=>u.id)].map(id=>`<button class="chip ${studioU===id?'on':''}" data-act="sfilter" data-u="${id}">${id==='all'?'Tout':esc(UNITS.find(u=>u.id===id).es)}</button>`).join('')}</div>
+  <div class="slist">${shown.map(x=>`<div class="srow ${LOCAL.has(x.h)?'done':''}"><div class="stxt"><b>${esc(x.t)}</b>${x.fr?`<small>${esc(x.fr)}</small>`:''}</div>
+    <button class="tool mic ${studioBusy===x.h?'on':''}" data-act="srec" data-h="${x.h}" aria-label="${studioBusy===x.h?'Arrêter':'Enregistrer'}">${studioBusy===x.h?'■':'●'}</button>
+    <button class="tool" data-act="splay" data-h="${x.h}" ${LOCAL.has(x.h)||REMOTE.has(x.h)?'':'disabled'} aria-label="Écouter">▶</button></div>`).join('')}</div>`;
+}
+async function studioRec(h){
+  if(studioBusy===h){await recStop();return}
+  if(studioBusy)return;
+  try{try{player&&player.pause()}catch(e){}
+    const {done}=await recStart();studioBusy=h;studioMsg='';render();
+    const b=await done;studioBusy=null;
+    if(b&&b.size>800){await idb.set(h,b);LOCAL.add(h);tone(true)}
+    render();
+  }catch(e){studioBusy=null;micOK=false;micDenied=true;render()}
+}
+function playHash(h){const x=studioList().find(y=>y.h===h);if(x)say(x.t)}
+async function doExport(how){
+  studioMsg='Préparation du fichier…';render();
+  try{
+    const {blob,count}=await exportZip();const name='ahla-voix-'+new Date().toISOString().slice(0,10)+'.zip';
+    if(how==='share'){const f=new File([blob],name,{type:'application/zip'});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Voix tunisienne – Ahla bik'});studioMsg=count+' enregistrements partagés. Envoie le fichier à Claude pour les mettre en ligne.';render();return}}
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000);
+    studioMsg=count+' enregistrements dans « '+name+' ». Envoie ce fichier à Claude pour les mettre en ligne.';
+  }catch(e){studioMsg=e&&e.name==='AbortError'?'Partage annulé.':'Impossible de créer le fichier. Réessaie.'}
+  render();
+}
+/* Guide des sons */
+function sons(){
+  app.innerHTML=`<div class="head"><button class="icon-btn" data-act="home" aria-label="Retour">←</button><h2>Les sons</h2></div>
+  <p class="note" style="margin-bottom:12px">Le tunisien s'écrit ici en lettres latines. Des chiffres et des lettres doubles notent les sons qui n'existent pas en français.</p>
+  <div class="sons">${SOUNDS.map(([k,ar,d,ex])=>{const w=ex.split(' (')[0];return `<div class="son"><div class="sk">${esc(k)}<small>${esc(ar)}</small></div><div class="sd"><p>${esc(d)}</p>${hasAudio(w)?`<button class="tool" data-act="sayw" data-w="${esc(w)}">🔊 ${esc(ex)}</button>`:`<span class="note">Exemple : ${esc(ex)}</span>`}</div></div>`}).join('')}</div>`;
+}
+function welcome(){
+  app.innerHTML=`<div class="center">
+    <div class="lola big" aria-hidden="true">Y</div>
+    <h1 style="font-size:36px">Ahla bik!</h1>
+    <p class="say" style="font-size:18px">Je suis <b>Yasmine</b>. Quelques minutes par jour pour parler le tunisien de tous les jours : au café, au souk, au travail, entre amis. Comment t'appelles-tu ?</p>
+    <label class="field" for="nm" style="width:100%;text-align:left">Ton prénom<input id="nm" maxlength="20" autocomplete="off" placeholder="Ton prénom"></label>
+    <button class="btn" data-act="go">Yalla, on y va !</button></div>`;
+}
+
+function render(){
+  if(view==='welcome')welcome();else if(view==='lesson')lesson();else if(view==='result')result();
+  else if(view==='dico')dico();else if(view==='settings')settings();else if(view==='studio')studio();else if(view==='sons')sons();else home();
+}
+function readName(){const n=$('#nm');if(n){const v=n.value.trim();if(v)S.name=v;save()}}
+
+app.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b||b.disabled)return;const a=b.dataset.act;
+  if(a==='newok'){S.ver=APP_VERSION;save();render()}
+  else if(a==='go'){readName();if(!S.name){$('#nm').focus();return}S.ver=APP_VERSION;save();view='home';render();}
+  else if(a==='unit'){const i=+b.dataset.i;if(!unlocked(i)){;return}startUnit(i);speakStep()}
+  else if(a==='review'){startReview();speakStep()}
+  else if(a==='chat'){startChat();speakStep()}
+  else if(a==='hear')speakStep();
+  else if(a==='slow'){const s=L.steps[L.i];say(s.w.es,true)}
+  else if(a==='mic')doMic();
+  else if(a==='cmpmodel')say(L.steps[L.i].w.es);
+  else if(a==='cmpme'){L.mine&&playBlob(L.mine)}
+  else if(a==='rate')rate(+b.dataset.v);
+  else if(a==='studio'){readName();view='studio';render()}
+  else if(a==='sons'){view='sons';render()}
+  else if(a==='sfilter'){studioU=b.dataset.u;render()}
+  else if(a==='srec')studioRec(b.dataset.h);
+  else if(a==='splay')playHash(b.dataset.h);
+  else if(a==='szip')doExport('dl');
+  else if(a==='sshare')doExport('share');
+  else if(a==='ans')answer(+b.dataset.k);
+  else if(a==='ml')matchLeft(+b.dataset.k);
+  else if(a==='mr')matchRight(+b.dataset.k);
+  else if(a==='tf')tfAnswer(+b.dataset.v);
+  else if(a==='bt')buildTap(+b.dataset.k);
+  else if(a==='bu'){const s=L.steps[L.i];if(!L.answered){s.used.splice(+b.dataset.j,1);render()}}
+  else if(a==='bkshow'){showBk=!showBk;bkMsg='';render()}
+  else if(a==='bkcopy'){const t=$('#bkout');const v=t?t.value:toCode();
+    try{navigator.clipboard.writeText(v).then(()=>{bkMsg='Code copié ✅ Colle-le dans tes notes ou un e-mail.';render()},()=>{t&&t.select();bkMsg='Sélectionne le code et copie-le.';render()})}catch(e){t&&t.select()}}
+  else if(a==='bkrestore'){const v=($('#bkin')||{}).value||'';
+    try{mergeSave(fromCode(v));bkMsg='Progression restaurée ✅ Rien n\'a été effacé : on a gardé le meilleur des deux.'}catch(e){bkMsg='Ce code ne marche pas. Vérifie que tu l\'as copié en entier.'}render()}
+  else if(a==='next'){L.i++;L.answered=null;L.tries=0;L.res=null;L.micMsg='';L.learnDone=false;L.mine=null;if(L.recOn){L.recOn=false;recStop()}if(L.i>=L.steps.length)finish();else{render();speakStep()}}
+  else if(a==='quit'){speechSynthesis&&speechSynthesis.cancel();view='home';render()}
+  else if(a==='home'){readName();confirmReset=false;view='home';render()}
+  else if(a==='dico'){view='dico';render()}
+  else if(a==='sayw')say(b.dataset.w);
+  else if(a==='settings'){view='settings';render()}
+  else if(a==='slowtog'){readName();S.slow=!S.slow;save();render()}
+  else if(a==='goal'){readName();S.goal=+b.dataset.n;save();render()}
+  else if(a==='reset'){readName();confirmReset=true;render()}
+  else if(a==='resetno'){confirmReset=false;render()}
+  else if(a==='resetyes'){try{localStorage.removeItem(KEY);localStorage.removeItem(BAK)}catch(e){}S=def();confirmReset=false;view='welcome';render()}
+});
+app.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='nm'&&view==='welcome')$('[data-act=go]').click()});
+
+view=S.name?'home':'welcome';render();
+</script>
+
+<script>
+/* Mise à jour automatique : quand une nouvelle version est installée, la page se recharge une fois (la progression est dans le téléphone, elle ne bouge pas). */
+if('serviceWorker' in navigator){
+  const hadCtrl=!!navigator.serviceWorker.controller;let reloaded=false;
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{if(hadCtrl&&!reloaded){reloaded=true;location.reload()}});
+  addEventListener('load',()=>navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>{r.update().catch(()=>{})}).catch(()=>{}));
+}
+</script>
+</body></html>

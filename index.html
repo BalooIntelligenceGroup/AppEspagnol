@@ -601,8 +601,62 @@ const V8_3=[
   gaps:[['Quiero dos _, por favor.','entradas',['entrada','silencio'],'🎟️'],['La película _ a las seis.','empieza',['empiezo','gusta'],'🕕'],['¡Me ha _ mucho!','gustado',['gusta','gustar'],'👏']]},
 ];
 insAfter('bosque',V8_1);insAfter('estaciones',V8_2);UNITS.push(...V8_3);
-const APP_VERSION=8,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
-  8:'3 nouveaux niveaux : les petites bêtes, les émotions et au cinéma.'};
+
+/* ---------- Version 9 : 5 niveaux de plus ---------- */
+const V9_1=[
+ {id:'musica', tier:1, es:'¡Música!', fr:'Les instruments', e:'🎸', words:[
+   ['la guitarra','la guitare','🎸'],['el piano','le piano','🎹'],['el tambor','le tambour','🥁'],
+   ['la trompeta','la trompette','🎺'],['el violín','le violon','🎻'],['la música','la musique','🎶']],
+  talk:[
+   {l:'¿Qué instrumento tocas, {name}?', p:'🎸🎹🥁', o:[['Toco el piano.',1],['Toco la manzana.',0]]},
+   {l:'¿Qué hace «bum, bum»?', p:'🥁', o:[['¡El tambor!',1],['¡La guitarra!',0]]},
+   {l:'¿Cantamos y tocamos juntas?', p:'🎤🎸', o:[['¡Sí, me encanta la música!',1],['No, tengo un tambor de pan.',0]]}],
+  gaps:[['Toco la _ con mis dedos.','guitarra',['tambor','piano'],'🎸'],['El _ hace «bum, bum».','tambor',['guitarra','trompeta'],'🥁'],['Me gusta mucho la _.','música',['tambor','piano'],'🎶']]},
+ {id:'marino', tier:1, es:'Bajo el mar', fr:'Sous la mer', e:'🐙', words:[
+   ['la ballena','la baleine','🐋'],['el delfín','le dauphin','🐬'],['el tiburón','le requin','🦈'],
+   ['el pulpo','la pieuvre','🐙'],['la foca','le phoque','🦭'],['el pez payaso','le poisson-clown','🐠']],
+  talk:[
+   {l:'¿Qué animal es muy, muy grande?', p:'🌊', o:[['¡La ballena!',1],['¡El pez payaso!',0]]},
+   {l:'¿Cuántos brazos tiene el pulpo?', p:'🐙', o:[['Tiene ocho brazos.',1],['Tiene dos brazos.',0]]},
+   {l:'¡Cuidado! ¡Un tiburón!', p:'🦈', o:[['¡Tengo miedo! ¡Vamos!',1],['¡Qué rico!',0]]}],
+  gaps:[['El _ salta en el agua.','delfín',['foca','ballena'],'🐬'],['El pulpo tiene _ brazos.','ocho',['dos','uno'],'🐙'],['La _ es muy grande.','ballena',['pulpo','delfín'],'🐋']]},
+];
+const V9_2=[
+ {id:'ayudo', tier:2, es:'Ayudo en casa', fr:'Aider à la maison', e:'🧹', words:[
+   ['pongo la mesa','je mets la table','🍽️'],['friego los platos','je fais la vaisselle','🧽'],['ordeno mi cuarto','je range ma chambre','🧸'],
+   ['barro el suelo','je balaie le sol','🧹'],['riego las plantas',"j'arrose les plantes",'🪴'],['saco la basura','je sors la poubelle','🗑️']],
+  talk:[
+   {l:'{name}, ¿me ayudas en casa?', p:'🏠', o:[['¡Sí, mamá! ¿Qué hago?',1],['No, soy un pulpo.',0]]},
+   {l:'Vamos a comer. ¿Pones la mesa?', p:'🍽️', o:[['Sí, pongo la mesa ahora.',1],['Sí, riego la mesa.',0]]},
+   {l:'¡Tu cuarto está muy desordenado!', p:'🧸👟📚', o:[['Vale, ordeno mi cuarto.',1],['Vale, saco la ballena.',0]]},
+   {l:'Las plantas tienen sed.', p:'🪴', o:[['Riego las plantas.',1],['Friego las plantas.',0]]}],
+  gaps:[['Antes de comer, _ la mesa.','pongo',['riego','barro'],'🍽️'],['Después de comer, _ los platos.','friego',['pongo','riego'],'🧽'],['Las plantas tienen sed. Las _.','riego',['barro','pongo'],'🪴']]},
+ {id:'vacaciones', tier:2, es:'De vacaciones', fr:'Partir en vacances', e:'🧳', words:[
+   ['voy a viajar','je vais voyager','🧳'],['la maleta','la valise','💼'],['el pasaporte','le passeport','🛂'],
+   ['el hotel',"l'hôtel",'🏨'],['la montaña','la montagne','⛰️'],['voy a nadar','je vais nager','🤿']],
+  talk:[
+   {l:'¿Qué vas a hacer en vacaciones, {name}?', p:'🧳', o:[['Voy a viajar a España con mi familia.',1],['Voy a fregar el avión.',0]]},
+   {l:'¿Qué pones en la maleta?', p:'💼', o:[['Pongo mi ropa y mis zapatos.',1],['Pongo un elefante.',0]]},
+   {l:'¿Vas a dormir en un hotel?', p:'🏨', o:[['Sí, vamos a dormir en un hotel cerca del mar.',1],['Sí, voy a dormir en el pasaporte.',0]]},
+   {l:'¿Y qué vas a hacer en la playa?', p:'🏖️', o:[['Voy a nadar y a jugar con la arena.',1],['Voy a nadar en la maleta.',0]]}],
+  gaps:[['Mañana yo _ a viajar.','voy',['vas','va'],'🧳'],['Pongo mi ropa en la _.','maleta',['hotel','pasaporte'],'💼'],['En verano vamos a ir a la _.','montaña',['hotel','pasaporte'],'⛰️']]},
+];
+const V9_3=[
+ {id:'nueva', tier:3, es:'Una nueva amiga', fr:'Se faire une amie', e:'🤝', words:[
+   ['¿de dónde eres?',"d'où viens-tu ?",'🌍'],['soy de Francia','je viens de France','🗼'],['¿hablas francés?','tu parles français ?','💬'],
+   ['un poco','un peu','🤏'],['¿quieres ser mi amiga?','tu veux être mon amie ?','🤝'],['¡claro!','bien sûr !','😃']],
+  talk:[
+   {l:'Hola, soy Sofía. Soy nueva en el colegio. ¿Cómo te llamas?', p:'🏫👧', o:[['Me llamo {name}. ¡Bienvenida!',1],['Me llamo colegio.',0]]},
+   {l:'Gracias. ¿De dónde eres?', p:'🌍', o:[['Soy de Francia. ¿Y tú?',1],['Soy de pizza.',0]]},
+   {l:'Yo soy de México. ¿Hablas francés y español?', p:'🇲🇽', o:[['Hablo francés y un poco de español.',1],['Hablo con el tiburón.',0]]},
+   {l:'¡Qué bien! ¿Quieres jugar conmigo en el recreo?', p:'⚽', o:[['¡Claro! ¿Quieres ser mi amiga?',1],['No, estoy en la maleta.',0]]},
+   {l:'¡Sí! ¡Somos amigas!', p:'🤝', o:[['¡Genial! Hasta luego, Sofía.',1],['¡Buenas noches, doctora!',0]]}],
+  gaps:[['¿De _ eres?','dónde',['qué','quién'],'🌍'],['_ de Francia.','Soy',['Estoy','Tengo'],'🗼'],['Hablo un _ de español.','poco',['mucho','pequeño'],'🤏']]},
+];
+insAfter('insectos',V9_1);insAfter('emociones',V9_2);UNITS.push(...V9_3);
+const APP_VERSION=9,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
+  8:'3 nouveaux niveaux : les petites bêtes, les émotions et au cinéma.',
+  9:'5 nouveaux niveaux : la musique, sous la mer, aider à la maison, partir en vacances et se faire une amie.'};
 
 /* ---------- Phrases à trous des premiers niveaux : [phrase avec _, bon mot, [pièges], image] ---------- */
 const GAPS = {

@@ -32,6 +32,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Comptines** `SONGS` (karaoké), chacune ouverte par un niveau.
 - **Limite par jour** `S.limit` (minutes, réglée dans l'espace parent), `S.unlockDay` pour débloquer ; `guard()` avant chaque activité.
 - **Boutons retour** : chaque écran a un ←/✕ ; l'accueil d'un joueur suit `wStep` (prénom → fille/garçon → univers) avec retour à chaque étape.
+- **Traductions** (v15) : `tr(es)` cherche la phrase dans les dialogues (`d.f`, `o[1]`) puis dans `FR_EXTRA` (phrases à trou et dialogues sans français). Toute nouvelle phrase à trou ou réplique doit y avoir sa traduction. L'encadré « Continuer » affiche `trBox()` ; le bouton « Traduire » sur les questions dépend de `S.trQ` (réglé par profil dans l'espace parent), jamais en évaluation.
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
 ## Publier une nouvelle version

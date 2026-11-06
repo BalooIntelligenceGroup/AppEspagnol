@@ -26,6 +26,10 @@ button.lola{border:0;cursor:pointer;padding:0}
 .ava-f{position:absolute;top:.2em;left:50%;transform:translateX(-50%);font-size:.42em}
 .ava-x{position:absolute;right:-.42em;bottom:-.12em;font-size:.5em}
 .lola.big .ava{font-size:70px}
+img.fx{width:1.18em;height:1.18em;object-fit:contain;vertical-align:-.22em;display:inline-block;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.pictxt{display:inline-block;max-width:100%;font-family:var(--f-display);font-weight:800;font-size:30px;line-height:1.12;color:var(--lagoon-d);text-align:center;overflow-wrap:anywhere;padding:4px 6px}
+.opts.pics .pictxt,.mpic .pictxt,.mcard .pictxt,.sticker .pictxt{font-size:15px;padding:2px}
+.bubble-f .pictxt{font-size:11px;line-height:1.05;padding:2px}
 .trad{background:var(--card);border-radius:14px;padding:8px 12px;margin:2px 0 10px;text-align:left;color:var(--ink)}
 .trad p{margin:2px 0!important;font-size:16px;font-weight:700;line-height:1.35}
 .frq{display:block;font-size:15px;font-weight:700;color:var(--muted);margin-top:4px;line-height:1.3}
@@ -767,7 +771,7 @@ const DROP={saludos:'por favor',colores:'negro',numeros:'seis',mascotas:'el páj
   presentarse:'¿y tú?',estas:'estoy triste',gustos:'¿te gusta?',preguntas:'¿cuántos hay?',ayuda:'¿puedo jugar?'};
 const ALL_UNITS=UNITS.slice();
 UNITS.splice(0,UNITS.length,...ACTIVE.map(id=>ALL_UNITS.find(u=>u.id===id)));
-const APP_VERSION=15,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
+const APP_VERSION=16,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
   8:'3 nouveaux niveaux : les petites bêtes, les émotions et au cinéma.',
   9:'5 nouveaux niveaux : la musique, sous la mer, aider à la maison, partir en vacances et se faire une amie.',
   10:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.',
@@ -775,7 +779,8 @@ const APP_VERSION=15,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, 
   12:"Nouveau : ton univers, un profil par enfant, la séance du jour et une évaluation à la fin de chaque étape. Toutes tes étoiles sont gardées.",
   13:"Nouveau : l'histoire de ton compagnon, l'album d'autocollants, 3 jeux, la garde-robe, les défis en famille et les comptines !",
   14:"Petites améliorations : bouton retour en haut des écrans de départ, et tu peux changer « fille ou garçon » dans les réglages.",
-  15:"Nouveau : après chaque réponse, tu vois la traduction en français. Tes parents peuvent aussi activer un bouton « Traduire » sur les questions."};
+  15:"Nouveau : après chaque réponse, tu vois la traduction en français. Tes parents peuvent aussi activer un bouton « Traduire » sur les questions.",
+  16:"Nouveau : de belles images en 3D partout dans l'appli ! Pour les mots comme « gracias », tu vois le mot en français."};
 
 /* ---------- Phrases à trous des premiers niveaux : [phrase avec _, bon mot, [pièges], image] ---------- */
 const GAPS = {
@@ -993,8 +998,11 @@ const $=s=>document.querySelector(s);
 const app=$('#app');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
-const W=w=>({es:gx(w[0],S.gender),fr:gx(w[1],S.gender),e:w[2]});
-const pic=(e,cls='')=>e[0]==='#'?`<div class="swatch ${cls}" style="background:${e}"></div>`:esc(e);
+/* Mots abstraits : aucune image ne les montre bien, on affiche le mot en français à la place */
+const ABSTRACT=new Set(['hola','gracias','¿cómo te llamas?','me llamo','¿cómo estás?','yo también','¿qué es?','¿dónde está?','¿quién es?','aquí','allí','no entiendo','otra vez, por favor']);
+const W=w=>({es:gx(w[0],S.gender),fr:gx(w[1],S.gender),e:ABSTRACT.has(w[0])?'txt:'+gx(w[1],S.gender):w[2]});
+const isTxt=e=>typeof e==='string'&&e.startsWith('txt:');
+const pic=(e,cls='')=>isTxt(e)?`<span class="pictxt ${cls}">${esc(e.slice(4))}</span>`:e[0]==='#'?`<div class="swatch ${cls}" style="background:${e}"></div>`:esc(e);
 /* Un niveau ouvert une fois reste ouvert pour toujours, même si une mise à jour ajoute des niveaux avant lui */
 const unlocked=i=>{
   const u=UNITS[i];
@@ -1196,7 +1204,7 @@ function lesson(){
   let body=L.kind==='eval'&&L.i===0&&!L.answered?`<div class="evalhead">📝 Évaluation de l'étape ${L.tier} · ${L.steps.length} questions · 80 % pour réussir</div>`:'';
   if(s.t==='learn'){
     body=`<div class="ask">${s.conv?'Nouvelle phrase !':'Nouveau mot !'}<small>${micOK?'Écoute '+G().es+', puis appuie sur 🎤 et répète.':'Écoute '+G().es+', puis répète à voix haute.'}</small></div>
-    <div class="card"><div class="pic">${pic(s.w.e)}</div><div class="es">${esc(s.w.es)}</div><div class="fr">${esc(s.w.fr)}</div></div>
+    <div class="card"><div class="pic">${pic(s.w.e)}</div><div class="es">${esc(s.w.es)}</div>${isTxt(s.w.e)?'':`<div class="fr">${esc(s.w.fr)}</div>`}</div>
     <div class="tools"><button class="tool" data-act="hear">🔊 Écouter</button><button class="tool" data-act="slow">🐢 Lentement</button>
     ${micOK&&!L.learnDone?'<button class="tool mic" data-act="mic">🎤 Répéter</button>':''}</div>${micBox()}`;
   }
@@ -1243,11 +1251,11 @@ function lesson(){
     body=`<div class="ask">Écoute : que veut dire ${G().es} ?<small>Appuie sur le haut-parleur pour réécouter.</small></div>
     <button class="speaker" data-act="hear" aria-label="Écouter la phrase">🔊</button>
     ${soundBroken?`<div class="card"><div class="es">${esc(s.w.es)}</div><div class="fr">Sans le son, lis la phrase.</div></div>`:'<button class="tool" style="margin:0 auto" data-act="slow">🐢 Lentement</button>'}
-    <div class="opts">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}"><span>${pic(o.e)}</span><span>${esc(o.fr)}</span></button>`).join('')}</div>`;
+    <div class="opts">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}">${isTxt(o.e)?'':`<span>${pic(o.e)}</span>`}<span>${esc(o.fr)}</span></button>`).join('')}</div>`;
   }
   if(s.t==='speak'){
     body=`<div class="ask">À toi de parler !<small>${micOK?`Dis-le en espagnol. ${G().es} vérifie ton accent (essai ${Math.min(L.tries+1,3)} sur 3).`:'Écoute '+G().es+' et répète à voix haute.'}</small></div>
-    <div class="card"><div class="pic">${pic(s.w.e)}</div><div class="es">${esc(s.w.es)}</div><div class="fr">${esc(s.w.fr)}</div></div>
+    <div class="card"><div class="pic">${pic(s.w.e)}</div><div class="es">${esc(s.w.es)}</div>${isTxt(s.w.e)?'':`<div class="fr">${esc(s.w.fr)}</div>`}</div>
     <div class="tools"><button class="tool" data-act="hear">🔊 Écouter</button><button class="tool" data-act="slow">🐢 Lentement</button>
     ${micOK&&!L.answered?'<button class="tool mic" data-act="mic">🎤 Je parle</button>':''}</div>${micBox()}`;
   }
@@ -1659,7 +1667,7 @@ function settings(){
     <label class="field" for="bkin">Restaurer avec un code<textarea id="bkin" class="code" placeholder="Colle ton code ici"></textarea></label>
     <button class="tool" data-act="bkrestore" style="justify-content:center">Restaurer</button>
     ${bkMsg?`<p class="note" role="status" style="color:var(--ink)">${esc(bkMsg)}</p>`:''}</div>
-  <div class="set"><p class="note">Version ${APP_VERSION} · ${UNITS.length} niveaux</p>
+  <div class="set"><p class="note">Version ${APP_VERSION} · ${UNITS.length} niveaux<br>Images 3D : Fluent Emoji © Microsoft Corporation, licence MIT.</p>
     ${confirmReset?`<p style="margin:0;font-weight:800">Tout effacer, vraiment ?</p><div class="row"><button class="btn coral" data-act="resetyes">Oui, effacer</button><button class="btn ghost" data-act="resetno">Non</button></div>`
     :`<button class="btn ghost" data-act="reset">Recommencer à zéro</button>`}</div>
   <button class="btn" data-act="home">Enregistrer</button>`;
@@ -1841,6 +1849,32 @@ app.addEventListener('animationend',e=>{
   GM.lock=true;tone(false);srs(GM.cur.target,false);render();setTimeout(nextCatch,900);
 });
 app.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='nm'&&view==='welcome')$('[data-act=go]').click()});
+
+
+/* ---------- Images 3D : Fluent Emoji © Microsoft Corporation, licence MIT (fichier fx/LICENSE) ----------
+   Chaque émoji affiché dans l'appli est remplacé par son image 3D (dossier fx/). Sans image, l'émoji du téléphone reste. */
+const FX=new Set('1f0cf 1f195 1f305 1f308 1f30a 1f30d 1f319 1f31e 1f326 1f327 1f328 1f32c 1f332 1f333 1f334 1f337 1f338 1f339 1f33a 1f33b 1f33c 1f33e 1f341 1f342 1f343 1f344 1f345 1f347 1f349 1f34a 1f34c 1f34e 1f350 1f353 1f355 1f35e 1f366 1f36b 1f36c 1f36f 1f370 1f37d 1f37f 1f380 1f381 1f382 1f388 1f389 1f392 1f393 1f399 1f39e 1f39f 1f3a4 1f3a8 1f3a9 1f3ac 1f3ae 1f3af 1f3b2 1f3b5 1f3b6 1f3b8 1f3b9 1f3ba 1f3bb 1f3c1 1f3c3-200d-2640 1f3c5 1f3c6 1f3ca-200d-2640 1f3d4 1f3d6 1f3d9 1f3dd 1f3e0 1f3e5 1f3e8 1f3ea 1f3eb 1f3f4-200d-2620 1f406 1f40b 1f40c 1f40d 1f411 1f412 1f414 1f415 1f418 1f419 1f41a 1f41c 1f41d 1f41e 1f41f 1f420 1f422 1f426 1f42c 1f42d 1f42e 1f430 1f431 1f434 1f435 1f436 1f437 1f438 1f43b 1f43f 1f440 1f441 1f443 1f444 1f447 1f449 1f44b 1f44d 1f44e 1f44f 1f451 1f453 1f455 1f456 1f457 1f45f 1f464 1f466 1f467 1f468 1f469 1f469-200d-1f373 1f469-200d-1f3eb 1f471-200d-2640 1f474 1f475 1f483 1f48b 1f48c 1f490 1f494 1f499 1f4a1 1f4a5 1f4a7 1f4ac 1f4b0 1f4b6 1f4bc 1f4be 1f4c5 1f4c6 1f4cb 1f4cd 1f4cf 1f4d5 1f4d6 1f4da 1f4dc 1f4dd 1f4de 1f501 1f507 1f50a 1f50d 1f50e 1f512 1f513 1f51f 1f522 1f525 1f550 1f551 1f552 1f553 1f555 1f557 1f55c 1f55d 1f567 1f576 1f577 1f590 1f5d1 1f5e3 1f5fa 1f5fc 1f600 1f602 1f603 1f604 1f605 1f609 1f60a 1f60b 1f60d 1f60e 1f611 1f620 1f622 1f628 1f62c 1f62e 1f634 1f642 1f64b 1f64b-200d-2640 1f64c 1f64f 1f680 1f686 1f687 1f68c 1f695 1f697 1f69c 1f6aa 1f6b2 1f6b6-200d-2640 1f6bf 1f6c1 1f6c2 1f6cd 1f6cf 1f6d2 1f6e3 1f6e4 1f6f0 1f90f 1f914 1f915 1f916 1f917 1f91d 1f924 1f92b 1f932 1f935 1f93f 1f941 1f944 1f947 1f948 1f949 1f956 1f957 1f95a 1f95b 1f963 1f964 1f966 1f971 1f973 1f975 1f976 1f980 1f981 1f986 1f988 1f989 1f98a 1f98b 1f98c 1f992 1f998 1f999 1f99c 1f9ad 1f9b6 1f9c0 1f9d0 1f9d1 1f9da 1f9e2 1f9e5 1f9e9 1f9ed 1f9f3 1f9f8 1f9f9 1f9fd 1f9fe 1fa71 1fa7a 1fa81 1fa84 1fa86 1fa90 1fa91 1fa99 1fa9f 1fab1 1fab4 1fae7 2194 231a 23f0 23f1 23f3 25b6 2600 2601 2602 2668 2693 2694 2699 26bd 26c4 26c8 26f0 26f5 2702 2705 2708 270b 270f 2728 2744 274c 2753 2764 2795 27a1 2b05 2b06 2b50 31-20e3 32-20e3 33-20e3 34-20e3 35-20e3 36-20e3 37-20e3 38-20e3 39-20e3'.split(' '));
+const FXRE=/\p{Extended_Pictographic}|\u20E3/u;
+const fxSeg=window.Intl&&Intl.Segmenter?new Intl.Segmenter('fr',{granularity:'grapheme'}):null;
+const fxKey=g=>[...g].filter(c=>c!=='\uFE0F').map(c=>c.codePointAt(0).toString(16)).join('-');
+function fxText(node){
+  const t=node.nodeValue,par=node.parentNode;
+  if(!fxSeg||!t||!FXRE.test(t)||!par||/^(TEXTAREA|SCRIPT|STYLE|TITLE|OPTION)$/.test(par.nodeName))return;
+  const frag=document.createDocumentFragment();let buf='',hit=false;
+  for(const {segment:g} of fxSeg.segment(t)){
+    const k=FXRE.test(g)?fxKey(g):'';
+    if(k&&FX.has(k)){if(buf){frag.appendChild(document.createTextNode(buf));buf=''}
+      const im=document.createElement('img');im.className='fx';im.src='fx/'+k+'.webp';im.alt=g;im.draggable=false;im.decoding='async';
+      im.onerror=()=>im.replaceWith(document.createTextNode(g));frag.appendChild(im);hit=true}
+    else buf+=g}
+  if(!hit)return;if(buf)frag.appendChild(document.createTextNode(buf));par.replaceChild(frag,node);
+}
+function fxify(root){
+  if(root.nodeType===3)return fxText(root);if(root.nodeType!==1)return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),ns=[];while(w.nextNode())ns.push(w.currentNode);ns.forEach(fxText);
+}
+try{new MutationObserver(ms=>{for(const m of ms){if(m.type==='characterData')fxText(m.target);else m.addedNodes.forEach(fxify)}})
+  .observe(document.body,{childList:true,subtree:true,characterData:true});fxify(document.body)}catch(e){}
 
 loadProfile(P.list.some(x=>x.id===P.cur)?P.cur:P.list[0].id);
 view=P.list.length>1?'who':(S.name&&S.gender&&S.theme?'home':'welcome');render();

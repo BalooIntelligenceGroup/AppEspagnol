@@ -7,6 +7,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - `index.html` : toute l'appli (contenu des niveaux, exercices, styles, script).
 - `sw.js` : service worker (hors ligne + mises à jour). Page en « réseau d'abord ».
 - `manifest.webmanifest`, `icon-*.png` : installation sur Android.
+- `fx/` : images 3D Fluent Emoji (Microsoft, licence MIT dans `fx/LICENSE`), une par émoji, nommées par code (`1f436.webp`). Un MutationObserver (`fxify`) remplace à l'affichage chaque émoji qui a son image ; `FX` (index.html) et `FXL` (sw.js) listent les images. Nouvel émoji → ajouter son image et sa clé dans les deux listes, sinon l'émoji du téléphone reste.
 - `netlify.toml` : publication de la racine, pas de cache sur index.html et sw.js.
 
 ## Règle absolue : ne jamais perdre la progression
@@ -33,6 +34,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Limite par jour** `S.limit` (minutes, réglée dans l'espace parent), `S.unlockDay` pour débloquer ; `guard()` avant chaque activité.
 - **Boutons retour** : chaque écran a un ←/✕ ; l'accueil d'un joueur suit `wStep` (prénom → fille/garçon → univers) avec retour à chaque étape.
 - **Traductions** (v15) : `tr(es)` cherche la phrase dans les dialogues (`d.f`, `o[1]`) puis dans `FR_EXTRA` (phrases à trou et dialogues sans français). Toute nouvelle phrase à trou ou réplique doit y avoir sa traduction. L'encadré « Continuer » affiche `trBox()` ; le bouton « Traduire » sur les questions dépend de `S.trQ` (réglé par profil dans l'espace parent), jamais en évaluation.
+- **Mots abstraits** (v16) : `ABSTRACT` (gracias, hola, ¿qué es?…) affiche le mot français à la place de l'image (`txt:` dans `w.e`, rendu par `pic()`).
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
 ## Publier une nouvelle version
@@ -43,4 +45,4 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 5. Commit + push sur `main` → Netlify déploie, le téléphone se met à jour à la prochaine ouverture.
 
 Le même contenu est aussi publié comme artefact Claude : c'est `index.html` sans l'en-tête PWA
-ni le script d'enregistrement du service worker. Dans l'artefact, le micro est bloqué (mode « répéter à voix haute »).
+ni le script d'enregistrement du service worker. Les images `fx/*.webp` sont publiées avec l'artefact (deux publications : 255 fichiers maximum par envoi). Dans l'artefact, le micro est bloqué (mode « répéter à voix haute »).

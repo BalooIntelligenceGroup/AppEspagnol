@@ -26,6 +26,13 @@ button.lola{border:0;cursor:pointer;padding:0}
 .ava-f{position:absolute;top:.2em;left:50%;transform:translateX(-50%);font-size:.42em}
 .ava-x{position:absolute;right:-.42em;bottom:-.12em;font-size:.5em}
 .lola.big .ava{font-size:70px}
+.limit{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.limit b{font-size:16px}
+.seg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.seg button{min-width:0;min-height:52px;border-radius:14px;background:var(--bg2);font-weight:800;font-size:18px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 2px;box-shadow:0 3px 0 var(--line)}
+.seg button small{font-size:12px;font-weight:700;color:var(--muted)}
+.seg button.on{background:var(--sun);box-shadow:0 3px 0 var(--sun-d)}
+.seg button.on small{color:var(--ink)}
 .funbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
 .fun{background:var(--card);border-radius:18px;box-shadow:0 4px 0 var(--line);padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:800;font-size:14px}
 .fun span{font-size:30px;line-height:1.1}
@@ -755,13 +762,14 @@ const DROP={saludos:'por favor',colores:'negro',numeros:'seis',mascotas:'el páj
   presentarse:'¿y tú?',estas:'estoy triste',gustos:'¿te gusta?',preguntas:'¿cuántos hay?',ayuda:'¿puedo jugar?'};
 const ALL_UNITS=UNITS.slice();
 UNITS.splice(0,UNITS.length,...ACTIVE.map(id=>ALL_UNITS.find(u=>u.id===id)));
-const APP_VERSION=13,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
+const APP_VERSION=14,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
   8:'3 nouveaux niveaux : les petites bêtes, les émotions et au cinéma.',
   9:'5 nouveaux niveaux : la musique, sous la mer, aider à la maison, partir en vacances et se faire une amie.',
   10:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.',
   11:'Nouvelle carte : 15 niveaux, 5 par étape. Toutes tes étoiles sont gardées.',
   12:"Nouveau : ton univers, un profil par enfant, la séance du jour et une évaluation à la fin de chaque étape. Toutes tes étoiles sont gardées.",
-  13:"Nouveau : l'histoire de ton compagnon, l'album d'autocollants, 3 jeux, la garde-robe, les défis en famille et les comptines !"};
+  13:"Nouveau : l'histoire de ton compagnon, l'album d'autocollants, 3 jeux, la garde-robe, les défis en famille et les comptines !",
+  14:"Petites améliorations : bouton retour en haut des écrans de départ, et tu peux changer « fille ou garçon » dans les réglages."};
 
 /* ---------- Phrases à trous des premiers niveaux : [phrase avec _, bon mot, [pièges], image] ---------- */
 const GAPS = {
@@ -1564,6 +1572,7 @@ function dico(){
 function settings(){
   app.innerHTML=`<div class="head"><button class="icon-btn" data-act="home" aria-label="Retour">←</button><h2>Réglages</h2></div>
   <div class="set"><label class="field" for="nm">Prénom<input id="nm" value="${esc(S.name)}" maxlength="20" autocomplete="off"></label>
+    <b style="margin-top:4px">Je suis</b><div class="row" style="gap:8px"><button class="tool" style="flex:1;justify-content:center;${S.gender==='f'?'background:var(--sun)':''}" data-act="setg" data-g="f">👧 Une fille</button><button class="tool" style="flex:1;justify-content:center;${S.gender==='m'?'background:var(--sun)':''}" data-act="setg" data-g="m">👦 Un garçon</button></div>
     <button class="tool" data-act="chtheme" style="justify-content:center">🎨 Changer d'univers (${esc(G().name)})</button>
     <button class="tool" data-act="who" style="justify-content:center">👧👦 Changer de joueur</button>
     <button class="tool" data-act="parent" style="justify-content:center">👨‍👩‍👧 Espace parent</button></div>
@@ -1597,20 +1606,19 @@ function welcome(){
     <label class="field" for="nm" style="width:100%;text-align:left">Ton prénom<input id="nm" maxlength="20" autocomplete="off" placeholder="Écris ton prénom" value="${esc(S.name||'')}"></label>
     <button class="btn sun" data-act="go">Suivant →</button>
     ${P.list.length>1?'<button class="btn ghost" data-act="who">← Choisir un autre joueur</button>':''}</div>`;return}
-  if(st==='gender'){app.innerHTML=`<div class="center">
+  if(st==='gender'){app.innerHTML=`<div class="head"><button class="icon-btn" data-act="wback" aria-label="Retour">←</button><h2>Étape 2 sur 3</h2></div><div class="center">
     <h1 style="font-size:34px">¡Hola, ${esc(S.name)}!</h1>
     <p class="say" style="font-size:19px">Tu es…</p>
     <div class="row" style="width:100%"><button class="btn sun big2" data-act="gender" data-g="f">👧 Une fille</button><button class="btn big2" data-act="gender" data-g="m">👦 Un garçon</button></div>
-    <p class="note">Pour dire « encantada » ou « encantado » 😉</p>
-    <button class="btn ghost" data-act="wback">← Retour</button></div>`;return}
+    <p class="note">Pour dire « encantada » ou « encantado » 😉</p></div>`;return}
   const keys=allThemes?Object.keys(THEMES):THEME_FOR[S.gender||'f'];
-  app.innerHTML=`<div class="center" style="justify-content:flex-start;padding-top:12px">
+  app.innerHTML=`<div class="head"><button class="icon-btn" data-act="wback" aria-label="Retour">←</button><h2>${themeFrom==='settings'?'Réglages':'Étape 3 sur 3'}</h2></div><div class="center" style="justify-content:flex-start;padding-top:0">
     <h1 style="font-size:32px">Choisis ton univers</h1>
     <p class="say">Ton compagnon t'accompagne dans toutes tes leçons.</p>
     <div class="themes">${keys.map(k=>{const t=THEMES[k];return `<button class="thcard ${S.theme===k?'on':''}" data-act="theme" data-t="${k}" style="--tb:${t.c.bg};--tl:${t.c.lagoon};--ts:${t.c.sun}">
       <span class="thmas">${t.e}</span><span class="thtxt"><b>${esc(t.name)}</b><small>avec ${esc(t.title)}</small><span class="thdeco">${t.deco}</span></span></button>`}).join('')}</div>
     <button class="btn ghost" data-act="allthemes">${allThemes?'Voir moins d\'univers':'Voir les 6 univers'}</button>
-    <button class="btn ghost" data-act="wback">← Retour</button></div>`;
+    <button class="btn ghost" data-act="wback">← ${themeFrom==='settings'?'Garder mon univers':'Retour'}</button></div>`;
 }
 /* Qui joue ? */
 function who(){
@@ -1639,7 +1647,9 @@ function parent(){
       <div class="stats"><div><b>${keys.length}</b><small>mots vus</small></div><div><b>${keys.filter(k=>ws[k].b>=4).length}</b><small>mots bien retenus</small></div><div><b>${Object.keys(s.stars||{}).filter(id=>UNITS.some(u=>u.id===id)).length}/${UNITS.length}</b><small>niveaux réussis</small></div><div><b>${week} min</b><small>cette semaine</small></div></div>
       <div class="bars" role="img" aria-label="Minutes par jour sur 7 jours">${mins.map((m,i)=>`<div class="barc"><span class="bv">${m||''}</span><i style="height:${Math.round(m/maxm*70)}px"></i><small>${DN[new Date(days[i]+'T12:00').getDay()]}</small></div>`).join('')}</div>
       <p class="note" style="color:var(--ink)"><b>Cette semaine :</b> ${week} min, ${keys.filter(k=>ws[k].f&&ws[k].f>=dayPlus(-6)).length} mots nouveaux, ${keys.filter(k=>ws[k].ok>=3).length} autocollants au total, ${weekPts(s)} points.</p>
-      <div class="toggle"><span>⏳ Limite par jour</span><span class="row" style="flex:none;gap:6px;flex-wrap:wrap;justify-content:flex-end">${[0,10,15,20,30].map(m=>`<button class="tool" style="min-width:44px;justify-content:center;padding:0 10px;${(s.limit||0)===m?'background:var(--sun)':''}" data-act="plim" data-id="${p.id}" data-m="${m}">${m?m+' min':'Aucune'}</button>`).join('')}</span></div>
+      <div class="limit"><b>⏳ Temps d'écran maximum par jour</b>
+        <div class="seg">${[0,10,15,20,30].map(m=>`<button class="${(s.limit||0)===m?'on':''}" data-act="plim" data-id="${p.id}" data-m="${m}" aria-pressed="${(s.limit||0)===m}">${m?`${m}<small>min</small>`:'Sans<small>limite</small>'}</button>`).join('')}</div>
+        <p class="note">${s.limit>0?`Aujourd'hui : ${Math.round(((s.days||{})[dayPlus(0)]||0)/60)} min sur ${s.limit} min.`:'Aucune limite : l\'enfant peut jouer autant qu\'il veut.'}</p></div>
       ${s.limit>0&&Math.round(((s.days||{})[dayPlus(0)]||0)/60)>=s.limit&&s.unlockDay!==dayPlus(0)?`<button class="tool" data-act="punlock" data-id="${p.id}" style="justify-content:center">🔓 Débloquer pour aujourd'hui</button>`:''}
       <p class="note">Évaluations : ${ev.length?ev.join(' · '):'aucune réussie pour l\'instant'} · Série : ${s.streak||0} jour(s)</p>
       <p class="note">Mots difficiles : ${hard.length?hard.map(k=>`<b>${esc(k)}</b>${WM[k]?' ('+esc(WM[k].fr)+')':''}`).join(', '):'aucun pour l\'instant'}</p>
@@ -1668,6 +1678,7 @@ app.addEventListener('click',e=>{
   else if(a==='go'){readName();if(!S.name){$('#nm').focus();return}if(!S.ver)S.ver=APP_VERSION;save();wStep='gender';themeFrom='setup';render();say('¡Hola, '+S.name+'!')}
   else if(a==='gender'){S.gender=b.dataset.g;allThemes=false;save();wStep='theme';render()}
   else if(a==='theme'){S.theme=b.dataset.t;if(!S.ver)S.ver=APP_VERSION;applyTheme();save();wStep=null;view='home';render();say('¡Hola, '+S.name+'! Soy '+G().es+'. ¡Vamos!')}
+  else if(a==='setg'){readName();S.gender=b.dataset.g;save();render()}
   else if(a==='wback'){const st=wStep||(!S.name?'name':!S.gender?'gender':'theme');
     if(st==='gender')wStep='name';
     else if(st==='theme'&&themeFrom==='settings'){S.theme=prevTheme;applyTheme();wStep=null;view='settings'}

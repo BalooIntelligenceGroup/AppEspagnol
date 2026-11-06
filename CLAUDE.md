@@ -15,6 +15,10 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - Ne jamais changer l'adresse du site Netlify (l'origine porte les données).
 - Nouveaux niveaux : on peut les insérer n'importe où ; `S.opened` et `LEGACY` garantissent qu'un niveau déjà ouvert ne se reverrouille pas.
 
+## Niveaux affichés (depuis la version 11)
+- Seuls les 15 niveaux listés dans `ACTIVE` sont affichés (5 par étape). Les autres restent dans le code, et leurs étoiles dans la sauvegarde.
+- Pour réafficher ou changer un niveau : modifier la liste `ACTIVE` (l'ordre de la liste = l'ordre sur la carte).
+
 ## Publier une nouvelle version
 1. Modifier `index.html` (ajouter des niveaux dans un tableau `V8_…` puis `insAfter(...)`, comme V7).
 2. Incrémenter `APP_VERSION` et ajouter le texte de nouveauté dans `NEW_IN` (bandeau affiché une fois).

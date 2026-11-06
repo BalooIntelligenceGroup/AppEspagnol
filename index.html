@@ -654,10 +654,18 @@ const V9_3=[
   gaps:[['¿De _ eres?','dónde',['qué','quién'],'🌍'],['_ de Francia.','Soy',['Estoy','Tengo'],'🗼'],['Hablo un _ de español.','poco',['mucho','pequeño'],'🤏']]},
 ];
 insAfter('insectos',V9_1);insAfter('emociones',V9_2);UNITS.push(...V9_3);
-const APP_VERSION=10,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
+/* ---------- Version 11 : 15 niveaux affichés, 5 par étape ----------
+   Les autres niveaux restent dans le code (et leurs étoiles dans la sauvegarde) : il suffit de les remettre dans ACTIVE. */
+const ACTIVE=['saludos','presentarse','mascotas','colores','numeros',
+              'tiempo','cuerpo','rutina','ciudad','emociones',
+              'tienda','restaurante','ayer','fiesta','nueva'];
+const ALL_UNITS=UNITS.slice();
+UNITS.splice(0,UNITS.length,...ACTIVE.map(id=>ALL_UNITS.find(u=>u.id===id)));
+const APP_VERSION=11,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
   8:'3 nouveaux niveaux : les petites bêtes, les émotions et au cinéma.',
   9:'5 nouveaux niveaux : la musique, sous la mer, aider à la maison, partir en vacances et se faire une amie.',
-  10:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.'};
+  10:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.',
+  11:'Nouvelle carte : 15 niveaux, 5 par étape. Toutes tes étoiles sont gardées.'};
 
 /* ---------- Phrases à trous des premiers niveaux : [phrase avec _, bon mot, [pièges], image] ---------- */
 const GAPS = {

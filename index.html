@@ -21,6 +21,62 @@
 }
 html,body{height:100%}
 button.lola{border:0;cursor:pointer;padding:0}
+.ava{position:relative;display:inline-grid;place-items:center;line-height:1}
+.ava-h{position:absolute;top:-.46em;left:50%;transform:translateX(-50%);font-size:.58em}
+.ava-f{position:absolute;top:.2em;left:50%;transform:translateX(-50%);font-size:.42em}
+.ava-x{position:absolute;right:-.42em;bottom:-.12em;font-size:.5em}
+.lola.big .ava{font-size:70px}
+.funbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.fun{background:var(--card);border-radius:18px;box-shadow:0 4px 0 var(--line);padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:800;font-size:14px}
+.fun span{font-size:30px;line-height:1.1}
+.eplist{display:flex;flex-direction:column;gap:10px}
+.epi{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:18px;box-shadow:0 4px 0 var(--line);padding:12px 14px;text-align:left;font-size:20px}
+.epi.lock{opacity:.55}
+.epn{flex:none;width:46px;height:46px;border-radius:14px;background:var(--bg2);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:22px}
+.ept{flex:1;min-width:0;display:flex;flex-direction:column}
+.ept b{font-family:var(--f-display);font-size:19px;line-height:1.15}
+.ept small{font-size:14px;font-weight:700;color:var(--muted)}
+.panel{background:var(--card);border-radius:26px;box-shadow:0 6px 0 var(--line);padding:24px 18px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin:8px 0 14px}
+.pscene{display:flex;align-items:center;justify-content:center;gap:14px;font-size:64px;line-height:1.1;flex-wrap:wrap}
+.pscene .pg{font-size:56px}
+.dots{display:flex;justify-content:center;gap:8px;margin-bottom:14px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--lagoon)}
+.kara{background:var(--card);border-radius:22px;box-shadow:0 5px 0 var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
+.kl{margin:0;font-family:var(--f-display);font-weight:800;font-size:22px;line-height:1.3;color:var(--muted);transition:color .2s,transform .2s}
+.kl.on{color:var(--lagoon-d);transform:scale(1.03);transform-origin:left}
+.kl.me{color:var(--coral-d)}
+.stk{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px}
+.sticker{aspect-ratio:1;border-radius:20px;background:var(--bg2);border:3px dashed var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:800;color:var(--muted);max-width:100%}
+.sticker span{font-size:34px;line-height:1}
+.sticker.on{background:var(--card);border:3px solid var(--sun);box-shadow:0 4px 0 var(--sun-d);color:var(--ink);transform:rotate(-2deg)}
+.sticker.on:nth-child(2n){transform:rotate(2deg)}
+.sticker.on .swatch{width:38px;height:38px;border-radius:10px}
+.sticker b{font-size:13px;text-align:center;line-height:1.1;padding:0 4px}
+.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
+.item{background:var(--card);border-radius:18px;border:3px solid transparent;box-shadow:0 4px 0 var(--line);padding:10px 6px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.item span{font-size:34px;line-height:1.1}
+.item b{font-size:14px;line-height:1.15;text-align:center}
+.item small{font-size:13px;font-weight:800;color:var(--muted)}
+.item.on{border-color:var(--good);background:var(--good-bg)}
+.item.poor{opacity:.6}
+.ghead{display:flex;justify-content:space-between;font-weight:800;font-size:17px}
+.sky{position:relative;height:430px;overflow:hidden;border-radius:24px;background:linear-gradient(var(--bg2),var(--card));margin-top:6px}
+.bubble-f{position:absolute;top:-96px;width:88px;height:88px;border-radius:50%;background:var(--card);border:3px solid var(--line);box-shadow:0 4px 0 var(--line);display:grid;place-items:center;font-size:48px;animation-name:fall2;animation-timing-function:linear;animation-fill-mode:forwards}
+.bubble-f .swatch{width:56px;height:56px;border-radius:50%}
+.bubble-f.sel-good{border-color:var(--good);background:var(--good-bg)}
+.bubble-f.sel-bad{border-color:var(--bad);background:var(--bad-bg)}
+@keyframes fall2{from{top:-96px}to{top:calc(100% + 4px)}}
+.mem{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.mcard{aspect-ratio:1;border-radius:18px;background:var(--lagoon);box-shadow:0 5px 0 var(--lagoon-d);color:#fff;font-size:34px;display:grid;place-items:center;max-width:100%;padding:4px}
+.mcard.up{background:var(--card);color:var(--ink);box-shadow:0 5px 0 var(--line);font-size:44px}
+.mcard.up b{font-size:16px;line-height:1.15;overflow-wrap:anywhere}
+.mcard.ok{background:var(--good-bg);box-shadow:0 5px 0 var(--good)}
+.mcard .swatch{width:60%;height:60%;border-radius:12px}
+.rank{display:flex;align-items:center;gap:10px;font-size:17px}
+.rank .re{font-size:26px}
+.rank b{flex:1;min-width:0}
+.rank .rp{font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
 .deco{text-align:center;font-size:20px;letter-spacing:6px;margin-top:10px;opacity:.85}
 .badge{display:inline-grid;place-items:center;min-width:26px;height:26px;padding:0 6px;border-radius:999px;background:#fff;color:var(--coral-d);font-size:15px;font-family:var(--f-body)}
 .node.ev .disc{background:var(--sun);box-shadow:0 7px 0 var(--sun-d);font-size:36px}
@@ -699,12 +755,13 @@ const DROP={saludos:'por favor',colores:'negro',numeros:'seis',mascotas:'el páj
   presentarse:'¿y tú?',estas:'estoy triste',gustos:'¿te gusta?',preguntas:'¿cuántos hay?',ayuda:'¿puedo jugar?'};
 const ALL_UNITS=UNITS.slice();
 UNITS.splice(0,UNITS.length,...ACTIVE.map(id=>ALL_UNITS.find(u=>u.id===id)));
-const APP_VERSION=12,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
+const APP_VERSION=13,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
   8:'3 nouveaux niveaux : les petites bêtes, les émotions et au cinéma.',
   9:'5 nouveaux niveaux : la musique, sous la mer, aider à la maison, partir en vacances et se faire une amie.',
   10:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.',
   11:'Nouvelle carte : 15 niveaux, 5 par étape. Toutes tes étoiles sont gardées.',
-  12:"Nouveau : ton univers, un profil par enfant, la séance du jour et une évaluation à la fin de chaque étape. Toutes tes étoiles sont gardées."};
+  12:"Nouveau : ton univers, un profil par enfant, la séance du jour et une évaluation à la fin de chaque étape. Toutes tes étoiles sont gardées.",
+  13:"Nouveau : l'histoire de ton compagnon, l'album d'autocollants, 3 jeux, la garde-robe, les défis en famille et les comptines !"};
 
 /* ---------- Phrases à trous des premiers niveaux : [phrase avec _, bon mot, [pièges], image] ---------- */
 const GAPS = {
@@ -768,14 +825,16 @@ function save(){try{const j=JSON.stringify(S),k=pkey(P.cur);localStorage.setItem
 const IV=[0,1,2,4,7,15,30];
 const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const dayPlus=n=>{const d=new Date();d.setDate(d.getDate()+n);return iso(d)};
-function srs(w,ok){if(!w||!w.es||!L||L.kind==='chat')return;S.words=S.words||{};const r=S.words[w.es]||{b:0,d:dayPlus(0),ok:0,ko:0};
-  if(ok){r.ok++;r.b=Math.min(r.b+1,6);r.d=dayPlus(IV[r.b])}else{r.ko++;r.b=1;r.d=dayPlus(0)}S.words[w.es]=r}
-function seen(w){S.words=S.words||{};if(w&&w.es&&!S.words[w.es])S.words[w.es]={b:1,d:dayPlus(1),ok:0,ko:0}}
+function srs(w,ok){if(!w||!w.es)return;if(view==='lesson'&&L&&L.kind==='chat')return;S.words=S.words||{};const t=dayPlus(0);
+  const r=S.words[w.es]||{b:0,d:t,ok:0,ko:0,f:t};if(!r.f)r.f=t;
+  if(ok){r.ok++;if(r.d<=t){r.b=Math.min(r.b+1,6);r.d=dayPlus(IV[r.b])}}else{r.ko++;r.b=1;r.d=t}S.words[w.es]=r}
+function seen(w){S.words=S.words||{};if(w&&w.es&&!S.words[w.es])S.words[w.es]={b:1,d:dayPlus(1),ok:0,ko:0,f:dayPlus(0)}}
 function wordMap(){const m={};UNITS.forEach(u=>u.words.forEach(w=>{const x=Object.assign(W(w),{conv:!!u.conv});m[x.es]=x}));return m}
 function dueList(){const WM=wordMap(),t=dayPlus(0);return Object.entries(S.words||{}).filter(([k,r])=>WM[k]&&r.d<=t).sort((a,b)=>a[1].b-b[1].b).map(([k])=>WM[k])}
 function migrate(){
   S.words=S.words||{};S.evals=S.evals||{};S.days=S.days||{};
-  if(!S.mig12){UNITS.forEach(u=>{if(S.stars[u.id])u.words.forEach(w=>{const x=W(w);if(!S.words[x.es])S.words[x.es]={b:2,d:dayPlus(0),ok:1,ko:0}})});S.mig12=1;if(S.name)save()}
+  if(!S.mig13){for(const k in S.words){const r=S.words[k];if(r.b>=2&&r.ok<3)r.ok=3}S.coins=S.coins||0;S.mig13=1;if(S.name)save()}
+  if(!S.mig12){UNITS.forEach(u=>{if(S.stars[u.id])u.words.forEach(w=>{const x=W(w);if(!S.words[x.es])S.words[x.es]={b:2,d:dayPlus(0),ok:3,ko:0}})});S.mig12=1;if(S.name)save()}
 }
 function addTime(){if(L&&L.t0){const s=Math.min(1200,(Date.now()-L.t0)/1000),k=dayPlus(0);S.days=S.days||{};S.days[k]=(S.days[k]||0)+Math.round(s);L.t0=0}}
 /* Demande au navigateur de ne jamais effacer les données de l'appli (appli installée) */
@@ -956,11 +1015,11 @@ function home(){
       <span class="stars">${dn?'⭐'.repeat(st)+'<span style="opacity:.25">'+'⭐'.repeat(3-st)+'</span>':''}</span>
       <b>${esc(u.es)}</b><em>${i+1}. ${esc(u.fr)}</em>${u.conv?'<span class="ctag">💬 Conversation</span>':''}</button>${last?evalNode(u.tier,evalCur===u.tier):''}`}).join('');
   app.innerHTML=`
-  <div class="top"><button class="lola" data-act="who" aria-label="Changer de joueur">${G().e}</button>
+  <div class="top"><button class="lola" data-act="who" aria-label="Changer de joueur">${avatar()}</button>
     <div class="hello"><small>${esc(G().title)} te dit :</small><h1>¡Hola, ${esc(S.name)}!</h1></div>
     <button class="icon-btn" data-act="settings" aria-label="Réglages">⚙️</button></div>
   <div class="deco" aria-hidden="true">${G().deco}</div>
-  <div class="chips"><span class="chip">🔥 ${streakNow()} jour${streakNow()>1?'s':''}</span><span class="chip">⭐ ${S.xp} points</span><span class="chip">🏅 Niveau ${level()}</span></div>
+  <div class="chips"><span class="chip">🔥 ${streakNow()} jour${streakNow()>1?'s':''}</span><span class="chip">⭐ ${S.xp} points</span><span class="chip">🪙 ${S.coins||0}</span>${S.limit>0?`<span class="chip">⏳ ${Math.max(0,S.limit-usedMin())} min</span>`:''}</div>
   ${fresh?`<div class="newver" role="status"><div><b>🎉 Nouvelle version ${APP_VERSION} !</b><span>${esc(NEW_IN[APP_VERSION]||'')} Ta progression est gardée.</span></div><button class="tool" data-act="newok">Super !</button></div>`:''}
   <div class="goal"><div class="goal-h"><span>Objectif du jour</span><span>${Math.min(tc,S.goal)} / ${S.goal} leçon${S.goal>1?'s':''}</span></div>
     <div class="bar"><i style="width:${Math.min(100,tc/S.goal*100)}%"></i></div></div>
@@ -968,6 +1027,13 @@ function home(){
     <button class="btn coral" data-act="seance" ${nWords?'':'disabled'}>🎯 Séance du jour${due?` <span class="badge">${due}</span>`:''}</button>
     <button class="btn ghost" data-act="dico">📖 Mon dico</button>
     <button class="btn sun wide" data-act="chat" ${learnedUnits().length?'':'disabled'}>💬 Parler avec ${G().es}</button></div>
+  <div class="funbar">
+    <button class="fun" data-act="games"><span>🎮</span>Jeux</button>
+    <button class="fun" data-act="story"><span>📖</span>Histoire</button>
+    <button class="fun" data-act="album"><span>🏆</span>Album</button>
+    <button class="fun" data-act="wardrobe"><span>👗</span>Garde-robe</button>
+    <button class="fun" data-act="duel"><span>⚔️</span>Défi famille</button>
+    <button class="fun" data-act="songs"><span>🎵</span>Comptines</button></div>
   <div class="map">${nodes}<div class="node"><span class="disc" style="background:var(--coral);box-shadow:0 7px 0 var(--coral-d)">🏆</span><b>${S.gender==='m'?'¡Campeón!':'¡Campeona!'}</b><em>Termine les ${UNITS.length} niveaux</em></div></div>`;
 }
 
@@ -1009,11 +1075,11 @@ function startUnit(i){
   buildSteps(u,2).forEach(s=>steps.push(s));
   shuffle(words.slice()).slice(0,u.tier>1?3:2).forEach(w=>steps.push({t:'speak',w}));
   u.talk.forEach(d=>steps.push({t:'talk',d,opts:shuffle(d.o.slice())}));
-  L={unit:i,kind:'unit',steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now()};view='lesson';render();
+  L={unit:i,kind:'unit',steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();
 }
 function startChat(){
   const steps=shuffle(learnedUnits().flatMap(u=>u.talk)).slice(0,6).map(d=>({t:'talk',d,opts:shuffle(d.o.slice())}));
-  L={unit:-1,kind:'chat',steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now()};view='lesson';render();
+  L={unit:-1,kind:'chat',steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();
 }
 function startReview(){
   const us=learnedUnits();
@@ -1025,7 +1091,7 @@ function startReview(){
   shuffle(us.flatMap(u=>u.gaps)).slice(0,2).forEach(g=>steps.push(gapStep(g)));
   shuffle(us.slice()).slice(0,2).forEach(u=>buildSteps(u,1).forEach(s=>steps.push(s)));
   pk.slice(4,6).forEach(w=>steps.push({t:'speak',w}));
-  L={unit:-1,steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now()};view='lesson';render();
+  L={unit:-1,steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();
 }
 
 /* Séance du jour : les mots à revoir aujourd'hui (révision espacée), complétés par les mots les moins sûrs */
@@ -1036,7 +1102,7 @@ function startSeance(list){
   const steps=[];if(uniqPic(pool).length>=4)steps.push(matchStep(pool));
   shuffle(pool.slice()).forEach((w,k)=>steps.push(k%3===2?{t:'speak',w}:{t:k%2?'pick':(w.conv?'mean':'listen'),w,opts:optsFor(w,all)}));
   tfSteps(pool.filter(w=>!w.conv),2).forEach(s=>steps.push(s));
-  L={unit:-1,kind:'seance',steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now()};view='lesson';render();return true;
+  L={unit:-1,kind:'seance',steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();return true;
 }
 /* Évaluation de fin d'étape : 12 questions sur les 5 niveaux, 80 % pour ouvrir l'étape suivante */
 function startEval(t){
@@ -1045,7 +1111,7 @@ function startEval(t){
   words.slice(0,8).forEach((w,k)=>steps.push({t:k%2?'pick':(w.conv?'mean':'listen'),w,opts:optsFor(w,words)}));
   const rest=words.slice(8).filter(w=>!w.conv);tfSteps(rest.length>=2?rest:words.filter(w=>!w.conv),2).forEach(s=>steps.push(s));
   shuffle(us.flatMap(u=>u.gaps)).slice(0,12-steps.length).forEach(g=>steps.push(gapStep(g)));
-  L={unit:-1,kind:'eval',tier:t,steps:shuffle(steps),i:0,mistakes:0,ok:0,answered:null,tries:0,missed:[],t0:Date.now()};view='lesson';render();
+  L={unit:-1,kind:'eval',tier:t,steps:shuffle(steps),i:0,mistakes:0,ok:0,answered:null,tries:0,missed:[],t0:Date.now(),stk0:stickerCount()};view='lesson';render();
 }
 
 /* ---------- Écran de leçon ---------- */
@@ -1224,10 +1290,10 @@ function finish(){
   const t=today();
   if(S.lastDay!==t){S.streak=S.lastDay===yesterday()?S.streak+1:1;S.lastDay=t}
   if(S.todayDate!==t){S.todayDate=t;S.todayCount=0}
-  S.todayCount++;S.xp+=gain;
+  S.todayCount++;addPts(gain);const coins=L.kind==='chat'?3:L.unit>=0?(5+(L.mistakes===0?3:0)):5;addCoins(coins);
   let newUnit=false;
   if(L.unit>=0){const id=UNITS[L.unit].id;newUnit=!S.stars[id];S.stars[id]=Math.max(S.stars[id]||0,stars)}
-  save();R={stars,gain,newUnit,unit:L.unit,goalHit:S.todayCount===S.goal};view='result';render();confetti();
+  save();R={stars,gain,newUnit,unit:L.unit,goalHit:S.todayCount===S.goal,coins,newStk:Math.max(0,stickerCount()-(L.stk0||0)),episode:newUnit&&L.unit>=0&&STORY[UNITS[L.unit].id]?L.unit:null};view='result';render();confetti();
   say(stars===3?'¡Fantástico, '+S.name+'!':'¡Muy bien, '+S.name+'!');
 }
 function finishEval(){
@@ -1235,7 +1301,7 @@ function finishEval(){
   if(S.lastDay!==t){S.streak=S.lastDay===yesterday()?S.streak+1:1;S.lastDay=t}
   if(S.todayDate!==t){S.todayDate=t;S.todayCount=0}
   S.todayCount++;
-  if(pass){S.evals[L.tier]={pct:Math.max(pct,(S.evals[L.tier]||{}).pct||0),d:dayPlus(0)};S.xp+=20}
+  if(pass){S.evals[L.tier]={pct:Math.max(pct,(S.evals[L.tier]||{}).pct||0),d:dayPlus(0)};addPts(20);addCoins(10)}
   const missed=uniqPic(L.missed||[]);
   save();R={eval:true,tier:L.tier,pct,pass,missed};view='result';render();if(pass)confetti();
   say(pass?'¡Muy bien, '+S.name+'!':'¡Casi, '+S.name+'!');
@@ -1260,10 +1326,12 @@ function result(){
     <div class="lola big" aria-hidden="true">${G().e}</div>
     <h2 style="font-size:38px">${R.stars===3?'¡Fantástico!':'¡Muy bien!'}</h2>
     <div class="bigstars" aria-label="${R.stars} étoiles sur 3">${[1,2,3].map(n=>`<span class="${n>R.stars?'off':''}">⭐</span>`).join('')}</div>
-    <div class="xp">+${R.gain} points</div>
+    <div class="xp">+${R.gain} points · +${R.coins} 🪙</div>
+    ${R.newStk?`<p class="say" style="color:var(--ink)">🆕 ${R.newStk} nouvel${R.newStk>1?'s':''} autocollant${R.newStk>1?'s':''} dans ton album !</p>`:''}
     <p class="say">${R.goalHit?'Objectif du jour atteint ! 🔥 Ta série continue. ':''}${R.newUnit&&next?`Nouveau niveau débloqué : ${esc(next.es)} ${next.e}`:u?'Tu as encore mieux retenu tes mots.':L&&L.kind==='chat'?'Belle conversation ! '+G().es+(G().g==='m'?' est fier de toi.':' est fière de toi.'):'Séance terminée : tes mots sont bien rangés dans ta tête !'}</p>
     <div style="width:100%;display:grid;gap:14px;margin-top:8px">
-      ${R.newUnit&&next?`<button class="btn sun" data-act="unit" data-i="${R.unit+1}">Niveau suivant →</button>`:''}
+      ${R.episode!=null?`<button class="btn coral" data-act="epopen" data-i="${R.episode}">📖 Nouvel épisode de l'histoire !</button>`:''}
+      ${R.newUnit&&next&&unlocked(R.unit+1)?`<button class="btn sun" data-act="unit" data-i="${R.unit+1}">Niveau suivant →</button>`:''}
       <button class="btn" data-act="home">Retour à la carte</button></div></div>`;
 }
 function confetti(){
@@ -1272,6 +1340,217 @@ function confetti(){
   const cols=['#FFC93C','#FF6F5E','#169C98','#23A55A','#F48FB1'];
   for(let i=0;i<40;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'%';p.style.background=cols[i%5];p.style.animationDelay=Math.random()*.6+'s';c.appendChild(p)}
   document.body.appendChild(c);setTimeout(()=>c.remove(),3200);
+}
+
+/* ================================================================ Version 13 : le côté ludique ================================================================ */
+const head=(title,back='home')=>`<div class="head"><button class="icon-btn" data-act="${back}" aria-label="Retour">←</button><h2>${title}</h2></div>`;
+/* ---------- Histoire suivie : un épisode par niveau réussi. « Lola » = le compagnon choisi ; Toby est le chien rencontré en route. ---------- */
+const STORY={
+ saludos:{t:'Le départ',p:[['👋','¡Hola! Soy Lola.'],['🎒','Hoy empieza mi viaje.'],['🌅','¡Adiós, casa! ¡Buenos días, aventura!']]},
+ colores:{t:'Le chemin des fleurs',p:[['🌸','En el camino veo muchas flores.'],['🌹💙🌼','Una flor roja, una flor azul y una flor amarilla.'],['🌈','¡Qué bonito!']]},
+ numeros:{t:'Les oiseaux',p:[['🐦🐦🐦','Cuento los pájaros: uno, dos, tres.'],['🐦🐦','¡Cuatro! ¡Cinco!'],['🎶','Cinco pájaros cantan para mí.']]},
+ mascotas:{t:'Toby',p:[['🐶🐱','En un pueblo veo un perro y un gato.'],['🐕','El perro se llama Toby.'],['🎒🐕','¡Toby quiere viajar conmigo!']]},
+ familia:{t:'Un appel à la maison',p:[['📞','Llamo a mamá y a papá.'],['👩','¡Hola, mamá! Estoy muy bien.'],['💋','Mi familia me manda un beso.']]},
+ frutas:{t:'Le marché',p:[['🍽️','Toby y yo tenemos hambre.'],['🍓🍌','Compramos fresas y un plátano.'],['😋','¡Qué rico!']]},
+ comida:{t:'La glace de Toby',p:[['🥛🍞','En un café pido leche y pan.'],['🍦','Toby come un helado.'],['😂','¡Toby, no! ¡Es mi helado!']]},
+ ropa:{t:'La montagne',p:[['🏔️','Hace frío en la montaña.'],['🧥👟','Me pongo el abrigo y los zapatos.'],['👕','Toby lleva una camiseta roja.']]},
+ casa:{t:'Une maison pour la nuit',p:[['🏠','Por la noche llegamos a una casa.'],['🛏️🪑','Hay una cama y una silla.'],['🌙','Buenas noches, Toby.']]},
+ escuela:{t:"L'école du village",p:[['🏫','Por la mañana visitamos una escuela.'],['👩‍🏫📕','La maestra lee un libro.'],['✏️','Los niños dibujan con un lápiz.']]},
+ presentarse:{t:'Une nouvelle amie',p:[['👧','Una niña me saluda.'],['🙋‍♀️','—Me llamo Sofía. ¿Y tú?'],['🤝','—Me llamo Lola. ¡Encantada!']]},
+ estas:{t:'Sofía a faim',p:[['😢','Sofía está triste.'],['🍽️🥤','—¿Cómo estás, Sofía? —Tengo hambre y sed.'],['😊','Le doy agua y pan. ¡Ahora está bien!']]},
+ gustos:{t:'Les goûts de chacun',p:[['🍫','A Sofía le gusta el chocolate.'],['🍦','A mí me encanta el helado.'],['🐕😂','A Toby le gusta… ¡todo!']]},
+ preguntas:{t:'Où est Toby ?',p:[['🔍','—¿Dónde está Toby?'],['🌳🐕','—¿Quién es? ¡Es Toby, detrás del árbol!'],['😅','¡Allí está! ¡Qué susto!']]},
+ ayuda:{t:'La plage, enfin !',p:[['🗺️🌧️','Llueve y no entiendo el mapa.'],['🔁','—¿Otra vez, por favor? Más despacio.'],['🏖️🎉','¡Por fin, la playa! Fin del viaje… ¡por ahora!']]}};
+let epi={i:0,k:0};
+function story(){
+  app.innerHTML=head('📖 Mon histoire')+`<p class="note" style="margin-bottom:12px">Chaque niveau réussi débloque un épisode du voyage de ${esc(G().es)}.</p>
+  <div class="eplist">${UNITS.map((u,i)=>{const e=STORY[u.id],ok=!!S.stars[u.id];return e?`<button class="epi ${ok?'':'lock'}" data-act="epopen" data-i="${i}" ${ok?'':'aria-disabled="true"'}><span class="epn">${i+1}</span><span class="ept"><b>${ok?esc(e.t):'Épisode à débloquer'}</b><small>${ok?esc(u.es):'Réussis le niveau « '+esc(u.es)+' »'}</small></span><span>${ok?'▶':'🔒'}</span></button>`:''}).join('')}</div>`;
+}
+function episode(){
+  const u=UNITS[epi.i],e=STORY[u.id],pn=e.p[epi.k],last=epi.k===e.p.length-1;
+  app.innerHTML=head(`📖 ${epi.i+1}. ${esc(e.t)}`,'story')+`<div class="panel"><div class="pscene"><span class="pg">${avatar()}</span><span>${pn[0]}</span></div><div class="es">${esc(fillG(pn[1]))}</div></div>
+  <div class="dots">${e.p.map((_,k)=>`<i class="${k===epi.k?'on':''}"></i>`).join('')}</div>
+  <div class="row"><button class="btn ghost" data-act="epprev" ${epi.k?'':'disabled'} aria-label="Image précédente">←</button><button class="btn ghost" data-act="ephear" aria-label="Écouter">🔊</button><button class="btn" data-act="epnext">${last?'Fin ✓':'→'}</button></div>`;
+}
+
+/* ---------- Comptines (paroles originales) : karaoké ligne par ligne ---------- */
+const SONGS=[
+ {after:'saludos',t:'Hola, hola',e:'👋',l:['Hola, hola, ¿cómo estás?','Muy bien, gracias, ¿y tú qué tal?','Buenos días, buenas noches,','¡adiós, adiós, hasta mañana!']},
+ {after:'colores',t:'Los colores',e:'🎨',l:['Rojo, rojo, el tomate.','Verde, verde, la rana.','Amarillo, el plátano.','¡Azul, azul, la mañana!']},
+ {after:'numeros',t:'Uno, dos, tres',e:'🔢',l:['Uno, dos, tres, salta otra vez.','Cuatro y cinco, ¡un gran brinco!','Uno, dos, tres, cuatro, cinco,','¡bailo, canto y doy un brinco!']},
+ {after:'familia',t:'Mi familia',e:'👨‍👩‍👧',l:['Mamá, papá, os quiero.','Mi hermano y mi abuela también.','Toda mi familia junta,','¡qué bien, qué bien, qué bien!']}];
+let song=null,karaToken=0;
+function songs(){
+  app.innerHTML=head('🎵 Comptines')+`<p class="note" style="margin-bottom:12px">Écoute, puis chante avec ${esc(G().es)}. Chaque comptine s'ouvre avec un niveau.</p>
+  <div class="eplist">${SONGS.map((s,i)=>{const ok=!!S.stars[s.after],u=ALL_UNITS.find(x=>x.id===s.after);return `<button class="epi ${ok?'':'lock'}" data-act="songopen" data-i="${i}" ${ok?'':'aria-disabled="true"'}><span class="epn">${s.e}</span><span class="ept"><b>${esc(s.t)}</b><small>${ok?'4 lignes à chanter':'Réussis le niveau « '+esc(u?u.es:'')+' »'}</small></span><span>${ok?'▶':'🔒'}</span></button>`}).join('')}</div>`;
+}
+function songView(){
+  const s=SONGS[song.i];
+  app.innerHTML=head(`${s.e} ${esc(s.t)}`,'songs')+`<div class="kara">${s.l.map((l,k)=>`<p class="kl ${song.line===k?'on':''} ${song.mode==='me'&&song.line===k?'me':''}">${esc(l)}</p>`).join('')}</div>
+  <p class="note" style="text-align:center;min-height:22px">${song.mode==='me'?(song.line>=0?'À toi ! Chante la ligne en couleur 🎤':''):song.mode==='play'?'Écoute bien…':''}</p>
+  <div class="row"><button class="btn" data-act="karaplay">▶ Écouter</button><button class="btn sun" data-act="karame">🎤 À moi de chanter</button></div>`;
+}
+async function karaRun(mode){
+  const tok=++karaToken,s=SONGS[song.i];song.mode=mode;
+  for(let k=0;k<s.l.length;k++){
+    if(tok!==karaToken)return;song.line=k;render();
+    if(mode==='play')await say(s.l[k],false);
+    else{await say(s.l[k],true);if(tok!==karaToken)return;song.mode='me';render();await new Promise(r=>setTimeout(r,Math.max(2500,s.l[k].length*110)));song.mode=mode}
+  }
+  if(tok!==karaToken)return;song.line=-1;song.mode=null;addCoins(2);save();tone(true);render();
+}
+
+/* ---------- Pièces, points de la semaine, temps d'écran ---------- */
+const weekKey=()=>{const d=new Date();d.setDate(d.getDate()-((d.getDay()+6)%7));return iso(d)};
+function addPts(n){S.xp+=n;const k=weekKey();if(!S.wk||S.wk.k!==k)S.wk={k,pts:0};S.wk.pts+=n}
+const weekPts=s=>(s&&s.wk&&s.wk.k===weekKey())?s.wk.pts:0;
+function addCoins(n){S.coins=(S.coins||0)+n}
+const usedMin=()=>Math.round(((S.days||{})[dayPlus(0)]||0)/60);
+const overLimit=()=>S.limit>0&&usedMin()>=S.limit&&S.unlockDay!==dayPlus(0);
+function guard(){if(overLimit()){view='stop';render();return false}return true}
+function editProfile(id,fn){if(id===P.cur){fn(S);save();return}const k=pkey(id),s=readSave(k)||readSave(k+'-secours');if(!s)return;fn(s);try{const j=JSON.stringify(s);localStorage.setItem(k,j);localStorage.setItem(k+'-secours',j)}catch(e){}}
+function stop(){
+  app.innerHTML=`<div class="center"><div class="lola big" aria-hidden="true">${avatar()}</div><h2 style="font-size:32px">C'est fini pour aujourd'hui !</h2>
+  <p class="say">${esc(G().es)} se repose. Tu as joué ${usedMin()} minutes aujourd'hui. Reviens demain 😴</p>
+  <div style="width:100%;display:grid;gap:12px"><button class="btn" data-act="home">Retour à la carte</button><button class="btn ghost" data-act="parent">Espace parent</button></div></div>`;
+}
+
+/* ---------- Album d'autocollants : un autocollant par mot réussi 3 fois ---------- */
+const stickerOk=k=>{const r=(S.words||{})[k];return !!r&&r.ok>=3};
+function stickerCount(){return Object.keys(wordMap()).filter(stickerOk).length}
+function album(){
+  const WM=wordMap(),keys=Object.keys(WM),got=keys.filter(stickerOk).length;
+  app.innerHTML=head('🏆 Mon album')+`<div class="goal" style="margin-top:0"><div class="goal-h"><span>${got} / ${keys.length} autocollants</span><span>1 mot réussi 3 fois = 1 autocollant</span></div><div class="bar"><i style="width:${keys.length?got/keys.length*100:0}%"></i></div></div>
+  ${[1,2,3].map(t=>`<div class="dunit">${TIERS[t][0]} · ${esc(TIERS[t][1])}</div><div class="stk">${stageUnits(t).flatMap(u=>u.words.map(W)).map(w=>stickerOk(w.es)?`<button class="sticker on" data-act="sayw" data-w="${esc(w.es)}"><span>${pic(w.e)}</span><b>${esc(w.es)}</b></button>`:`<div class="sticker"><span>?</span></div>`).join('')}</div>`).join('')}`;
+}
+
+/* ---------- Compagnon à habiller : accessoires achetés avec les pièces ---------- */
+const ACC={head:[['🎩','Chapeau',20],['👑','Couronne',40],['🎀','Nœud',15],['🧢','Casquette',15],['🎓','Toque',30]],
+  face:[['🕶️','Lunettes de soleil',25],['👓','Lunettes',15]],
+  hand:[['🎈','Ballon',10],['🪄','Baguette magique',30],['⚽','Ballon de foot',15],['🍦','Glace',10],['🌻','Fleur',10]]};
+const SLOT={head:'Sur la tête',face:'Sur les yeux',hand:'Dans la main'};
+let shopMsg='';
+function avatar(cls=''){const a=S.acc||{};return `<span class="ava ${cls}"><span class="ava-b">${G().e}</span>${a.head?`<span class="ava-h">${a.head}</span>`:''}${a.face?`<span class="ava-f">${a.face}</span>`:''}${a.hand?`<span class="ava-x">${a.hand}</span>`:''}</span>`}
+function wardrobe(){
+  const a=S.acc||{},own=S.owned||[];
+  app.innerHTML=head('👗 Garde-robe')+`<div class="center" style="flex:none;padding:16px 0 6px;gap:8px"><div class="lola big" aria-hidden="true">${avatar()}</div>
+    <p class="note">Tu as <b>🪙 ${S.coins||0}</b> pièces. Gagne-en avec les leçons, la séance du jour, les jeux et les défis.</p>${shopMsg?`<p class="note" role="status" style="color:var(--coral-d)">${esc(shopMsg)}</p>`:''}</div>
+  ${Object.entries(ACC).map(([slot,items])=>`<div class="dunit">${SLOT[slot]}</div><div class="shop">${items.map(([e,n,price])=>{const has=own.includes(e),on=a[slot]===e;
+    return `<button class="item ${on?'on':''} ${!has&&(S.coins||0)<price?'poor':''}" data-act="acc" data-slot="${slot}" data-e="${e}" data-p="${price}"><span>${e}</span><b>${n}</b><small>${on?'Porté ✓':has?'Mettre':`🪙 ${price}`}</small></button>`}).join('')}</div>`).join('')}
+  <button class="btn ghost" data-act="accoff" style="margin-top:14px">Tout enlever</button>`;
+}
+
+/* ---------- Mini-jeux : Attrape les mots, Memory, Course contre la montre ---------- */
+let GM=null;
+function gamePool(){const WM=wordMap();return uniqPic(shuffle(Object.keys(S.words||{}).filter(k=>WM[k]).map(k=>WM[k])))}
+function games(){
+  const n=gamePool().length,ok=n>=4;
+  app.innerHTML=head('🎮 Jeux')+`<p class="note" style="margin-bottom:12px">${ok?`On joue avec tes ${n} mots appris. Chaque partie rapporte des pièces 🪙.`:'Termine ton premier niveau pour débloquer les jeux !'}</p>
+  <div class="eplist">
+   <button class="epi ${ok?'':'lock'}" data-act="game" data-g="catch"><span class="epn">🫧</span><span class="ept"><b>Attrape les mots</b><small>Touche la bonne bulle avant qu'elle tombe</small></span><span>▶</span></button>
+   <button class="epi ${ok?'':'lock'}" data-act="game" data-g="memory"><span class="epn">🃏</span><span class="ept"><b>Memory</b><small>Retrouve chaque mot et son image</small></span><span>▶</span></button>
+   <button class="epi ${ok?'':'lock'}" data-act="game" data-g="chrono"><span class="epn">⏱️</span><span class="ept"><b>Course contre la montre</b><small>Le plus de bonnes réponses en 45 secondes</small></span><span>▶</span></button></div>`;
+}
+function startGame(g){
+  const pool=gamePool();if(pool.length<4)return;
+  if(GM&&GM.timer)clearInterval(GM.timer);
+  if(g==='catch'){GM={g,round:0,n:8,score:0,pool,t0:Date.now()};nextCatch()}
+  else if(g==='memory'){const ws=pool.slice(0,6);GM={g,cards:shuffle(ws.flatMap(w=>[{w,k:'t'},{w,k:'p'}])),open:[],done:[],moves:0,pairs:ws.length,t0:Date.now()};view='game';render()}
+  else{GM={g:'chrono',score:0,pool,end:Date.now()+45000,t0:Date.now()};nextChrono();
+    GM.timer=setInterval(()=>{if(!GM||GM.g!=='chrono'||view!=='game'){clearInterval(GM&&GM.timer);return}
+      if(Date.now()>=GM.end){clearInterval(GM.timer);endGame()}else{const b=$('#tbar');if(b)b.style.width=Math.max(0,(GM.end-Date.now())/450)+'%'}},200)}
+}
+function nextCatch(){
+  if(!GM||GM.g!=='catch')return;if(GM.round>=GM.n)return endGame();
+  const target=pick(GM.pool);GM.cur={target,opts:optsFor(target,GM.pool).map((w,i)=>({w,x:4+i*32+Math.random()*8,dur:(4.4+Math.random()*1.2).toFixed(2),delay:(Math.random()*.6).toFixed(2)}))};
+  GM.round++;GM.lock=false;GM.miss=null;view='game';render();say(target.es);
+}
+function nextChrono(){const w=pick(GM.pool);GM.cur={w,opts:optsFor(w,GM.pool)};GM.lock=false;GM.bad=null;view='game';render()}
+function game(){
+  const g=GM;let body='';
+  if(g.g==='catch'){const c=g.cur;body=`<div class="ghead"><span>Manche ${g.round} / ${g.n}</span><span>⭐ ${g.score}</span></div>
+    <div class="ask" style="text-align:center">Attrape : <span class="es">${esc(c.target.es)}</span> <button class="tool" data-act="gsay" aria-label="Réécouter">🔊</button></div>
+    <div class="sky">${c.opts.map((o,i)=>`<button class="bubble-f ${g.miss===i?'sel-bad':''} ${g.lock&&o.w===c.target?'sel-good':''}" data-act="gcatch" data-k="${i}" style="left:${o.x}%;animation-duration:${o.dur}s;animation-delay:${o.delay}s" aria-label="${esc(o.w.fr)}">${pic(o.w.e)}</button>`).join('')}</div>`}
+  else if(g.g==='memory'){body=`<div class="ghead"><span>${g.done.length} / ${g.pairs} paires</span><span>${g.moves} coups</span></div>
+    <div class="mem">${g.cards.map((c,i)=>{const up=g.open.includes(i)||g.done.includes(c.w.es);return `<button class="mcard ${up?'up':''} ${g.done.includes(c.w.es)?'ok':''}" data-act="gmem" data-k="${i}" aria-label="${up?esc(c.k==='t'?c.w.es:c.w.fr):'Carte cachée'}">${up?(c.k==='t'?`<b>${esc(c.w.es)}</b>`:pic(c.w.e)):'❓'}</button>`}).join('')}</div>`}
+  else{const c=g.cur;body=`<div class="ghead"><span>⏱️ Course</span><span>⭐ ${g.score}</span></div><div class="bar"><i id="tbar" style="width:${Math.max(0,(g.end-Date.now())/450)}%;background:var(--coral)"></i></div>
+    <div class="card" style="margin-top:14px"><div class="pic">${pic(c.w.e)}</div></div>
+    <div class="opts" style="margin-top:14px">${c.opts.map((o,i)=>`<button class="opt ${g.bad===i?'sel-bad':''}" data-act="gchr" data-k="${i}">${esc(o.es)}</button>`).join('')}</div>`}
+  app.innerHTML=`<div class="lbar"><button class="icon-btn" data-act="games" aria-label="Quitter le jeu">✕</button><b style="flex:1;font-family:var(--f-display);font-size:20px">${g.g==='catch'?'Attrape les mots':g.g==='memory'?'Memory':'Course contre la montre'}</b></div><div class="stage">${body}</div>`;
+}
+function catchTap(k){
+  const g=GM,c=g.cur;if(!g||g.lock)return;g.lock=true;const o=c.opts[k],ok=o.w===c.target;
+  srs(c.target,ok);tone(ok);if(ok)g.score++;else g.miss=k;render();setTimeout(nextCatch,ok?500:1100);
+}
+function memTap(k){
+  const g=GM;if(!g||g.lock||g.open.includes(k)||g.done.includes(g.cards[k].w.es))return;
+  g.open.push(k);if(g.cards[k].k==='t')say(g.cards[k].w.es);
+  if(g.open.length<2){render();return}
+  g.moves++;const [a,b]=g.open.map(i=>g.cards[i]);
+  if(a.w.es===b.w.es&&a.k!==b.k){g.done.push(a.w.es);g.open=[];tone(true);srs(a.w,true);render();if(g.done.length===g.pairs)setTimeout(endGame,600);return}
+  g.lock=true;render();setTimeout(()=>{if(GM!==g)return;g.open=[];g.lock=false;render()},950);
+}
+function chronoTap(k){
+  const g=GM;if(!g||g.lock)return;const ok=g.cur.opts[k].es===g.cur.w.es;srs(g.cur.w,ok);tone(ok);
+  if(ok){g.score++;nextChrono()}else{g.lock=true;g.bad=k;render();setTimeout(()=>{if(GM===g&&view==='game')nextChrono()},450)}
+}
+function endGame(){
+  const g=GM;if(!g||g.over)return;g.over=true;if(g.timer)clearInterval(g.timer);
+  const coins=g.g==='memory'?Math.max(3,12-(g.moves-g.pairs)):g.score,score=g.g==='memory'?g.done.length:g.score;
+  addCoins(coins);addPts(coins);const s=Math.min(1200,(Date.now()-g.t0)/1000),k=dayPlus(0);S.days[k]=(S.days[k]||0)+Math.round(s);save();
+  g.coins=coins;g.final=score;view='gameover';render();if(coins>=5)confetti();
+}
+function gameover(){
+  const g=GM,txt=g.g==='memory'?`Toutes les paires en ${g.moves} coups !`:g.g==='catch'?`${g.final} mots attrapés sur ${g.n}`:`${g.final} bonnes réponses en 45 secondes`;
+  app.innerHTML=`<div class="center"><div class="lola big" aria-hidden="true">${avatar()}</div><h2 style="font-size:36px">${g.final?'¡Muy bien!':'¡Casi!'}</h2>
+  <div class="xp">${txt}</div><div class="xp" style="font-size:24px">+${g.coins} 🪙</div>
+  <div style="width:100%;display:grid;gap:12px"><button class="btn sun" data-act="game" data-g="${g.g}">Rejouer</button><button class="btn ghost" data-act="games">Autres jeux</button><button class="btn" data-act="home">Retour à la carte</button></div></div>`;
+}
+
+/* ---------- Défi en famille : même téléphone, chacun son tour, mêmes questions ---------- */
+let DU=null;
+function familyRank(){return P.list.map(p=>{const s=profileInfo(p.id);return {id:p.id,name:s.name||'Joueur',e:(THEMES[s.theme]||THEMES.jungla).e,pts:weekPts(s)}}).sort((a,b)=>b.pts-a.pts)}
+function duel(){
+  const others=P.list.filter(p=>p.id!==P.cur).map(p=>{const s=profileInfo(p.id);return {id:p.id,name:s.name||'Joueur',e:(THEMES[s.theme]||THEMES.jungla).e}});
+  const opp=[...others,{id:'parent',name:'Un parent',e:'🧑'}],sel=DU&&DU.opp,rank=familyRank(),ok=gamePool().length>=4;
+  app.innerHTML=head('⚔️ Défi en famille')+`<div class="set"><b>🏆 Classement de la semaine</b>
+    ${rank.map((r,i)=>`<div class="rank"><span>${['🥇','🥈','🥉'][i]||'·'}</span><span class="re">${r.e}</span><b>${esc(r.name)}</b><span class="rp">${r.pts} pts</span></div>`).join('')}
+    <p class="note">Les points de la semaine viennent des leçons, séances, jeux et défis. Le classement repart à zéro chaque lundi.</p></div>
+  <div class="set"><b>Contre qui joue ${esc(S.name)} ?</b>
+    ${ok?`<div class="shop">${opp.map(o=>`<button class="item ${sel===o.id?'on':''}" data-act="dopp" data-id="${o.id}"><span>${o.e}</span><b>${esc(o.name)}</b></button>`).join('')}</div>
+    <p class="note">8 questions sur les mots de ${esc(S.name)}. Chacun joue à son tour sur ce téléphone. Le plus rapide et le plus juste gagne 10 pièces 🪙.</p>
+    <button class="btn sun" data-act="dstart" ${sel?'':'disabled'}>C'est parti !</button>`:`<p class="note">${esc(S.name)} doit d'abord réussir un niveau.</p>`}</div>`;
+}
+function duelStart(){
+  const pool=gamePool();if(pool.length<4||!DU||!DU.opp)return;
+  const o=DU.opp==='parent'?{id:'parent',name:'Un parent',e:'🧑'}:(()=>{const s=profileInfo(DU.opp);return {id:DU.opp,name:s.name||'Joueur',e:(THEMES[s.theme]||THEMES.jungla).e}})();
+  const qs=shuffle(pool.slice()).slice(0,8).map(w=>({w,opts:optsFor(w,pool)}));
+  DU={opp:DU.opp,players:[{id:P.cur,name:S.name,e:G().e},o],qs,turn:0,i:0,score:[0,0],time:[0,0],phase:'turn'};view='duel2';render();
+}
+function duel2(){
+  const d=DU,p=d.players[d.turn];
+  if(d.phase==='turn'){app.innerHTML=`<div class="center"><div class="lola big" aria-hidden="true">${p.e}</div><h2 style="font-size:32px">Au tour de ${esc(p.name)} !</h2>
+    <p class="say">${d.turn?'Passe le téléphone. ':''}8 questions : touche le bon mot le plus vite possible.</p>
+    <div style="width:100%;display:grid;gap:12px"><button class="btn sun" data-act="dgo">Je suis prêt${d.turn&&d.players[1].id==='parent'?'':'(e)'} !</button><button class="btn ghost" data-act="duel">← Annuler le défi</button></div></div>`;return}
+  if(d.phase==='q'){const q=d.qs[d.i];app.innerHTML=`<div class="lbar"><button class="icon-btn" data-act="duel" aria-label="Annuler le défi">✕</button><div class="bar"><i style="width:${d.i/d.qs.length*100}%"></i></div></div>
+    <div class="stage"><div class="ghead"><span>${p.e} ${esc(p.name)}</span><span>${d.i+1} / ${d.qs.length}</span></div>
+    <div class="card"><div class="pic">${pic(q.w.e)}</div></div>
+    <div class="opts">${shuffle(q.opts.slice()).map(o=>`<button class="opt" data-act="dans" data-es="${esc(o.es)}">${esc(o.es)}</button>`).join('')}</div></div>`;return}
+  const [a,b]=d.players,win=d.score[0]!==d.score[1]?(d.score[0]>d.score[1]?0:1):(d.time[0]<=d.time[1]?0:1);
+  app.innerHTML=`<div class="center"><div class="lola big" aria-hidden="true">${d.players[win].e}</div><h2 style="font-size:32px">${esc(d.players[win].name)} gagne !</h2>
+    <div class="set" style="width:100%">${[0,1].map(i=>`<div class="rank"><span>${i===win?'🏆':'·'}</span><span class="re">${d.players[i].e}</span><b>${esc(d.players[i].name)}</b><span class="rp">${d.score[i]} / ${d.qs.length} · ${Math.round(d.time[i]/1000)} s</span></div>`).join('')}</div>
+    <p class="say">${d.players[win].id==='parent'?'Bravo ! Revanche ?':`+10 pièces 🪙 pour ${esc(d.players[win].name)}`}</p>
+    <div style="width:100%;display:grid;gap:12px"><button class="btn sun" data-act="dstart">Revanche !</button><button class="btn" data-act="home">Retour à la carte</button></div></div>`;
+}
+function duelAnswer(es){
+  const d=DU,q=d.qs[d.i];if(d.phase!=='q')return;const ok=es===q.w.es;tone(ok);if(ok)d.score[d.turn]++;
+  if(d.turn===0)srs(q.w,ok);
+  d.i++;if(d.i<d.qs.length){render();return}
+  d.time[d.turn]=Date.now()-d.t0;
+  if(d.turn===0){d.turn=1;d.i=0;d.phase='turn';render();return}
+  d.phase='end';const win=d.score[0]!==d.score[1]?(d.score[0]>d.score[1]?0:1):(d.time[0]<=d.time[1]?0:1),wid=d.players[win].id;
+  addPts(5);if(wid!=='parent')editProfile(wid,s=>{s.coins=(s.coins||0)+10;const k=weekKey();if(!s.wk||s.wk.k!==k)s.wk={k,pts:0};s.wk.pts+=10;s.xp=(s.xp||0)+10});
+  save();render();confetti();
 }
 
 /* ---------- Dico, réglages, accueil ---------- */
@@ -1307,33 +1586,38 @@ function settings(){
     :`<button class="btn ghost" data-act="reset">Recommencer à zéro</button>`}</div>
   <button class="btn" data-act="home">Enregistrer</button>`;
 }
-/* Accueil d'un joueur : prénom, puis fille ou garçon, puis son univers */
+/* Accueil d'un joueur : prénom → fille ou garçon → univers. Chaque étape a son bouton retour. */
+let wStep=null,themeFrom='setup',prevTheme='';
 function welcome(){
-  if(!S.name){app.innerHTML=`<div class="center">
+  const st=wStep||(!S.name?'name':!S.gender?'gender':'theme');
+  if(st==='name'){app.innerHTML=`<div class="center">
     <div class="lola big" aria-hidden="true">👋</div>
     <h1 style="font-size:40px">¡Hola!</h1>
     <p class="say" style="font-size:19px">Chaque jour, on apprend l'espagnol en quelques minutes. ¿Cómo te llamas ?</p>
-    <label class="field" for="nm" style="width:100%;text-align:left">Ton prénom<input id="nm" maxlength="20" autocomplete="off" placeholder="Écris ton prénom"></label>
-    <button class="btn sun" data-act="go">Suivant</button>
+    <label class="field" for="nm" style="width:100%;text-align:left">Ton prénom<input id="nm" maxlength="20" autocomplete="off" placeholder="Écris ton prénom" value="${esc(S.name||'')}"></label>
+    <button class="btn sun" data-act="go">Suivant →</button>
     ${P.list.length>1?'<button class="btn ghost" data-act="who">← Choisir un autre joueur</button>':''}</div>`;return}
-  if(!S.gender){app.innerHTML=`<div class="center">
+  if(st==='gender'){app.innerHTML=`<div class="center">
     <h1 style="font-size:34px">¡Hola, ${esc(S.name)}!</h1>
     <p class="say" style="font-size:19px">Tu es…</p>
     <div class="row" style="width:100%"><button class="btn sun big2" data-act="gender" data-g="f">👧 Une fille</button><button class="btn big2" data-act="gender" data-g="m">👦 Un garçon</button></div>
-    <p class="note">Pour dire « encantada » ou « encantado » 😉</p></div>`;return}
-  const keys=allThemes?Object.keys(THEMES):THEME_FOR[S.gender];
+    <p class="note">Pour dire « encantada » ou « encantado » 😉</p>
+    <button class="btn ghost" data-act="wback">← Retour</button></div>`;return}
+  const keys=allThemes?Object.keys(THEMES):THEME_FOR[S.gender||'f'];
   app.innerHTML=`<div class="center" style="justify-content:flex-start;padding-top:12px">
     <h1 style="font-size:32px">Choisis ton univers</h1>
     <p class="say">Ton compagnon t'accompagne dans toutes tes leçons.</p>
     <div class="themes">${keys.map(k=>{const t=THEMES[k];return `<button class="thcard ${S.theme===k?'on':''}" data-act="theme" data-t="${k}" style="--tb:${t.c.bg};--tl:${t.c.lagoon};--ts:${t.c.sun}">
       <span class="thmas">${t.e}</span><span class="thtxt"><b>${esc(t.name)}</b><small>avec ${esc(t.title)}</small><span class="thdeco">${t.deco}</span></span></button>`}).join('')}</div>
-    <button class="btn ghost" data-act="allthemes">${allThemes?'Voir moins d\'univers':'Voir les 6 univers'}</button></div>`;
+    <button class="btn ghost" data-act="allthemes">${allThemes?'Voir moins d\'univers':'Voir les 6 univers'}</button>
+    <button class="btn ghost" data-act="wback">← Retour</button></div>`;
 }
 /* Qui joue ? */
 function who(){
   const cards=P.list.map(p=>{const s=profileInfo(p.id),th=THEMES[s.theme]||THEMES.jungla,n=Object.keys(s.stars||{}).length;
-    return `<button class="pcard ${p.id===P.cur?'cur':''}" data-act="pick" data-id="${p.id}" style="--pc:${th.c.lagoon};--pb:${th.c.bg}"><span class="pav">${s.theme?th.e:'🙂'}</span><b>${esc(s.name||'Nouveau joueur')}</b><small>${n} niveau${n>1?'x':''} réussi${n>1?'s':''}</small></button>`}).join('');
+    return `<button class="pcard ${p.id===P.cur?'cur':''}" data-act="pick" data-id="${p.id}" style="--pc:${th.c.lagoon};--pb:${th.c.bg}"><span class="pav">${s.theme?th.e:'🙂'}</span><b>${esc(s.name||'Nouveau joueur')}</b><small>${n} niveau${n>1?'x':''} réussi${n>1?'s':''} · ${weekPts(s)} pts</small></button>`}).join('');
   app.innerHTML=`<div class="center" style="justify-content:flex-start;padding-top:20px">
+    ${S.name&&S.gender&&S.theme?'<div class="head" style="width:100%;margin:0"><button class="icon-btn" data-act="home" aria-label="Retour">←</button></div>':''}
     <h1 style="font-size:36px">¿Quién juega?</h1><p class="say">Qui joue aujourd'hui ? Chacun garde sa progression.</p>
     <div class="who">${cards}${P.list.length<6?'<button class="pcard add" data-act="addp"><span class="pav">➕</span><b>Ajouter un enfant</b><small>Nouveau profil</small></button>':''}</div></div>`;
 }
@@ -1354,17 +1638,24 @@ function parent(){
     return `<div class="set pcard2"><div class="row" style="align-items:center"><span class="pav" style="flex:none;background:${th.c.bg}">${s.theme?th.e:'🙂'}</span><b style="font-size:20px">${esc(s.name||'Nouveau joueur')}</b></div>
       <div class="stats"><div><b>${keys.length}</b><small>mots vus</small></div><div><b>${keys.filter(k=>ws[k].b>=4).length}</b><small>mots bien retenus</small></div><div><b>${Object.keys(s.stars||{}).filter(id=>UNITS.some(u=>u.id===id)).length}/${UNITS.length}</b><small>niveaux réussis</small></div><div><b>${week} min</b><small>cette semaine</small></div></div>
       <div class="bars" role="img" aria-label="Minutes par jour sur 7 jours">${mins.map((m,i)=>`<div class="barc"><span class="bv">${m||''}</span><i style="height:${Math.round(m/maxm*70)}px"></i><small>${DN[new Date(days[i]+'T12:00').getDay()]}</small></div>`).join('')}</div>
+      <p class="note" style="color:var(--ink)"><b>Cette semaine :</b> ${week} min, ${keys.filter(k=>ws[k].f&&ws[k].f>=dayPlus(-6)).length} mots nouveaux, ${keys.filter(k=>ws[k].ok>=3).length} autocollants au total, ${weekPts(s)} points.</p>
+      <div class="toggle"><span>⏳ Limite par jour</span><span class="row" style="flex:none;gap:6px;flex-wrap:wrap;justify-content:flex-end">${[0,10,15,20,30].map(m=>`<button class="tool" style="min-width:44px;justify-content:center;padding:0 10px;${(s.limit||0)===m?'background:var(--sun)':''}" data-act="plim" data-id="${p.id}" data-m="${m}">${m?m+' min':'Aucune'}</button>`).join('')}</span></div>
+      ${s.limit>0&&Math.round(((s.days||{})[dayPlus(0)]||0)/60)>=s.limit&&s.unlockDay!==dayPlus(0)?`<button class="tool" data-act="punlock" data-id="${p.id}" style="justify-content:center">🔓 Débloquer pour aujourd'hui</button>`:''}
       <p class="note">Évaluations : ${ev.length?ev.join(' · '):'aucune réussie pour l\'instant'} · Série : ${s.streak||0} jour(s)</p>
       <p class="note">Mots difficiles : ${hard.length?hard.map(k=>`<b>${esc(k)}</b>${WM[k]?' ('+esc(WM[k].fr)+')':''}`).join(', '):'aucun pour l\'instant'}</p>
       ${pdel===p.id?`<p style="margin:0;font-weight:800">Supprimer le profil de ${esc(s.name||'ce joueur')} et toute sa progression ?</p><div class="row"><button class="btn coral" data-act="pdelyes" data-id="${p.id}">Oui, supprimer</button><button class="btn ghost" data-act="pdelno">Non</button></div>`
         :`<button class="tool" data-act="pdel" data-id="${p.id}" style="justify-content:center">Supprimer ce profil</button>`}</div>`}).join('');
   app.innerHTML=`<div class="head"><button class="icon-btn" data-act="settings" aria-label="Retour">←</button><h2>Espace parent</h2></div>
-  <p class="note" style="margin-bottom:12px">Le temps compté est celui passé dans les leçons, séances et évaluations.</p>${cards}
+  <div class="set" style="background:var(--good-bg)"><b>🔒 Sans publicité, sans collecte de données</b><p class="note" style="color:var(--ink)">Tout reste sur ce téléphone : aucun compte, aucune donnée envoyée. Le temps compté est celui passé dans les leçons, séances, évaluations et jeux.</p></div>${cards}
   ${P.list.length<6?'<button class="btn ghost" data-act="addp">➕ Ajouter un enfant</button>':''}`;
 }
 
 function render(){
+  if(view!=='game'&&GM&&GM.timer){clearInterval(GM.timer);GM.timer=null}
   if(view==='who')who();else if(view==='pgate')parentGate();else if(view==='parent')parent();else
+  if(view==='stop')stop();else if(view==='album')album();else if(view==='wardrobe')wardrobe();else if(view==='story')story();else if(view==='episode')episode();else
+  if(view==='songs')songs();else if(view==='song')songView();else if(view==='games')games();else if(view==='game')game();else if(view==='gameover')gameover();else
+  if(view==='duel')duel();else if(view==='duel2')duel2();else
   if(view==='welcome')welcome();else if(view==='lesson')lesson();else if(view==='result')result();
   else if(view==='dico')dico();else if(view==='settings')settings();else home();
 }
@@ -1372,15 +1663,21 @@ function readName(){const n=$('#nm');if(n){const v=n.value.trim();if(v)S.name=v;
 
 app.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b||b.disabled)return;const a=b.dataset.act;
+  if(a!=='karaplay'&&a!=='karame')karaToken++;
   if(a==='newok'){S.ver=APP_VERSION;save();render()}
-  else if(a==='go'){readName();if(!S.name){$('#nm').focus();return}if(!S.ver)S.ver=APP_VERSION;save();render();say('¡Hola, '+S.name+'!')}
-  else if(a==='gender'){S.gender=b.dataset.g;allThemes=false;save();render()}
-  else if(a==='theme'){S.theme=b.dataset.t;if(!S.ver)S.ver=APP_VERSION;applyTheme();save();view='home';render();say('¡Hola, '+S.name+'! Soy '+G().es+'. ¡Vamos!')}
+  else if(a==='go'){readName();if(!S.name){$('#nm').focus();return}if(!S.ver)S.ver=APP_VERSION;save();wStep='gender';themeFrom='setup';render();say('¡Hola, '+S.name+'!')}
+  else if(a==='gender'){S.gender=b.dataset.g;allThemes=false;save();wStep='theme';render()}
+  else if(a==='theme'){S.theme=b.dataset.t;if(!S.ver)S.ver=APP_VERSION;applyTheme();save();wStep=null;view='home';render();say('¡Hola, '+S.name+'! Soy '+G().es+'. ¡Vamos!')}
+  else if(a==='wback'){const st=wStep||(!S.name?'name':!S.gender?'gender':'theme');
+    if(st==='gender')wStep='name';
+    else if(st==='theme'&&themeFrom==='settings'){S.theme=prevTheme;applyTheme();wStep=null;view='settings'}
+    else if(st==='theme')wStep='gender';
+    render()}
   else if(a==='allthemes'){allThemes=!allThemes;render()}
-  else if(a==='chtheme'){readName();S.theme='';allThemes=true;view='welcome';render()}
+  else if(a==='chtheme'){readName();prevTheme=S.theme;themeFrom='settings';wStep='theme';allThemes=true;view='welcome';render()}
   else if(a==='who'){readName();addTime();save();view='who';render()}
-  else if(a==='pick'){loadProfile(b.dataset.id);view=S.name&&S.gender&&S.theme?'home':'welcome';render()}
-  else if(a==='addp'){save();const id='p'+Date.now().toString(36);P.list.push({id});loadProfile(id);view='welcome';render()}
+  else if(a==='pick'){loadProfile(b.dataset.id);wStep=null;themeFrom='setup';view=S.name&&S.gender&&S.theme?'home':'welcome';render()}
+  else if(a==='addp'){save();const id='p'+Date.now().toString(36);P.list.push({id});loadProfile(id);wStep='name';themeFrom='setup';view='welcome';render()}
   else if(a==='parent'){readName();gateQ=null;gateMsg='';pdel=null;view='pgate';render()}
   else if(a==='pgok'){const v=+(($('#pg')||{}).value||'');if(gateQ&&v===gateQ.a*gateQ.b){view='parent';render()}else{gateQ=null;gateMsg='Ce n\'est pas la bonne réponse.';render()}}
   else if(a==='pdel'){pdel=b.dataset.id;render()}
@@ -1389,10 +1686,41 @@ app.addEventListener('click',e=>{
     P.list=P.list.filter(x=>x.id!==id);pdel=null;if(!P.list.length)P.list=[{id:'p'+Date.now().toString(36)}];
     if(P.cur===id||!P.list.some(x=>x.id===P.cur))loadProfile(P.list[0].id);else saveP();
     view=S.name?'parent':'welcome';render()}
-  else if(a==='seance'){if(startSeance())speakStep()}
-  else if(a==='seancemiss'){if(startSeance(R&&R.missed&&R.missed.length?R.missed:null))speakStep()}
-  else if(a==='eval'){const t=+b.dataset.t;if(!stageDone(t)&&!S.evals[t]){say('¡Todavía no!');return}startEval(t);speakStep()}
-  else if(a==='unit'){const i=+b.dataset.i;if(!unlocked(i)){say('¡Todavía no!');return}startUnit(i);speakStep()}
+  else if(a==='seance'){if(guard()&&startSeance())speakStep()}
+  else if(a==='seancemiss'){if(guard()&&startSeance(R&&R.missed&&R.missed.length?R.missed:null))speakStep()}
+  else if(a==='eval'){const t=+b.dataset.t;if(!stageDone(t)&&!S.evals[t]){say('¡Todavía no!');return}if(!guard())return;startEval(t);speakStep()}
+  else if(a==='album'){view='album';render()}
+  else if(a==='wardrobe'){shopMsg='';view='wardrobe';render()}
+  else if(a==='acc'){const sl=b.dataset.slot,e=b.dataset.e,pr=+b.dataset.p;S.acc=S.acc||{};S.owned=S.owned||[];
+    if(S.acc[sl]===e){S.acc[sl]='';shopMsg=''}
+    else if(S.owned.includes(e)){S.acc[sl]=e;shopMsg=''}
+    else if((S.coins||0)>=pr){S.coins-=pr;S.owned.push(e);S.acc[sl]=e;shopMsg='Acheté ! '+e;tone(true)}
+    else shopMsg=`Il te manque ${pr-(S.coins||0)} pièces. Joue encore un peu !`;
+    save();render()}
+  else if(a==='accoff'){S.acc={};save();render()}
+  else if(a==='story'){view='story';render()}
+  else if(a==='epopen'){const i=+b.dataset.i;if(!S.stars[UNITS[i].id])return;epi={i,k:0};view='episode';render();say(fillG(STORY[UNITS[i].id].p[0][1]))}
+  else if(a==='epnext'){const e=STORY[UNITS[epi.i].id];if(epi.k<e.p.length-1){epi.k++;render();say(fillG(e.p[epi.k][1]))}else{view='story';render()}}
+  else if(a==='epprev'){if(epi.k>0){epi.k--;render();say(fillG(STORY[UNITS[epi.i].id].p[epi.k][1]))}}
+  else if(a==='ephear')say(fillG(STORY[UNITS[epi.i].id].p[epi.k][1]));
+  else if(a==='songs'){karaToken++;view='songs';render()}
+  else if(a==='songopen'){const i=+b.dataset.i;if(!S.stars[SONGS[i].after])return;song={i,line:-1,mode:null};view='song';render()}
+  else if(a==='karaplay')karaRun('play');
+  else if(a==='karame')karaRun('repeat');
+  else if(a==='games'){if(GM&&GM.timer)clearInterval(GM.timer);view='games';render()}
+  else if(a==='game'){if(gamePool().length<4||!guard())return;startGame(b.dataset.g)}
+  else if(a==='gsay'){GM&&GM.cur&&say(GM.cur.target.es)}
+  else if(a==='gcatch')catchTap(+b.dataset.k);
+  else if(a==='gmem')memTap(+b.dataset.k);
+  else if(a==='gchr')chronoTap(+b.dataset.k);
+  else if(a==='duel'){DU=DU&&DU.phase?{opp:DU.opp}:DU;view='duel';render()}
+  else if(a==='dopp'){DU={opp:b.dataset.id};render()}
+  else if(a==='dstart'){if(!guard())return;duelStart()}
+  else if(a==='dgo'){DU.phase='q';DU.i=0;DU.t0=Date.now();render()}
+  else if(a==='dans')duelAnswer(b.dataset.es);
+  else if(a==='plim'){const m=+b.dataset.m;editProfile(b.dataset.id,s=>{s.limit=m});render()}
+  else if(a==='punlock'){editProfile(b.dataset.id,s=>{s.unlockDay=dayPlus(0)});render()}
+  else if(a==='unit'){const i=+b.dataset.i;if(!unlocked(i)){say('¡Todavía no!');return}if(!guard())return;startUnit(i);speakStep()}
   else if(a==='review'){startReview();speakStep()}
   else if(a==='chat'){startChat();speakStep()}
   else if(a==='hear')speakStep();
@@ -1421,6 +1749,11 @@ app.addEventListener('click',e=>{
   else if(a==='reset'){readName();confirmReset=true;render()}
   else if(a==='resetno'){confirmReset=false;render()}
   else if(a==='resetyes'){const k=pkey(P.cur);try{localStorage.removeItem(k);localStorage.removeItem(k+'-secours')}catch(e){}S=def();migrate();applyTheme();confirmReset=false;view='welcome';render()}
+});
+app.addEventListener('animationend',e=>{
+  const t=e.target;if(view!=='game'||!GM||GM.g!=='catch'||GM.lock||!t.dataset||t.dataset.act!=='gcatch')return;
+  if(GM.cur.opts[+t.dataset.k].w!==GM.cur.target)return;
+  GM.lock=true;tone(false);srs(GM.cur.target,false);render();setTimeout(nextCatch,900);
 });
 app.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='nm'&&view==='welcome')$('[data-act=go]').click()});
 

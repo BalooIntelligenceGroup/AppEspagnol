@@ -15,9 +15,13 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - Ne jamais changer l'adresse du site Netlify (l'origine porte les données).
 - Nouveaux niveaux : on peut les insérer n'importe où ; `S.opened` et `LEGACY` garantissent qu'un niveau déjà ouvert ne se reverrouille pas.
 
-## Niveaux affichés (depuis la version 11)
-- Seuls les 15 niveaux listés dans `ACTIVE` sont affichés (5 par étape). Les autres restent dans le code, et leurs étoiles dans la sauvegarde.
-- Pour réafficher ou changer un niveau : modifier la liste `ACTIVE` (l'ordre de la liste = l'ordre sur la carte).
+## Organisation (depuis la version 12)
+- **Niveaux** : seuls les 15 niveaux de `ACTIVE` sont affichés ; l'étape = la place dans `ACTIVE` (5 par étape). `DROP` retire un mot par niveau (5 mots par leçon). Les autres niveaux et mots restent dans le code.
+- **Évaluation de fin d'étape** : 12 questions, 80 % pour ouvrir le 1er niveau de l'étape suivante (`S.evals[étape]`). Un niveau déjà ouvert ou réussi ne se reverrouille jamais (`S.opened`).
+- **Profils** : liste dans `hola-lola-profiles` ; le profil `p1` garde la clé d'origine `hola-lola-v1`, les autres `hola-lola-v1-<id>` (+ `-secours`). Ne jamais renommer ces clés.
+- **Univers** (`THEMES`) : 6 univers (3 proposés aux filles, 3 aux garçons, tous accessibles), couleurs + compagnon. « Lola » dans les dialogues est remplacée par le nom du compagnon ; accords fille/garçon via `gx()`.
+- **Révision espacée** : `S.words[mot] = {b, d, ok, ko}` ; la Séance du jour prend les mots dus (`dueList`). Temps passé : `S.days`.
+- **Espace parent** : protégé par une multiplication, statistiques par profil, suppression d'un profil.
 
 ## Publier une nouvelle version
 1. Modifier `index.html` (ajouter des niveaux dans un tableau `V8_…` puis `insAfter(...)`, comme V7).

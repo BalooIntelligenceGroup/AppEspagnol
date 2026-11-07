@@ -43,12 +43,24 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Carte** : à l'arrivée sur l'accueil, défilement automatique vers la leçon en cours ; bouton `#totop` pour remonter.
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
+## Rythme de publication (demande du 7 novembre 2026 : économiser les crédits Netlify)
+Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` coûte 15 crédits** ; les branches ne coûtent rien.
+- Chaque nouvelle demande d'évolution est développée et testée sur la branche **`prochaine-version`** (push autorisé, pas de mise en ligne).
+  L'artefact Claude est mis à jour à chaque demande : il sert d'aperçu.
+- On fusionne `prochaine-version` dans `main` (= 1 seule mise en ligne) **toutes les 3 demandes d'évolution**.
+  Compteur ci-dessous, à mettre à jour sur la branche à chaque demande, remis à 0 à la fusion.
+- Exception : un bug qui empêche d'utiliser l'appli → proposer à l'utilisateur de publier tout de suite.
+- Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
+- Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
+
+**Demandes en attente sur `prochaine-version` : 0 / 3**
+
 ## Publier une nouvelle version
 1. Modifier `index.html` (ajouter des niveaux dans un tableau `V8_…` puis `insAfter(...)`, comme V7).
 2. Incrémenter `APP_VERSION` et ajouter le texte de nouveauté dans `NEW_IN` (bandeau affiché une fois).
 3. Dans `sw.js`, changer le nom du cache (`hola-lola-vN`).
 4. Vérifier la syntaxe du script et tester toutes les leçons (startUnit sur chaque niveau) dans Playwright.
-5. Commit + push sur `main` → Netlify déploie, le téléphone se met à jour à la prochaine ouverture.
+5. Commit + push sur `prochaine-version` ; à la 3e demande, fusion dans `main` → Netlify déploie, le téléphone se met à jour à la prochaine ouverture.
 
 Le même contenu est aussi publié comme artefact Claude : c'est `index.html` sans l'en-tête PWA
 ni le script d'enregistrement du service worker. Les images `fx/*.webp` sont publiées avec l'artefact (deux publications : 255 fichiers maximum par envoi). Dans l'artefact, le micro est bloqué (mode « répéter à voix haute »).

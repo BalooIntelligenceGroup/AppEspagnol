@@ -35,6 +35,12 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Boutons retour** : chaque écran a un ←/✕ ; l'accueil d'un joueur suit `wStep` (prénom → fille/garçon → univers) avec retour à chaque étape.
 - **Traductions** (v15) : `tr(es)` cherche la phrase dans les dialogues (`d.f`, `o[1]`) puis dans `FR_EXTRA` (phrases à trou et dialogues sans français). Toute nouvelle phrase à trou ou réplique doit y avoir sa traduction. L'encadré « Continuer » affiche `trBox()` ; le bouton « Traduire » sur les questions dépend de `S.trQ` (réglé par profil dans l'espace parent), jamais en évaluation.
 - **Mots abstraits** (v16) : `ABSTRACT` (gracias, hola, ¿qué es?…) affiche le mot français à la place de l'image (`txt:` dans `w.e`, rendu par `pic()`).
+- **Langue de traduction** (v17) : `S.lang` = fr (défaut), en ou it, réglée par enfant dans l'espace parent. `tx(es, fr)` cherche dans `TRX[espagnol] = [anglais, italien]` (les 15 leçons actives), sinon garde le français. Toute nouvelle phrase ou mot doit avoir son entrée dans `TRX`.
+- **Noms** (v17) : à l'écran, une « étape » s'appelle **Niveau** (`TIERS`) et un niveau s'appelle **Leçon** ; les comptines sont des **Récitations**. Le code garde ses noms (UNITS, tier, SONGS).
+- **Temps d'écran** (v17) : compté en direct par `timeTick()` (toutes les 10 s, hors écrans `FREE` et réglages). Limite atteinte → écran `stop` partout (« Demande à tes parents »), le parent ajoute 15 min (`S.extra`) ou débloque la journée (`S.unlockDay`).
+- **Didacticiel** `tuto()` : montré une fois par profil (`S.tuto`), revisible dans les réglages.
+- **Ordre des exercices** : `mix()` mélange les exercices après la découverte des mots et évite de rejouer le même enchaînement (`S.seq`).
+- **Carte** : à l'arrivée sur l'accueil, défilement automatique vers la leçon en cours ; bouton `#totop` pour remonter.
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
 ## Publier une nouvelle version

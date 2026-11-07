@@ -34,6 +34,13 @@ img.fx{width:1.18em;height:1.18em;object-fit:contain;vertical-align:-.22em;displ
 .trad p{margin:2px 0!important;font-size:16px;font-weight:700;line-height:1.35}
 .frq{display:block;font-size:15px;font-weight:700;color:var(--muted);margin-top:4px;line-height:1.3}
 .frq.big{font-size:18px;text-align:center;background:var(--card);border-radius:14px;padding:8px 12px;margin:10px 0 0;color:var(--ink)}
+.seg.three{grid-template-columns:repeat(3,1fr)}
+.seg.three button{font-size:22px}
+.tuto{min-height:300px;justify-content:center}
+.tuto .tbig{font-size:76px;line-height:1.1}
+.tuto .tbig .ava{font-size:76px}
+#totop{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:52px;height:52px;border-radius:50%;border:0;background:var(--lagoon);color:#fff;font-size:28px;font-weight:800;box-shadow:0 4px 0 var(--lagoon-d),0 6px 16px rgba(0,0,0,.18);cursor:pointer}
+#totop[hidden]{display:none}
 .seg.two{grid-template-columns:repeat(2,1fr)}
 .limit{display:flex;flex-direction:column;gap:8px;margin-top:6px}
 .limit b{font-size:16px}
@@ -771,7 +778,7 @@ const DROP={saludos:'por favor',colores:'negro',numeros:'seis',mascotas:'el páj
   presentarse:'¿y tú?',estas:'estoy triste',gustos:'¿te gusta?',preguntas:'¿cuántos hay?',ayuda:'¿puedo jugar?'};
 const ALL_UNITS=UNITS.slice();
 UNITS.splice(0,UNITS.length,...ACTIVE.map(id=>ALL_UNITS.find(u=>u.id===id)));
-const APP_VERSION=16,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
+const APP_VERSION=17,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, faire un gâteau, les saisons et demander son chemin.',
   8:'3 nouveaux niveaux : les petites bêtes, les émotions et au cinéma.',
   9:'5 nouveaux niveaux : la musique, sous la mer, aider à la maison, partir en vacances et se faire une amie.',
   10:'Tu peux maintenant passer un exercice de répétition au micro et continuer la leçon.',
@@ -780,7 +787,8 @@ const APP_VERSION=16,NEW_IN={7:'5 nouveaux niveaux : la forêt, les transports, 
   13:"Nouveau : l'histoire de ton compagnon, l'album d'autocollants, 3 jeux, la garde-robe, les défis en famille et les comptines !",
   14:"Petites améliorations : bouton retour en haut des écrans de départ, et tu peux changer « fille ou garçon » dans les réglages.",
   15:"Nouveau : après chaque réponse, tu vois la traduction en français. Tes parents peuvent aussi activer un bouton « Traduire » sur les questions.",
-  16:"Nouveau : de belles images en 3D partout dans l'appli ! Pour les mots comme « gracias », tu vois le mot en français."};
+  16:"Nouveau : de belles images en 3D partout dans l'appli ! Pour les mots comme « gracias », tu vois le mot en français.",
+  17:"Nouveau : un petit guide pour bien démarrer, des exercices dans un ordre différent à chaque fois, et la carte t'emmène directement à ta leçon !"};
 
 /* ---------- Phrases à trous des premiers niveaux : [phrase avec _, bon mot, [pièges], image] ---------- */
 const GAPS = {
@@ -806,7 +814,7 @@ const GAPS = {
 };
 UNITS.forEach(u=>{u.tier=u.tier||1;if(!u.gaps)u.gaps=GAPS[u.id]||[]});
 UNITS.forEach((u,k)=>{u.tier=1+Math.floor(k/5);if(DROP[u.id])u.words=u.words.filter(w=>w[0]!==DROP[u.id])});
-const TIERS={1:['Étape 1','Premiers mots'],2:['Étape 2','Mon quotidien'],3:['Étape 3','Premières phrases']};
+const TIERS={1:['Niveau 1','Premiers mots'],2:['Niveau 2','Mon quotidien'],3:['Niveau 3','Premières phrases']};
 const isOk=o=>o[o.length-1]===1;
 
 /* ---------- Univers : couleurs, compagnon, décor (3 proposés aux filles, 3 aux garçons, les 6 accessibles à tous) ---------- */
@@ -821,7 +829,7 @@ const THEME_FOR={f:['jungla','hadas','oceano'],m:['espacio','piratas','granja']}
 const G=()=>THEMES[S.theme]||THEMES.jungla;
 function applyTheme(){const c=G().c,st=document.documentElement.style;for(const k in c)st.setProperty('--'+k,c[k])}
 /* Accords : les phrases de l'élève (et celles du compagnon) au masculin quand il le faut */
-const GX=[['encantada','encantado'],['cansada','cansado'],['contenta','contento'],['aburrida','aburrido'],['nerviosa','nervioso'],['enfadada','enfadado'],['campeona','campeón'],['enchantée','enchanté'],['fatiguée','fatigué'],['contente','content'],['fâchée','fâché']];
+const GX=[['encantada','encantado'],['cansada','cansado'],['contenta','contento'],['aburrida','aburrido'],['nerviosa','nervioso'],['enfadada','enfadado'],['campeona','campeón'],['enchantée','enchanté'],['fatiguée','fatigué'],['contente','content'],['fâchée','fâché'],['stanca','stanco']];
 function gx(t,g){if(g!=='m'||!t)return t;for(const [f,m] of GX)t=t.replace(new RegExp('(?<!\\p{L})'+f+'(?!\\p{L})','giu'),x=>x[0]===x[0].toUpperCase()?m[0].toUpperCase()+m.slice(1):m);return t}
 
 /* ---------- Sauvegarde ---------- */
@@ -855,7 +863,8 @@ function migrate(){
   if(!S.mig13){for(const k in S.words){const r=S.words[k];if(r.b>=2&&r.ok<3)r.ok=3}S.coins=S.coins||0;S.mig13=1;if(S.name)save()}
   if(!S.mig12){UNITS.forEach(u=>{if(S.stars[u.id])u.words.forEach(w=>{const x=W(w);if(!S.words[x.es])S.words[x.es]={b:2,d:dayPlus(0),ok:3,ko:0}})});S.mig12=1;if(S.name)save()}
 }
-function addTime(){if(L&&L.t0){const s=Math.min(1200,(Date.now()-L.t0)/1000),k=dayPlus(0);S.days=S.days||{};S.days[k]=(S.days[k]||0)+Math.round(s);L.t0=0}}
+/* Le temps est compté en direct par le minuteur plus bas (timeTick) ; addTime ne fait plus que clore la leçon. */
+function addTime(){if(L)L.t0=0}
 /* Demande au navigateur de ne jamais effacer les données de l'appli (appli installée) */
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch(()=>{})}catch(e){}
 /* Code de sauvegarde : à copier pour garder une trace hors de l'appareil */
@@ -1000,7 +1009,12 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 /* Mots abstraits : aucune image ne les montre bien, on affiche le mot en français à la place */
 const ABSTRACT=new Set(['hola','gracias','¿cómo te llamas?','me llamo','¿cómo estás?','yo también','¿qué es?','¿dónde está?','¿quién es?','aquí','allí','no entiendo','otra vez, por favor']);
-const W=w=>({es:gx(w[0],S.gender),fr:gx(w[1],S.gender),e:ABSTRACT.has(w[0])?'txt:'+gx(w[1],S.gender):w[2]});
+/* Langue de traduction (réglée par enfant dans l'espace parent). TRX[espagnol] = [anglais, italien]. */
+const LANGS={fr:['Français','🇫🇷'],en:['English','🇬🇧'],it:['Italiano','🇮🇹']};
+const TRX={"¡Hola!":["Saying hello","Salutare"],"hola":["hi","ciao"],"adiós":["goodbye","arrivederci"],"buenos días":["good morning","buongiorno"],"buenas noches":["good night","buonanotte"],"gracias":["thank you","grazie"],"¡Hola! Me llamo Lola. ¿Cómo te llamas?":["Hi! My name is Lola. What's your name?","Ciao! Mi chiamo Lola. Come ti chiami?"],"Me llamo {name}.":["My name is {name}.","Mi chiamo {name}."],"Buenas noches.":["Good night.","Buonanotte."],"¡Encantada, {name}! ¿Cómo estás?":["Nice to meet you, {name}! How are you?","Piacere, {name}! Come stai?"],"¡Muy bien, gracias!":["Very well, thank you!","Molto bene, grazie!"],"Por favor.":["Please.","Per favore."],"¡Adiós, {name}! ¡Hasta mañana!":["Goodbye, {name}! See you tomorrow!","Ciao, {name}! A domani!"],"¡Adiós, Lola!":["Goodbye, Lola!","Ciao, Lola!"],"¡Buenos días!":["Good morning!","Buongiorno!"],"¡Buenos días! Ya es de día.":["Good morning! It's already daytime.","Buongiorno! È già giorno."],"Toma tu regalo. — ¡Muchas gracias!":["Here's your present. — Thank you very much!","Ecco il tuo regalo. — Grazie mille!"],"Los colores":["Colours","I colori"],"rojo":["red","rosso"],"azul":["blue","blu"],"verde":["green","verde"],"amarillo":["yellow","giallo"],"rosa":["pink","rosa"],"¿De qué color es la rana?":["What colour is the frog?","Di che colore è la rana?"],"Es verde.":["It's green.","È verde."],"Es rojo.":["It's red.","È rosso."],"¿De qué color es el cielo?":["What colour is the sky?","Di che colore è il cielo?"],"Es azul.":["It's blue.","È blu."],"Es negro.":["It's black.","È nero."],"¿Cuál es tu color favorito?":["What's your favourite colour?","Qual è il tuo colore preferito?"],"Mi color favorito es el rosa.":["My favourite colour is pink.","Il mio colore preferito è il rosa."],"Me llamo amarillo.":["My name is yellow.","Mi chiamo giallo."],"El plátano es amarillo.":["The banana is yellow.","La banana è gialla."],"El tomate es rojo.":["The tomato is red.","Il pomodoro è rosso."],"Los números":["Counting from 1 to 6","Contare da 1 a 6"],"uno":["one","uno"],"dos":["two","due"],"tres":["three","tre"],"cuatro":["four","quattro"],"cinco":["five","cinque"],"¿Cuántos gatos hay?":["How many cats are there?","Quanti gatti ci sono?"],"Hay tres gatos.":["There are three cats.","Ci sono tre gatti."],"Hay cinco gatos.":["There are five cats.","Ci sono cinque gatti."],"¿Cuántos años tienes?":["How old are you?","Quanti anni hai?"],"Tengo ocho años.":["I'm eight years old.","Ho otto anni."],"Tengo un perro.":["I have a dog.","Ho un cane."],"¡Cuenta conmigo! Uno, dos...":["Count with me! One, two...","Conta con me! Uno, due..."],"¡Tres!":["Three!","Tre!"],"¡Seis!":["Six!","Sei!"],"Uno, dos, tres.":["One, two, three.","Uno, due, tre."],"Tengo dos manos.":["I have two hands.","Ho due mani."],"Mis mascotas":["Pets","Gli animali di casa"],"el perro":["the dog","il cane"],"el gato":["the cat","il gatto"],"el pez":["the fish","il pesce"],"el conejo":["the rabbit","il coniglio"],"la tortuga":["the tortoise","la tartaruga"],"Mira, {name}. ¿Qué es?":["Look, {name}. What is it?","Guarda, {name}. Che cos'è?"],"Es un perro.":["It's a dog.","È un cane."],"Es un gato.":["It's a cat.","È un gatto."],"¿Y esto? ¿Qué es?":["And this? What is it?","E questo? Che cos'è?"],"Es una tortuga.":["It's a tortoise.","È una tartaruga."],"Es un pez.":["It's a fish.","È un pesce."],"¿Te gusta el conejo?":["Do you like the rabbit?","Ti piace il coniglio?"],"¡Sí, me gusta el conejo!":["Yes, I like the rabbit!","Sì, mi piace il coniglio!"],"Me llamo conejo.":["My name is rabbit.","Mi chiamo coniglio."],"El gato dice «miau».":["The cat says “meow”.","Il gatto fa «miao»."],"El perro dice «guau».":["The dog says “woof”.","Il cane fa «bau»."],"Mi familia":["Family","La famiglia"],"mamá":["mum","mamma"],"papá":["dad","papà"],"el hermano":["the brother","il fratello"],"la hermana":["the sister","la sorella"],"la abuela":["the grandmother","la nonna"],"¿Quién es?":["Who is it?","Chi è?"],"Es mi abuela.":["It's my grandmother.","È mia nonna."],"Es mi papá.":["It's my dad.","È il mio papà."],"¿Tienes hermanos?":["Do you have brothers or sisters?","Hai fratelli o sorelle?"],"Sí, tengo un hermano.":["Yes, I have a brother.","Sì, ho un fratello."],"Sí, tengo seis años.":["Yes, I'm six years old.","Sì, ho sei anni."],"Buenas noches, {name}.":["Good night, {name}.","Buonanotte, {name}."],"Buenas noches, Lola.":["Good night, Lola.","Buonanotte, Lola."],"La mamá de mi mamá es mi abuela.":["My mum's mum is my grandmother.","La mamma della mia mamma è mia nonna."],"Mi hermano se llama Hugo. Es un niño.":["My brother is called Hugo. He's a boy.","Mio fratello si chiama Hugo. È un bambino."],"Las frutas":["Fruit","La frutta"],"la fresa":["the strawberry","la fragola"],"el plátano":["the banana","la banana"],"la naranja":["the orange","l'arancia"],"la uva":["the grape","l'uva"],"la sandía":["the watermelon","l'anguria"],"¿Qué fruta te gusta, {name}?":["Which fruit do you like, {name}?","Che frutta ti piace, {name}?"],"Me gusta la fresa.":["I like strawberries.","Mi piace la fragola."],"Me gusta el zapato.":["I like the shoe.","Mi piace la scarpa."],"¿De qué color es el plátano?":["What colour is the banana?","Di che colore è la banana?"],"Es amarillo.":["It's yellow.","È gialla."],"¿Quieres una naranja?":["Do you want an orange?","Vuoi un'arancia?"],"Sí, por favor.":["Yes, please.","Sì, per favore."],"El mono come un plátano.":["The monkey eats a banana.","La scimmia mangia una banana."],"Quiero una naranja, por favor.":["I want an orange, please.","Voglio un'arancia, per favore."],"La sandía es verde y roja.":["The watermelon is green and red.","L'anguria è verde e rossa."],"¡A comer!":["Food","Il cibo"],"el pan":["the bread","il pane"],"la leche":["the milk","il latte"],"el agua":["the water","l'acqua"],"el queso":["the cheese","il formaggio"],"el helado":["the ice cream","il gelato"],"¡Hola! ¿Qué quieres?":["Hello! What would you like?","Ciao! Che cosa vuoi?"],"Un helado, por favor.":["An ice cream, please.","Un gelato, per favore."],"Adiós, mamá.":["Goodbye, mum.","Ciao, mamma."],"¿Quieres agua o leche?":["Do you want water or milk?","Vuoi acqua o latte?"],"Leche, por favor.":["Milk, please.","Latte, per favore."],"Me llamo leche.":["My name is milk.","Mi chiamo latte."],"Aquí tienes.":["Here you are.","Ecco a te."],"¡Gracias!":["Thank you!","Grazie!"],"¡Buenas noches!":["Good night!","Buonanotte!"],"Quiero un helado, por favor.":["I want an ice cream, please.","Voglio un gelato, per favore."],"Como pan con queso.":["I eat bread with cheese.","Mangio pane e formaggio."],"La ropa":["Clothes","I vestiti"],"la camiseta":["the T-shirt","la maglietta"],"el pantalón":["the trousers","i pantaloni"],"el vestido":["the dress","il vestito"],"los zapatos":["the shoes","le scarpe"],"el abrigo":["the coat","il cappotto"],"Hace frío. ¿Qué te pones?":["It's cold. What do you put on?","Fa freddo. Che cosa ti metti?"],"Me pongo el abrigo.":["I put on my coat.","Mi metto il cappotto."],"Me pongo el helado.":["I put on the ice cream.","Mi metto il gelato."],"¿De qué color es tu camiseta?":["What colour is your T-shirt?","Di che colore è la tua maglietta?"],"Mi camiseta es azul.":["My T-shirt is blue.","La mia maglietta è blu."],"Mi camiseta es un gato.":["My T-shirt is a cat.","La mia maglietta è un gatto."],"¡Qué bonito vestido, {name}!":["What a pretty dress, {name}!","Che bel vestito, {name}!"],"¡Gracias, Lola!":["Thank you, Lola!","Grazie, Lola!"],"¡Hasta mañana, maestra!":["See you tomorrow, teacher!","A domani, maestra!"],"Hace frío. Me pongo el abrigo.":["It's cold. I put on my coat.","Fa freddo. Mi metto il cappotto."],"Me pongo los zapatos para correr.":["I put on my shoes to run.","Mi metto le scarpe per correre."],"Mi casa":["Home","La casa"],"la casa":["the house","la casa"],"la cama":["the bed","il letto"],"la puerta":["the door","la porta"],"la ventana":["the window","la finestra"],"la silla":["the chair","la sedia"],"¿Dónde duermes?":["Where do you sleep?","Dove dormi?"],"En mi cama.":["In my bed.","Nel mio letto."],"En la ventana.":["In the window.","Nella finestra."],"¡Toc, toc! ¿Abres la puerta?":["Knock, knock! Will you open the door?","Toc, toc! Apri la porta?"],"¡Sí! ¡Hola, Lola!":["Yes! Hi, Lola!","Sì! Ciao, Lola!"],"Me gusta la silla.":["I like the chair.","Mi piace la sedia."],"Me gusta tu casa, {name}.":["I like your house, {name}.","Mi piace la tua casa, {name}."],"¡Gracias! Es muy bonita.":["Thank you! It's very pretty.","Grazie! È molto bella."],"Es un pato.":["It's a duck.","È un'anatra."],"Duermo en mi cama.":["I sleep in my bed.","Dormo nel mio letto."],"Me siento en la silla.":["I sit on the chair.","Mi siedo sulla sedia."],"En la escuela":["At school","A scuola"],"el libro":["the book","il libro"],"el lápiz":["the pencil","la matita"],"la mochila":["the school bag","lo zaino"],"la maestra":["the teacher","la maestra"],"la regla":["the ruler","il righello"],"¿Qué hay en tu mochila?":["What's in your school bag?","Che cosa c'è nel tuo zaino?"],"Un libro y un lápiz.":["A book and a pencil.","Un libro e una matita."],"Una vaca.":["A cow.","Una mucca."],"¿Me prestas un lápiz?":["Can I borrow a pencil?","Mi presti una matita?"],"Sí, toma.":["Yes, here you are.","Sì, tieni."],"No, soy un gato.":["No, I'm a cat.","No, sono un gatto."],"¡Hasta mañana, {name}!":["See you tomorrow, {name}!","A domani, {name}!"],"Escribo con el lápiz.":["I write with the pencil.","Scrivo con la matita."],"Leo un libro.":["I read a book.","Leggo un libro."],"¿Quién eres?":["Introducing yourself","Presentarsi"],"¿cómo te llamas?":["what's your name?","come ti chiami?"],"me llamo":["my name is","mi chiamo"],"tengo ocho años":["I'm eight years old","ho otto anni"],"vivo en Francia":["I live in France","abito in Francia"],"encantada":["nice to meet you","piacere"],"¡Hola! ¿Cómo te llamas?":["Hi! What's your name?","Ciao! Come ti chiami?"],"Me llamo {name}. ¿Y tú?":["My name is {name}. And you?","Mi chiamo {name}. E tu?"],"Tengo un pez.":["I have a fish.","Ho un pesce."],"Me llamo Lola. ¿Cuántos años tienes?":["My name is Lola. How old are you?","Mi chiamo Lola. Quanti anni hai?"],"Vivo en Francia.":["I live in France.","Abito in Francia."],"¿Dónde vives, {name}?":["Where do you live, {name}?","Dove abiti, {name}?"],"Me llamo Francia.":["My name is France.","Mi chiamo Francia."],"¡Yo vivo en España! Encantada.":["I live in Spain! Nice to meet you.","Io abito in Spagna! Piacere."],"¡Encantada, Lola!":["Nice to meet you, Lola!","Piacere, Lola!"],"¡Tengo sed!":["I'm thirsty!","Ho sete!"],"Me llamo Lola.":["My name is Lola.","Mi chiamo Lola."],"¿Cómo estás?":["Saying how you are","Dire come stai"],"¿cómo estás?":["how are you?","come stai?"],"estoy bien":["I'm fine","sto bene"],"estoy cansada":["I'm tired","sono stanca"],"tengo hambre":["I'm hungry","ho fame"],"tengo sed":["I'm thirsty","ho sete"],"¡Hola, {name}! ¿Cómo estás?":["Hi, {name}! How are you?","Ciao, {name}! Come stai?"],"Estoy bien, gracias. ¿Y tú?":["I'm fine, thank you. And you?","Sto bene, grazie. E tu?"],"Tengo un gato.":["I have a cat.","Ho un gatto."],"Muy bien. ¿Tienes hambre?":["Very well. Are you hungry?","Molto bene. Hai fame?"],"Sí, tengo hambre.":["Yes, I'm hungry.","Sì, ho fame."],"Sí, tengo ocho años.":["Yes, I'm eight years old.","Sì, ho otto anni."],"Uf, ¡qué calor! ¿Tienes sed?":["Phew, it's hot! Are you thirsty?","Uff, che caldo! Hai sete?"],"Sí, tengo mucha sed.":["Yes, I'm very thirsty.","Sì, ho tanta sete."],"Estoy en la escuela.":["I'm at school.","Sono a scuola."],"Son las nueve de la noche...":["It's nine o'clock at night...","Sono le nove di sera..."],"Estoy cansada. ¡Buenas noches!":["I'm tired. Good night!","Sono stanca. Buonanotte!"],"¡Buenos días, Lola!":["Good morning, Lola!","Buongiorno, Lola!"],"Estoy bien, gracias.":["I'm fine, thank you.","Sto bene, grazie."],"Tengo sed. Quiero agua.":["I'm thirsty. I want some water.","Ho sete. Voglio dell'acqua."],"¿Te gusta?":["Saying what you like","Dire che cosa ti piace"],"me gusta":["I like","mi piace"],"no me gusta":["I don't like","non mi piace"],"me encanta":["I love","adoro"],"yo también":["me too","anch'io"],"¡qué rico!":["yummy!","che buono!"],"¿Te gusta el helado?":["Do you like ice cream?","Ti piace il gelato?"],"¡Sí, me encanta!":["Yes, I love it!","Sì, lo adoro!"],"Estoy cansada.":["I'm tired.","Sono stanca."],"A mí me gusta mucho el queso.":["I really like cheese.","A me piace tanto il formaggio."],"¡Yo también!":["Me too!","Anch'io!"],"Tengo diez años.":["I'm ten years old.","Ho dieci anni."],"Prueba esta tarta. ¿Qué tal?":["Try this cake. How is it?","Assaggia questa torta. Com'è?"],"¡Qué rico!":["Yummy!","Che buono!"],"No entiendo, papá.":["I don't understand, dad.","Non capisco, papà."],"¿Y te gusta el brócoli?":["And do you like broccoli?","E ti piacciono i broccoli?"],"No, no me gusta.":["No, I don't like it.","No, non mi piacciono."],"Sí, tengo sed.":["Yes, I'm thirsty.","Sì, ho sete."],"¡Me encanta el chocolate!":["I love chocolate!","Adoro il cioccolato!"],"¿El brócoli? No, no me gusta.":["Broccoli? No, I don't like it.","I broccoli? No, non mi piacciono."],"¿Qué? ¿Dónde?":["Asking questions","Fare domande"],"¿qué es?":["what is it?","che cos'è?"],"¿dónde está?":["where is it?","dov'è?"],"¿quién es?":["who is it?","chi è?"],"aquí":["here","qui"],"allí":["over there","là"],"¿Dónde está el gato?":["Where is the cat?","Dov'è il gatto?"],"Está en la cama.":["It's on the bed.","È sul letto."],"Es la maestra.":["It's the teacher.","È la maestra."],"Tengo hambre.":["I'm hungry.","Ho fame."],"¿Dónde está mi mochila?":["Where is my school bag?","Dov'è il mio zaino?"],"¡Está allí!":["It's over there!","È là!"],"¡Me encanta!":["I love it!","Lo adoro!"],"Ahora tú: ¡hazme una pregunta!":["Your turn: ask me a question!","Ora tocca a te: fammi una domanda!"],"¿Cuántos años tienes, Lola?":["How old are you, Lola?","Quanti anni hai, Lola?"],"Estoy aquí.":["I'm here.","Sono qui."],"¿Dónde está el gato? — En la cama.":["Where is the cat? — On the bed.","Dov'è il gatto? — Sul letto."],"¿Quién es? — Es mi abuelo.":["Who is it? — It's my grandfather.","Chi è? — È mio nonno."],"¡No entiendo!":["Asking for help","Chiedere aiuto"],"no entiendo":["I don't understand","non capisco"],"otra vez, por favor":["again, please","ancora una volta, per favore"],"más despacio":["more slowly","più piano"],"sí":["yes","sì"],"no":["no","no"],"¿Hablas español?":["Do you speak Spanish?","Parli spagnolo?"],"Un poco. ¡Estoy aprendiendo!":["A little. I'm learning!","Un po'. Sto imparando!"],"¿Quierescomerunhelado conmigo?":["(Lola talks too fast!) Do you want to eat an ice cream with me?","(Lola parla troppo veloce!) Vuoi mangiare un gelato con me?"],"No entiendo. Más despacio, por favor.":["I don't understand. More slowly, please.","Non capisco. Più piano, per favore."],"¿Quieres comer un helado conmigo?":["Do you want to eat an ice cream with me?","Vuoi mangiare un gelato con me?"],"¡Sí! ¡Gracias!":["Yes! Thank you!","Sì! Grazie!"],"No, estoy triste.":["No, I'm sad.","No, sono triste."],"Otra vez, por favor.":["Again, please.","Ancora una volta, per favore."]};
+const LF=()=>(LANGS[S.lang]||LANGS.fr)[1];
+function tx(es,fr){if(!S.lang||S.lang==='fr')return fr;const t=TRX[es];return t?t[S.lang==='en'?0:1]:fr}
+const W=w=>({es:gx(w[0],S.gender),fr:gx(tx(w[0],w[1]),S.gender),e:ABSTRACT.has(w[0])?'txt:'+gx(tx(w[0],w[1]),S.gender):w[2]});
 const isTxt=e=>typeof e==='string'&&e.startsWith('txt:');
 const pic=(e,cls='')=>isTxt(e)?`<span class="pictxt ${cls}">${esc(e.slice(4))}</span>`:e[0]==='#'?`<div class="swatch ${cls}" style="background:${e}"></div>`:esc(e);
 /* Un niveau ouvert une fois reste ouvert pour toujours, même si une mise à jour ajoute des niveaux avant lui */
@@ -1030,12 +1044,12 @@ function home(){
     const lk=!unlocked(i),dn=!!S.stars[u.id],st=S.stars[u.id]||0;
     const x=Math.round(Math.sin(i*1.1)*70);
     const tierHead=(i===0||u.tier!==UNITS[i-1].tier)?`<div class="tier"><b>${TIERS[u.tier][0]}</b><span>${TIERS[u.tier][1]}</span></div>`:'';
-    const last=i===UNITS.length-1||UNITS[i+1].tier!==u.tier;
-    return `${tierHead}<button class="node ${lk?'locked':dn?'done':''} ${i===cur?'current':''}" style="transform:translateX(${x}px)" data-act="unit" data-i="${i}" ${lk?'aria-disabled="true"':''} aria-label="Niveau ${i+1} : ${esc(u.fr)}">
+    const last=i===UNITS.length-1||UNITS[i+1].tier!==u.tier,li=UNITS.slice(0,i+1).filter(x=>x.tier===u.tier).length;
+    return `${tierHead}<button class="node ${lk?'locked':dn?'done':''} ${i===cur?'current':''}" style="transform:translateX(${x}px)" data-act="unit" data-i="${i}" ${lk?'aria-disabled="true"':''} aria-label="Leçon ${li} : ${esc(tx(u.es,u.fr))}">
       ${i===cur?'<span class="start-tag">À toi !</span>':''}
       <span class="disc ${u.conv&&!lk&&!dn?'conv':''}">${lk?'🔒':u.e}</span>
       <span class="stars">${dn?'⭐'.repeat(st)+'<span style="opacity:.25">'+'⭐'.repeat(3-st)+'</span>':''}</span>
-      <b>${esc(u.es)}</b><em>${i+1}. ${esc(u.fr)}</em>${u.conv?'<span class="ctag">💬 Conversation</span>':''}</button>${last?evalNode(u.tier,evalCur===u.tier):''}`}).join('');
+      <b>${esc(u.es)}</b><em>Leçon ${li} · ${esc(tx(u.es,u.fr))}</em>${u.conv?'<span class="ctag">💬 Conversation</span>':''}</button>${last?evalNode(u.tier,evalCur===u.tier):''}`}).join('');
   app.innerHTML=`
   <div class="top"><button class="lola" data-act="who" aria-label="Changer de joueur">${avatar()}</button>
     <div class="hello"><small>${esc(G().title)} te dit :</small><h1>¡Hola, ${esc(S.name)}!</h1></div>
@@ -1055,19 +1069,28 @@ function home(){
     <button class="fun" data-act="album"><span>🏆</span>Album</button>
     <button class="fun" data-act="wardrobe"><span>👗</span>Garde-robe</button>
     <button class="fun" data-act="duel"><span>⚔️</span>Défi famille</button>
-    <button class="fun" data-act="songs"><span>🎵</span>Comptines</button></div>
-  <div class="map">${nodes}<div class="node"><span class="disc" style="background:var(--coral);box-shadow:0 7px 0 var(--coral-d)">🏆</span><b>${S.gender==='m'?'¡Campeón!':'¡Campeona!'}</b><em>Termine les ${UNITS.length} niveaux</em></div></div>`;
+    <button class="fun" data-act="songs"><span>📜</span>Récitations</button></div>
+  <div class="map">${nodes}<div class="node"><span class="disc" style="background:var(--coral);box-shadow:0 7px 0 var(--coral-d)">🏆</span><b>${S.gender==='m'?'¡Campeón!':'¡Campeona!'}</b><em>Termine les ${UNITS.length} leçons</em></div></div>`;
 }
 
 function evalNode(t,isCur){
   const ev=S.evals[t],ready=stageDone(t);
-  return `<button class="node ev ${ev?'done':ready?'':'locked'} ${isCur?'current':''}" data-act="eval" data-t="${t}" aria-label="Évaluation de l'étape ${t}">
+  return `<button class="node ev ${ev?'done':ready?'':'locked'} ${isCur?'current':''}" data-act="eval" data-t="${t}" aria-label="Évaluation du niveau ${t}">
     ${isCur?'<span class="start-tag">À toi !</span>':''}
     <span class="disc">${ev?'🏅':ready?'📝':'🔒'}</span>
-    <b>Évaluation</b><em>${ev?`Étape ${t} réussie : ${ev.pct} %`:`Étape ${t} · 80 % pour passer`}</em></button>`;
+    <b>Évaluation</b><em>${ev?`Niveau ${t} réussi : ${ev.pct}\u00a0%`:`Niveau ${t} · 80 % pour passer`}</em></button>`;
 }
 
 /* ---------- Construction d'une leçon ---------- */
+/* Les exercices (après la découverte des mots) sont mélangés : ordre différent pour chaque enfant
+   et jamais deux fois de suite le même enchaînement (S.seq garde le dernier, par leçon). */
+const sigOf=s=>s.t+':'+(s.w?s.w.es:s.g?s.g.s:s.d?s.d.l:s.sent||(s.ws||[]).map(w=>w.es).join(','));
+function mix(key,head,rest){
+  S.seq=S.seq||{};const old=S.seq[key];let steps,sig;
+  for(let n=0;n<8;n++){steps=head.concat(shuffle(rest.slice()));sig=steps.map(sigOf).join('|');if(sig!==old)break}
+  S.seq[key]=sig;return steps;
+}
+const kindFor=(w,conv)=>Math.random()<.5?'pick':(conv?'mean':'listen');
 const uniqPic=arr=>{const seen=new Set();return arr.filter(w=>!seen.has(w.e)&&seen.add(w.e))};
 function optsFor(w,pool){return shuffle([w,...uniqPic(shuffle(pool.filter(x=>x.es!==w.es&&x.e!==w.e))).slice(0,2)])}
 const gapStep=g=>({t:'gap',g:{s:g[0],a:g[1],e:g[3]},opts:shuffle([g[1],...g[2]])});
@@ -1088,16 +1111,16 @@ function buildSteps(u,n){
     return {t:'build',sent:x.s,p:x.p,target:ws,tiles:shuffle([...ws,...extra]),used:[]}});
 }
 function startUnit(i){
-  const u=UNITS[i],words=u.words.map(W),steps=[],phr=!!u.conv;
-  if(!S.stars[u.id])words.forEach(w=>steps.push({t:'learn',w,conv:phr}));
+  const u=UNITS[i],words=shuffle(u.words.map(W)),learn=[],steps=[],phr=!!u.conv;
+  if(!S.stars[u.id])words.forEach(w=>learn.push({t:'learn',w,conv:phr}));
   steps.push(matchStep(words));
-  shuffle(words.slice()).slice(0,4).forEach((w,k)=>steps.push({t:k%2?'pick':(phr?'mean':'listen'),w,opts:optsFor(w,words)}));
+  shuffle(words.slice()).slice(0,4).forEach(w=>steps.push({t:kindFor(w,phr),w,opts:optsFor(w,words)}));
   if(!u.conv)tfSteps(words,2).forEach(s=>steps.push(s));
   shuffle(u.gaps.slice()).forEach(g=>steps.push(gapStep(g)));
   buildSteps(u,2).forEach(s=>steps.push(s));
   shuffle(words.slice()).slice(0,u.tier>1?3:2).forEach(w=>steps.push({t:'speak',w}));
   u.talk.forEach(d=>steps.push({t:'talk',d,opts:shuffle(d.o.slice())}));
-  L={unit:i,kind:'unit',steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();
+  L={unit:i,kind:'unit',steps:mix(u.id,learn,steps),i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();
 }
 function startChat(){
   const steps=shuffle(learnedUnits().flatMap(u=>u.talk)).slice(0,6).map(d=>({t:'talk',d,opts:shuffle(d.o.slice())}));
@@ -1113,7 +1136,7 @@ function startReview(){
   shuffle(us.flatMap(u=>u.gaps)).slice(0,2).forEach(g=>steps.push(gapStep(g)));
   shuffle(us.slice()).slice(0,2).forEach(u=>buildSteps(u,1).forEach(s=>steps.push(s)));
   pk.slice(4,6).forEach(w=>steps.push({t:'speak',w}));
-  L={unit:-1,steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();
+  L={unit:-1,steps:mix('review',[],steps),i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();
 }
 
 /* Séance du jour : les mots à revoir aujourd'hui (révision espacée), complétés par les mots les moins sûrs */
@@ -1124,7 +1147,7 @@ function startSeance(list){
   const steps=[];if(uniqPic(pool).length>=4)steps.push(matchStep(pool));
   shuffle(pool.slice()).forEach((w,k)=>steps.push(k%3===2?{t:'speak',w}:{t:k%2?'pick':(w.conv?'mean':'listen'),w,opts:optsFor(w,all)}));
   tfSteps(pool.filter(w=>!w.conv),2).forEach(s=>steps.push(s));
-  L={unit:-1,kind:'seance',steps,i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();return true;
+  L={unit:-1,kind:'seance',steps:mix('seance',[],steps),i:0,mistakes:0,ok:0,answered:null,tries:0,t0:Date.now(),stk0:stickerCount()};view='lesson';render();return true;
 }
 /* Évaluation de fin d'étape : 12 questions sur les 5 niveaux, 80 % pour ouvrir l'étape suivante */
 function startEval(t){
@@ -1184,24 +1207,24 @@ let TRM=null;
 function trMap(){if(TRM)return TRM;TRM={};
   ALL_UNITS.forEach(u=>(u.talk||[]).forEach(d=>{if(d.f)TRM[d.l]=d.f;d.o.forEach(o=>{if(o.length>2)TRM[o[0]]=o[1]})}));
   return Object.assign(TRM,FR_EXTRA)}
-const tr=es=>trMap()[es]||'';
-const trOpt=o=>o.length>2?o[1]:tr(o[0]);
+const tr=es=>tx(es,trMap()[es]||'');
+const trOpt=o=>tx(o[0],o.length>2?o[1]:trMap()[o[0]]||'');
 /* lignes de traduction pour l'encadré « Continuer » */
 function trOf(s){
   let out=[];
-  if(s.t==='talk'){const right=s.d.o.find(isOk)||s.opts.find(isOk);out=[[G().es+' a dit',fillG(s.d.f||tr(s.d.l))],['Bonne réponse',right?fill(trOpt(right)):'']]}
+  if(s.t==='talk'){const right=s.d.o.find(isOk)||s.opts.find(isOk);out=[[G().es+' a dit',fillG(tr(s.d.l))],['Bonne réponse',right?fill(trOpt(right)):'']]}
   else if(s.t==='gap')out=[['',fill(tr(s.g.s.replace('_',s.g.a)))]];
   else if(s.t==='build')out=[['',fill(tr(s.sent))]];
   else if(s.t==='tf')out=[['',`${s.w.es} = ${s.w.fr}`]];
   else if(s.t==='match')out=[['',s.ws.map(w=>`${w.es} = ${w.fr}`).join(' · ')]];
   return out.filter(x=>x[1]);
 }
-const trBox=s=>{const ls=trOf(s);return ls.length?`<div class="trad">${ls.map(([l,t])=>`<p>🇫🇷 ${l?`<b>${esc(l)} :</b> `:''}${esc(t)}</p>`).join('')}</div>`:''};
+const trBox=s=>{const ls=trOf(s);return ls.length?`<div class="trad">${ls.map(([l,t])=>`<p>${LF()} ${l?`<b>${esc(l)} :</b> `:''}${esc(t)}</p>`).join('')}</div>`:''};
 function lesson(){
   const s=L.steps[L.i],pct=L.i/L.steps.length*100;
-  const canT=!!S.trQ&&L.kind!=='eval'&&!L.answered,showT=canT&&L.trI===L.i,trBtn=canT&&!showT?'<button class="tool" data-act="trq">🇫🇷 Traduire</button>':'';
-  const trRow=t=>!canT||!t?'':showT?`<div class="frq big">🇫🇷 ${esc(t)}</div>`:`<div class="tools">${trBtn}</div>`;
-  let body=L.kind==='eval'&&L.i===0&&!L.answered?`<div class="evalhead">📝 Évaluation de l'étape ${L.tier} · ${L.steps.length} questions · 80 % pour réussir</div>`:'';
+  const canT=!!S.trQ&&L.kind!=='eval'&&!L.answered,showT=canT&&L.trI===L.i,trBtn=canT&&!showT?`<button class="tool" data-act="trq">${LF()} Traduire</button>`:'';
+  const trRow=t=>!canT||!t?'':showT?`<div class="frq big">${LF()} ${esc(t)}</div>`:`<div class="tools">${trBtn}</div>`;
+  let body=L.kind==='eval'&&L.i===0&&!L.answered?`<div class="evalhead">📝 Évaluation du niveau ${L.tier} · ${L.steps.length} questions · 80 % pour réussir</div>`:'';
   if(s.t==='learn'){
     body=`<div class="ask">${s.conv?'Nouvelle phrase !':'Nouveau mot !'}<small>${micOK?'Écoute '+G().es+', puis appuie sur 🎤 et répète.':'Écoute '+G().es+', puis répète à voix haute.'}</small></div>
     <div class="card"><div class="pic">${pic(s.w.e)}</div><div class="es">${esc(s.w.es)}</div>${isTxt(s.w.e)?'':`<div class="fr">${esc(s.w.fr)}</div>`}</div>
@@ -1219,7 +1242,7 @@ function lesson(){
   if(s.t==='tf'){
     const a=L.answered,cls=v=>a?((v===1)===s.truth?'sel-good':(a.k===v?'sel-bad':'')):'';
     body=`<div class="ask">Vrai ou faux ?<small>Écoute ${G().es} : la phrase va-t-elle avec l'image ?</small></div>
-    <div class="card"><div class="pic">${pic(s.shown.e)}</div><div class="es">${esc(s.w.es)}</div>${showT?`<div class="fr">🇫🇷 ${esc(s.w.fr)}</div>`:''}</div>
+    <div class="card"><div class="pic">${pic(s.shown.e)}</div><div class="es">${esc(s.w.es)}</div>${showT?`<div class="fr">${LF()} ${esc(s.w.fr)}</div>`:''}</div>
     <div class="tools"><button class="tool" data-act="hear">🔊 Écouter</button>${trBtn}</div>
     <div class="opts tf"><button class="opt ${cls(1)}" data-act="tf" data-v="1" ${a?'disabled':''}>✅ Sí</button><button class="opt ${cls(0)}" data-act="tf" data-v="0" ${a?'disabled':''}>❌ No</button></div>`;
   }
@@ -1263,7 +1286,7 @@ function lesson(){
     const d=s.d;
     body=`<div class="ask">Discute avec ${G().es}<small>Choisis la bonne réponse.</small></div>
     <div class="chat"><div class="lola" aria-hidden="true">${G().e}</div><div class="bubble">
-      ${d.p?`<div class="prop">${esc(d.p)}</div>`:''}<div class="es">${esc(fillG(d.l))}</div>${showT&&(d.f||tr(d.l))?`<div class="frq">🇫🇷 ${esc(fillG(d.f||tr(d.l)))}</div>`:''}</div></div>
+      ${d.p?`<div class="prop">${esc(d.p)}</div>`:''}<div class="es">${esc(fillG(d.l))}</div>${showT&&tr(d.l)?`<div class="frq">${LF()} ${esc(fillG(tr(d.l)))}</div>`:''}</div></div>
     <div class="tools"><button class="tool" data-act="hear">🔊 Réécouter</button>${trBtn}</div>
     <div class="opts">${s.opts.map((o,k)=>`<button class="opt" data-act="ans" data-k="${k}"><span>💬</span><span>${esc(fill(o[0]))}${showT&&trOpt(o)?`<small class="frq">${esc(fill(trOpt(o)))}</small>`:''}</span></button>`).join('')}</div>`;
   }
@@ -1395,12 +1418,12 @@ function resultEval(){
   const next=UNITS.findIndex(u=>u.tier===R.tier+1);
   app.innerHTML=`<div class="center">
     <div class="lola big" aria-hidden="true">${G().e}</div>
-    <h2 style="font-size:36px">${R.pass?`Étape ${R.tier} réussie !`:'¡Casi! Presque…'}</h2>
+    <h2 style="font-size:36px">${R.pass?`Niveau ${R.tier} réussi !`:'¡Casi! Presque…'}</h2>
     <div class="xp">${R.pct} % de bonnes réponses</div>
-    <p class="say">${R.pass?(next>=0?`L'étape ${R.tier+1} est ouverte : ${esc(TIERS[R.tier+1][1])}. +20 points !`:'Tu as réussi toutes les étapes. Bravo !'):`Il faut 80 % pour passer. Révise ces mots avec la séance, puis réessaie :`}</p>
+    <p class="say">${R.pass?(next>=0?`Le niveau ${R.tier+1} est ouvert : ${esc(TIERS[R.tier+1][1])}. +20 points !`:'Tu as réussi tous les niveaux. Bravo !'):`Il faut 80 % pour passer. Révise ces mots avec la séance, puis réessaie :`}</p>
     ${!R.pass&&R.missed.length?`<div class="misslist">${R.missed.map(w=>`<button class="dw" data-act="sayw" data-w="${esc(w.es)}">${w.e[0]==='#'?pic(w.e):`<span>${esc(w.e)}</span>`}<b>${esc(w.es)}</b><small>${esc(w.fr)}</small></button>`).join('')}</div>`:''}
     <div style="width:100%;display:grid;gap:14px;margin-top:8px">
-      ${R.pass&&next>=0?`<button class="btn sun" data-act="unit" data-i="${next}">Commencer l'étape ${R.tier+1} →</button>`:''}
+      ${R.pass&&next>=0?`<button class="btn sun" data-act="unit" data-i="${next}">Commencer le niveau ${R.tier+1} →</button>`:''}
       ${!R.pass?`<button class="btn sun" data-act="seancemiss">🎯 Réviser ces mots</button><button class="btn ghost" data-act="eval" data-t="${R.tier}">Réessayer l'évaluation</button>`:''}
       <button class="btn" data-act="home">Retour à la carte</button></div></div>`;
 }
@@ -1413,10 +1436,10 @@ function result(){
     <div class="bigstars" aria-label="${R.stars} étoiles sur 3">${[1,2,3].map(n=>`<span class="${n>R.stars?'off':''}">⭐</span>`).join('')}</div>
     <div class="xp">+${R.gain} points · +${R.coins} 🪙</div>
     ${R.newStk?`<p class="say" style="color:var(--ink)">🆕 ${R.newStk} nouvel${R.newStk>1?'s':''} autocollant${R.newStk>1?'s':''} dans ton album !</p>`:''}
-    <p class="say">${R.goalHit?'Objectif du jour atteint ! 🔥 Ta série continue. ':''}${R.newUnit&&next?`Nouveau niveau débloqué : ${esc(next.es)} ${next.e}`:u?'Tu as encore mieux retenu tes mots.':L&&L.kind==='chat'?'Belle conversation ! '+G().es+(G().g==='m'?' est fier de toi.':' est fière de toi.'):'Séance terminée : tes mots sont bien rangés dans ta tête !'}</p>
+    <p class="say">${R.goalHit?'Objectif du jour atteint ! 🔥 Ta série continue. ':''}${R.newUnit&&next?`Nouvelle leçon débloquée : ${esc(next.es)} ${next.e}`:u?'Tu as encore mieux retenu tes mots.':L&&L.kind==='chat'?'Belle conversation ! '+G().es+(G().g==='m'?' est fier de toi.':' est fière de toi.'):'Séance terminée : tes mots sont bien rangés dans ta tête !'}</p>
     <div style="width:100%;display:grid;gap:14px;margin-top:8px">
       ${R.episode!=null?`<button class="btn coral" data-act="epopen" data-i="${R.episode}">📖 Nouvel épisode de l'histoire !</button>`:''}
-      ${R.newUnit&&next&&unlocked(R.unit+1)?`<button class="btn sun" data-act="unit" data-i="${R.unit+1}">Niveau suivant →</button>`:''}
+      ${R.newUnit&&next&&unlocked(R.unit+1)?`<button class="btn sun" data-act="unit" data-i="${R.unit+1}">Leçon suivante →</button>`:''}
       <button class="btn" data-act="home">Retour à la carte</button></div></div>`;
 }
 function confetti(){
@@ -1448,8 +1471,8 @@ const STORY={
  ayuda:{t:'La plage, enfin !',p:[['🗺️🌧️','Llueve y no entiendo el mapa.'],['🔁','—¿Otra vez, por favor? Más despacio.'],['🏖️🎉','¡Por fin, la playa! Fin del viaje… ¡por ahora!']]}};
 let epi={i:0,k:0};
 function story(){
-  app.innerHTML=head('📖 Mon histoire')+`<p class="note" style="margin-bottom:12px">Chaque niveau réussi débloque un épisode du voyage de ${esc(G().es)}.</p>
-  <div class="eplist">${UNITS.map((u,i)=>{const e=STORY[u.id],ok=!!S.stars[u.id];return e?`<button class="epi ${ok?'':'lock'}" data-act="epopen" data-i="${i}" ${ok?'':'aria-disabled="true"'}><span class="epn">${i+1}</span><span class="ept"><b>${ok?esc(e.t):'Épisode à débloquer'}</b><small>${ok?esc(u.es):'Réussis le niveau « '+esc(u.es)+' »'}</small></span><span>${ok?'▶':'🔒'}</span></button>`:''}).join('')}</div>`;
+  app.innerHTML=head('📖 Mon histoire')+`<p class="note" style="margin-bottom:12px">Chaque leçon réussie débloque un épisode du voyage de ${esc(G().es)}.</p>
+  <div class="eplist">${UNITS.map((u,i)=>{const e=STORY[u.id],ok=!!S.stars[u.id];return e?`<button class="epi ${ok?'':'lock'}" data-act="epopen" data-i="${i}" ${ok?'':'aria-disabled="true"'}><span class="epn">${i+1}</span><span class="ept"><b>${ok?esc(e.t):'Épisode à débloquer'}</b><small>${ok?esc(u.es):'Réussis la leçon « '+esc(u.es)+' »'}</small></span><span>${ok?'▶':'🔒'}</span></button>`:''}).join('')}</div>`;
 }
 function episode(){
   const u=UNITS[epi.i],e=STORY[u.id],pn=e.p[epi.k],last=epi.k===e.p.length-1;
@@ -1466,14 +1489,14 @@ const SONGS=[
  {after:'familia',t:'Mi familia',e:'👨‍👩‍👧',l:['Mamá, papá, os quiero.','Mi hermano y mi abuela también.','Toda mi familia junta,','¡qué bien, qué bien, qué bien!']}];
 let song=null,karaToken=0;
 function songs(){
-  app.innerHTML=head('🎵 Comptines')+`<p class="note" style="margin-bottom:12px">Écoute, puis chante avec ${esc(G().es)}. Chaque comptine s'ouvre avec un niveau.</p>
-  <div class="eplist">${SONGS.map((s,i)=>{const ok=!!S.stars[s.after],u=ALL_UNITS.find(x=>x.id===s.after);return `<button class="epi ${ok?'':'lock'}" data-act="songopen" data-i="${i}" ${ok?'':'aria-disabled="true"'}><span class="epn">${s.e}</span><span class="ept"><b>${esc(s.t)}</b><small>${ok?'4 lignes à chanter':'Réussis le niveau « '+esc(u?u.es:'')+' »'}</small></span><span>${ok?'▶':'🔒'}</span></button>`}).join('')}</div>`;
+  app.innerHTML=head('📜 Récitations')+`<p class="note" style="margin-bottom:12px">Écoute, puis récite avec ${esc(G().es)}. Chaque récitation s'ouvre avec une leçon.</p>
+  <div class="eplist">${SONGS.map((s,i)=>{const ok=!!S.stars[s.after],u=ALL_UNITS.find(x=>x.id===s.after);return `<button class="epi ${ok?'':'lock'}" data-act="songopen" data-i="${i}" ${ok?'':'aria-disabled="true"'}><span class="epn">${s.e}</span><span class="ept"><b>${esc(s.t)}</b><small>${ok?'4 lignes à réciter':'Réussis la leçon « '+esc(u?u.es:'')+' »'}</small></span><span>${ok?'▶':'🔒'}</span></button>`}).join('')}</div>`;
 }
 function songView(){
   const s=SONGS[song.i];
   app.innerHTML=head(`${s.e} ${esc(s.t)}`,'songs')+`<div class="kara">${s.l.map((l,k)=>`<p class="kl ${song.line===k?'on':''} ${song.mode==='me'&&song.line===k?'me':''}">${esc(l)}</p>`).join('')}</div>
-  <p class="note" style="text-align:center;min-height:22px">${song.mode==='me'?(song.line>=0?'À toi ! Chante la ligne en couleur 🎤':''):song.mode==='play'?'Écoute bien…':''}</p>
-  <div class="row"><button class="btn" data-act="karaplay">▶ Écouter</button><button class="btn sun" data-act="karame">🎤 À moi de chanter</button></div>`;
+  <p class="note" style="text-align:center;min-height:22px">${song.mode==='me'?(song.line>=0?'À toi ! Récite la ligne en couleur 🎤':''):song.mode==='play'?'Écoute bien…':''}</p>
+  <div class="row"><button class="btn" data-act="karaplay">▶ Écouter</button><button class="btn sun" data-act="karame">🎤 À moi de réciter</button></div>`;
 }
 async function karaRun(mode){
   const tok=++karaToken,s=SONGS[song.i];song.mode=mode;
@@ -1491,13 +1514,26 @@ function addPts(n){S.xp+=n;const k=weekKey();if(!S.wk||S.wk.k!==k)S.wk={k,pts:0}
 const weekPts=s=>(s&&s.wk&&s.wk.k===weekKey())?s.wk.pts:0;
 function addCoins(n){S.coins=(S.coins||0)+n}
 const usedMin=()=>Math.round(((S.days||{})[dayPlus(0)]||0)/60);
-const overLimit=()=>S.limit>0&&usedMin()>=S.limit&&S.unlockDay!==dayPlus(0);
+const extraMin=s=>s&&s.extra&&s.extra.d===dayPlus(0)?s.extra.m:0;
+const overLimit=()=>S.limit>0&&usedMin()>=S.limit+extraMin(S)&&S.unlockDay!==dayPlus(0);
+/* Écrans libres (pas comptés, accessibles même quand le temps est fini) */
+const FREE=new Set(['stop','pgate','parent','who','welcome','tuto']);
+function stopAll(){try{speechSynthesis.cancel()}catch(e){}karaToken++;if(GM&&GM.timer){clearInterval(GM.timer);GM.timer=null}}
+let lastTick=Date.now(),tickN=0;
+function timeTick(){
+  const now=Date.now(),dt=Math.min(30,(now-lastTick)/1000);lastTick=now;
+  if(document.visibilityState!=='visible'||!S.name||!S.theme||FREE.has(view)||view==='settings')return;
+  const k=dayPlus(0);S.days=S.days||{};S.days[k]=(S.days[k]||0)+dt;if(++tickN%3===0)save();
+  if(overLimit()){stopAll();save();view='stop';render()}
+}
+setInterval(timeTick,10000);document.addEventListener('visibilitychange',()=>{lastTick=Date.now()});
 function guard(){if(overLimit()){view='stop';render();return false}return true}
 function editProfile(id,fn){if(id===P.cur){fn(S);save();return}const k=pkey(id),s=readSave(k)||readSave(k+'-secours');if(!s)return;fn(s);try{const j=JSON.stringify(s);localStorage.setItem(k,j);localStorage.setItem(k+'-secours',j)}catch(e){}}
 function stop(){
   app.innerHTML=`<div class="center"><div class="lola big" aria-hidden="true">${avatar()}</div><h2 style="font-size:32px">C'est fini pour aujourd'hui !</h2>
-  <p class="say">${esc(G().es)} se repose. Tu as joué ${usedMin()} minutes aujourd'hui. Reviens demain 😴</p>
-  <div style="width:100%;display:grid;gap:12px"><button class="btn" data-act="home">Retour à la carte</button><button class="btn ghost" data-act="parent">Espace parent</button></div></div>`;
+  <p class="say">Tu as joué ${usedMin()} minute${usedMin()>1?'s':''} : c'est le temps prévu par tes parents. ${esc(G().es)} se repose aussi 😴</p>
+  <div class="set" style="width:100%;text-align:center;align-items:center"><b style="font-size:20px">🙋 Demande à tes parents</b><p class="note" style="margin:0">Seul un parent peut te donner un peu plus de temps. Sinon, on se retrouve demain !</p></div>
+  <div style="width:100%;display:grid;gap:12px"><button class="btn" data-act="parent">👨‍👩‍👧 Je suis un parent</button>${P.list.length>1?'<button class="btn ghost" data-act="who">Changer de joueur</button>':''}</div></div>`;
 }
 
 /* ---------- Album d'autocollants : un autocollant par mot réussi 3 fois ---------- */
@@ -1530,7 +1566,7 @@ let GM=null;
 function gamePool(){const WM=wordMap();return uniqPic(shuffle(Object.keys(S.words||{}).filter(k=>WM[k]).map(k=>WM[k])))}
 function games(){
   const n=gamePool().length,ok=n>=4;
-  app.innerHTML=head('🎮 Jeux')+`<p class="note" style="margin-bottom:12px">${ok?`On joue avec tes ${n} mots appris. Chaque partie rapporte des pièces 🪙.`:'Termine ton premier niveau pour débloquer les jeux !'}</p>
+  app.innerHTML=head('🎮 Jeux')+`<p class="note" style="margin-bottom:12px">${ok?`On joue avec tes ${n} mots appris. Chaque partie rapporte des pièces 🪙.`:'Termine ta première leçon pour débloquer les jeux !'}</p>
   <div class="eplist">
    <button class="epi ${ok?'':'lock'}" data-act="game" data-g="catch"><span class="epn">🫧</span><span class="ept"><b>Attrape les mots</b><small>Touche la bonne bulle avant qu'elle tombe</small></span><span>▶</span></button>
    <button class="epi ${ok?'':'lock'}" data-act="game" data-g="memory"><span class="epn">🃏</span><span class="ept"><b>Memory</b><small>Retrouve chaque mot et son image</small></span><span>▶</span></button>
@@ -1582,7 +1618,7 @@ function chronoTap(k){
 function endGame(){
   const g=GM;if(!g||g.over)return;g.over=true;if(g.timer)clearInterval(g.timer);
   const coins=g.g==='memory'?Math.max(3,12-(g.moves-g.pairs)):g.score,score=g.g==='memory'?g.done.length:g.score;
-  addCoins(coins);addPts(coins);const s=Math.min(1200,(Date.now()-g.t0)/1000),k=dayPlus(0);S.days[k]=(S.days[k]||0)+Math.round(s);save();
+  addCoins(coins);addPts(coins);save();
   g.coins=coins;g.final=score;view='gameover';render();if(coins>=5)confetti();
 }
 function gameover(){
@@ -1604,7 +1640,7 @@ function duel(){
   <div class="set"><b>Contre qui joue ${esc(S.name)} ?</b>
     ${ok?`<div class="shop">${opp.map(o=>`<button class="item ${sel===o.id?'on':''}" data-act="dopp" data-id="${o.id}"><span>${o.e}</span><b>${esc(o.name)}</b></button>`).join('')}</div>
     <p class="note">8 questions sur les mots de ${esc(S.name)}. Chacun joue à son tour sur ce téléphone. Le plus rapide et le plus juste gagne 10 pièces 🪙.</p>
-    <button class="btn sun" data-act="dstart" ${sel?'':'disabled'}>C'est parti !</button>`:`<p class="note">${esc(S.name)} doit d'abord réussir un niveau.</p>`}</div>`;
+    <button class="btn sun" data-act="dstart" ${sel?'':'disabled'}>C'est parti !</button>`:`<p class="note">${esc(S.name)} doit d'abord réussir une leçon.</p>`}</div>`;
 }
 function duelStart(){
   const pool=gamePool();if(pool.length<4||!DU||!DU.opp)return;
@@ -1638,13 +1674,37 @@ function duelAnswer(es){
   save();render();confetti();
 }
 
+
+/* ---------- Didacticiel : à la première ouverture d'un profil (S.tuto), revisible depuis les réglages ---------- */
+let tutoK=0,tutoFrom='home';
+function tutoSlides(){const c=esc(G().es);return [
+  {b:avatar(),h:`¡Hola, ${esc(S.name)}!`,t:`Je suis ${c}. Chaque jour, on apprend l'espagnol ensemble, en quelques minutes.`},
+  {b:'🗺️',h:'La carte',t:`Suis le chemin des leçons et gagne des étoiles ⭐. À la fin de chaque niveau, une petite évaluation ouvre le niveau suivant.`},
+  {b:'🔊 👆 🎤',h:'Dans une leçon',t:`Écoute ${c} 🔊, touche la bonne réponse, puis répète à voix haute 🎤. Après chaque réponse, tu vois la traduction.`},
+  {b:'🎯',h:'La Séance du jour',t:`Le petit chiffre, c'est le nombre de mots à revoir aujourd'hui. Les revoir au bon moment, c'est le secret pour ne plus les oublier !`},
+  {b:'🪙 🎮 👗',h:'Des pièces et des surprises',t:`Gagne des pièces pour habiller ${c}. Joue aux jeux, lis l'histoire, remplis ton album, récite et défie ta famille !`},
+  {b:'⚙️',h:'Pour les parents',t:`Dans ⚙️ Réglages → Espace parent (protégé par une multiplication) : temps d'écran par jour, langue de traduction, bouton « Traduire », progrès de chaque enfant. Sans publicité, aucune donnée envoyée.`}]}
+function tuto(){
+  const sl=tutoSlides(),k=Math.min(tutoK,sl.length-1),s=sl[k],end=k===sl.length-1;
+  app.innerHTML=`<div class="head"><h2 style="flex:1">${k===sl.length-1?'Pour les parents':'Bienvenue !'}</h2><button class="tool" data-act="tutoend">Passer</button></div>
+  <div class="panel tuto"><div class="tbig">${s.b}</div><h2 style="margin:0;font-size:28px">${s.h}</h2><p class="say" style="margin:0">${s.t}</p></div>
+  <div class="dots">${sl.map((_,i)=>`<i class="${i===k?'on':''}"></i>`).join('')}</div>
+  <div class="row">${k>0?'<button class="btn ghost" data-act="tutoprev">← Retour</button>':''}<button class="btn ${end?'sun':''}" data-act="${end?'tutoend':'tutonext'}">${end?'C\'est parti !':'Suivant →'}</button></div>`;
+}
+/* ---------- Bouton pour remonter en haut ---------- */
+const totop=document.createElement('button');totop.id='totop';totop.type='button';totop.setAttribute('aria-label','Remonter en haut');totop.textContent='↑';totop.hidden=true;
+document.body.appendChild(totop);
+function totopSync(){totop.hidden=window.scrollY<500||view==='game'}
+window.addEventListener('scroll',totopSync,{passive:true});
+totop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
 /* ---------- Dico, réglages, accueil ---------- */
 function dico(){
   const us=learnedUnits();
   app.innerHTML=`<div class="head"><button class="icon-btn" data-act="home" aria-label="Retour">←</button><h2>Mon dico</h2></div>
   <p class="note">Touche un mot pour l'entendre. ${us.reduce((n,u)=>n+u.words.length,0)} mots appris !</p>
-  ${us.length?us.map(u=>`<div class="dunit">${u.e} ${esc(u.es)}</div><div class="dico">${u.words.map(w=>`<button class="dw" data-act="sayw" data-w="${esc(w[0])}">${w[2][0]==='#'?pic(w[2]):`<span>${esc(w[2])}</span>`}<b>${esc(gx(w[0],S.gender))}</b><small>${esc(gx(w[1],S.gender))}</small></button>`).join('')}</div>`).join('')
-  :`<div class="empty" style="margin-top:14px">Termine le premier niveau pour remplir ton dico ! ${G().e}</div>`}`;
+  ${us.length?us.map(u=>`<div class="dunit">${u.e} ${esc(u.es)}</div><div class="dico">${u.words.map(w=>`<button class="dw" data-act="sayw" data-w="${esc(w[0])}">${w[2][0]==='#'?pic(w[2]):`<span>${esc(w[2])}</span>`}<b>${esc(gx(w[0],S.gender))}</b><small>${esc(gx(tx(w[0],w[1]),S.gender))}</small></button>`).join('')}</div>`).join('')
+  :`<div class="empty" style="margin-top:14px">Termine la première leçon pour remplir ton dico ! ${G().e}</div>`}`;
 }
 function settings(){
   app.innerHTML=`<div class="head"><button class="icon-btn" data-act="home" aria-label="Retour">←</button><h2>Réglages</h2></div>
@@ -1652,7 +1712,8 @@ function settings(){
     <b style="margin-top:4px">Je suis</b><div class="row" style="gap:8px"><button class="tool" style="flex:1;justify-content:center;${S.gender==='f'?'background:var(--sun)':''}" data-act="setg" data-g="f">👧 Une fille</button><button class="tool" style="flex:1;justify-content:center;${S.gender==='m'?'background:var(--sun)':''}" data-act="setg" data-g="m">👦 Un garçon</button></div>
     <button class="tool" data-act="chtheme" style="justify-content:center">🎨 Changer d'univers (${esc(G().name)})</button>
     <button class="tool" data-act="who" style="justify-content:center">👧👦 Changer de joueur</button>
-    <button class="tool" data-act="parent" style="justify-content:center">👨‍👩‍👧 Espace parent</button></div>
+    <button class="tool" data-act="parent" style="justify-content:center">👨‍👩‍👧 Espace parent</button>
+    <button class="tool" data-act="tutoagain" style="justify-content:center">📘 Revoir le didacticiel</button></div>
   <div class="set">
     <button class="toggle" data-act="slowtog"><span>🐢 Voix plus lente</span><span class="sw ${S.slow?'on':''}"></span></button>
     <div class="toggle"><span>🎯 Leçons par jour</span><span class="row" style="flex:none;gap:8px">${[1,2,3].map(n=>`<button class="tool" style="min-width:48px;justify-content:center;${S.goal===n?'background:var(--sun)':''}" data-act="goal" data-n="${n}">${n}</button>`).join('')}</span></div>
@@ -1667,7 +1728,7 @@ function settings(){
     <label class="field" for="bkin">Restaurer avec un code<textarea id="bkin" class="code" placeholder="Colle ton code ici"></textarea></label>
     <button class="tool" data-act="bkrestore" style="justify-content:center">Restaurer</button>
     ${bkMsg?`<p class="note" role="status" style="color:var(--ink)">${esc(bkMsg)}</p>`:''}</div>
-  <div class="set"><p class="note">Version ${APP_VERSION} · ${UNITS.length} niveaux<br>Images 3D : Fluent Emoji © Microsoft Corporation, licence MIT.</p>
+  <div class="set"><p class="note">Version ${APP_VERSION} · ${UNITS.length} leçons<br>Images 3D : Fluent Emoji © Microsoft Corporation, licence MIT.</p>
     ${confirmReset?`<p style="margin:0;font-weight:800">Tout effacer, vraiment ?</p><div class="row"><button class="btn coral" data-act="resetyes">Oui, effacer</button><button class="btn ghost" data-act="resetno">Non</button></div>`
     :`<button class="btn ghost" data-act="reset">Recommencer à zéro</button>`}</div>
   <button class="btn" data-act="home">Enregistrer</button>`;
@@ -1683,13 +1744,13 @@ function welcome(){
     <label class="field" for="nm" style="width:100%;text-align:left">Ton prénom<input id="nm" maxlength="20" autocomplete="off" placeholder="Écris ton prénom" value="${esc(S.name||'')}"></label>
     <button class="btn sun" data-act="go">Suivant →</button>
     ${P.list.length>1?'<button class="btn ghost" data-act="who">← Choisir un autre joueur</button>':''}</div>`;return}
-  if(st==='gender'){app.innerHTML=`<div class="head"><button class="icon-btn" data-act="wback" aria-label="Retour">←</button><h2>Étape 2 sur 3</h2></div><div class="center">
+  if(st==='gender'){app.innerHTML=`<div class="head"><button class="icon-btn" data-act="wback" aria-label="Retour">←</button><h2>2 / 3</h2></div><div class="center">
     <h1 style="font-size:34px">¡Hola, ${esc(S.name)}!</h1>
     <p class="say" style="font-size:19px">Tu es…</p>
     <div class="row" style="width:100%"><button class="btn sun big2" data-act="gender" data-g="f">👧 Une fille</button><button class="btn big2" data-act="gender" data-g="m">👦 Un garçon</button></div>
     <p class="note">Pour dire « encantada » ou « encantado » 😉</p></div>`;return}
   const keys=allThemes?Object.keys(THEMES):THEME_FOR[S.gender||'f'];
-  app.innerHTML=`<div class="head"><button class="icon-btn" data-act="wback" aria-label="Retour">←</button><h2>${themeFrom==='settings'?'Réglages':'Étape 3 sur 3'}</h2></div><div class="center" style="justify-content:flex-start;padding-top:0">
+  app.innerHTML=`<div class="head"><button class="icon-btn" data-act="wback" aria-label="Retour">←</button><h2>${themeFrom==='settings'?'Réglages':'3 / 3'}</h2></div><div class="center" style="justify-content:flex-start;padding-top:0">
     <h1 style="font-size:32px">Choisis ton univers</h1>
     <p class="say">Ton compagnon t'accompagne dans toutes tes leçons.</p>
     <div class="themes">${keys.map(k=>{const t=THEMES[k];return `<button class="thcard ${S.theme===k?'on':''}" data-act="theme" data-t="${k}" style="--tb:${t.c.bg};--tl:${t.c.lagoon};--ts:${t.c.sun}">
@@ -1700,7 +1761,7 @@ function welcome(){
 /* Qui joue ? */
 function who(){
   const cards=P.list.map(p=>{const s=profileInfo(p.id),th=THEMES[s.theme]||THEMES.jungla,n=Object.keys(s.stars||{}).length;
-    return `<button class="pcard ${p.id===P.cur?'cur':''}" data-act="pick" data-id="${p.id}" style="--pc:${th.c.lagoon};--pb:${th.c.bg}"><span class="pav">${s.theme?th.e:'🙂'}</span><b>${esc(s.name||'Nouveau joueur')}</b><small>${n} niveau${n>1?'x':''} réussi${n>1?'s':''} · ${weekPts(s)} pts</small></button>`}).join('');
+    return `<button class="pcard ${p.id===P.cur?'cur':''}" data-act="pick" data-id="${p.id}" style="--pc:${th.c.lagoon};--pb:${th.c.bg}"><span class="pav">${s.theme?th.e:'🙂'}</span><b>${esc(s.name||'Nouveau joueur')}</b><small>${n} leçon${n>1?'s':''} réussie${n>1?'s':''} · ${weekPts(s)} pts</small></button>`}).join('');
   app.innerHTML=`<div class="center" style="justify-content:flex-start;padding-top:20px">
     ${S.name&&S.gender&&S.theme?'<div class="head" style="width:100%;margin:0"><button class="icon-btn" data-act="home" aria-label="Retour">←</button></div>':''}
     <h1 style="font-size:36px">¿Quién juega?</h1><p class="say">Qui joue aujourd'hui ? Chacun garde sa progression.</p>
@@ -1719,35 +1780,47 @@ function parent(){
   const cards=P.list.map(p=>{const s=profileInfo(p.id),th=THEMES[s.theme]||THEMES.jungla,ws=s.words||{},keys=Object.keys(ws);
     const mins=days.map(d=>Math.round(((s.days||{})[d]||0)/60)),maxm=Math.max(10,...mins),week=mins.reduce((a,b)=>a+b,0);
     const hard=keys.filter(k=>ws[k].ko>0).sort((a,b)=>(ws[b].ko-ws[b].ok)-(ws[a].ko-ws[a].ok)).slice(0,6);
-    const ev=[1,2,3].map(t=>(s.evals||{})[t]?`Étape ${t} : ${(s.evals||{})[t].pct} %`:null).filter(Boolean);
+    const ev=[1,2,3].map(t=>(s.evals||{})[t]?`Niveau ${t} : ${(s.evals||{})[t].pct} %`:null).filter(Boolean);
     return `<div class="set pcard2"><div class="row" style="align-items:center"><span class="pav" style="flex:none;background:${th.c.bg}">${s.theme?th.e:'🙂'}</span><b style="font-size:20px">${esc(s.name||'Nouveau joueur')}</b></div>
-      <div class="stats"><div><b>${keys.length}</b><small>mots vus</small></div><div><b>${keys.filter(k=>ws[k].b>=4).length}</b><small>mots bien retenus</small></div><div><b>${Object.keys(s.stars||{}).filter(id=>UNITS.some(u=>u.id===id)).length}/${UNITS.length}</b><small>niveaux réussis</small></div><div><b>${week} min</b><small>cette semaine</small></div></div>
+      <div class="stats"><div><b>${keys.length}</b><small>mots vus</small></div><div><b>${keys.filter(k=>ws[k].b>=4).length}</b><small>mots bien retenus</small></div><div><b>${Object.keys(s.stars||{}).filter(id=>UNITS.some(u=>u.id===id)).length}/${UNITS.length}</b><small>leçons réussies</small></div><div><b>${week} min</b><small>cette semaine</small></div></div>
+      <p class="note"><b>Mot bien retenu</b> : un mot réussi lors de 3 révisions espacées (1 jour, puis 2, puis 4 jours plus tard). Il est en mémoire depuis au moins une semaine. Un mot raté redescend et revient dans la Séance du jour.</p>
       <div class="bars" role="img" aria-label="Minutes par jour sur 7 jours">${mins.map((m,i)=>`<div class="barc"><span class="bv">${m||''}</span><i style="height:${Math.round(m/maxm*70)}px"></i><small>${DN[new Date(days[i]+'T12:00').getDay()]}</small></div>`).join('')}</div>
       <p class="note" style="color:var(--ink)"><b>Cette semaine :</b> ${week} min, ${keys.filter(k=>ws[k].f&&ws[k].f>=dayPlus(-6)).length} mots nouveaux, ${keys.filter(k=>ws[k].ok>=3).length} autocollants au total, ${weekPts(s)} points.</p>
-      <div class="limit"><b>🇫🇷 Bouton « Traduire » sur les questions</b>
+      <div class="limit"><b>🌍 Langue de traduction</b>
+        <div class="seg three">${Object.entries(LANGS).map(([k,[n,f]])=>`<button class="${(s.lang||'fr')===k?'on':''}" data-act="plang" data-id="${p.id}" data-l="${k}" aria-pressed="${(s.lang||'fr')===k}">${f}<small>${n}</small></button>`).join('')}</div>
+        <p class="note">Langue des traductions des mots et des phrases (après chaque réponse, bouton « Traduire », dico). Les menus restent en français.</p></div>
+      <div class="limit"><b>💬 Bouton « Traduire » sur les questions</b>
         <div class="seg two">${[[0,'Non'],[1,'Oui']].map(([v,t])=>`<button class="${!!s.trQ===!!v?'on':''}" data-act="ptr" data-id="${p.id}" data-v="${v}" aria-pressed="${!!s.trQ===!!v}">${t}</button>`).join('')}</div>
         <p class="note">Utile si vous ne parlez pas espagnol. La traduction s'affiche toujours après la réponse ; le bouton n'apparaît jamais pendant les évaluations.</p></div>
       <div class="limit"><b>⏳ Temps d'écran maximum par jour</b>
         <div class="seg">${[0,10,15,20,30].map(m=>`<button class="${(s.limit||0)===m?'on':''}" data-act="plim" data-id="${p.id}" data-m="${m}" aria-pressed="${(s.limit||0)===m}">${m?`${m}<small>min</small>`:'Sans<small>limite</small>'}</button>`).join('')}</div>
-        <p class="note">${s.limit>0?`Aujourd'hui : ${Math.round(((s.days||{})[dayPlus(0)]||0)/60)} min sur ${s.limit} min.`:'Aucune limite : l\'enfant peut jouer autant qu\'il veut.'}</p></div>
-      ${s.limit>0&&Math.round(((s.days||{})[dayPlus(0)]||0)/60)>=s.limit&&s.unlockDay!==dayPlus(0)?`<button class="tool" data-act="punlock" data-id="${p.id}" style="justify-content:center">🔓 Débloquer pour aujourd'hui</button>`:''}
+        <p class="note">${s.limit>0?`Aujourd'hui : ${Math.round(((s.days||{})[dayPlus(0)]||0)/60)} min sur ${s.limit+extraMin(s)} min.${s.unlockDay===dayPlus(0)?' Débloqué pour aujourd\'hui.':''} Quand le temps est écoulé, l'appli se bloque et demande un parent.`:'Aucune limite : l\'enfant peut jouer autant qu\'il veut.'}</p></div>
+      ${s.limit>0&&Math.round(((s.days||{})[dayPlus(0)]||0)/60)>=s.limit+extraMin(s)&&s.unlockDay!==dayPlus(0)?`<div class="row" style="gap:8px"><button class="tool" data-act="pextra" data-id="${p.id}" style="flex:1;justify-content:center">➕ 15 min aujourd'hui</button><button class="tool" data-act="punlock" data-id="${p.id}" style="flex:1;justify-content:center">🔓 Sans limite aujourd'hui</button></div>`:''}
       <p class="note">Évaluations : ${ev.length?ev.join(' · '):'aucune réussie pour l\'instant'} · Série : ${s.streak||0} jour(s)</p>
       <p class="note">Mots difficiles : ${hard.length?hard.map(k=>`<b>${esc(k)}</b>${WM[k]?' ('+esc(WM[k].fr)+')':''}`).join(', '):'aucun pour l\'instant'}</p>
       ${pdel===p.id?`<p style="margin:0;font-weight:800">Supprimer le profil de ${esc(s.name||'ce joueur')} et toute sa progression ?</p><div class="row"><button class="btn coral" data-act="pdelyes" data-id="${p.id}">Oui, supprimer</button><button class="btn ghost" data-act="pdelno">Non</button></div>`
         :`<button class="tool" data-act="pdel" data-id="${p.id}" style="justify-content:center">Supprimer ce profil</button>`}</div>`}).join('');
   app.innerHTML=`<div class="head"><button class="icon-btn" data-act="settings" aria-label="Retour">←</button><h2>Espace parent</h2></div>
-  <div class="set" style="background:var(--good-bg)"><b>🔒 Sans publicité, sans collecte de données</b><p class="note" style="color:var(--ink)">Tout reste sur ce téléphone : aucun compte, aucune donnée envoyée. Le temps compté est celui passé dans les leçons, séances, évaluations et jeux.</p></div>${cards}
+  <div class="set" style="background:var(--good-bg)"><b>🔒 Sans publicité, sans collecte de données</b><p class="note" style="color:var(--ink)">Tout reste sur ce téléphone : aucun compte, aucune donnée envoyée. Le temps compté est le temps passé à jouer dans l'appli (hors réglages et espace parent).</p></div>${cards}
   ${P.list.length<6?'<button class="btn ghost" data-act="addp">➕ Ajouter un enfant</button>':''}`;
 }
 
+let lastView=null,toCur=false;
 function render(){
+  if(S.name&&S.theme&&!FREE.has(view)&&overLimit()){stopAll();view='stop'}
+  if(S.name&&S.theme&&!S.tuto&&!FREE.has(view)){tutoK=0;view='tuto'}
   if(view!=='game'&&GM&&GM.timer){clearInterval(GM.timer);GM.timer=null}
+  const changed=lastView!==view;toCur=view==='home'&&changed;lastView=view;
   if(view==='who')who();else if(view==='pgate')parentGate();else if(view==='parent')parent();else
   if(view==='stop')stop();else if(view==='album')album();else if(view==='wardrobe')wardrobe();else if(view==='story')story();else if(view==='episode')episode();else
   if(view==='songs')songs();else if(view==='song')songView();else if(view==='games')games();else if(view==='game')game();else if(view==='gameover')gameover();else
   if(view==='duel')duel();else if(view==='duel2')duel2();else
   if(view==='welcome')welcome();else if(view==='lesson')lesson();else if(view==='result')result();
-  else if(view==='dico')dico();else if(view==='settings')settings();else home();
+  else if(view==='dico')dico();else if(view==='settings')settings();else if(view==='tuto')tuto();else home();
+  /* sur la carte : aller directement à la leçon en cours */
+  if(toCur){const c=document.querySelector('.map .node.current');if(c)requestAnimationFrame(()=>c.scrollIntoView({block:'center',behavior:'auto'}));else window.scrollTo(0,0)}
+  else if(changed)window.scrollTo(0,0);
+  totopSync();
 }
 function readName(){const n=$('#nm');if(n){const v=n.value.trim();if(v)S.name=v;save()}}
 
@@ -1758,6 +1831,12 @@ app.addEventListener('click',e=>{
   else if(a==='go'){readName();if(!S.name){$('#nm').focus();return}if(!S.ver)S.ver=APP_VERSION;save();wStep='gender';themeFrom='setup';render();say('¡Hola, '+S.name+'!')}
   else if(a==='gender'){S.gender=b.dataset.g;allThemes=false;save();wStep='theme';render()}
   else if(a==='theme'){S.theme=b.dataset.t;if(!S.ver)S.ver=APP_VERSION;applyTheme();save();wStep=null;view='home';render();say('¡Hola, '+S.name+'! Soy '+G().es+'. ¡Vamos!')}
+  else if(a==='tutonext'){tutoK++;render()}
+  else if(a==='tutoprev'){tutoK=Math.max(0,tutoK-1);render()}
+  else if(a==='tutoend'){S.tuto=1;save();view=tutoFrom;tutoFrom='home';render()}
+  else if(a==='tutoagain'){readName();tutoK=0;tutoFrom='settings';view='tuto';render()}
+  else if(a==='plang'){const l=b.dataset.l;editProfile(b.dataset.id,s=>{s.lang=l});render()}
+  else if(a==='pextra'){editProfile(b.dataset.id,s=>{const d=dayPlus(0);s.extra={d,m:(s.extra&&s.extra.d===d?s.extra.m:0)+15}});render()}
   else if(a==='trq'){if(L){L.trI=L.i;render()}}
   else if(a==='ptr'){const v=b.dataset.v==='1';editProfile(b.dataset.id,s=>{s.trQ=v});render()}
   else if(a==='setg'){readName();S.gender=b.dataset.g;save();render()}

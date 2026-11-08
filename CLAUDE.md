@@ -66,8 +66,9 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 1 / 3** (version 25 en préparation ; la 24 est en ligne depuis le 8 novembre 2026)
-1. Code bêta-testeur : toutes les leçons créées (y compris les 33 anciennes, Niveaux 5 à 11 de 5 leçons, le 11 en a 3) et tous les bonus, toutes ouvertes.
+**Demandes en attente sur `prochaine-version` : 2 / 3** (version 25 en préparation ; la 24 est en ligne depuis le 8 novembre 2026)
+1. Code bêta-testeur : toutes les leçons créées (y compris les 33 anciennes, Niveaux 5 à 11 de 5 leçons) et tous les bonus, toutes ouvertes.
+2. 2 leçons nouvelles pour compléter le Niveau 11 « Se débrouiller » : `estacion` (prendre le train) et `biblioteca` (tableau `V25`, avec traductions anglais/italien).
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

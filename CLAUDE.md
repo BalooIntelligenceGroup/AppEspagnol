@@ -38,6 +38,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Langue de l'appli** (v18) : `S.lang` = fr (défaut), en ou it, choisie au tout premier écran d'un nouveau profil (`wStep='lang'`) et modifiable dans l'espace parent. L'interface est écrite en français et traduite à l'affichage : `uiT()` cherche le texte dans `UI` (clé française où nombres, prénoms, noms des compagnons et texte entre « » deviennent {0}, {1}…) puis dans les motifs `UIP`. **Tout nouveau texte français affiché doit avoir son entrée dans `UI`**, sinon il reste en français. Traductions des contenus : `tx(es, fr)` cherche dans `TRX[espagnol] = [anglais, italien]` (les 15 leçons actives), sinon garde le français. Toute nouvelle phrase ou mot doit avoir son entrée dans `TRX`.
 - **Noms** (v17) : à l'écran, une « étape » s'appelle **Niveau** (`TIERS`) et un niveau s'appelle **Leçon** ; les comptines sont des **Récitations**. Le code garde ses noms (UNITS, tier, SONGS).
 - **Temps d'écran** (v17, corrigé v20) : compté en direct par `timeTick()` (toutes les 10 s, hors écrans `FREE` et réglages), comparé en secondes. Choisir une limite annule le déblocage du jour et les minutes ajoutées. L'écran `stop` n'offre que « Je suis un parent ». Si un profil a fini son temps (`anyOver()`), choisir ou créer un joueur sur « ¿Quién juega? » passe par la multiplication (`gateNext`). Limite atteinte → écran `stop` partout (« Demande à tes parents »), le parent ajoute 15 min (`S.extra`) ou débloque la journée (`S.unlockDay`).
+- **Rythme quotidien** (v22) : `newGate(i)` bloque une leçon jamais réussie si une nouvelle leçon a déjà été réussie aujourd'hui (`S.newDay`) ou si des mots sont à revoir et que la Séance du jour n'est pas faite (`S.seanceDay`). Les leçons déjà réussies restent libres. Limite par défaut : 10 min/jour (`def()`, migration `mig22` si aucun réglage).
 - **Didacticiel** `tuto()` : montré une fois par profil (`S.tuto`), revisible dans les réglages.
 - **Ordre des exercices** : `mix()` mélange les exercices après la découverte des mots et évite de rejouer le même enchaînement (`S.seq`).
 - **Carte** : à l'arrivée sur l'accueil, défilement automatique vers la leçon en cours ; bouton `#totop` pour remonter.
@@ -53,7 +54,8 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 0 / 3**
+**Demandes en attente sur `prochaine-version` : 1 / 3** (version 22 en préparation)
+1. Rythme quotidien : Séance du jour avant toute nouvelle leçon, une nouvelle leçon par jour, 10 min/jour par défaut.
 
 ## Publier une nouvelle version
 1. Modifier `index.html` (ajouter des niveaux dans un tableau `V8_…` puis `insAfter(...)`, comme V7).

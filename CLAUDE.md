@@ -49,6 +49,10 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Ordre des exercices** : `mix()` mélange les exercices après la découverte des mots et évite de rejouer le même enchaînement (`S.seq`).
 - **Carte** : à l'arrivée sur l'accueil, défilement automatique vers la leçon en cours ; bouton `#totop` pour remonter.
 - **Offre Famille** (v23, affichage seulement, aucun prix) : les 15 leçons de `ACTIVE` sont gratuites pour toujours ; sur la carte, après la coupe, `famMap()` montre verrouillées les leçons de `FAM_PREVIEW` (« ⭐ Famille », message doux pour l'enfant, jamais de prix ni de bouton d'achat côté enfant) ; encadré d'information dans l'espace parent. `famOpen(dateAbonnement, aujourdhui)` = leçons ouvertes : `FAM_PER_MONTH` (5) le jour de l'abonnement, +5 à chaque mois entier, compté **par famille** depuis sa propre date d'abonnement. Distribution prévue par Google Play (paiement Google obligatoire pour du contenu numérique).
+- **Leçons Famille** (v24) : `FAM_UNITS` (tier 4, `conv`+`phr` : 10 **phrases** par leçon, de plus en plus complexes ; `{name}` = prénom de l'enfant). Ouvertes par `famSync()` au démarrage : ajoutées à `UNITS` selon `famOpen(famStart())` ; 1re leçon du Niveau 4 après l'évaluation du Niveau 3 ; pas d'évaluation pour le tier 4. Exercices `phr` : 5 « Construis la phrase » dont 2 « Traduis la phrase » (`s.fr` : la phrase française est donnée, le son après la réponse), 2 mots de trop. Toute nouvelle phrase → `TRX` (en, it) ; le français vient de `words`/`talk` (`trMap`).
+- **Bonus du mois** (v24) : `MONTHLY=[{m:'AAAA-MM',u}]`, culture Espagne + Amérique latine, réservé à l'offre Famille ; `bonusNode()` le place juste après la leçon en cours de l'enfant (verrouillé « 🔒 Famille » sans abonnement) ; `startUnit(-1,u)` (`L.u`), étoiles gardées, ne compte pas comme la nouvelle leçon du jour. **Écrire le bonus de chaque mois à l'avance** (nov. 2026 tapas, déc. Noël, janv. 2027 Rois mages).
+- **Abonnement** : date de début dans `hola-lola-fam` (`{start}`), écrite plus tard par le compte parent (e-mail du parent = point d'entrée, profils et progression retrouvés après une pause). Aperçu de test : adresse + `#famille` (refusé sur netlify.app), « Désactiver l'aperçu » dans l'espace parent.
+- **Memory** (v24) : dos de cartes par univers (`MBACK_PRICE` 40 pièces, univers possédé requis), `S.mback`/`S.mbacks`.
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
 ## Rythme de publication (demande du 7 novembre 2026 : économiser les crédits Netlify)
@@ -61,7 +65,8 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 0 / 3** (la version 23 est en ligne depuis le 8 novembre 2026 : boutique et slogans, question secrète de l'espace parent, offre Famille affichée)
+**Demandes en attente sur `prochaine-version` : 1 / 3** (version 24 en préparation ; la 23 est en ligne depuis le 8 novembre 2026)
+1. Leçons Famille à phrases (`FAM_UNITS`, Niveau 4 « Dans la vraie vie », exercice « Traduis la phrase »), Bonus du mois culturel (`MONTHLY`), dos de cartes du Memory par univers (`MBACK_PRICE`, `S.mback`/`S.mbacks`), texte abonnement mensuel/annuel sans engagement.
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

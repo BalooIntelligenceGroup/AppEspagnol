@@ -43,6 +43,9 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **10 mots par leçon** (v22) : les mots retirés par `DROP` reviennent et `MORE` ajoute 4 mots par leçon active. Une leçon déjà réussie fait découvrir les mots jamais vus. Mot sans bonne image → `💬` + entrée dans `ABSTRACT`.
 - **Voix** (v22) : `S.voice` (voiceURI d'une voix espagnole du téléphone, liste `esVoices()`) et `S.pitch` (n/h/l, table `PITCH`), dans les réglages.
 - **Espace parent** (v22) : un `<details class="acc">` par enfant (Progrès / Réglages), `popen` garde les accordéons ouverts ; `limitBox()` sert aussi à `tsetup` ; `PROMISE` = message « notre engagement ».
+- **Boutique** (v23) : `ACC` (head, face, neck, hand, fx), `SKINS` (classe `sk-…` sur `.ava`, `S.skin`/`S.skins`), univers : `freeThemes()` = 2 premiers de `THEME_FOR[sexe]`, les autres à `THEME_PRICE` pièces (`S.ownT`, l'univers déjà choisi reste acquis). `spend(prix)` débite ou prépare le message « il te manque… ». Onglets `shopTab`. « Changer d'univers » des réglages ouvre l'onglet Univers.
+- **Jeux** (v23) : `GAMES` (catch, memory, chrono offerts ; letters et tfx à acheter, `S.gOwned`), `DECORS` (`S.decor`, classe `deco-…` sur `.stage`), `BONUS` consommables (`S.bonus` : time, shield, hint) qui n'ajoutent jamais de temps d'écran.
+- **Voix** (v23) : « Qui parle ? » = `S.pitch` n/h/m/g (femme, fille, homme, homme grave) via `PITCH` et `RATEK` ; langue par défaut = langue du système (`sysLang()`).
 - **Ordre des exercices** : `mix()` mélange les exercices après la découverte des mots et évite de rejouer le même enchaînement (`S.seq`).
 - **Carte** : à l'arrivée sur l'accueil, défilement automatique vers la leçon en cours ; bouton `#totop` pour remonter.
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
@@ -57,7 +60,8 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 0 / 3** (version 22 mise en ligne le 8 novembre 2026 : rythme quotidien, 10 mots par leçon, voix, espace parent en accordéon, code parent, 15 min par défaut ; prochaine version : 23)
+**Demandes en attente sur `prochaine-version` : 1 / 3** (version 23 en préparation ; la 22 est en ligne depuis le 8 novembre 2026)
+1. Bouton « + » pour un temps d'écran personnalisé ; boutique (accessoires sur 5 emplacements, skins, univers à débloquer, 2 univers offerts par sexe), 2 nouveaux jeux, décors et bonus de jeux ; voix d'homme ; langue du système par défaut. Slogan : 5 propositions faites, en attente du choix.
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

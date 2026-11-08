@@ -53,6 +53,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Bonus du mois** (v24) : `MONTHLY=[{m:'AAAA-MM',u}]`, culture Espagne + Amérique latine, réservé à l'offre Famille ; `bonusNode()` le place juste après la leçon en cours de l'enfant (verrouillé « 🔒 Famille » sans abonnement) ; `startUnit(-1,u)` (`L.u`), étoiles gardées, ne compte pas comme la nouvelle leçon du jour. **Écrire le bonus de chaque mois à l'avance** (nov. 2026 tapas, déc. Noël, janv. 2027 Rois mages).
 - **Abonnement** : date de début dans `hola-lola-fam` (`{start}`), écrite plus tard par le compte parent (e-mail du parent = point d'entrée, profils et progression retrouvés après une pause). Aperçu de test : adresse + `#famille` (refusé sur netlify.app), « Désactiver l'aperçu » dans l'espace parent.
 - **Memory** (v24) : dos de cartes par univers (`MBACK_PRICE` 40 pièces, univers possédé requis), `S.mback`/`S.mbacks`.
+- **Offre Ultimate** (v24) : code promo de 6 caractères (bêta-testeurs) saisi dans l'espace parent ; `PROMO` ne contient que les **empreintes SHA-256** de `'hola-lola-promo:'+CODE` (jamais les codes en clair dans le dépôt). `hola-lola-fam` = `{start, plan:'ultimate', code:empreinte}` ; `famUltimate()` vérifie que l'empreinte est encore dans `PROMO` (retirer une empreinte désactive le code). Ouvre tous les `FAM_UNITS` et, à la fin de la carte, tous les `MONTHLY` ; le rythme quotidien et le temps d'écran restent identiques. 5 erreurs → 1 minute d'attente. Sans serveur, c'est une protection légère : la vraie vérification viendra avec les comptes.
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
 ## Rythme de publication (demande du 7 novembre 2026 : économiser les crédits Netlify)
@@ -65,8 +66,9 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 1 / 3** (version 24 en préparation ; la 23 est en ligne depuis le 8 novembre 2026)
+**Demandes en attente sur `prochaine-version` : 2 / 3** (version 24 en préparation ; la 23 est en ligne depuis le 8 novembre 2026)
 1. Leçons Famille à phrases (`FAM_UNITS`, Niveau 4 « Dans la vraie vie », exercice « Traduis la phrase »), Bonus du mois culturel (`MONTHLY`), dos de cartes du Memory par univers (`MBACK_PRICE`, `S.mback`/`S.mbacks`), texte abonnement mensuel/annuel sans engagement.
+2. Code promo bêta-testeur (6 caractères) → offre **Ultimate** : toutes les leçons Famille et tous les Bonus visibles, même fonctionnement.
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

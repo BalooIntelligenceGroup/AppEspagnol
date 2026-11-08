@@ -69,6 +69,7 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 **Demandes en attente sur `prochaine-version` : 2 / 3** (version 25 en préparation ; la 24 est en ligne depuis le 8 novembre 2026)
 1. Code bêta-testeur : toutes les leçons créées (y compris les 33 anciennes, Niveaux 5 à 11 de 5 leçons) et tous les bonus, toutes ouvertes.
 2. 2 leçons nouvelles pour compléter le Niveau 11 « Se débrouiller » : `estacion` (prendre le train) et `biblioteca` (tableau `V25`, avec traductions anglais/italien).
+3. **À FAIRE LA SEMAINE PROCHAINE (demandé le 8 novembre 2026, reporté par l'utilisateur faute de crédits)** : **10 Niveaux avancés = 50 leçons** (Niveaux 12 à 21), thèmes déjà vus mais plus difficiles, **nouveau vocabulaire**, phrases (format `FAM_UNITS` : `conv`+`phr`, 10 éléments, dialogue de 5 répliques, 3 phrases à trou, traductions `TRX` anglais/italien, images `fx`). Accès : **offre Famille** (ils prolongent `FAM_UNITS` : 5 leçons par mois après le Niveau 4) **et Ultimate** (tout ouvert). Faire d'un bloc, tester, puis publier la version 25 (3e demande). À prévoir : l'ordre et la numérotation des niveaux Famille et des anciennes leçons (`EXTRA_UNITS`, Niveaux 5 à 11 en Ultimate).
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

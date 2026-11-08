@@ -22,7 +22,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Profils** : liste dans `hola-lola-profiles` ; le profil `p1` garde la clé d'origine `hola-lola-v1`, les autres `hola-lola-v1-<id>` (+ `-secours`). Ne jamais renommer ces clés.
 - **Univers** (`THEMES`) : 6 univers (3 proposés aux filles, 3 aux garçons, tous accessibles), couleurs + compagnon. « Lola » dans les dialogues est remplacée par le nom du compagnon ; accords fille/garçon via `gx()`.
 - **Révision espacée** : `S.words[mot] = {b, d, ok, ko}` ; la Séance du jour prend les mots dus (`dueList`). Temps passé : `S.days`.
-- **Espace parent** : protégé par le **code parent** à 4 chiffres (v22, un par téléphone, clé `hola-lola-pin`, empreinte `pinHash`), créé sur l'écran `tsetup` ou au premier accès ; sans code ou « Code oublié ? » : multiplication à 2 chiffres × 2 chiffres puis nouveau code. `openGate(next)` / `gatePass()` ; protège aussi « Recommencer à zéro » et le choix du joueur quand le temps est écoulé.
+- **Espace parent** : protégé par le **code parent** à 4 chiffres (v22, un par téléphone, clé `hola-lola-pin`, empreinte `pinHash`), créé sur l'écran `tsetup` ou au premier accès ; sans code : création directe du code + **question secrète** (v23, clé `hola-lola-pinq`, réponse normalisée par `normAns` puis `pinHash`) ; « Code oublié ? » : la question secrète, puis nouveau code (multiplication 2 × 2 chiffres seulement si aucune question n'a été enregistrée) ; un code de la v22 sans question : la question est demandée juste après le bon code (`setq`). 5 erreurs → 1 minute d'attente (`hola-lola-pinlock`). `openGate(next)` / `gatePass()` ; protège aussi « Recommencer à zéro » et le choix du joueur quand le temps est écoulé.
 
 ## Côté ludique (depuis la version 13)
 - **Pièces** `S.coins` (leçons, séance, évaluations, jeux, comptines, défis) et **points de la semaine** `S.wk={k,pts}` via `addPts()` (classement familial, remis à zéro le lundi).
@@ -43,8 +43,12 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **10 mots par leçon** (v22) : les mots retirés par `DROP` reviennent et `MORE` ajoute 4 mots par leçon active. Une leçon déjà réussie fait découvrir les mots jamais vus. Mot sans bonne image → `💬` + entrée dans `ABSTRACT`.
 - **Voix** (v22) : `S.voice` (voiceURI d'une voix espagnole du téléphone, liste `esVoices()`) et `S.pitch` (n/h/l, table `PITCH`), dans les réglages.
 - **Espace parent** (v22) : un `<details class="acc">` par enfant (Progrès / Réglages), `popen` garde les accordéons ouverts ; `limitBox()` sert aussi à `tsetup` ; `PROMISE` = message « notre engagement ».
+- **Boutique** (v23) : `ACC` (head, face, neck, hand, fx), `SKINS` (classe `sk-…` sur `.ava`, `S.skin`/`S.skins`), univers : `freeThemes()` = 2 premiers de `THEME_FOR[sexe]`, les autres à `THEME_PRICE` pièces (`S.ownT`, l'univers déjà choisi reste acquis). `spend(prix)` débite ou prépare le message « il te manque… ». Onglets `shopTab`. « Changer d'univers » des réglages ouvre l'onglet Univers.
+- **Jeux** (v23) : `GAMES` (catch, memory, chrono offerts ; letters et tfx à acheter, `S.gOwned`), `DECORS` (`S.decor`, classe `deco-…` sur `.stage`), `BONUS` consommables (`S.bonus` : time, shield, hint) qui n'ajoutent jamais de temps d'écran.
+- **Voix** (v23) : « Qui parle ? » = `S.pitch` n/h/m/g (femme, fille, homme, homme grave) via `PITCH` et `RATEK` ; langue par défaut = langue du système (`sysLang()`).
 - **Ordre des exercices** : `mix()` mélange les exercices après la découverte des mots et évite de rejouer le même enchaînement (`S.seq`).
 - **Carte** : à l'arrivée sur l'accueil, défilement automatique vers la leçon en cours ; bouton `#totop` pour remonter.
+- **Offre Famille** (v23, affichage seulement, aucun prix) : les 15 leçons de `ACTIVE` sont gratuites pour toujours ; sur la carte, après la coupe, `famMap()` montre verrouillées les leçons de `FAM_PREVIEW` (« ⭐ Famille », message doux pour l'enfant, jamais de prix ni de bouton d'achat côté enfant) ; encadré d'information dans l'espace parent. `famOpen(dateAbonnement, aujourdhui)` = leçons ouvertes : `FAM_PER_MONTH` (5) le jour de l'abonnement, +5 à chaque mois entier, compté **par famille** depuis sa propre date d'abonnement. Distribution prévue par Google Play (paiement Google obligatoire pour du contenu numérique).
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
 ## Rythme de publication (demande du 7 novembre 2026 : économiser les crédits Netlify)
@@ -57,7 +61,7 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 0 / 3** (version 22 mise en ligne le 8 novembre 2026 : rythme quotidien, 10 mots par leçon, voix, espace parent en accordéon, code parent, 15 min par défaut ; prochaine version : 23)
+**Demandes en attente sur `prochaine-version` : 0 / 3** (la version 23 est en ligne depuis le 8 novembre 2026 : boutique et slogans, question secrète de l'espace parent, offre Famille affichée)
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

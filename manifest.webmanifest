@@ -1,7 +1,7 @@
 {
  "name": "¡Hola Lola!",
  "short_name": "Hola Lola",
- "description": "Apprendre l'espagnol avec Lola la llama",
+ "description": "Apprendre l'espagnol en s'amusant, 15 minutes et puis s'en vont ! Peu d'écran, beaucoup d'espagnol.",
  "lang": "fr",
  "start_url": "./",
  "scope": "./",

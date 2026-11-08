@@ -48,6 +48,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Voix** (v23) : « Qui parle ? » = `S.pitch` n/h/m/g (femme, fille, homme, homme grave) via `PITCH` et `RATEK` ; langue par défaut = langue du système (`sysLang()`).
 - **Ordre des exercices** : `mix()` mélange les exercices après la découverte des mots et évite de rejouer le même enchaînement (`S.seq`).
 - **Carte** : à l'arrivée sur l'accueil, défilement automatique vers la leçon en cours ; bouton `#totop` pour remonter.
+- **Offre Famille** (v23, affichage seulement, aucun prix) : les 15 leçons de `ACTIVE` sont gratuites pour toujours ; sur la carte, après la coupe, `famMap()` montre verrouillées les leçons de `FAM_PREVIEW` (« ⭐ Famille », message doux pour l'enfant, jamais de prix ni de bouton d'achat côté enfant) ; encadré d'information dans l'espace parent. `famOpen(dateAbonnement, aujourdhui)` = leçons ouvertes : `FAM_PER_MONTH` (5) le jour de l'abonnement, +5 à chaque mois entier, compté **par famille** depuis sa propre date d'abonnement. Distribution prévue par Google Play (paiement Google obligatoire pour du contenu numérique).
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
 ## Rythme de publication (demande du 7 novembre 2026 : économiser les crédits Netlify)
@@ -60,9 +61,7 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 2 / 3** (version 23 en préparation ; la 22 est en ligne depuis le 8 novembre 2026)
-1. Bouton « + » pour un temps d'écran personnalisé ; boutique (accessoires sur 5 emplacements, skins, univers à débloquer, 2 univers offerts par sexe), 2 nouveaux jeux, décors et bonus de jeux ; voix d'homme ; langue du système par défaut. Slogans choisis : enfants « Apprendre en s'amusant, 15 minutes et puis s'en vont ! » (accueil, 1er écran du didacticiel), parents « Peu d'écran, beaucoup d'espagnol. » (espace parent, écran du temps d'écran, didacticiel) — `SLOGAN_KID` / `SLOGAN_PAR`.
-2. Sécurité de l'espace parent : question secrète choisie avec le code (remplace la multiplication en cas d'oubli), 5 erreurs → 1 minute d'attente.
+**Demandes en attente sur `prochaine-version` : 0 / 3** (la version 23 est en ligne depuis le 8 novembre 2026 : boutique et slogans, question secrète de l'espace parent, offre Famille affichée)
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

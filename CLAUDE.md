@@ -66,9 +66,7 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 2 / 3** (version 24 en préparation ; la 23 est en ligne depuis le 8 novembre 2026)
-1. Leçons Famille à phrases (`FAM_UNITS`, Niveau 4 « Dans la vraie vie », exercice « Traduis la phrase »), Bonus du mois culturel (`MONTHLY`), dos de cartes du Memory par univers (`MBACK_PRICE`, `S.mback`/`S.mbacks`), texte abonnement mensuel/annuel sans engagement.
-2. Code promo bêta-testeur (6 caractères) → offre **Ultimate** : toutes les leçons Famille et tous les Bonus visibles, même fonctionnement.
+**Demandes en attente sur `prochaine-version` : 0 / 3** (la version 24 est en ligne depuis le 8 novembre 2026, publiée à la demande avec 2 demandes : leçons Famille à phrases + Bonus du mois + dos de cartes du Memory ; code promo bêta-testeur / offre Ultimate)
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

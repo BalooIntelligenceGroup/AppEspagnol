@@ -61,7 +61,7 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
 **Demandes en attente sur `prochaine-version` : 1 / 3** (version 23 en préparation ; la 22 est en ligne depuis le 8 novembre 2026)
-1. Bouton « + » pour un temps d'écran personnalisé ; boutique (accessoires sur 5 emplacements, skins, univers à débloquer, 2 univers offerts par sexe), 2 nouveaux jeux, décors et bonus de jeux ; voix d'homme ; langue du système par défaut. Slogan : 5 propositions faites, en attente du choix.
+1. Bouton « + » pour un temps d'écran personnalisé ; boutique (accessoires sur 5 emplacements, skins, univers à débloquer, 2 univers offerts par sexe), 2 nouveaux jeux, décors et bonus de jeux ; voix d'homme ; langue du système par défaut. Slogans choisis : enfants « Apprendre en s'amusant, 15 minutes et puis s'en vont ! » (accueil, 1er écran du didacticiel), parents « Peu d'écran, beaucoup d'espagnol. » (espace parent, écran du temps d'écran, didacticiel) — `SLOGAN_KID` / `SLOGAN_PAR`.
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

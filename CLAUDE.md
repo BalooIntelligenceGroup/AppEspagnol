@@ -22,7 +22,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Profils** : liste dans `hola-lola-profiles` ; le profil `p1` garde la clé d'origine `hola-lola-v1`, les autres `hola-lola-v1-<id>` (+ `-secours`). Ne jamais renommer ces clés.
 - **Univers** (`THEMES`) : 6 univers (3 proposés aux filles, 3 aux garçons, tous accessibles), couleurs + compagnon. « Lola » dans les dialogues est remplacée par le nom du compagnon ; accords fille/garçon via `gx()`.
 - **Révision espacée** : `S.words[mot] = {b, d, ok, ko}` ; la Séance du jour prend les mots dus (`dueList`). Temps passé : `S.days`.
-- **Espace parent** : protégé par le **code parent** à 4 chiffres (v22, un par téléphone, clé `hola-lola-pin`, empreinte `pinHash`), créé sur l'écran `tsetup` ou au premier accès ; sans code ou « Code oublié ? » : multiplication à 2 chiffres × 2 chiffres puis nouveau code. `openGate(next)` / `gatePass()` ; protège aussi « Recommencer à zéro » et le choix du joueur quand le temps est écoulé.
+- **Espace parent** : protégé par le **code parent** à 4 chiffres (v22, un par téléphone, clé `hola-lola-pin`, empreinte `pinHash`), créé sur l'écran `tsetup` ou au premier accès ; sans code : création directe du code + **question secrète** (v23, clé `hola-lola-pinq`, réponse normalisée par `normAns` puis `pinHash`) ; « Code oublié ? » : la question secrète, puis nouveau code (multiplication 2 × 2 chiffres seulement si aucune question n'a été enregistrée) ; un code de la v22 sans question : la question est demandée juste après le bon code (`setq`). 5 erreurs → 1 minute d'attente (`hola-lola-pinlock`). `openGate(next)` / `gatePass()` ; protège aussi « Recommencer à zéro » et le choix du joueur quand le temps est écoulé.
 
 ## Côté ludique (depuis la version 13)
 - **Pièces** `S.coins` (leçons, séance, évaluations, jeux, comptines, défis) et **points de la semaine** `S.wk={k,pts}` via `addPts()` (classement familial, remis à zéro le lundi).
@@ -60,8 +60,9 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 1 / 3** (version 23 en préparation ; la 22 est en ligne depuis le 8 novembre 2026)
+**Demandes en attente sur `prochaine-version` : 2 / 3** (version 23 en préparation ; la 22 est en ligne depuis le 8 novembre 2026)
 1. Bouton « + » pour un temps d'écran personnalisé ; boutique (accessoires sur 5 emplacements, skins, univers à débloquer, 2 univers offerts par sexe), 2 nouveaux jeux, décors et bonus de jeux ; voix d'homme ; langue du système par défaut. Slogans choisis : enfants « Apprendre en s'amusant, 15 minutes et puis s'en vont ! » (accueil, 1er écran du didacticiel), parents « Peu d'écran, beaucoup d'espagnol. » (espace parent, écran du temps d'écran, didacticiel) — `SLOGAN_KID` / `SLOGAN_PAR`.
+2. Sécurité de l'espace parent : question secrète choisie avec le code (remplace la multiplication en cas d'oubli), 5 erreurs → 1 minute d'attente.
 
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 

@@ -39,7 +39,10 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Noms** (v17) : à l'écran, une « étape » s'appelle **Niveau** (`TIERS`) et un niveau s'appelle **Leçon** ; les comptines sont des **Récitations**. Le code garde ses noms (UNITS, tier, SONGS).
 - **Temps d'écran** (v17, corrigé v20) : compté en direct par `timeTick()` (toutes les 10 s, hors écrans `FREE` et réglages), comparé en secondes. Choisir une limite annule le déblocage du jour et les minutes ajoutées. L'écran `stop` n'offre que « Je suis un parent ». Si un profil a fini son temps (`anyOver()`), choisir ou créer un joueur sur « ¿Quién juega? » passe par la multiplication (`gateNext`). Limite atteinte → écran `stop` partout (« Demande à tes parents »), le parent ajoute 15 min (`S.extra`) ou débloque la journée (`S.unlockDay`).
 - **Rythme quotidien** (v22) : `newGate(i)` bloque une leçon jamais réussie si une nouvelle leçon a déjà été réussie aujourd'hui (`S.newDay`) ou si des mots sont à revoir et que la Séance du jour n'est pas faite (`S.seanceDay`). Les leçons déjà réussies restent libres. Limite par défaut : 10 min/jour (`def()`, migration `mig22` si aucun réglage).
-- **Didacticiel** `tuto()` : montré une fois par profil (`S.tuto`), revisible dans les réglages.
+- **Didacticiel** `tuto()` : montré une fois par profil (`S.tuto`), revisible dans les réglages. À la fin du premier didacticiel, écran `tsetup` : le parent choisit le temps d'écran (`S.tsetup`).
+- **10 mots par leçon** (v22) : les mots retirés par `DROP` reviennent et `MORE` ajoute 4 mots par leçon active. Une leçon déjà réussie fait découvrir les mots jamais vus. Mot sans bonne image → `💬` + entrée dans `ABSTRACT`.
+- **Voix** (v22) : `S.voice` (voiceURI d'une voix espagnole du téléphone, liste `esVoices()`) et `S.pitch` (n/h/l, table `PITCH`), dans les réglages.
+- **Espace parent** (v22) : un `<details class="acc">` par enfant (Progrès / Réglages), `popen` garde les accordéons ouverts ; `limitBox()` sert aussi à `tsetup` ; `PROMISE` = message « notre engagement ».
 - **Ordre des exercices** : `mix()` mélange les exercices après la découverte des mots et évite de rejouer le même enchaînement (`S.seq`).
 - **Carte** : à l'arrivée sur l'accueil, défilement automatique vers la leçon en cours ; bouton `#totop` pour remonter.
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
@@ -54,8 +57,11 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 1 / 3** (version 22 en préparation)
+**Demandes en attente sur `prochaine-version` : 2 / 3** (version 22 en préparation)
 1. Rythme quotidien : Séance du jour avant toute nouvelle leçon, une nouvelle leçon par jour, 10 min/jour par défaut.
+2. Temps d'écran choisi après le didacticiel, message « temps de jeu terminé » sur ¿Quién juega?, espace parent en accordéon, choix de la voix et du ton, 10 mots par leçon, message « notre engagement » (pas de promesse de bilinguisme).
+
+**À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 
 ## Publier une nouvelle version
 1. Modifier `index.html` (ajouter des niveaux dans un tableau `V8_…` puis `insAfter(...)`, comme V7).

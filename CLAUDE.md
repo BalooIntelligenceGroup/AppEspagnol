@@ -1,4 +1,4 @@
-# ¡Hola Lola! — appli d'espagnol pour une enfant de 8 ans
+# Petit Polyglotte (ex-¡Hola Lola!) — appli de langues pour enfants : anglais, espagnol ou italien
 
 Appli web installable (PWA) hébergée sur Netlify : https://cozy-ganache-5c4ae8.netlify.app
 Chaque push sur `main` est déployé automatiquement par Netlify.
@@ -57,6 +57,7 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - **Récitations** (v25) : `SONGS[].tier` ; `songOk(s)` = Niveau terminé (`stageDone`) ou ancienne règle (`after` réussie, jamais refermée). Une par Niveau (1 à 11 ; le Niveau 1 en a 4) ; l'écran de fin de leçon annonce la nouvelle récitation (`R.song`). Liste : seulement les niveaux présents sur la carte.
 - **Séance d'abord** (v25) : la bulle « Fais d'abord ta Séance du jour » est un bouton (`.linkbtn`, `data-act="seance"`) et toucher la leçon bloquée lance aussi la séance.
 - **Album / dico** (v25) : un `<details class="acc lacc">` par Niveau (album, pastille `xx/yy` autocollants) ou par leçon (dico, nombre de mots) ; `aopen` garde les accordéons ouverts pendant la visite ; l'album ouvre d'office le premier niveau pas terminé.
+- **Petit Polyglotte / langue apprise** (v27) : nom de l'appli « Petit Polyglotte » (titre, manifeste ; adresse Netlify et clés de sauvegarde inchangées). Chaque profil apprend **une** langue : `S.target` = es (défaut, profils existants), en ou it, choisie au 1er écran d'un nouveau profil (`wStep='target'`, puis langue des traductions sans la langue apprise). Pour une 2e langue : un autre profil. `setTarget(t)` (appelé par `loadProfile`) remplace à la volée, pour les 15 leçons de `ACTIVE` : titres et mots et répliques via `TRX` (+ `TG_OVR` : titres et phrases qui parlent de l'Espagne), phrases à trou `TG_GAPS`, histoires `TG_STORY`, récitations des Niveaux 1-3 `TG_SONGS` (originaux gardés dans `u._o`, `e._p`, `s._o`). `TA[texte affiché]` = clé espagnole : `tx`, `tr`, `trOpt`, `ABSTRACT` passent par elle pour le sens. `tgUI()` remplace à l'affichage et à la voix les phrases espagnoles de l'interface (`TG_PH`) et les noms de langue (« espagnol » → « anglais »/« italien », `TG_LN`). Voix et micro : `TLC` (es-ES, en-GB, it-IT). Famille, Bonus, Ultimate : **espagnol seulement** pour l'instant (`famSync`, `famMap`, `bonusNode`). Contenu anglais/italien des autres leçons à écrire plus tard. Source du contenu en/it : `/home/claude/content_v27.py` (copie dans le code).
 - Révision espacée : un mot n'avance d'une boîte que s'il était dû (`r.d<=aujourd'hui`) ; `f` = date de première rencontre (rapport hebdo).
 
 ## Rythme de publication (demande du 7 novembre 2026 : économiser les crédits Netlify)
@@ -69,8 +70,9 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 1 / 3** (version 27 en préparation ; la 26 = correction urgente du 12 novembre 2026, en ligne)
+**Demandes en attente sur `prochaine-version` : 2 / 3** (version 27 en préparation ; la 26 = correction urgente du 12 novembre 2026, en ligne)
 1. Leçon relancée = ordre différent : découverte des mots mélangée, `mix()` refuse aussi de recommencer par les 3 mêmes exercices que la fois d'avant (20 essais).
+2. Nom « Petit Polyglotte » et choix de la langue à apprendre (anglais, espagnol, italien) ; les 15 leçons gratuites en anglais et en italien.
 
 **À FAIRE (demandé le 8 novembre 2026, reporté par l'utilisateur à « la semaine prochaine » faute de crédits)** : **10 Niveaux avancés = 50 leçons** (Niveaux 12 à 21), thèmes déjà vus mais plus difficiles, **nouveau vocabulaire**, phrases (format `FAM_UNITS` : `conv`+`phr`, 10 éléments, dialogue de 5 répliques, 3 phrases à trou, traductions `TRX` anglais/italien, images `fx`, une récitation par niveau dans `SONGS`). Accès : **offre Famille** (ils prolongent `FAM_UNITS` : 5 leçons par mois après le Niveau 4) **et Ultimate** (tout ouvert). À prévoir : l'ordre et la numérotation des niveaux Famille et des anciennes leçons (`EXTRA_UNITS`, Niveaux 5 à 11 en Ultimate).
 

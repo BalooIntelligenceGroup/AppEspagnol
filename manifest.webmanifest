@@ -1,7 +1,7 @@
 {
- "name": "¡Hola Lola!",
- "short_name": "Hola Lola",
- "description": "Apprendre l'espagnol en s'amusant, 15 minutes et puis s'en vont ! Peu d'écran, beaucoup d'espagnol.",
+ "name": "Petit Polyglotte",
+ "short_name": "Petit Polyglotte",
+ "description": "Apprendre l'anglais, l'espagnol ou l'italien en s'amusant, 15 minutes et puis s'en vont ! Peu d'écran, beaucoup de mots.",
  "lang": "fr",
  "start_url": "./",
  "scope": "./",

@@ -1277,8 +1277,10 @@ function evalNode(t,isCur){
    et jamais deux fois de suite le même enchaînement (S.seq garde le dernier, par leçon). */
 const sigOf=s=>s.t+':'+(s.w?s.w.es:s.g?s.g.s:s.d?s.d.l:s.sent||(s.ws||[]).map(w=>w.es).join(','));
 function mix(key,head,rest){
-  S.seq=S.seq||{};const old=S.seq[key];let steps,sig;
-  for(let n=0;n<8;n++){steps=head.concat(shuffle(rest.slice()));sig=steps.map(sigOf).join('|');if(sig!==old)break}
+  /* v27 : l'ordre des exercices change à chaque lancement ; on refuse aussi de recommencer par les 3 mêmes exercices que la fois d'avant */
+  S.seq=S.seq||{};const old=S.seq[key]||'',oldHead=old.split('|').slice(head.length,head.length+3).join('|');let steps,sig;
+  for(let n=0;n<20;n++){steps=head.concat(shuffle(rest.slice()));const sg=steps.map(sigOf);sig=sg.join('|');
+    if(sig!==old&&(rest.length<4||sg.slice(head.length,head.length+3).join('|')!==oldHead))break}
   S.seq[key]=sig;return steps;
 }
 const kindFor=(w,conv)=>Math.random()<.5?'pick':(conv?'mean':'listen');
@@ -1304,7 +1306,7 @@ function buildSteps(u,n,fr){
 }
 function startUnit(i,uo){
   const u=uo||UNITS[i],words=shuffle(u.words.map(W)),learn=[],steps=[],phr=!!u.conv;
-  words.filter(w=>!S.stars[u.id]||!(S.words||{})[w.es]).forEach(w=>learn.push({t:'learn',w,conv:phr}));
+  shuffle(words.filter(w=>!S.stars[u.id]||!(S.words||{})[w.es])).forEach(w=>learn.push({t:'learn',w,conv:phr}));
   steps.push(matchStep(words.slice(0,5)));if(words.length>6)steps.push(matchStep(words.slice(5)));
   shuffle(words.slice()).slice(0,5).forEach(w=>steps.push({t:kindFor(w,phr),w,opts:optsFor(w,words)}));
   if(!u.conv)tfSteps(words,3).forEach(s=>steps.push(s));

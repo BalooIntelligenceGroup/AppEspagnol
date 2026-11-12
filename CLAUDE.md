@@ -77,6 +77,25 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 
 **À FAIRE — Niveaux Bonus du calendrier (décidé le 10 novembre 2026)** : chaque Bonus du mois devient un **Niveau de 5 leçons** sur une grande fête du monde hispanique (`MONTHLY`, un niveau par mois) : janv. Reyes Magos · févr. Carnaval · mars Fallas · avr. Semana Santa/Feria de Abril · mai San Isidro · juin San Juan/Inti Raymi · juil. San Fermín · août Tomatina · sept. fêtes nationales du Mexique · oct. Día de la Hispanidad · nov. Día de Muertos · déc. Navidad/Nochevieja. **En plus** des 5 leçons Famille ouvertes chaque mois (`famOpen`) : chaque mois, un abonné reçoit **5 leçons de progression + 1 Niveau Bonus de 5 leçons** (soit 10 leçons à écrire par mois). **Accès (règle décidée le 10 novembre 2026) : abonnés Famille seulement**, quelle que soit la progression ; verrouillé « 🔒 Famille » pour les autres. Le 1er du mois, le Niveau Bonus de la fête apparaît à la leçon en cours de l'enfant avec **sa 1re leçon ouverte** ; ensuite **1 jour de jeu = 1 leçon bonus ouverte** (jour de jeu = Séance du jour faite ou nouvelle leçon réussie ; au plus 1 par jour). Les jours de jeu servent d'abord le bonus le plus ancien pas encore complet, puis celui du mois. **Rien ne disparaît** : à la fin du mois, le niveau rejoint « 🎁 Mes niveaux bonus » en fin de carte et continue de s'ouvrir ; un abonné accumule un niveau bonus par mois d'abonnement. Pas d'attente de fin de niveau (un enfant bloqué sur une évaluation continue de gagner des leçons bonus en faisant sa séance). Les 3 leçons bonus existantes (`b_tapas`, `b_navidad`, `b_reyes`) deviennent des leçons de ces niveaux (garder leurs id). Remplace la règle actuelle (bonus d'une leçon, le mois seulement) : à appliquer avec le Niveau Navidad. **Priorité : le Niveau Navidad (5 leçons) doit être en ligne avant le 1er décembre 2026** (à faire dès que l'utilisateur a des crédits) ; les 11 autres ensuite, avec les 50 leçons avancées. En Ultimate : tous les niveaux bonus visibles.
 
+**Calendrier des Niveaux Bonus par langue (validé le 12 novembre 2026)** : chaque langue a ses propres fêtes ; même règle partout (abonnés de la langue, 1 jour de jeu = 1 leçon bonus, rien ne disparaît). `MONTHLY` devra devenir par langue (`MONTHLY[lang]`).
+
+| Mois | Espagnol | Anglais | Italien |
+|---|---|---|---|
+| janv. | Reyes Magos | New Year + Burns Night | La Befana |
+| févr. | Carnaval | Pancake Day | Carnevale (Venise, Viareggio) |
+| mars | Las Fallas | St Patrick's Day | Festa del papà (zeppole) |
+| avr. | Semana Santa / Feria | Easter | Pasqua (colomba) |
+| mai | San Isidro | May Day | Giro d'Italia |
+| juin | San Juan / Inti Raymi | Sports Day | Festa della Repubblica |
+| juil. | San Fermín | Independence Day (USA) | Palio di Siena |
+| août | La Tomatina | Notting Hill Carnival | Ferragosto |
+| sept. | Fêtes du Mexique | Harvest Festival | La vendemmia |
+| oct. | Día de la Hispanidad | Halloween | Festa della castagna |
+| nov. | Día de Muertos | Bonfire Night + Thanksgiving | San Martino |
+| déc. | Navidad / Nochevieja | Christmas | Natale / Capodanno |
+
+**Priorité : les 3 niveaux bonus de décembre (Navidad, Christmas, Natale = 15 leçons) en ligne avant le 1er décembre 2026**, avec le passage de `MONTHLY` par langue et la nouvelle règle d'ouverture ; à lancer quand l'utilisateur dit « Fais le niveau Navidad » (ou Noël).
+
 **À venir (décidé le 8 novembre 2026)** : comptes pour retrouver sa progression, créés par le **parent** (e-mail + mot de passe du parent, un profil par enfant), à faire quand l'utilisateur aura son propre hébergement ; ils remplaceront le code de sauvegarde.
 
 ## Publier une nouvelle version

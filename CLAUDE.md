@@ -69,7 +69,7 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 0 / 3** (la version 25 est en ligne depuis le 10 novembre 2026 : code bêta-testeur = toutes les leçons ouvertes en 11 niveaux de 5 ; 2 leçons du Niveau 11 ; récitations par niveau, lien vers la Séance du jour, accordéons de l'album et du dico)
+**Demandes en attente sur `prochaine-version` : 0 / 3** (version 26 = correction urgente du 12 novembre 2026 : « Traduis la phrase » n'affichait plus les mots à toucher ; avant : la version 25, en ligne depuis le 10 novembre 2026 : code bêta-testeur = toutes les leçons ouvertes en 11 niveaux de 5 ; 2 leçons du Niveau 11 ; récitations par niveau, lien vers la Séance du jour, accordéons de l'album et du dico)
 
 **À FAIRE (demandé le 8 novembre 2026, reporté par l'utilisateur à « la semaine prochaine » faute de crédits)** : **10 Niveaux avancés = 50 leçons** (Niveaux 12 à 21), thèmes déjà vus mais plus difficiles, **nouveau vocabulaire**, phrases (format `FAM_UNITS` : `conv`+`phr`, 10 éléments, dialogue de 5 répliques, 3 phrases à trou, traductions `TRX` anglais/italien, images `fx`, une récitation par niveau dans `SONGS`). Accès : **offre Famille** (ils prolongent `FAM_UNITS` : 5 leçons par mois après le Niveau 4) **et Ultimate** (tout ouvert). À prévoir : l'ordre et la numérotation des niveaux Famille et des anciennes leçons (`EXTRA_UNITS`, Niveaux 5 à 11 en Ultimate).
 
@@ -81,7 +81,7 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 1. Modifier `index.html` (ajouter des niveaux dans un tableau `V8_…` puis `insAfter(...)`, comme V7).
 2. Incrémenter `APP_VERSION` et ajouter le texte de nouveauté dans `NEW_IN` (bandeau affiché une fois).
 3. Dans `sw.js`, changer le nom du cache (`hola-lola-vN`).
-4. Vérifier la syntaxe du script et tester toutes les leçons (startUnit sur chaque niveau) dans Playwright.
+4. Vérifier la syntaxe du script et tester toutes les leçons (startUnit sur chaque niveau) dans Playwright, **en vérifiant que chaque exercice « build » affiche ses mots (`.bank .tile`)** et en jouant au moins un exercice jusqu'au bout.
 5. Commit + push sur `prochaine-version` ; à la 3e demande, fusion dans `main` → Netlify déploie, le téléphone se met à jour à la prochaine ouverture.
 
 Le même contenu est aussi publié comme artefact Claude : c'est `index.html` sans l'en-tête PWA

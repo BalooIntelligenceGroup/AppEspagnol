@@ -76,7 +76,10 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 0 / 3** (la version 29 est en ligne depuis le 12 novembre 2026 : récitations traduites, même fonctionnement et mêmes leçons dans les 3 langues (Famille et anciennes leçons du code bêta en anglais/italien), offre gratuite réduite aux Niveaux 1 et 2, premier écran dans la langue du téléphone)
+**Demandes en attente sur `prochaine-version` : 1 / 3** (version 30 en préparation ; la 29 est en ligne depuis le 12 novembre 2026)
+1. Nouvelle icône Petit Polyglotte (modèle A choisi le 12 novembre 2026 : globe bleu et vert, bulles « Hi! », « ¡Hola! », « Ciao! » sur fond turquoise, police Baloo 2) : `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (version réduite pour la découpe ronde d'Android) ; sources `tools/icon.svg` et `tools/icon-maskable.svg`.
+
+**Attention crédits Netlify (12 novembre 2026)** : l'utilisateur pense ne plus avoir de crédits ; avant toute mise en ligne, lui demander son solde. Envisagé : changer d'hébergement (GitHub Pages ou Cloudflare Pages) **avant** le lancement des bêta-tests, en gérant le transfert de progression (code de sauvegarde), car la progression est liée à l'adresse du site.
 
 **À FAIRE (demandé le 8 novembre 2026, reporté par l'utilisateur à « la semaine prochaine » faute de crédits)** : **10 Niveaux avancés = 50 leçons** (Niveaux 12 à 21), thèmes déjà vus mais plus difficiles, **nouveau vocabulaire**, phrases (format `FAM_UNITS` : `conv`+`phr`, 10 éléments, dialogue de 5 répliques, 3 phrases à trou, traductions `TRX` anglais/italien, images `fx`, une récitation par niveau dans `SONGS`). Accès : **offre Famille** (ils prolongent `FAM_UNITS` : 5 leçons par mois après le Niveau 4) **et Ultimate** (tout ouvert). À prévoir : l'ordre et la numérotation des niveaux Famille et des anciennes leçons (`EXTRA_UNITS`, Niveaux 5 à 11 en Ultimate).
 

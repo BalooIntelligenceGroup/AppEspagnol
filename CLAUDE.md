@@ -76,8 +76,9 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 1 / 3** (version 30 en préparation ; la 29 est en ligne depuis le 12 novembre 2026)
+**Demandes en attente sur `prochaine-version` : 2 / 3** (version 30 en préparation ; la 29 est en ligne depuis le 12 novembre 2026)
 1. Nouvelle icône Petit Polyglotte (modèle A choisi le 12 novembre 2026 : globe bleu et vert, bulles « Hi! », « ¡Hola! », « Ciao! » sur fond turquoise, police Baloo 2) : `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (version réduite pour la découpe ronde d'Android) ; sources `tools/icon.svg` et `tools/icon-maskable.svg`.
+2. Mots retenus expliqués (règles inchangées, choix de l'utilisateur le 14 novembre 2026) : 🧠 « retenu » = boîte ≥ 4 (`wState`, `retainedN`, texte `RET_HELP`), 🌱 « en révision » = déjà vu ; compteur 🧠 sur l'accueil (ouvre le Dico), badge 🧠/🌱 sur chaque mot du Dico + compteurs et explication, message de fin de Séance du jour (`R.newRet`), jeux = « mots déjà vus dans tes leçons », album = autocollant (réussi 3 fois) ≠ retenu ; espace parent : accordéon « ℹ️ Comment les mots sont-ils comptés ? ». **Clés `UI` : les chiffres deviennent {0}, {1}… et un texte en gras est un nœud à part (libellé et suite traduits séparément).**
 
 **Attention crédits Netlify (12 novembre 2026)** : l'utilisateur pense ne plus avoir de crédits ; avant toute mise en ligne, lui demander son solde. Envisagé : changer d'hébergement (GitHub Pages ou Cloudflare Pages) **avant** le lancement des bêta-tests, en gérant le transfert de progression (code de sauvegarde), car la progression est liée à l'adresse du site.
 

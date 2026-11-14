@@ -314,6 +314,7 @@ details.acc[open] .chev{transform:rotate(180deg)}
 .cast-row{display:flex;align-items:center;gap:12px}
 .cast{font-size:54px;line-height:1;display:inline-block;flex:none;transform-origin:50% 90%}
 .cast img.fx{width:60px;height:60px}
+.cast.lot{width:84px;height:84px;font-size:54px;display:flex;align-items:center;justify-content:center}
 .cast.joy{animation:chJoy .9s ease-out both}
 .cast.sad{animation:chSad .8s ease-out both}
 .cbub{position:relative;background:var(--card);border-radius:18px;padding:8px 14px;box-shadow:0 3px 0 var(--line);animation:chPop .35s .15s ease-out both}
@@ -1701,15 +1702,23 @@ function lesson(){
   app.innerHTML=`<div class="lbar"><button class="icon-btn" data-act="quit" aria-label="Quitter la leçon">✕</button><div class="bar"><i style="width:${pct}%"></i></div></div>
   <div class="stage">${body}</div><div class="foot">${foot}</div>`;
   if(L.answered&&s.opts)markOpts();
+  if(L.answered)playAnims();
 }
 const pick=a=>a[Math.random()*a.length|0];
 const WICON=()=>S.gender==='m'?'🤵':'👗';   /* v31 : icône de la garde-robe selon le joueur (costume pour un garçon) */
 /* v30 : troupe de personnages qui réagissent à chaque réponse (choisis au hasard, le compagnon de l'univers en fait partie) */
 const CAST=["🦊", "🐸", "🐰", "🐻", "🐙", "🦁", "🐱", "🐢"];
 const CHEER={ok:[["¡Muy bien!", "Well done!", "Bravissimo!", "Très bien !"], ["¡Genial!", "Great!", "Fantastico!", "Génial !"], ["¡Perfecto!", "Perfect!", "Perfetto!", "Parfait !"], ["¡Eso es!", "That's it!", "Esatto!", "C'est ça !"], ["¡Fantástico!", "Brilliant!", "Ottimo!", "Fantastique !"], ["¡Bravo!", "Hooray!", "Evviva!", "Bravo !"]],ko:[["¡Casi!", "Almost!", "Quasi!", "Presque !"], ["¡Ánimo!", "Keep going!", "Forza!", "Courage !"], ["¡Tú puedes!", "You can do it!", "Ce la fai!", "Tu peux y arriver !"], ["¡Otra vez!", "One more time!", "Ancora una volta!", "Encore une fois !"]]};
-function castFor(a){if(!a.cast){a.cast=Math.random()<.25?G().e:pick(CAST);a.ph=pick(CHEER[a.ok?'ok':'ko'])}
+/* v31 : personnages animés Lottie (dossier anim/, licence Lottie Simple License) — vide tant qu'aucune animation n'a été ajoutée.
+   Une entrée = {ok:'anim/xxx-joie.json', ko:'anim/xxx-oups.json'} (ko facultatif : la même animation sert alors aux deux). Le lecteur (lib/, MIT) n'est chargé que s'il y a des animations. */
+const ANIMS=[];
+let lottieP=null;
+function lottieLib(){return lottieP||(lottieP=new Promise((ok,ko)=>{if(window.lottie)return ok(window.lottie);const sc=document.createElement('script');sc.src='lib/lottie_light.min.js';sc.onload=()=>ok(window.lottie);sc.onerror=ko;document.head.appendChild(sc)}))}
+function playAnims(){document.querySelectorAll('.cast[data-anim]:not([data-on])').forEach(el=>{el.dataset.on='1';const fb=el.dataset.fb;
+  lottieLib().then(lt=>{const a=lt.loadAnimation({container:el,renderer:'svg',loop:false,autoplay:true,path:el.dataset.anim});a.addEventListener('data_failed',()=>{el.textContent=fb})}).catch(()=>{el.textContent=fb})})}
+function castFor(a){if(!a.cast){a.cast=Math.random()<.25?G().e:pick(CAST);a.ph=pick(CHEER[a.ok?'ok':'ko']);if(ANIMS.length){const an=pick(ANIMS);a.anim=a.ok?an.ok:(an.ko||an.ok)}}
   const ti={es:0,en:1,it:2}[TGT]??0,li={en:1,it:2,fr:3}[S.lang||'fr']??3,said=a.ph[ti],mean=li!==ti?a.ph[li]:'';
-  return `<div class="cast-row"><span class="cast ${a.ok?'joy':'sad'}" aria-hidden="true">${a.cast}</span><div class="cbub"><b>${esc(said)}</b>${mean?`<small>${esc(mean)}</small>`:''}</div></div>`}
+  return `<div class="cast-row">${a.anim?`<span class="cast lot" aria-hidden="true" data-anim="${esc(a.anim)}" data-fb="${esc(a.cast)}"></span>`:`<span class="cast ${a.ok?'joy':'sad'}" aria-hidden="true">${a.cast}</span>`}<div class="cbub"><b>${esc(said)}</b>${mean?`<small>${esc(mean)}</small>`:''}</div></div>`}
 function markOpts(){
   const s=L.steps[L.i];document.querySelectorAll('[data-act=ans]').forEach(b=>{
     const k=+b.dataset.k,o=s.opts[k],good=s.t==='talk'?isOk(o):s.t==='gap'?o===s.g.a:o.es===s.w.es;

@@ -9,6 +9,8 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - `manifest.webmanifest`, `icon-*.png` : installation sur Android.
 - `fx/` : images 3D Fluent Emoji (Microsoft, licence MIT dans `fx/LICENSE`), une par émoji, nommées par code (`1f436.webp`). Un MutationObserver (`fxify`) remplace à l'affichage chaque émoji qui a son image ; `FX` (index.html) et `FXL` (sw.js) listent les images. Nouvel émoji → ajouter son image et sa clé dans les deux listes, sinon l'émoji du téléphone reste.
 - `netlify.toml` : publication de la racine, pas de cache sur index.html et sw.js.
+- `lib/lottie_light.min.js` : lecteur d'animations Lottie (lottie-web 5.13.0, licence MIT dans `lib/LICENSE-lottie-web.txt`), chargé seulement si `ANIMS` contient des animations.
+- `anim/` (à créer) : animations Lottie des personnages (JSON), licence Lottie Simple License (usage commercial et modification permis, crédit facultatif ; interdit de les rassembler pour monter un service concurrent).
 
 ## Règle absolue : ne jamais perdre la progression
 - La progression est dans `localStorage`, clé `hola-lola-v1` (+ copie `hola-lola-v1-secours`). Ne jamais renommer ces clés.
@@ -83,6 +85,7 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 
 **Ajouts après la v30 sur la même branche (la v30 n'étant pas encore publiée, ils partiront avec elle)** :
 4. Traduction avec mots découpés (14 novembre 2026) : exercices « Écoute et traduis » (`mode:'oral'`, phrase entendue sans être vue, 🐢 lentement) et « Lis et traduis » (`mode:'read'`) qui font reconstruire **le sens dans la langue de l'enfant** (`trBuild`, tuiles = `tilesOf(tr(phrase))` + 2 mots de trop) ; leçons de phrases : 2 dictées, 2 « Traduis la phrase », 1 orale, 1 écrite ; leçons de mots (Niveau 2 et +) : 1 orale. Atelier **🔁 Traduction** sur l'accueil (`tradView`, `startTrad`, `TRAD_MODES`) : 8 phrases des leçons réussies (`sentPool`), « 🎧 Traduction orale » ou « ✍️ Traduction écrite » ; `L.kind='trad'`.
+6. Personnages animés Lottie (14 novembre 2026, l'utilisateur choisit des animations gratuites LottieFiles) : `ANIMS=[{ok:'anim/…-joie.json', ko:'anim/…-oups.json'}]` (vide pour l'instant) ; `castFor` tire une animation au hasard, `playAnims()` (appelé après chaque réponse) charge `lib/lottie_light.min.js` à la demande ; fichier absent ou lecteur en échec → l'émoji de la troupe revient. Test : `tools/tests/tlot.cjs` (animation de test `tools/tests/anim-test.json`). LottieFiles n'est pas joignable depuis l'espace de travail de Claude : l'utilisateur télécharge les fichiers « Lottie JSON » et les envoie.
 5. Garde-robe : icône selon le joueur (`WICON()` : 👗 fille, 🤵 garçon) sur l'accueil, l'écran et le didacticiel.
 
 **Attention crédits Netlify (12 novembre 2026)** : l'utilisateur pense ne plus avoir de crédits ; avant toute mise en ligne, lui demander son solde. Envisagé : changer d'hébergement (GitHub Pages ou Cloudflare Pages) **avant** le lancement des bêta-tests, en gérant le transfert de progression (code de sauvegarde), car la progression est liée à l'adresse du site.

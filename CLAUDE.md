@@ -9,6 +9,8 @@ Chaque push sur `main` est déployé automatiquement par Netlify.
 - `manifest.webmanifest`, `icon-*.png` : installation sur Android.
 - `fx/` : images 3D Fluent Emoji (Microsoft, licence MIT dans `fx/LICENSE`), une par émoji, nommées par code (`1f436.webp`). Un MutationObserver (`fxify`) remplace à l'affichage chaque émoji qui a son image ; `FX` (index.html) et `FXL` (sw.js) listent les images. Nouvel émoji → ajouter son image et sa clé dans les deux listes, sinon l'émoji du téléphone reste.
 - `netlify.toml` : publication de la racine, pas de cache sur index.html et sw.js.
+- `lib/lottie_light.min.js` : lecteur d'animations Lottie (lottie-web 5.13.0, licence MIT dans `lib/LICENSE-lottie-web.txt`), chargé seulement si `ANIMS` contient des animations.
+- `anim/` (à créer) : animations Lottie des personnages (JSON), licence Lottie Simple License (usage commercial et modification permis, crédit facultatif ; interdit de les rassembler pour monter un service concurrent).
 
 ## Règle absolue : ne jamais perdre la progression
 - La progression est dans `localStorage`, clé `hola-lola-v1` (+ copie `hola-lola-v1-secours`). Ne jamais renommer ces clés.
@@ -76,7 +78,12 @@ Formule gratuite Netlify : 300 crédits/mois, **chaque mise en ligne sur `main` 
 - Un commit sur `main` qui ne touche pas l'appli (documentation) porte `[skip ci]` dans son message pour ne pas déclencher de mise en ligne.
 - Une seule version (`APP_VERSION`, cache `hola-lola-vN`) par mise en ligne, avec un texte `NEW_IN` qui résume les 3 demandes.
 
-**Demandes en attente sur `prochaine-version` : 0 / 3** (la version 29 est en ligne depuis le 12 novembre 2026 : récitations traduites, même fonctionnement et mêmes leçons dans les 3 langues (Famille et anciennes leçons du code bêta en anglais/italien), offre gratuite réduite aux Niveaux 1 et 2, premier écran dans la langue du téléphone)
+**Demandes en attente sur `prochaine-version` : 0 / 3** (la version 30 est partie sur `main` le 14 novembre 2026, à la demande de l'utilisateur pour tester l'empreinte : nouvelle icône, mots retenus 🧠, personnages qui réagissent, traduction orale et écrite + atelier 🔁, icône garde-robe 👗/🤵, lecteur Lottie (animations à venir dans `anim/`), empreinte ou visage pour l'espace parent)
+
+- **Empreinte ou visage (v30)** : WebAuthn avec l'authentificateur du téléphone (`bioOn`, `bioCheck`, clé `hola-lola-bio` = identité de la clé seulement, `bioAvail`), vérification de l'utilisateur obligatoire (drapeau UV), le code parent reste toujours possible ; avertissement : le téléphone accepte toute empreinte enregistrée. Liée à l'adresse du site (à réactiver après la bascule). Ne marche pas dans l'aperçu Claude ; test : `tools/tests/tbio.cjs` (authentificateur virtuel).
+- **Dépôt** : déménagement prévu vers un compte GitHub B, dépôt `petit-polyglotte`, branches `petit-polyglotte/main` et `petit-polyglotte/prochaine-version` (choix de l'utilisateur, 14 novembre 2026). Branches `italiano` et `tounsi` à supprimer par l'utilisateur (sauvegardes .bundle envoyées ; suppression refusée depuis l'espace de travail de Claude).
+
+**Attention crédits Netlify (12 novembre 2026)** : l'utilisateur pense ne plus avoir de crédits ; avant toute mise en ligne, lui demander son solde. Envisagé : changer d'hébergement (GitHub Pages ou Cloudflare Pages) **avant** le lancement des bêta-tests, en gérant le transfert de progression (code de sauvegarde), car la progression est liée à l'adresse du site.
 
 **À FAIRE (demandé le 8 novembre 2026, reporté par l'utilisateur à « la semaine prochaine » faute de crédits)** : **10 Niveaux avancés = 50 leçons** (Niveaux 12 à 21), thèmes déjà vus mais plus difficiles, **nouveau vocabulaire**, phrases (format `FAM_UNITS` : `conv`+`phr`, 10 éléments, dialogue de 5 répliques, 3 phrases à trou, traductions `TRX` anglais/italien, images `fx`, une récitation par niveau dans `SONGS`). Accès : **offre Famille** (ils prolongent `FAM_UNITS` : 5 leçons par mois après le Niveau 4) **et Ultimate** (tout ouvert). À prévoir : l'ordre et la numérotation des niveaux Famille et des anciennes leçons (`EXTRA_UNITS`, Niveaux 5 à 11 en Ultimate).
 

@@ -1,0 +1,12 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:400,height:820}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('http://localhost:8765/index.html');
+await p.evaluate(()=>{localStorage.clear();localStorage.setItem('hola-lola-v1',JSON.stringify({name:'Lola',gender:'f',theme:'jungla',lang:'fr',target:'es',stars:{},ver:30,seen:30,mig12:1,mig13:1,mig22:1,mig23:1,mig29:1,tuto:1,tsetup:1,limit:0,opened:[],evals:{},days:{},coins:20,words:{}}))});
+await p.reload();await p.waitForTimeout(400);
+const ans=async()=>{await p.evaluate(()=>{startUnit(0);L.i=L.steps.findIndex(s=>s.opts&&s.t!=='talk');L.answered=null;render()});
+ await p.evaluate(()=>{const s=L.steps[L.i];const k=s.opts.findIndex(o=>(s.t==='gap'?o===s.g.a:o.es===s.w.es));document.querySelector(`[data-act="ans"][data-k="${k}"]`).click()});await p.waitForTimeout(900)};
+await ans();console.log('sans animation:',await p.evaluate(()=>({lot:!!document.querySelector('.cast.lot'),lib:!!window.lottie})));
+await p.evaluate(()=>ANIMS.push({ok:'tools/tests/anim-test.json'}));await ans();
+console.log('avec animation:',await p.evaluate(()=>({svg:!!document.querySelector('.cast.lot svg'),lib:!!window.lottie})));
+await p.evaluate(()=>{ANIMS.length=0;ANIMS.push({ok:'anim/absent.json'})});await ans();
+console.log('fichier manquant:',await p.evaluate(()=>document.querySelector('.cast.lot').innerText||document.querySelector('.cast.lot img')?.alt));
+console.log('ERR',errs);await b.close()})();

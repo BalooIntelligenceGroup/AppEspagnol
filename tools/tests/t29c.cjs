@@ -1,0 +1,15 @@
+const {chromium}=require('playwright');const S=''+require('os').tmpdir()+'/';
+(async()=>{const b=await chromium.launch();
+const run=async(label,save,subs,loc='fr-FR')=>{const ctx=await b.newContext({viewport:{width:400,height:820},locale:loc});await ctx.clock.setFixedTime(new Date('2026-12-03T10:00:00'));const p=await ctx.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.goto('http://localhost:8765/index.html');await p.evaluate(([s,sub])=>{localStorage.clear();if(s)localStorage.setItem('hola-lola-v1',JSON.stringify(s));if(sub)localStorage.setItem('hola-lola-subs',JSON.stringify(sub))},[save,subs]);await p.reload();await p.waitForTimeout(500);
+const r=await p.evaluate(()=>({view,units:UNITS.length,tiers:[...new Set(UNITS.map(u=>u.tier))].join(','),g3:S.g3,fam:[...document.querySelectorAll('.famn b')].map(x=>x.textContent).join(' | '),h1:(document.querySelector('h1')||{}).textContent,saved:JSON.parse(localStorage.getItem('hola-lola-v1')||'{}').mig29}));
+console.log(label,JSON.stringify(r),errs);if(label.startsWith('nouveau'))await p.screenshot({path:S+'start-'+loc+'.png'});await ctx.close()};
+const base=(o)=>Object.assign({name:'Lola',gender:'f',theme:'jungla',lang:'fr',target:'es',stars:{},ver:28,seen:28,mig12:1,mig13:1,mig22:1,mig23:1,tuto:1,tsetup:1,limit:0,opened:[],evals:{},days:{},coins:20,words:{}},o);
+await run('nouveau fr',null,null);await run('nouveau en',null,null,'en-GB');await run('nouveau it',null,null,'it-IT');
+await run('debutant',base({stars:{saludos:3}}),null);
+await run('a fini N2 (eval)',base({evals:{1:1,2:1}}),null);
+await run('anglais N3 ailleurs',base({target:'es',stars:{saludos:2},L:{en:{evals:{1:1,2:1},stars:{presentarse:2}}}}),null);
+await run('abonne nouveau',base({stars:{saludos:3}}),[{lang:'es',offer:'famille',start:'2026-11-20',period:'month'}]);
+await run('abonne 2 mois',base({stars:{saludos:3}}),[{lang:'es',offer:'famille',start:'2026-10-01',period:'month'}]);
+await run('abonne + N3 deja',base({evals:{1:1,2:1}}),[{lang:'es',offer:'famille',start:'2026-11-20',period:'month'}]);
+await b.close()})();

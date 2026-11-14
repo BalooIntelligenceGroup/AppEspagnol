@@ -311,6 +311,19 @@ details.acc[open] .chev{transform:rotate(180deg)}
 .bubble .es{font-size:25px}
 .bubble .prop{font-size:40px;line-height:1.2}
 .foot{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));margin-top:auto}
+.cast-row{display:flex;align-items:center;gap:12px}
+.cast{font-size:54px;line-height:1;display:inline-block;flex:none;transform-origin:50% 90%}
+.cast img.fx{width:60px;height:60px}
+.cast.joy{animation:chJoy .9s ease-out both}
+.cast.sad{animation:chSad .8s ease-out both}
+.cbub{position:relative;background:var(--card);border-radius:18px;padding:8px 14px;box-shadow:0 3px 0 var(--line);animation:chPop .35s .15s ease-out both}
+.cbub::before{content:"";position:absolute;left:-8px;top:50%;margin-top:-8px;border:8px solid transparent;border-left:0;border-right-color:var(--card)}
+.cbub b{display:block;font-size:22px;line-height:1.2}
+.cbub small{display:block;font-size:13px;font-weight:700;color:var(--muted)}
+@keyframes chJoy{0%{transform:translateY(30px) scale(.4);opacity:0}35%{transform:translateY(-14px) scale(1.12) rotate(-6deg);opacity:1}55%{transform:translateY(0) scale(.95) rotate(4deg)}75%{transform:translateY(-6px) rotate(-2deg)}100%{transform:none}}
+@keyframes chSad{0%{transform:translateY(20px) scale(.5);opacity:0}30%{transform:none;opacity:1}45%{transform:rotate(-10deg)}60%{transform:rotate(8deg)}75%{transform:rotate(-5deg)}100%{transform:rotate(0)}}
+@keyframes chPop{0%{transform:scale(.6);opacity:0}100%{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.cast,.cbub{animation:none!important}}
 .fb{border-radius:22px;padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px;animation:up .2s ease-out}
 .fb.good{background:var(--good-bg)} .fb.bad{background:var(--bad-bg)}
 .fb h3{font-size:26px} .fb.good h3{color:var(--good)} .fb.bad h3{color:var(--bad)}
@@ -1658,7 +1671,7 @@ function lesson(){
   else if(s.t==='speak'&&!L.answered)foot=micOK?`<button class="btn ghost" data-act="next">Passer cet exercice →</button>`:`<button class="btn" data-act="next">Continuer</button>`;
   else if(L.answered){
     const g=L.answered.ok;
-    foot=`<div class="fb ${g?'good':'bad'}" role="status"><h3>${g?pick(['¡Muy bien!','¡Genial!','¡Bravo!','¡Perfecto!']):'¡Casi! Presque !'}</h3>
+    foot=`<div class="fb ${g?'good':'bad'}" role="status">${castFor(L.answered)}
       ${L.answered.msg?`<p>${L.answered.msg}</p>`:''}${trBox(s)}<button class="btn" data-act="next">Continuer</button></div>`;
   }
   app.innerHTML=`<div class="lbar"><button class="icon-btn" data-act="quit" aria-label="Quitter la leçon">✕</button><div class="bar"><i style="width:${pct}%"></i></div></div>
@@ -1666,6 +1679,12 @@ function lesson(){
   if(L.answered&&s.opts)markOpts();
 }
 const pick=a=>a[Math.random()*a.length|0];
+/* v30 : troupe de personnages qui réagissent à chaque réponse (choisis au hasard, le compagnon de l'univers en fait partie) */
+const CAST=["🦊", "🐸", "🐰", "🐻", "🐙", "🦁", "🐱", "🐢"];
+const CHEER={ok:[["¡Muy bien!", "Well done!", "Bravissimo!", "Très bien !"], ["¡Genial!", "Great!", "Fantastico!", "Génial !"], ["¡Perfecto!", "Perfect!", "Perfetto!", "Parfait !"], ["¡Eso es!", "That's it!", "Esatto!", "C'est ça !"], ["¡Fantástico!", "Brilliant!", "Ottimo!", "Fantastique !"], ["¡Bravo!", "Hooray!", "Evviva!", "Bravo !"]],ko:[["¡Casi!", "Almost!", "Quasi!", "Presque !"], ["¡Ánimo!", "Keep going!", "Forza!", "Courage !"], ["¡Tú puedes!", "You can do it!", "Ce la fai!", "Tu peux y arriver !"], ["¡Otra vez!", "One more time!", "Ancora una volta!", "Encore une fois !"]]};
+function castFor(a){if(!a.cast){a.cast=Math.random()<.25?G().e:pick(CAST);a.ph=pick(CHEER[a.ok?'ok':'ko'])}
+  const ti={es:0,en:1,it:2}[TGT]??0,li={en:1,it:2,fr:3}[S.lang||'fr']??3,said=a.ph[ti],mean=li!==ti?a.ph[li]:'';
+  return `<div class="cast-row"><span class="cast ${a.ok?'joy':'sad'}" aria-hidden="true">${a.cast}</span><div class="cbub"><b>${esc(said)}</b>${mean?`<small>${esc(mean)}</small>`:''}</div></div>`}
 function markOpts(){
   const s=L.steps[L.i];document.querySelectorAll('[data-act=ans]').forEach(b=>{
     const k=+b.dataset.k,o=s.opts[k],good=s.t==='talk'?isOk(o):s.t==='gap'?o===s.g.a:o.es===s.w.es;
